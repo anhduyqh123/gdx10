@@ -1,5 +1,4 @@
 buildscript {
-    
 
     repositories {
         mavenLocal()
@@ -21,6 +20,7 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
 
+    group 'com.anhduyqh123'
     version = '1.0'
     ext {
         appName = "Pikachu-Portrait"

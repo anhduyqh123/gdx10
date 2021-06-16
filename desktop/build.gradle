@@ -1,0 +1,69 @@
+apply plugin: "java"
+
+sourceCompatibility = 1.8
+sourceSets.main.java.srcDirs = [ "src/" ]
+//sourceSets.main.resources.srcDirs = ["../android/assets"]
+
+project.ext.mainClassName = "Editor.UITool.UIMain"
+project.ext.assetsDir = new File("../android/Empty");
+
+task run(dependsOn: classes, type: JavaExec) {
+    main = project.mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = project.assetsDir
+    ignoreExitValue = true
+}
+
+task debug(dependsOn: classes, type: JavaExec) {
+    main = project.mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = project.assetsDir
+    ignoreExitValue = true
+    debug = true
+}
+
+task dist(type: Jar) {
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+}
+
+
+dist.dependsOn classes
+
+eclipse.project.name = appName + "-desktop"
+
+//swing ui designer
+repositories {
+    mavenCentral()
+    maven { url "https://www.jetbrains.com/intellij-repository/releases" }
+    maven { url "https://jetbrains.bintray.com/intellij-third-party-dependencies" }
+}
+
+configurations {
+    antTask
+}
+
+dependencies {
+    antTask 'com.jetbrains.intellij.java:java-compiler-ant-tasks:203.7148.30' //gradle 6.3
+}
+
+task compileJava(type: JavaCompile, overwrite: true, dependsOn: configurations.compile.getTaskDependencyFromProjectDependency(true, 'jar')) {
+    doLast {
+        project.sourceSets.main.output.classesDirs.each { project.mkdir(it) }
+        ant.taskdef name: 'javac2', classname: 'com.intellij.ant.Javac2', classpath: configurations.antTask.asPath
+        ant.javac2 srcdir: project.sourceSets.main.java.srcDirs.join(':'),
+                classpath: project.sourceSets.main.compileClasspath.asPath,
+                destdir: project.sourceSets.main.output.classesDirs[0],
+                source: sourceCompatibility,
+                target: targetCompatibility,
+                includeAntRuntime: false
+    }
+}

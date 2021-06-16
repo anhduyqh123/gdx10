@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.IActorForm">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="668dc" class="javax.swing.JButton" binding="btRefresh">
+        <constraints/>
+        <properties>
+          <text value="Refresh"/>
+        </properties>
+      </component>
+      <scrollpane id="f05e7">
+        <constraints/>
+        <properties>
+          <preferredSize width="780" height="400"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="ff5e0" binding="pnContent" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <preferredSize width="780" height="600"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="4fa0b" binding="pInfo" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="1">
+                <constraints/>
+                <properties>
+                  <preferredSize width="780" height="180"/>
+                </properties>
+                <border type="line" title="Info"/>
+                <children/>
+              </grid>
+              <grid id="acc6a" binding="pSize" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="1">
+                <constraints/>
+                <properties>
+                  <preferredSize width="780" height="120"/>
+                </properties>
+                <border type="line" title="Size"/>
+                <children/>
+              </grid>
+              <grid id="4759c" binding="pPos" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="1">
+                <constraints/>
+                <properties>
+                  <preferredSize width="780" height="200"/>
+                </properties>
+                <border type="line" title="Position"/>
+                <children/>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

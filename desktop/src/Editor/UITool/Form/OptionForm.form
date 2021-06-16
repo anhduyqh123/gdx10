@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.OptionForm">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="327" height="200"/>
+    </constraints>
+    <properties>
+      <minimumSize width="300" height="200"/>
+      <preferredSize width="300" height="200"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="35dd1" class="javax.swing.JButton" binding="BGColorButton" default-binding="true">
+        <constraints/>
+        <properties>
+          <text value="BG Color"/>
+        </properties>
+      </component>
+      <component id="33df4" class="javax.swing.JButton" binding="configButton" default-binding="true">
+        <constraints/>
+        <properties>
+          <text value="Config"/>
+        </properties>
+      </component>
+      <grid id="761fa" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="240" height="100"/>
+        </properties>
+        <border type="line" title="language">
+          <color color="-4473925"/>
+        </border>
+        <children>
+          <component id="cb1c4" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="code"/>
+            </properties>
+          </component>
+          <component id="3c496" class="javax.swing.JComboBox" binding="cbCode">
+            <constraints/>
+            <properties>
+              <preferredSize width="80" height="30"/>
+            </properties>
+          </component>
+          <component id="2167b" class="javax.swing.JButton" binding="btEdit">
+            <constraints/>
+            <properties>
+              <text value="Edit"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

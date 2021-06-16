@@ -1,0 +1,137 @@
+package GameGDX.AssetLoading;
+
+import GameGDX.GDX;
+import GameGDX.Json;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
+import java.util.*;
+
+public class GameData extends Json.JsonObject {
+    private Map<String, AssetPackage> packs = new HashMap<>(); //all pack
+
+    public GameData(){}
+    public boolean Contains(String pack)
+    {
+        return packs.containsKey(pack);
+    }
+    public AssetPackage Get(String pack)
+    {
+        return packs.get(pack);
+    }
+    public Collection<AssetPackage> GetAll()
+    {
+        return packs.values();
+    }
+    public Set<String> GetKeys()
+    {
+        return packs.keySet();
+    }
+    public List<AssetNode> GetNodes(AssetNode.Kind kind)
+    {
+        List<AssetNode> list = new ArrayList<>();
+        for(AssetPackage p : GetAll())
+            list.addAll(p.GetNodes(kind));
+        return list;
+    }
+    public void Install()
+    {
+        for(AssetPackage assetPackage : packs.values())
+            assetPackage.Install();
+    }
+    public void LoadPackages()
+    {
+        for(FileHandle child : GDX.GetFile(".").list())
+        {
+            if (!child.isDirectory()) continue;
+            LoadPackage(child.nameWithoutExtension(), child.path());
+        }
+    }
+    public void LoadPackage(String packName,String path)
+    {
+        NewPackage(packName,path);
+        ReadDirectoryToBitmapFontAssets(packName,path+"/fonts");
+        ReadDirectoryToAtlasAssets(packName,path+"/atlas"); //load atlas before texture
+        ReadDirectoryTextureToAsset(packName,path+"/textures");
+        ReadDirectoryParticleAssets(packName,path+"/particles");
+        ReadDirectorySpineAssets(packName,path+"/spines");
+
+        ReadFileToAsset(packName, AssetNode.Kind.Data, GDX.GetFile(path+"/data"),"");
+        ReadFileToAsset(packName, AssetNode.Kind.Sound, GDX.GetFile(path+"/sounds"),"");
+        ReadFileToAsset(packName, AssetNode.Kind.Music, GDX.GetFile(path+"/musics"),"");
+        ReadFileToAsset(packName, AssetNode.Kind.Object, GDX.GetFile(path+"/objects"),"ob");
+    }
+    public void ReadDirectoryToAtlasAssets(String pack,String path)
+    {
+        FileHandle dir = GDX.GetFile(path);
+        List<AssetNode> list = ReadFileToAsset(pack, AssetNode.Kind.TextureAtlas,dir,"atlas");
+
+        for(AssetNode n : list)
+        {
+            FileHandle file = GDX.GetFile(n.url);
+            TextureAtlas.TextureAtlasData data = new TextureAtlas.TextureAtlasData(file,file.parent(),false);
+            List<AssetNode> elements = new ArrayList<>();
+            for(TextureAtlas.TextureAtlasData.Region r : data.getRegions())
+                elements.add(new AssetNode(pack, AssetNode.Kind.None,n.name,r.name));
+            packs.get(pack).Add(elements);
+        }
+    }
+
+    public void ReadDirectoryToBitmapFontAssets(String pack,String path)
+    {
+        FileHandle dir = GDX.GetFile(path);
+        ReadFileToAsset(pack, AssetNode.Kind.BitmapFont,dir,"fnt");
+    }
+    public void ReadDirectoryParticleAssets(String pack,String path)
+    {
+        FileHandle dir = GDX.GetFile(path);
+        ReadFileToAsset(pack, AssetNode.Kind.Particle,dir,"p");
+        ReadFileToAsset(pack, AssetNode.Kind.None,dir,"atlas"); //particle_atlas.atlas
+    }
+    public void ReadDirectoryTextureToAsset(String pack,String path)
+    {
+        AssetPackage assetPackage = packs.get(pack);
+        FileHandle dir = GDX.GetFile(path);
+
+        for(FileHandle f : dir.list())
+            if (f.isDirectory()){
+                if (assetPackage.Contain(f.name())) continue;
+                ReadFileToAsset(pack, AssetNode.Kind.Texture,f,"");
+            }
+            else AddNode(assetPackage.list,pack, AssetNode.Kind.Texture,f,"");
+    }
+    public void ReadDirectorySpineAssets(String pack,String path)
+    {
+        FileHandle dir = GDX.GetFile(path);
+        ReadFileToAsset(pack, AssetNode.Kind.Spine,dir,"json");
+    }
+
+    public List<AssetNode> ReadFileToAsset(String pack, AssetNode.Kind kind, FileHandle dir, String extension){
+        if (!packs.containsKey(pack)) NewPackage(pack,dir.path());
+        List<AssetNode> list = ReadFileToList(pack, kind, dir, extension);
+        packs.get(pack).Add(list);
+        return list;
+    }
+    public void NewPackage(String pack,String url)
+    {
+        if (packs.containsKey(pack)) return;
+        AssetPackage assetPackage = new AssetPackage();
+        assetPackage.url = url;
+        packs.put(pack,assetPackage);
+    }
+    private static List<AssetNode> ReadFileToList(String pack, AssetNode.Kind kind, FileHandle dir, String extension)
+    {
+        List<AssetNode> list = new ArrayList<>();
+        if (dir==null) return list;
+        for(FileHandle child : dir.list())
+            if (child.isDirectory()) list.addAll(ReadFileToList(pack,kind,child,extension));
+            else AddNode(list,pack,kind,child,extension);
+        return list;
+    }
+    private static void AddNode(List<AssetNode> list, String pack, AssetNode.Kind kind, FileHandle dir, String extension)
+    {
+        if (dir.extension().equals("DS_Store")) return;
+        if(!extension.equals("") && !dir.extension().equals(extension)) return;
+        list.add(new AssetNode(pack,kind,dir));
+    }
+}

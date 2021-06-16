@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.PackForm">
+  <grid id="27dc6" binding="panel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <scrollpane id="5b85e">
+        <constraints/>
+        <properties>
+          <preferredSize width="80" height="200"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="f77b9" class="javax.swing.JList" binding="pList">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <grid id="5ecd6" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="88" height="200"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a162b" class="javax.swing.JComboBox" binding="cbPack">
+            <constraints/>
+            <properties/>
+          </component>
+          <component id="34cae" class="javax.swing.JButton" binding="pAdd">
+            <constraints/>
+            <properties>
+              <text value="Add"/>
+            </properties>
+          </component>
+          <component id="303a" class="javax.swing.JButton" binding="pDelete">
+            <constraints/>
+            <properties>
+              <text value="Delete"/>
+            </properties>
+          </component>
+          <component id="eabd0" class="javax.swing.JButton" binding="btSave">
+            <constraints/>
+            <properties>
+              <text value="Save"/>
+            </properties>
+          </component>
+          <component id="e626c" class="javax.swing.JButton" binding="btUp">
+            <constraints/>
+            <properties>
+              <text value="Up"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

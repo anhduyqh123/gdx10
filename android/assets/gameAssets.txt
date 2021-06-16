@@ -1,0 +1,1 @@
+{packs:{First:{list:[{extension:jpg,size:68465,kind:Texture,name:badlogic,pack:First,url:First/Textures/badlogic.jpg},{extension:p,size:2033,kind:Particle,name:block_trail,pack:First,url:First/Particles/block_trail.p}],url:First/}}}

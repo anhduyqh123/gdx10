@@ -1,0 +1,243 @@
+package GameGDX;
+
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.SerializationException;
+import com.badlogic.gdx.utils.reflect.*;
+
+import java.util.*;
+
+public class Reflect {
+    private static final Map<Class,Object> typeToDefaultObject = new HashMap<>();
+    private static final Map<Class,Map<String, Field>> typeToFields = new HashMap<>();
+
+    public static boolean Equals(Object objectA,Object objectB)
+    {
+        if (objectA==null && objectB==null) return true;
+        if (objectA!=null && objectB!=null) return objectA.equals(objectB);
+        return false;
+    }
+    public static Map<String, Field> GetFields(Class type,List<String> fieldNames)
+    {
+        Map<String, Field> map = new HashMap<>();
+        Map<String, Field> fields = GetFields(type);
+        for(String name : fieldNames)
+            map.put(name,fields.get(name));
+        return map;
+    }
+    public static Map<String, Field> GetFields(Class type)
+    {
+        if (typeToFields.containsKey(type)) return typeToFields.get(type);
+        Map<String, Field> map = new HashMap<>();
+        for(Field f : GetAllFields(type))
+        {
+            if (!f.isAccessible()) f.setAccessible(true);
+            if (f.isStatic()) continue;
+            if (IsInterface(f.getType())) continue;
+
+            map.put(f.getName(),f);
+        }
+        typeToFields.put(type,map);
+        return map;
+    }
+    private static boolean IsInterface(Class type)
+    {
+        if (type == Map.class || type == List.class) return false;
+        return type.isInterface();
+    }
+    public static Object GetDefaultObject(Class type)
+    {
+        if (typeToDefaultObject.containsKey(type)) return typeToDefaultObject.get(type);
+        Object object = NewInstance(type);
+        typeToDefaultObject.put(type,object);
+        return object;
+    }
+
+
+    public static void SetValue(Field field,Object object,Object value)
+    {
+        try {
+            field.set(object,value);
+        }catch (Exception e){}
+    }
+    public static <T> T GetValue(Field field,Object object)
+    {
+        try {
+            return (T)field.get(object);
+        }catch (Exception e){}
+        return null;
+    }
+    public static Field GetField(Class type,String fieldName) //all field but only public
+    {
+        try {
+            return ClassReflection.getField(type,fieldName);
+        }catch (Exception e){}
+        return null;
+    }
+    public static Field GetDeclaredField(Class type,String fieldName) //only local field
+    {
+        try {
+            return ClassReflection.getDeclaredField(type,fieldName);
+        }catch (Exception e){}
+        return null;
+    }
+    public static List<Field> GetAllFields(Class type) //All Field
+    {
+        Array<Class> classHierarchy = new Array();
+        Class nextClass = type;
+        while (nextClass != Object.class) {
+            classHierarchy.add(nextClass);
+            nextClass = nextClass.getSuperclass();
+        }
+        ArrayList<Field> allFields = new ArrayList();
+        for (int i = classHierarchy.size - 1; i >= 0; i--)
+            Collections.addAll(allFields, ClassReflection.getDeclaredFields(classHierarchy.get(i)));
+        return allFields;
+    }
+
+    public static <T> T Run(Method method,Object object,Object... args)
+    {
+        try {
+            method.setAccessible(true);
+            return (T)method.invoke(object,args);
+        }catch (Exception e){}
+        return null;
+    }
+    public static Method GetMethod(Class type, String name,Class... param) //all field but only public
+    {
+        try {
+            return ClassReflection.getMethod(type,name,param);
+        }catch (Exception e){}
+        return null;
+    }
+    public static Method GetDeclaredMethod(Class type,String name,Class... param) //only local field
+    {
+        try {
+            return ClassReflection.getDeclaredMethod(type,name,param);
+        }catch (Exception e){e.printStackTrace();}
+        return null;
+    }
+    public static Class GetClass(String name)
+    {
+        try {
+            return ClassReflection.forName(name);
+        }catch (Exception e){e.printStackTrace();}
+        return null;
+    }
+
+    public static Object NewInstance (Class type) {
+        if (IsBaseType(type)) return NewBaseType(type);
+        try {
+            return ClassReflection.newInstance(type);
+        } catch (Exception ex) {
+            try {
+                // Try a private constructor.
+                Constructor constructor = ClassReflection.getDeclaredConstructor(type);
+                constructor.setAccessible(true);
+                return constructor.newInstance();
+            } catch (SecurityException ignored) {
+            } catch (ReflectionException ignored) {
+                if (ClassReflection.isAssignableFrom(Enum.class, type)) {
+                    if (type.getEnumConstants() == null) type = type.getSuperclass();
+                    return type.getEnumConstants()[0];
+                }
+                if (type.isArray())
+                    throw new SerializationException("Encountered JSON object when expected array of type: " + type.getName(), ex);
+                else if (ClassReflection.isMemberClass(type) && !ClassReflection.isStaticClass(type))
+                    throw new SerializationException("Class cannot be created (non-static member class): " + type.getName(), ex);
+                else
+                    throw new SerializationException("Class cannot be created (missing no-arg constructor): " + type.getName(), ex);
+            } catch (Exception privateConstructorException) {
+                ex = privateConstructorException;
+            }
+            throw new SerializationException("Error constructing instance of class: " + type.getName(), ex);
+        }
+    }
+    public static boolean IsBaseType(Class actualType)
+    {
+        return actualType.isPrimitive() || actualType == String.class || actualType == Integer.class || actualType == Boolean.class
+                || actualType == Float.class || actualType == Long.class || actualType == Double.class || actualType == Short.class
+                || actualType == Byte.class || actualType == Character.class;
+    }
+    public static <T> T ToBaseType(String stValue, Class<T> type)
+    {
+        if (type==int.class || type == Integer.class) return (T)Integer.valueOf(stValue);
+        if (type==float.class || type == Float.class) return (T)Float.valueOf(stValue);
+        if (type==long.class || type == Long.class) return (T)Long.valueOf(stValue);
+        if (type==double.class || type == Double.class) return (T)Double.valueOf(stValue);
+        if (type==short.class || type == Short.class) return (T)Short.valueOf(stValue);
+        if (type==byte.class || type == Byte.class) return (T)Byte.valueOf(stValue);
+        if (type == String.class) return (T)stValue;
+        if (type==boolean.class || type == Boolean.class) return (T)Boolean.valueOf(stValue);
+        if (type==char.class || type == Character.class) return (T)(Character)stValue.charAt(0);
+        if (type == CharSequence.class) return (T)stValue;
+        return null;
+    }
+    public static <T> Object NewBaseType(Class<T> type)
+    {
+        if (type==int.class || type == Integer.class) return 0;
+        if (type==float.class || type == Float.class) return 0;
+        if (type==long.class || type == Long.class) return 0;
+        if (type==double.class || type == Double.class) return 0;
+        if (type==short.class || type == Short.class) return 0;
+        if (type==byte.class || type == Byte.class) return 0;
+        if (type == String.class) return "";
+        if (type==boolean.class || type == Boolean.class) return false;
+        if (type==char.class || type == Character.class) return '0';
+        if (type == CharSequence.class) return '0';
+        return null;
+    }
+
+    //<editor-fold desc="Clone">
+    public static <T> T Clone(Object object)
+    {
+        return (T)Clone(object,object.getClass());
+    }
+    public static <T> T Clone(Object object,Class<T> type)
+    {
+        if (IsBaseType(object.getClass())) return (T)object;
+        return Clone(NewInstance(type),object);
+    }
+    private static <T> T Clone(Object object,Object objectClone)
+    {
+        if (objectClone==null) return null;
+        object = NewObject(object,objectClone);
+        if (IsBaseType(object.getClass())) return (T)objectClone;
+        if (object instanceof Enum) return (T)objectClone;
+        if (object instanceof List) return (T)Clone((List) object,(List) objectClone);
+        if (object instanceof Map) return (T)Clone((Map) object,(Map) objectClone);
+        CloneFields(object,objectClone);
+        return (T)object;
+    }
+    private static Object NewObject(Object object,Object objectClone)
+    {
+        if (object==null || !object.getClass().equals(objectClone.getClass()))
+            return NewInstance(objectClone.getClass());
+        return object;
+    }
+    private static void CloneFields(Object object,Object objectClone)
+    {
+        for(Field f : GetFields(object.getClass()).values())
+        {
+            Object value = GetValue(f,object);
+            Object value0 = GetValue(f,objectClone);
+            if (Equals(value,value0)) continue;
+            SetValue(f,object,Clone(value,value0));
+        }
+    }
+
+    private static List Clone(List list,List listClone)
+    {
+        list.clear();
+        for (Object object : listClone)
+            list.add(Clone(object));
+        return list;
+    }
+    private static Map Clone(Map map,Map mapClone)
+    {
+        map.clear();
+        for(Object key : mapClone.keySet())
+            map.put(key,Clone(mapClone.get(key)));
+        return map;
+    }
+    //</editor-fold>
+}

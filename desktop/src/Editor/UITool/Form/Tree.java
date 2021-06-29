@@ -103,7 +103,9 @@ public class Tree {
     public void SetSelection(Object object)
     {
         DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
-        tree.setSelectionPath(new TreePath(model.getPathToRoot(map0.get(object))));
+        TreePath path = new TreePath(model.getPathToRoot(map0.get(object)));
+        tree.setSelectionPath(path);
+        tree.scrollPathToVisible(path);
     }
 
     public void GetName(List<TreeNode> list, GDX.Runnable<String> cb)

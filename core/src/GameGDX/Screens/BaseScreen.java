@@ -1,10 +1,10 @@
 package GameGDX.Screens;
 
-import GameGDX.Actions.GAction;
 import GameGDX.Scene;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,7 +62,9 @@ public abstract class BaseScreen extends Group {
     }
     public void Run(Runnable run, float delay) //delay by second
     {
-        GAction.Delay(this,run,delay);
+        Action a1 = Actions.delay(delay);
+        Action a2 = Actions.run(run);
+        addAction(Actions.sequence(a1,a2));
     }
     protected Action AlphaAction(float from, float to,float duration, Runnable done)
     {
@@ -132,6 +134,15 @@ public abstract class BaseScreen extends Group {
         return list.get(list.size()-1);
     }
 
+    public static void AddClick(Actor actor, Runnable rEvent)
+    {
+        actor.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                rEvent.run();
+            }
+        });
+    }
     //Event
     public static List<EventListener> GetEvents(Actor actor)
     {

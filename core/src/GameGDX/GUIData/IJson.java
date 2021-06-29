@@ -1,37 +1,24 @@
-package GameGDX.GUIData.IChild;
+package GameGDX.GUIData;
 
 import GameGDX.GDX;
+import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Json;
 import GameGDX.Reflect;
 import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.JsonWriter;
+import java.util.Map;
 
 public class IJson extends Json {
     public static GDX.Func1<IActor,String> getIChild;
-
-    public static <T> T FromJson(String jsData)
-    {
-        IJson json = new IJson();
-        JsonValue js = DataToJson(jsData);
-        Class type = Reflect.GetClass(js.getString(stClass));
-        return (T)json.ToObject(type,Reflect.NewInstance(type),js);
-    }
-    public static String ToJsonData(Object object)
-    {
-        IJson json = new IJson();
-        return json.ToJson(object,Reflect.GetDefaultObject(object.getClass()),true)
-                .toJson(JsonWriter.OutputType.minimal);
-    }
     public static <T> T FromJson(JsonValue js)
     {
         IJson json = new IJson();
         Class type = Reflect.GetClass(js.getString(stClass));
         return (T)json.ToObject(type,Reflect.NewInstance(type),js);
     }
-    public static JsonValue ToJson(Object object)
+    public static JsonValue ToJson(IActor iActor)
     {
         IJson json = new IJson();
-        return json.ToJson(object,Reflect.GetDefaultObject(object.getClass()),true);
+        return json.ToJson(iActor,Reflect.GetDefaultObject(iActor.getClass()),true);
     }
 
     @Override
@@ -50,5 +37,17 @@ public class IJson extends Json {
         String prefab = js.getString("prefab","");
         if (!prefab.equals("")) return Reflect.Clone(getIChild.Run(prefab));
         return object;
+    }
+
+    //to clone object -> only change + add, cannot remove
+    @Override
+    public Map ToMap(Class type, Map map, JsonValue js) {
+        return ToMap(type,map, map, js);
+    }
+
+    @Override
+    protected void MapToJson(String key, Object ob, Object ob0, boolean hasClass, JsonValue js) {
+        if (Reflect.Equals(ob,ob0)) return;
+        super.MapToJson(key, ob, ob0, hasClass, js);
     }
 }

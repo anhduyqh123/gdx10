@@ -81,7 +81,10 @@ public class Json {
     }
     public Map ToMap(Class type,Map map,JsonValue js)
     {
-        Map newMap = new HashMap();
+        return ToMap(type,new HashMap(),map,js);
+    }
+    protected Map ToMap(Class type,Map newMap,Map map,JsonValue js)
+    {
         Foreach(js,i->{
             Object object = map.get(i.name);
             Class childType = GetType(type,i);
@@ -187,9 +190,13 @@ public class Json {
             Object value = map.get(k);
             Object value0 = defaultMap.get(k);
             boolean isClass = HasSuperClass(value)?true:hasClass;
-            js.addChild(k.toString(), ToJson(value,value0,isClass));
+            MapToJson(k.toString(),value,value0,isClass,js);
         }
         return js;
+    }
+    protected void MapToJson(String key,Object ob,Object ob0, boolean hasClass,JsonValue js)
+    {
+        js.addChild(key, ToJson(ob,ob0,hasClass));
     }
     private JsonValue BaseTypeToJson(Object object)
     {

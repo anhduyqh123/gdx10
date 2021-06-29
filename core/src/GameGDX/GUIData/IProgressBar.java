@@ -1,12 +1,10 @@
 package GameGDX.GUIData;
 
 import GameGDX.Actors.ProgressBar;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class IProgressBar extends IImage{
-
+public class IProgressBar extends IScrollImage{
     public float percent = 1;
 
     @Override
@@ -16,14 +14,9 @@ public class IProgressBar extends IImage{
 
     @Override
     public void SetTexture(TextureRegion texture) {
+        super.SetTexture(texture);
         ProgressBar pro = GetActor();
-        pro.SetTexture(texture);
         pro.SetValue(percent);
-    }
-
-    @Override
-    public void SetTexture(Texture texture) {
-        SetTexture(new TextureRegion(texture));
     }
 
     @Override

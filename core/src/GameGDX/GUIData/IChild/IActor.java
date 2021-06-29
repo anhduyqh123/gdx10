@@ -3,21 +3,14 @@ package GameGDX.GUIData.IChild;
 import GameGDX.GDX;
 import GameGDX.GUIData.IAction.IAction;
 import GameGDX.GUIData.IAction.IActionList;
-import GameGDX.GUIData.IAction.ICountAction;
-import GameGDX.GUIData.IAction.IMove;
 import GameGDX.Reflect;
-import GameGDX.Scene;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class IActor {
     public String prefab = "";
-
     public boolean visible = true;
     public Touchable touchable = Touchable.enabled;
     public String hexColor = Color.WHITE.toString();
@@ -26,7 +19,7 @@ public class IActor {
     public IActionList acList = new IActionList();
 
     protected GDX.Func1<Actor,String> connect;
-    protected GDX.Func<IActor> getMain;
+    //protected GDX.Func<IActor> getMain;
     private GDX.Func<Actor> getActor;
 
     public IActor(){}
@@ -71,10 +64,10 @@ public class IActor {
         Vector2 size = GetSize();
         actor.setSize(size.x,size.y);
         actor.setOrigin(iSize.origin.value);
-        if (iSize.extendScreen) actor.setScale(Scene.scale);
-        else actor.setScale(iSize.scale);
+        actor.setScale(iSize.GetScale());
         actor.setRotation(iSize.rotate);
-        actor.setPosition(iPos.GetX(), iPos.GetY(), iPos.align.value);
+        Vector2 pos = iPos.Get();
+        actor.setPosition(pos.x, pos.y, iPos.align.value);
         actor.setColor(GetColor());
         actor.setTouchable(touchable);
         actor.setVisible(visible);
@@ -112,6 +105,10 @@ public class IActor {
         });
     }
 
+    public void RefreshContent()
+    {
+
+    }
     public void Refresh()
     {
         InitActor();
@@ -125,18 +122,18 @@ public class IActor {
         iSize.getTarget = connect;
     }
 
-    public void InitMain()
-    {
-        SetMain(()->this);
-    }
-    public IActor GetMain()
-    {
-        return getMain.Run();
-    }
-    public void SetMain(GDX.Func<IActor> getMain)
-    {
-        this.getMain = getMain;
-    }
+//    public void InitMain()
+//    {
+//        SetMain(()->this);
+//    }
+//    public IActor GetMain()
+//    {
+//        return getMain.Run();
+//    }
+//    public void SetMain(GDX.Func<IActor> getMain)
+//    {
+//        this.getMain = getMain;
+//    }
 
     //action
     public void StopAction()
@@ -147,20 +144,12 @@ public class IActor {
     public void RunAction(String actionName)
     {
         if (acList.Contains(actionName))
-            GetActor().addAction(GetIAction(actionName).Get(this));
+            GetActor().addAction(GetAction(actionName));
     }
     public <T extends IAction> T GetIAction(String name)
     {
         return (T) acList.Get(name);
     }
-    //Get IAction
-    public IMove GetIMove(String name){
-        return GetIAction(name);
-    }
-    public ICountAction GetICount(String name){
-        return GetIAction(name);
-    }
-
     public Action GetAction(String name)
     {
         return GetIAction(name).Get(this);
@@ -171,6 +160,6 @@ public class IActor {
         if (this == o) return true;
         if (!(o instanceof IActor)) return false;
         IActor iActor = (IActor) o;
-        return prefab.equals(iActor.prefab) && hexColor.equals(iActor.hexColor) && iSize.equals(iActor.iSize) && iPos.equals(iActor.iPos) && acList.equals(iActor.acList);
+        return visible == iActor.visible && prefab.equals(iActor.prefab) && touchable == iActor.touchable && hexColor.equals(iActor.hexColor) && iSize.equals(iActor.iSize) && iPos.equals(iActor.iPos) && acList.equals(iActor.acList);
     }
 }

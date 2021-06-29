@@ -49,4 +49,16 @@ public class AssetPackage {
             if (n.kind==kind) l.add(n);
         return l;
     }
+    public String GetAtlasUrl()
+    {
+        return url+"/atlas";
+    }
+    public String GetTextureUrl()
+    {
+        return url+"/textures";
+    }
+    public String GetParticleUrl()
+    {
+        return url+"/particles";
+    }
 }

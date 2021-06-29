@@ -12,8 +12,6 @@ buildscript {
         classpath 'org.wisepersist:gwt-gradle-plugin:1.0.13'
         classpath 'com.android.tools.build:gradle:3.5.4'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.12'
-        
-
     }
 }
 
@@ -23,7 +21,7 @@ allprojects {
     group 'com.anhduyqh123'
     version = '1.0'
     ext {
-        appName = "Pikachu-Portrait"
+        appName = "GDX10"
         gdxVersion = '1.10.0'
         roboVMVersion = '2.3.12'
         box2DLightsVersion = '1.5'
@@ -46,7 +44,7 @@ project(":desktop") {
 
 
     dependencies {
-        implementation project(":core")
+        implementation project(":extend")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
 
@@ -62,11 +60,14 @@ project(":android") {
     dependencies {
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+        //natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+        //natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+        //natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+
+        //admob
+        implementation 'com.google.android.gms:play-services-ads:20.2.0'
     }
 }
 
@@ -76,6 +77,15 @@ project(":core") {
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
+
+project(":extend") {
+    apply plugin: "java-library"
+
+
+    dependencies {
+        api project(":core")
 
         api "com.esotericsoftware.spine:spine-libgdx:3.8.55.1"
     }

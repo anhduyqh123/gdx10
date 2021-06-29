@@ -1,11 +1,9 @@
 package Editor.UITool.Form.Panel;
 
 import Editor.JFameUI;
+import Editor.UITool.Form.PointForm;
 import GameGDX.GDX;
-import GameGDX.GUIData.IAction.IAction;
-import GameGDX.GUIData.IAction.IColor;
-import GameGDX.GUIData.IAction.ICountAction;
-import GameGDX.GUIData.IAction.IMove;
+import GameGDX.GUIData.IAction.*;
 import GameGDX.Reflect;
 import com.badlogic.gdx.utils.reflect.Field;
 
@@ -13,6 +11,7 @@ import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ActionPanel {
@@ -49,9 +48,10 @@ public class ActionPanel {
     {
         if (data instanceof IMove) return new JIMove(data,pn);
         if (data instanceof IColor) return new JIColor(data,pn);
+        if (data instanceof IMovePath) return new JIMovePath(data,pn);
         return new JIAction(data,pn);
     }
-    class JIAction
+    public class JIAction
     {
         protected IAction data;
         protected JFameUI ui = new JFameUI();
@@ -74,11 +74,13 @@ public class ActionPanel {
     {
         public JIMove(IAction data, JPanel pn) {
             super(data, pn);
+            IMove iMove = (IMove)data;
+            new IPosPanel(Collections.emptyList(), iMove.iPos,pn);
         }
 
         @Override
         protected List<String> GetFields() {
-            return Arrays.asList("duration","useX","x","useY","y","align","iInter","relocation");
+            return Arrays.asList("duration","iInter","current","useX","useY");
         }
     }
     class JIColor extends JIAction
@@ -90,22 +92,16 @@ public class ActionPanel {
         }
         @Override
         protected List<String> GetFields() {
-            return Arrays.asList("duration","iInter","relocation");
+            return Arrays.asList("duration","iInter","current");
         }
     }
-    abstract class JIParam extends JIAction
+    class JIMovePath extends JIAction
     {
-        public JIParam(IAction data, JPanel pn) {
+        public JIMovePath(IAction data, JPanel pn) {
             super(data, pn);
-            Field fIsParam = Reflect.GetDeclaredField(data.getClass(),"isParam");
-            boolean isParam = Reflect.GetValue(fIsParam,data);
-            ui.NewCheckBox("isParam",isParam,pn,bl->{
-                Reflect.SetValue(fIsParam,data,bl);
-                onRepaint.run();
-            });
-            if (!isParam) return;
-            ui.InitComponents(GetParamFields(),data,pn);
+            IMovePath iMovePath = (IMovePath)data;
+            ui.NewButton("Show Points",pn,()->new PointForm(iMovePath.points));
+
         }
-        protected abstract List<String> GetParamFields();
     }
 }

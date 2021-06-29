@@ -20,7 +20,7 @@ public class IRotate extends IBaseAction{
 
     @Override
     public Action Get(IActor iActor) {
-        if (relocation) return Get((int) iActor.GetActor().getRotation());
+        if (current) return Get((int) iActor.GetActor().getRotation());
         return Get();
     }
     private Action Get(int angle)

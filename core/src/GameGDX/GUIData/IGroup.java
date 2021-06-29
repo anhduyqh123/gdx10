@@ -44,7 +44,7 @@ public class IGroup extends IActor {
         AddChild(name,child);
         child.SetConnect(n->GetActor(n));
 
-        SetMain(getMain);
+        //SetMain(getMain);
     }
     public void Remove(String name)
     {
@@ -119,6 +119,11 @@ public class IGroup extends IActor {
         return null;
     }
 
+    @Override
+    public void RefreshContent() {
+        ForEach(IActor::RefreshContent);
+    }
+
     public void Refresh()
     {
         super.Refresh();
@@ -132,6 +137,10 @@ public class IGroup extends IActor {
     {
         return list;
     }
+    protected void ForEach(GDX.Runnable<IActor> cb)
+    {
+        for(String n : list) cb.Run(GetIActor(n));
+    }
 
     @Override
     public void SetConnect(GDX.Func1 connect) {
@@ -141,24 +150,22 @@ public class IGroup extends IActor {
             map.get(name).SetConnect(n->GetActor(n));
     }
 
-    @Override
-    public void SetMain(GDX.Func<IActor> getMain) {
-        super.SetMain(getMain);
-        for(IActor child : map.values()) child.SetMain(getMain);
-    }
+//    @Override
+//    public void SetMain(GDX.Func<IActor> getMain) {
+//        super.SetMain(getMain);
+//        ForEach(i->i.SetMain(getMain));
+//    }
 
     @Override
     public void RunAction(String actionName) {
         super.RunAction(actionName);
-        for(IActor child : map.values())
-            child.RunAction(actionName);
+        ForEach(i->i.RunAction(actionName));
     }
 
     @Override
     public void StopAction() {
         super.StopAction();
-        for(IActor child : map.values())
-            child.StopAction();
+        ForEach(IActor::StopAction);
     }
 
     @Override

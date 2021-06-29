@@ -49,6 +49,11 @@ public class ISize {
         if (defaultSize!=null) return defaultSize.y;
         return height;
     }
+    public float GetScale()
+    {
+        if (extendScreen) return Scene.scale;
+        return scale;
+    }
     public void Set(float width,float height)
     {
         this.width = width;

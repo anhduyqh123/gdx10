@@ -27,7 +27,7 @@ public class IColor extends IBaseAction{
 
     @Override
     public Action Get(IActor iActor) {
-        if (relocation) return Get(iActor.GetActor().getColor());
+        if (current) return Get(iActor.GetActor().getColor());
         return Get();
     }
 

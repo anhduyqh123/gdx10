@@ -3,21 +3,19 @@ package GameGDX.GUIData;
 import GameGDX.*;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.GUIData.IChild.IActor;
-import GameGDX.GUIData.IChild.IJson;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.JsonWriter;
 
 import java.util.*;
 
 public class GUIData {
-    public static GUIData i;
+    public static GUIData i = new GUIData();
 
     private Map<String, IActor> map = new HashMap<>();
     private MiniJson miniJson = GetMiniJson();
 
     public GUIData()
     {
-        i = this;
         miniJson.isWriteValue = name -> name.equals("class");
         IJson.getIChild = this::Get;
     }
@@ -61,9 +59,22 @@ public class GUIData {
     }
     public void Save(String url, IActor ic)
     {
-        JsonValue jsData = miniJson.EnCode(IJson.ToJson(ic));
-        SaveMiniJson();
+        JsonValue jsData = IJson.ToJson(ic);
         GDX.WriteToFile(url,jsData.toJson(JsonWriter.OutputType.minimal));
+    }
+
+    public void UnMiniSave(AssetNode node)
+    {
+        IActor iActor = Get(node.pack,node.name);
+        JsonValue jsData = IJson.ToJson(iActor);
+        GDX.WriteToFile(node.url,jsData.toJson(JsonWriter.OutputType.minimal));
+    }
+    public void MiniSave(AssetNode node)
+    {
+        IActor iActor = Get(node.pack,node.name);
+        JsonValue jsData = miniJson.EnCode(IJson.ToJson(iActor));
+        SaveMiniJson();
+        GDX.WriteToFile(node.url,jsData.toJson(JsonWriter.OutputType.minimal));
     }
     public List<String> GetAll()
     {

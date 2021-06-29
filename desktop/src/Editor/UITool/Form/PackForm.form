@@ -2,9 +2,11 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.PackForm">
   <grid id="27dc6" binding="panel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="500" height="329"/>
     </constraints>
-    <properties/>
+    <properties>
+      <minimumSize width="500" height="52"/>
+    </properties>
     <border type="none"/>
     <children>
       <scrollpane id="5b85e">
@@ -12,7 +14,7 @@
         <properties>
           <preferredSize width="80" height="200"/>
         </properties>
-        <border type="none"/>
+        <border type="none" title="load"/>
         <children>
           <component id="f77b9" class="javax.swing.JList" binding="pList">
             <constraints/>
@@ -23,9 +25,9 @@
       <grid id="5ecd6" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints/>
         <properties>
-          <preferredSize width="88" height="200"/>
+          <preferredSize width="88" height="300"/>
         </properties>
-        <border type="none"/>
+        <border type="etched"/>
         <children>
           <component id="a162b" class="javax.swing.JComboBox" binding="cbPack">
             <constraints/>
@@ -57,6 +59,108 @@
           </component>
         </children>
       </grid>
+      <grid id="8790b" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="300" height="300"/>
+        </properties>
+        <border type="etched"/>
+        <children>
+          <component id="1b046" class="javax.swing.JButton" binding="btMini">
+            <constraints/>
+            <properties>
+              <label value="Mini Object"/>
+              <text value="Mini Object"/>
+            </properties>
+          </component>
+          <component id="5c15" class="javax.swing.JButton" binding="btUnMini">
+            <constraints/>
+            <properties>
+              <label value="UnMini Object"/>
+              <text value="UnMini Object"/>
+            </properties>
+          </component>
+          <grid id="60f00" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <preferredSize width="200" height="140"/>
+            </properties>
+            <border type="line"/>
+            <children>
+              <component id="ac5dd" class="javax.swing.JRadioButton" binding="rAllTextures">
+                <constraints/>
+                <properties>
+                  <text value="All Textures"/>
+                </properties>
+              </component>
+              <component id="301" class="javax.swing.JRadioButton" binding="rMainTexture">
+                <constraints/>
+                <properties>
+                  <selected value="false"/>
+                  <text value="Main Texture"/>
+                </properties>
+              </component>
+              <component id="da1aa" class="javax.swing.JRadioButton" binding="rParticleAtlas">
+                <constraints/>
+                <properties>
+                  <text value="Particle Atlas"/>
+                </properties>
+              </component>
+              <component id="b2cfe" class="javax.swing.JButton" binding="btGenerateAtlas">
+                <constraints/>
+                <properties>
+                  <text value="Generate Atlas"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="eb3de" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <preferredSize width="200" height="100"/>
+            </properties>
+            <border type="line"/>
+            <children>
+              <component id="ce13" class="javax.swing.JRadioButton" binding="rAtlas">
+                <constraints/>
+                <properties>
+                  <selected value="true"/>
+                  <text value="Atlas"/>
+                </properties>
+              </component>
+              <component id="350a9" class="javax.swing.JRadioButton" binding="rTexture">
+                <constraints/>
+                <properties>
+                  <selected value="true"/>
+                  <text value="Textures"/>
+                </properties>
+              </component>
+              <component id="760fa" class="javax.swing.JButton" binding="btEncode">
+                <constraints/>
+                <properties>
+                  <minimumSize width="100" height="30"/>
+                  <preferredSize width="80" height="30"/>
+                  <text value="Encode"/>
+                </properties>
+              </component>
+              <component id="11f22" class="javax.swing.JButton" binding="btDecode">
+                <constraints/>
+                <properties>
+                  <minimumSize width="100" height="30"/>
+                  <preferredSize width="80" height="30"/>
+                  <text value="Decode"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="texture">
+      <member id="ac5dd"/>
+      <member id="301"/>
+    </group>
+  </buttonGroups>
 </form>

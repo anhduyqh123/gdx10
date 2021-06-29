@@ -3,7 +3,6 @@ package GameGDX.GUIData;
 import GameGDX.Assets;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Actors.Particle;
-import GameGDX.Reflect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -13,6 +12,7 @@ import java.util.List;
 
 public class IParticle extends IActor {
 
+    public boolean start = true;
     public String parName = "";
     public List<IEmitter> iEmitters = new ArrayList<>();
 
@@ -26,6 +26,8 @@ public class IParticle extends IActor {
         InitActor();
         RefreshEffect();
         BaseRefresh();
+        if (start)
+            Continuous();
     }
     private void RefreshEffect()
     {
@@ -34,6 +36,13 @@ public class IParticle extends IActor {
             ParticleEffect pe = Assets.GetParticleEffect(parName);
             par.SetParticleEffect(pe);
             RefreshEmitter();
+        }
+        catch (Exception e){}
+    }
+    private void Continuous()
+    {
+        try {
+            Particle par = GetActor();
             if (par.GetEmitter(0).isContinuous())
                 Start();
         }
@@ -85,7 +94,7 @@ public class IParticle extends IActor {
             if (this == o) return true;
             if (!(o instanceof IEmitter)) return false;
             IEmitter iEmitter = (IEmitter) o;
-            return index == iEmitter.index && sprite.equals(iEmitter.sprite) && Reflect.Equals(size, iEmitter.size) && Reflect.Equals(offset, iEmitter.offset);
+            return index == iEmitter.index && sprite.equals(iEmitter.sprite) && size.equals(iEmitter.size) && offset.equals(iEmitter.offset);
         }
     }
     public static class Value

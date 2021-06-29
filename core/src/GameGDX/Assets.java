@@ -98,8 +98,8 @@ public class Assets extends Actor {
             case Particle:
                 ParticleEffectLoader.ParticleEffectParameter pepParticle=  new ParticleEffectLoader.ParticleEffectParameter();
                 AssetPackage pack = GetAssetPackage(as.pack);
-                if (pack.Contain("particle_atlas"))
-                    pepParticle.atlasFile = pack.Get("particle_atlas").url;
+                if (pack.Contain("particles"))
+                    pepParticle.atlasFile = pack.Get("particles").url;
                 manager.load(as.url, ParticleEffect.class,pepParticle);
                 break;
             default:

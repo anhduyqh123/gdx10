@@ -1,21 +1,27 @@
 package Editor.UITool.Form.Panel;
 
 import Editor.JFameUI;
+import Editor.WrapLayout;
 import GameGDX.GUIData.IChild.IPos;
+import GameGDX.Reflect;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.Field;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
+import java.util.List;
 
 public class IPosPanel {
     private JFameUI ui = new JFameUI();
     private JPanel pn;
-    public IPosPanel(IPos iPos, JPanel panel)
+    private String[] names;
+    public IPosPanel(List<String> list,IPos iPos, JPanel panel)
     {
         this.pn = panel;
+        names = list.toArray(new String[0]);
 
-        JPanel jBox = ui.NewBorderPanel(200,190,pn);
+        //JPanel jBox = ui.NewBorderPanel(200,190,pn);
+        JPanel jBox = NewPanel(200,pn);
         for(Field f : ClassReflection.getFields(IPos.class))
         {
             String name = f.getName();
@@ -23,23 +29,32 @@ public class IPosPanel {
             else ui.NewComponent(f,iPos,jBox);
         }
     }
+    private JPanel NewPanel(int width,JPanel parent)
+    {
+        JPanel panel = new JPanel(new WrapLayout());
+        panel.setSize(width,10);
+        ui.SetBorder(panel);
+        parent.add(panel);
+        return panel;
+    }
     private void NewBoxPanel(Field field,Object object)
     {
         try {
-            JPanel jBox = ui.NewPanel(200,200,pn);
-            jBox.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3),
-                    BorderFactory.createTitledBorder(field.getName())));
-            JPanel content;
+            //JPanel jBox = ui.NewPanel(200,200,pn);
+            JPanel jBox = NewPanel(200,pn);
+            ui.SetBorder(field.getName(),jBox);
             Object value = field.get(object);
 
             String[] iValue = {"Value","Ratio","Target"};
+            if (names.length<=0) iValue = new String[]{"Value","Ratio"};
             String stValue = "Value";
 
             if (value instanceof IPos.Ratio) stValue = "Ratio";
             if (value instanceof IPos.Target) stValue = "Target";
 
             JComboBox cbType = ui.NewComboBox("type",iValue,stValue,jBox);
-            content = ui.NewBorderPanel(170,100,jBox);
+            //content = ui.NewBorderPanel(170,100,jBox);
+            JPanel content = NewPanel(170,jBox);
             cbType.addActionListener(e->{
                 Object ob = new IPos.Value();
                 String vl = (String) cbType.getSelectedItem();
@@ -55,7 +70,14 @@ public class IPosPanel {
     private void NewValuePanel(Object ob,JPanel jPanel)
     {
         jPanel.removeAll();
-        ui.InitComponents(ob,jPanel);
+        if (ob instanceof IPos.Target) InitTarget(ob,jPanel);
+        else ui.InitComponents(ob,jPanel);
         ui.Repaint(jPanel);
+    }
+    private void InitTarget(Object ob,JPanel panel)
+    {
+        IPos.Target target = (IPos.Target) ob;
+        ui.NewComponent("align",ob,panel);
+        ui.NewComboBox("name",names,target.name,panel,vl->target.name=vl);
     }
 }

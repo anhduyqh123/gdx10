@@ -47,7 +47,7 @@ public class DataForm {
 
     private JFameUI ui = new JFameUI();
 
-    public GDX.Runnable<IActor> onSelect;
+    public GDX.Runnable2<IActor,List<String>> onSelect;
     private IActor selectedMain;
     private ObjectPack data;
     private ObjectData objectData = new ObjectData();
@@ -62,7 +62,7 @@ public class DataForm {
         gTree = new Tree(tree);
         gTree.onSelect = vl->{
             OnSelect(vl);
-            onSelect.Run(gTree.GetSelectedObject());
+            onSelect.Run(gTree.GetSelectedObject(),GetChildren());
         };
         gTree.getData = ()->GetNode("Root",data);
 
@@ -103,9 +103,21 @@ public class DataForm {
             }
         });
     }
+    private List<String> GetChildren()
+    {
+        List<String> list = new ArrayList<>();
+        IGroup iGroup = gTree.GetParentObject(gTree.GetSelectedObject());
+        if (iGroup instanceof ObjectPack) return list;
+        for(String n : iGroup.GetChildName())
+        {
+            if (n.equals(gTree.GetSelectedName())) return list;
+            list.add(n);
+        }
+        return list;
+    }
     private String GetPrefab(String pack,String name)
     {
-        if (pack.equals("default")) return name;
+        if (pack.equals("default") && pack.equals(cbPack.getSelectedItem())) return name;
         return pack+"/"+name;
     }
     public void RefreshData()
@@ -148,7 +160,7 @@ public class DataForm {
         selectedMain = object;
         selectedMain.SetConnect(n-> Scene.ui);
         selectedMain.Refresh();
-        selectedMain.InitMain();
+        //selectedMain.InitMain();
     }
     private void NewChild(IActor newObject)
     {

@@ -48,9 +48,14 @@ public class IImage extends IActor {
     }
 
     @Override
+    public void RefreshContent() {
+        SetTexture(iTexture.GetTexture(GetExtend()));
+    }
+
+    @Override
     public void Refresh() {
         super.Refresh();
-        SetTexture(iTexture.GetTexture(GetExtend()));
+        RefreshContent();
     }
 
     public void SetTexture(String name)
@@ -175,6 +180,10 @@ public class IImage extends IActor {
         parent.addActor(img);
         return img;
     }
+    public static Image NewImage(Color color, Vector2 pos, int align , float width, float height, Group parent)
+    {
+        return NewImage(color,pos.x,pos.y,align,width,height,parent);
+    }
     //</editor-fold>
     //<editor-fold desc="Image Texture">
     public static Image NewImage(TextureRegion texture)
@@ -200,6 +209,17 @@ public class IImage extends IActor {
         img.setPosition(x,y,align);
         parent.addActor(img);
         return img;
+    }
+    public static Image NewImage(TextureRegion texture, Vector2 pos, int align , float width, float height, Group parent)
+    {
+        return NewImage(texture,pos.x,pos.y,align,width,height,parent);
+    }
+    //</editor-fold>
+    //<editor-fold desc="Image Other">
+    public static void SetImage(Image img,Color color)
+    {
+        img.setDrawable(NewDrawable(emptyTexture));
+        img.setColor(color);
     }
     //</editor-fold>
 }

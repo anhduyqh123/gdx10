@@ -39,7 +39,7 @@ public class IAlpha extends IBaseAction{
     @Override
     public Action Get(IActor iActor) {
 
-        if (relocation) return Get(iActor.GetActor().getColor().a);
+        if (current) return Get(iActor.GetActor().getColor().a);
         return Get();
     }
 

@@ -1,9 +1,13 @@
 package Editor.UITool.Form;
 
+import Editor.GDXTool;
 import Editor.JFameUI;
 import Editor.UITool.Config;
+import GameGDX.AssetLoading.AssetNode;
+import GameGDX.AssetLoading.AssetPackage;
 import GameGDX.AssetLoading.GameData;
 import GameGDX.Assets;
+import GameGDX.GUIData.GUIData;
 
 import javax.swing.*;
 import java.util.List;
@@ -16,6 +20,16 @@ public class PackForm {
     public JPanel panel1;
     private JButton btSave;
     private JButton btUp;
+    private JButton btMini;
+    private JButton btGenerateAtlas;
+    private JRadioButton rAllTextures;
+    private JRadioButton rMainTexture;
+    private JRadioButton rParticleAtlas;
+    private JRadioButton rAtlas;
+    private JRadioButton rTexture;
+    private JButton btEncode;
+    private JButton btDecode;
+    private JButton btUnMini;
     private JFameUI ui = new JFameUI();
 
     public PackForm(List<String> packs)
@@ -25,6 +39,62 @@ public class PackForm {
             Config.Save();
             ui.NewDialog("Success!",panel1);
         });
+        Click(btGenerateAtlas,()->{
+            GenerateAtlas();
+            ui.NewDialog("Success!",panel1);
+        });
+        Click(btEncode,()->{
+            Encode();
+            ui.NewDialog("Encode Success!",panel1);
+        });
+        Click(btDecode,()->{
+            Decode();
+            ui.NewDialog("Decode Success!",panel1);
+        });
+        Click(btMini,()->{
+            MiniObject();
+            ui.NewDialog("Mini Success!",panel1);
+        });
+        Click(btUnMini,()->{
+            UnMiniObject();
+            ui.NewDialog("UnMini Success!",panel1);
+        });
+    }
+    private void MiniObject()
+    {
+        String pack = cbPack.getSelectedItem()+"";
+        AssetPackage aPack = Assets.GetAssetPackage(pack);
+        for(AssetNode n : aPack.GetNodes(AssetNode.Kind.Object))
+            GUIData.i.MiniSave(n);
+    }
+    private void UnMiniObject()
+    {
+        String pack = cbPack.getSelectedItem()+"";
+        AssetPackage aPack = Assets.GetAssetPackage(pack);
+        for(AssetNode n : aPack.GetNodes(AssetNode.Kind.Object))
+            GUIData.i.UnMiniSave(n);
+    }
+    private void GenerateAtlas()
+    {
+        String pack = cbPack.getSelectedItem()+"";
+        AssetPackage aPack = Assets.GetAssetPackage(pack);
+        if (rAllTextures.isSelected()) GDXTool.GenerateAtlas(aPack.GetTextureUrl(),aPack.GetAtlasUrl());
+        if (rMainTexture.isSelected()) GDXTool.GenerateMainAtlas(aPack.GetTextureUrl(),aPack.GetAtlasUrl());
+        if (rParticleAtlas.isSelected()) GDXTool.GenerateAtlas(aPack.GetParticleUrl(),aPack.GetParticleUrl());
+    }
+    private void Encode()
+    {
+        String pack = cbPack.getSelectedItem()+"";
+        AssetPackage aPack = Assets.GetAssetPackage(pack);
+        if (rAtlas.isSelected()) GDXTool.Encode(aPack.GetAtlasUrl());
+        if (rTexture.isSelected()) GDXTool.Encode(aPack.GetTextureUrl());
+    }
+    private void Decode()
+    {
+        String pack = cbPack.getSelectedItem()+"";
+        AssetPackage aPack = Assets.GetAssetPackage(pack);
+        if (rAtlas.isSelected()) GDXTool.Decode(aPack.GetAtlasUrl());
+        if (rTexture.isSelected()) GDXTool.Decode(aPack.GetTextureUrl());
     }
     private void Click(JButton bt,Runnable run)
     {

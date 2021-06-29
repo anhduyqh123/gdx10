@@ -4,6 +4,7 @@ import GameGDX.*;
 import GameGDX.AssetLoading.GameData;
 import GameGDX.GUIData.IImage;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.utils.Align;
 
 public class MyGame extends GDXGame {
@@ -33,6 +34,6 @@ public class MyGame extends GDXGame {
     }
     @Override
     protected Scene NewScene() {
-        return new Scene(width,height);
+        return new Scene(width,height,new PolygonSpriteBatch());
     }
 }

@@ -95,6 +95,11 @@ public class Scene {
     }
 
     //extend
+    public static Vector2 GetMousePos()
+    {
+        Vector2 pos = new Vector2(Gdx.input.getX(),Gdx.input.getY());
+        return stage.screenToStageCoordinates(pos);
+    }
     public static void AddActorKeepPosition(Actor actor, Group group)
     {
         Vector2 pos1 = GetStagePosition(actor, Align.bottomLeft);
@@ -115,6 +120,10 @@ public class Scene {
     {
         Vector2 pos = GetPosition(actor,align).sub(GetPosition(actor));
         return actor.localToStageCoordinates(pos);
+    }
+    public static Vector2 GetLocalPosition(Actor actor,Vector2 pos)//pos = stage position
+    {
+        return actor.stageToLocalCoordinates(pos);
     }
     public static Vector2 GetPosition(Actor actor)
     {

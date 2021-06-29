@@ -26,7 +26,7 @@ public class IScale extends IBaseAction {
     @Override
     public Action Get(IActor iActor) {
         Actor actor = iActor.GetActor();
-        if (relocation) return Get(actor.getScaleX(),actor.getScaleY());
+        if (current) return Get(actor.getScaleX(),actor.getScaleY());
         return Get();
     }
     private Action Get(float x,float y)

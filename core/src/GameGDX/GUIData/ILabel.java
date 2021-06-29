@@ -72,11 +72,7 @@ public class ILabel extends IActor {
     }
     @Override
     protected Actor NewActor() {
-        return new Label(text,GetFontType());
-    }
-    private Label.LabelStyle GetFontType()
-    {
-        return new Label.LabelStyle(GetFont(),Color.WHITE);
+        return New(text,GetFontName());
     }
     private BitmapFont GetFont()
     {
@@ -84,13 +80,15 @@ public class ILabel extends IActor {
     }
     public String GetFontName()
     {
-        if (font.equals("")) return fontName;
+        if (font.equals("")) return gFont;
         return font;
     }
     public void SetFont(String fontName)
     {
-        if (fontName.equals(fontName)) font="";
+        if (fontName.equals(gFont)) font="";
         else font = fontName;
+        Label lb = GetActor();
+        lb.setStyle(new Label.LabelStyle(GetFont(), Color.WHITE));
     }
     public void SetText(Object text)
     {
@@ -109,11 +107,16 @@ public class ILabel extends IActor {
     }
 
     @Override
+    public void RefreshContent() {
+        Label lb = GetActor();
+        lb.setText(GetText());
+    }
+
+    @Override
     public void Refresh() {
         InitActor();
         Label lb = GetActor();
-        String text = GetText();
-        lb.setText(text);
+        lb.setText(GetText());
         lb.setFontScale(fontScale);
         lb.setAlignment(alignment.value);
         lb.setStyle(new Label.LabelStyle(GetFont(), Color.WHITE));
@@ -148,7 +151,7 @@ public class ILabel extends IActor {
     }
 
     //static
-    public static String fontName = "font";
+    public static String gFont = "font";
     private static void BestFix(Label label)
     {
         if (label.getWidth()==0){
@@ -165,5 +168,13 @@ public class ILabel extends IActor {
         }
         if (scale>1) scale = 1;
         label.setFontScale(scale*label.getFontScaleX());
+    }
+    public static Label New(String content,String font)
+    {
+        return new Label(content,new Label.LabelStyle(Assets.GetFont(font),Color.WHITE));
+    }
+    public static Label New(String content)
+    {
+        return New(content,gFont);
     }
 }

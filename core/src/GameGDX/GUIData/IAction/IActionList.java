@@ -1,6 +1,5 @@
 package GameGDX.GUIData.IAction;
 
-import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
 import com.badlogic.gdx.scenes.scene2d.Action;
 
@@ -13,34 +12,6 @@ public class IActionList extends IMultiAction {
 
     private Map<String,IAction> map = new HashMap<>();
 
-    private GDX.Func1<IAction,String> getIAction;
-
-    public <T> T GetIAction(String name)
-    {
-        if (getIAction==null) Init();
-        return (T)getIAction.Run(name);
-    }
-    private void Init()
-    {
-        Map<String,IAction> m = new HashMap<>(map);
-        Foreach(i->Load(i,m));
-        getIAction = m::get;
-    }
-    private void Load(IAction iAction,Map<String,IAction> m)
-    {
-        m.put(iAction.name,iAction);
-        if (iAction instanceof IMultiAction){
-            IMultiAction iMul = (IMultiAction) iAction;
-            iMul.Foreach(i->Load(i,m));
-        }
-    }
-    //extend
-    public void SetRunAction(String nameAction,Runnable run)
-    {
-        IRunAction iRun = GetIAction(nameAction);
-        iRun.runnable = run;
-    }
-
     @Override
     public Action Get() {
         return null;
@@ -51,8 +22,9 @@ public class IActionList extends IMultiAction {
         return null;
     }
 
-    public IAction Get(String key) {
-        return map.get(key);
+    public <T extends IAction> T Get(String name)
+    {
+        return (T)map.get(name);
     }
     public boolean Contains(String key)
     {

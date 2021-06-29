@@ -153,7 +153,7 @@ public class GDX {
         file.writeBytes(bytes,true);
     }
     //decode
-    public static byte[] Decode_Bytes(FileHandle file)
+    public static byte[] Decode(FileHandle file)
     {
         byte[] bytes = file.readBytes();
         byte[] extendBytes = new byte[endBytes.length];
@@ -205,9 +205,13 @@ public class GDX {
     {
         T Run();
     }
-    public interface Func1<T1,T2>
+    public interface Func1<T,T1>
     {
-        T1 Run(T2 name);
+        T Run(T1 ob);
+    }
+    public interface Func2<T,T1,T2>
+    {
+        T Run(T1 ob1,T2 ob2);
     }
 
 }

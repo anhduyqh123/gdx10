@@ -27,7 +27,6 @@ public class UIMain {
 
         Config config = Config.NewConfig();
         MyGame game = NewGame(config.game_width,config.game_height,()->{
-            new GUIData();
             MainForm main = new MainForm();
             frame.add(main.pnMain);
             frame.pack();

@@ -12,18 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GShapeRenderer extends Actor {
-    protected ShapeRenderer renderer;
+    protected ShapeRenderer renderer = new ShapeRenderer();
     private List<Shape> shapes = new ArrayList<>();
 
     public GShapeRenderer()
     {
-        renderer = new ShapeRenderer();
         renderer.setProjectionMatrix(Scene.GetCamera().combined);
     }
     public GShapeRenderer(Group parent)
     {
         this();
         parent.addActor(this);
+    }
+    public void Clear()
+    {
+        shapes.clear();
     }
 
     @Override

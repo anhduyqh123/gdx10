@@ -1,5 +1,6 @@
 package GameGDX.GUIData;
 
+import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
 import GameGDX.Reflect;
@@ -18,9 +19,23 @@ public class ITable extends IGroup {
     public int column = 0;
     public float spaceX,spaceY,padX,padY;
 
+    private GDX.Func<Collection<IActor>> getChildren;
+
     @Override
     protected Actor NewActor() {
         return new Table();
+    }
+
+    protected void ForEach(GDX.Runnable<IActor> cb)
+    {
+        for(IActor i : getChildren.Run())
+            cb.Run(i);
+    }
+    @Override
+    public void StopAction() {
+        super.StopAction();
+        Table table = GetActor();
+        table.layout();
     }
 
     @Override
@@ -31,15 +46,9 @@ public class ITable extends IGroup {
     }
     private void RefreshChildren()
     {
-        List<Actor> children = new ArrayList<>();
-        for(String name : list)
-        {
-            IActor iActor = GetIActor(name);
-            iActor.SetConnect(null);
-            iActor.Refresh();
-            children.add(iActor.GetActor());
-        }
-        RefreshChildren(children);
+        List<IActor> iActors = new ArrayList<>();
+        for (String n : list) iActors.add(GetIActor(n));
+        RefreshIActor(iActors);
     }
     public void RefreshChildren(Collection<Actor> children)
     {
@@ -58,7 +67,7 @@ public class ITable extends IGroup {
             if (i%column==0) NewRow(table);
         }
         table.align(contentAlign.value);
-        table.layout();
+        table.validate();
     }
     public void RefreshIActor(Collection<IActor> iActors)
     {
@@ -70,6 +79,8 @@ public class ITable extends IGroup {
             children.add(i.GetActor());
         }
         RefreshChildren(children);
+        getChildren = ()->iActors;
+        //SetMain(getMain);
     }
     private void NewRow(Table table)
     {
@@ -86,6 +97,13 @@ public class ITable extends IGroup {
         for(int i=0;i<amount;i++)
             iActors.add(Reflect.Clone(child));
         RefreshIActor(iActors);
+        return iActors;
+    }
+    public <T> List<IActor> CloneChild(List<T> list, GDX.Runnable2<T,IActor> cb)
+    {
+        List<IActor> iActors = CloneChild(list.size());
+        for(int i=0;i<list.size();i++)
+            cb.Run(list.get(i),iActors.get(i));
         return iActors;
     }
 

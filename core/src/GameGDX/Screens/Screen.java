@@ -6,12 +6,8 @@ import GameGDX.GUIData.*;
 import GameGDX.GUIData.IAction.IRunAction;
 import GameGDX.GUIData.IChild.IActor;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class Screen extends BaseScreen {
-    protected static GUIData guiData = new GUIData();
-
     protected IGroup iGroup;
     protected String name;
 
@@ -19,20 +15,20 @@ public class Screen extends BaseScreen {
     {
         super();
         this.name = screenName;
-        iGroup = guiData.Get(screenName).Clone();
+        iGroup = GUIData.i.Get(screenName).Clone();
         iGroup.SetConnect(name -> this);
         iGroup.Refresh();
 
-        iGroup.InitMain();
+        //iGroup.InitMain();
 
-        SetRunAction("showDone","showDone");
-        SetRunAction("hideDone","hideDone");
+        SetRunAction("show","showDone");
+        SetRunAction("hide","hideDone");
 
         main = iGroup.GetActor();
     }
     protected void SetRunAction(String name,String runName)
     {
-        IRunAction iRun = iGroup.acList.GetIAction(name);
+        IRunAction iRun = iGroup.acList.GetIMulti(name).GetIAction("done");
         iRun.runnable = GetRun(runName);
     }
 
@@ -59,15 +55,6 @@ public class Screen extends BaseScreen {
     {
         AddClick(GetActor(name),event);
     }
-    public void AddClick(Actor actor, Runnable rEvent)
-    {
-        actor.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                rEvent.run();
-            }
-        });
-    }
 
     public <T extends Actor> T GetActor(String name)
     {
@@ -87,6 +74,10 @@ public class Screen extends BaseScreen {
     }
 
     //Get IChild
+    public IGroup GetIGroup()
+    {
+        return iGroup;
+    }
     public IGroup GetIGroup(String name)
     {
         return GetIActor(name);

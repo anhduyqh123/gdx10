@@ -64,11 +64,12 @@ public class ActionForm {
 
         Class[] types = {IDelay.class, IMove.class,IScale.class,IRotate.class,IParallel.class,ISequence.class,
                 IRunAction.class,IForever.class,IRepeat.class,IAlpha.class,IColor.class,IParAction.class,ISoundAction.class,
-                IMoveBy.class,ITextureAction.class,ICountAction.class,IDoAction.class,IRemove.class,IVisible.class,ISwitchEvent.class};
+                IMovePath.class,IMoveArc.class,ITextureAction.class,ICountAction.class,IDoAction.class,
+                IRemove.class,IVisible.class,ISwitchEvent.class};
         List<String> names = new ArrayList<>();
         for(Class t : types) names.add(t.getSimpleName());
         Object[] arr = names.toArray();
-        ui.ComboBox(cbType,arr,arr[5]);
+        ui.ComboBox(cbType,arr,ISequence.class.getSimpleName());
 
         String[] vl1 = {"Child","Parent"};
         cb.setModel(new DefaultComboBoxModel(vl1));

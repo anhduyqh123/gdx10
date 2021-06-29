@@ -20,9 +20,9 @@ public class IScrollPane extends IGroup {
     public void Refresh() {
         InitActor();
         BaseRefresh();
-        RefreshContent();
+        RefreshChild();
     }
-    private void RefreshContent()
+    private void RefreshChild()
     {
         if (list.size()<=0) return;
         String name = list.get(0);

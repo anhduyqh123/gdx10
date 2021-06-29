@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 
 public class IBaseAction extends IDelay{
-    public boolean relocation;
+    public boolean current;
     public IInterpolation iInter = IInterpolation.linear;
 
     public IBaseAction()
@@ -33,6 +33,6 @@ public class IBaseAction extends IDelay{
         if (!(o instanceof IBaseAction)) return false;
         if (!super.equals(o)) return false;
         IBaseAction that = (IBaseAction) o;
-        return relocation == that.relocation && iInter == that.iInter;
+        return current == that.current && iInter == that.iInter;
     }
 }

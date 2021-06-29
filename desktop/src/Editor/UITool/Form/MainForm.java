@@ -16,8 +16,8 @@ public class MainForm {
         IActorForm iActorForm = new IActorForm();
         ActionForm actionForm = new ActionForm();
 
-        dataForm.onSelect = iActor->{
-            iActorForm.SetData(iActor);
+        dataForm.onSelect = (iActor,list)->{
+            iActorForm.SetData(iActor,list);
 
             actionForm.SetData(iActor.acList);
             actionForm.onRun = name->{

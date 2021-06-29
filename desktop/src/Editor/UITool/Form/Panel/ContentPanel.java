@@ -2,6 +2,9 @@ package Editor.UITool.Form.Panel;
 
 import Editor.JFameUI;
 import Editor.UITool.Form.IEmitterForm;
+import Extend.CircleProgress.ICircleProgress;
+import Extend.Spine.GSpine;
+import Extend.Spine.ISpine;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.Assets;
 import GameGDX.GUIData.*;
@@ -11,6 +14,7 @@ import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.Field;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,17 +31,19 @@ public class ContentPanel {
     }
     public Class[] GetTypes()
     {
-        Class[] types = {IGroup.class, IImage.class, ILabel.class, ITable.class,IScrollPane.class,IParticle.class, IActor.class,IProgressBar.class};
+        Class[] types = {IGroup.class, IImage.class, ILabel.class, ITable.class,IScrollPane.class,IParticle.class, IActor.class,
+                ISpine.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class};
         return types;
     }
     public JPanel SetContent(JPanel panel, IActor iActor)
     {
+        if (iActor instanceof IProgressBar) return new JIProgressBar(iActor,panel);
         if (iActor instanceof IImage) return new JIImage(iActor,panel);
-        if (iActor instanceof IProgressBar) return new JIImage(iActor,panel);
         if (iActor instanceof ILabel) return new JILabel(iActor,panel);
         if (iActor instanceof ITable) return new JITable(iActor,panel);
         if (iActor instanceof IGroup) return new JIGroup(iActor,panel);
         if (iActor instanceof IParticle) return new JIParticle(iActor,panel);
+        if (iActor instanceof ISpine) return new JISpine(iActor,panel);
         return new JIActor(iActor,panel);
     }
     protected class JIActor extends JPanel
@@ -55,26 +61,29 @@ public class ContentPanel {
         }
         protected void Init(JPanel panel)
         {
-            ui.NewLabel(iActor.getClass().getSimpleName(),panel);
-            if (!iActor.prefab.equals(""))
-                ui.NewLabel("prefab:"+ iActor.prefab,panel);
-
+            ui.NewLabel(iActor.getClass().getSimpleName(),panel).setForeground(Color.BLUE);
             ui.InitComponents(Arrays.asList("visible","touchable"), iActor,panel);
             ui.NewColorPicker(panel, iActor.hexColor, hex->{
                 iActor.hexColor=hex;
                 iActor.Refresh();
             });
-
-            for(Field field : ClassReflection.getDeclaredFields(iActor.getClass()))
-            {
-                if (field.getType().isInterface()) continue;
-                if (InValidField(field.getName())) continue;
-                ui.NewComponent(field, iActor,panel);
-            }
+            InitField(iActor.getClass(),panel);
+            if (!iActor.prefab.equals(""))
+                ui.NewLabel("prefab:"+ iActor.prefab,panel);
         }
         protected boolean InValidField(String name)
         {
             return true;
+        }
+        protected void InitField(Class type,JPanel panel)
+        {
+            for(Field field : ClassReflection.getDeclaredFields(type))
+            {
+                if (field.isStatic()) continue;
+                if (field.getType().isInterface()) continue;
+                if (InValidField(field.getName())) continue;
+                ui.NewComponent(field, iActor,panel);
+            }
         }
     }
     class JIGroup extends JIActor
@@ -98,14 +107,15 @@ public class ContentPanel {
     }
     class JIImage extends JIActor
     {
+        protected JPanel left,right;
         public JIImage(IActor iActor, JPanel panel)
         {
             this.iActor = iActor;
             this.panel = panel;
             IImage iImage = (IImage) iActor;
 
-            JPanel left = ui.NewPanel(200,140,panel);
-            JPanel right = ui.NewPanel(500,140,panel);
+            left = ui.NewPanel(200,140,panel);
+            right = ui.NewPanel(500,140,panel);
             ui.SetGap(left,0,0);
             ui.SetGap(right,0,0);
             InitITexturePanel(iImage,left);
@@ -156,6 +166,13 @@ public class ContentPanel {
             ui.Repaint(panel);
         }
     }
+    class JIProgressBar extends JIImage
+    {
+        public JIProgressBar(IActor iActor, JPanel panel) {
+            super(iActor, panel);
+            InitField(IScrollImage.class,right);
+        }
+    }
     class JILabel extends JIActor
     {
         public JILabel(IActor iActor, JPanel panel)
@@ -203,6 +220,24 @@ public class ContentPanel {
 
         @Override
         protected boolean InValidField(String name) {
+            return false;
+        }
+    }
+
+    class JISpine extends JIActor
+    {
+        public JISpine(IActor iActor, JPanel panel)
+        {
+            super(iActor,panel);
+            GSpine spine = iActor.GetActor();
+            String[] ani = spine.GetAnimationNames();
+            if (ani!=null)
+                ui.NewComboBox("animation",ani,ani[0],panel,st->spine.SetAnimation(st,true));
+        }
+
+        @Override
+        protected boolean InValidField(String name) {
+            if (name.equals("animation")) return true;
             return false;
         }
     }

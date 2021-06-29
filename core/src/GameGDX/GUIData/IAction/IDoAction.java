@@ -19,7 +19,7 @@ public class IDoAction extends IAction{
 
     @Override
     public Action Get(IActor iActor) {
-        return Actions.run(()-> iActor.GetMain().RunAction(actionName));
+        return Actions.run(()-> iActor.RunAction(actionName));
     }
 
     @Override

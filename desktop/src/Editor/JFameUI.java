@@ -28,13 +28,17 @@ public class JFameUI {
     }
     public void InitComponents(Object object,JPanel parent)
     {
-        for(Field f : ClassReflection.getFields(object.getClass()))
+        for(Field f : Reflect.GetFields(object.getClass()).values())
             NewComponent(f,object,parent);
     }
     public void InitComponents(List<String> fieldNames, Object object, JPanel parent)
     {
         for(String name : fieldNames)
             NewComponent(Reflect.GetFields(object.getClass()).get(name),object,parent);
+    }
+    public void NewComponent(String name,Object object, JPanel parent)
+    {
+        NewComponent(Reflect.GetField(object.getClass(),name),object,parent);
     }
     public void NewComponent(Field field, Object object, JPanel parent)
     {
@@ -111,13 +115,17 @@ public class JFameUI {
     public JPanel NewBigPanel(String name,int width,int height,JPanel parent)
     {
         JPanel jPanel = NewPanel(new FlowLayout(FlowLayout.CENTER),width, height, parent);
-        SetBigPanel(name,jPanel);
+        SetBorder(name,jPanel);
         return jPanel;
     }
-    public void SetBigPanel(String name,JPanel panel)
+    public void SetBorder(String name, JPanel panel)
     {
         panel.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(1, 0, 1, 1),
                 BorderFactory.createTitledBorder(name)));
+    }
+    public void SetBorder(JPanel panel)
+    {
+        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
     //</editor-fold>
     //<editor-fold desc="Label">

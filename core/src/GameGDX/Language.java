@@ -84,15 +84,18 @@ public class Language {
     {
         if (codes.contains(code)) return;
         codes.add(code);
-        for(Node n : map.values())
-            n.Add(code);
+        Foreach(n->n.Add(code));
     }
     public void RemoveCode(String code)
     {
         if (!codes.contains(code)) return;
         codes.remove(code);
+        Foreach(n->n.Remove(code));
+    }
+    public void Foreach(GDX.Runnable<Node> cb)
+    {
         for(Node n : map.values())
-            n.Remove(code);
+            cb.Run(n);
     }
 
     public static Language NewLanguage()

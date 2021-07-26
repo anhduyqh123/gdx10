@@ -1,6 +1,7 @@
 package GameGDX.GUIData.IChild;
 
 import GameGDX.GDX;
+import GameGDX.Reflect;
 import GameGDX.Scene;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -26,14 +27,14 @@ public class IPos {
     {
         return GetY0()+delY;
     }
-    private float GetX0()
+    public float GetX0()
     {
         if (x instanceof Value) return ((Value) x).value;
         if (x instanceof Ratio) return ((Ratio) x).ratio*GetWidth();
         Target target = (Target)x;
         return getTarget.Run(target.name).getX(target.align.value);
     }
-    private float GetY0()
+    public float GetY0()
     {
         if (y instanceof Value) return ((Value) y).value;
         if (y instanceof Ratio) return ((Ratio) y).ratio*GetHeight();
@@ -71,23 +72,14 @@ public class IPos {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (!(object instanceof IPos)) return false;
-
-        IPos iPos = (IPos) object;
-
-        if (Float.compare(iPos.delX, delX) != 0) return false;
-        if (Float.compare(iPos.delY, delY) != 0) return false;
-        if (!x.equals(iPos.x)) return false;
-        if (!y.equals(iPos.y)) return false;
-        return align == iPos.align;
+    public boolean equals(Object obj) {
+        return Reflect.equals(this,obj);
     }
 
     public static class Unit{
         @Override
         public boolean equals(Object obj) {
-            return getClass().equals(obj.getClass());
+            return Reflect.equals(this,obj);
         }
     }
     public static class Value extends Unit
@@ -99,15 +91,6 @@ public class IPos {
         {
             this.value = value;
         }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Value)) return false;
-            if (!super.equals(o)) return false;
-            Value value1 = (Value) o;
-            return Float.compare(value1.value, value) == 0;
-        }
     }
     public static class Ratio extends Unit
     {
@@ -117,27 +100,10 @@ public class IPos {
         {
             this.ratio = ratio;
         }
-
-        @Override
-        public boolean equals(Object object) {
-            if (!(object instanceof Ratio)) return false;
-            if (!super.equals(object)) return false;
-            Ratio ratio1 = (Ratio) object;
-            return Float.compare(ratio1.ratio, ratio) == 0;
-        }
     }
     public static class Target extends Unit
     {
         public String name = "";
         public IAlign align = IAlign.bottomLeft;
-
-        @Override
-        public boolean equals(Object object) {
-            if (!(object instanceof Target)) return false;
-            if (!super.equals(object)) return false;
-            Target target = (Target) object;
-            if (!name.equals(target.name)) return false;
-            return align == target.align;
-        }
     }
 }

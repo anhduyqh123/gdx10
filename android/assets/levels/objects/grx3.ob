@@ -1,0 +1,1 @@
+{class:Extend.Box2d.IObject,sprite:ground3,iBody:{category:2,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IChain,points:[{},{x:24.078842,y:372.94586},{x:827.0049,y:368.66782},{x:881.2991,y:386.7659},{x:936.7244,y:534.9438},{x:968.0272,y:615.0527},{x:1062.2219,y:625.9213},{x:1304.3444,y:622.45105},{x:1303.0165,y:-3.4656048}]},friction:1.0}]}}

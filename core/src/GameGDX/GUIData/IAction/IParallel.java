@@ -58,13 +58,4 @@ public class IParallel extends IMultiAction{
         for(IAction i : list) action.addAction(i.Get(iActor));
         return action;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IParallel)) return false;
-        if (!super.equals(o)) return false;
-        IParallel iParallel = (IParallel) o;
-        return list.equals(iParallel.list);
-    }
 }

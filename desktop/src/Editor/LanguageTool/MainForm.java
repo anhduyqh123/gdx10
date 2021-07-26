@@ -6,10 +6,7 @@ import GameGDX.Language;
 import com.badlogic.gdx.files.FileHandle;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MainForm {
     public JPanel panel1;
@@ -23,6 +20,7 @@ public class MainForm {
     private JComboBox cbCode;
     private JButton btDelete2;
     private JPanel pnNode;
+    private JButton btGlyphs;
 
     private Language language;
     private JFameUI ui = new JFameUI();
@@ -116,6 +114,7 @@ public class MainForm {
             if (codes.size()>0) codeList.setSelectedIndex(0);
             RefreshKeyList();
         });
+        Click(btGlyphs,()->ui.Try(this::Glyphs,panel1));
     }
     private LineForm NewLine(String name)
     {
@@ -164,5 +163,27 @@ public class MainForm {
             return Translator.Translate(fromCode,toCode,text);
         }catch (Exception e){e.printStackTrace();}
         return "fail";
+    }
+    private void Glyphs()
+    {
+        List<String> codes = new ArrayList<>();
+        for (Object st : codeList.getSelectedValuesList())
+        {
+            String locale = (String) st;
+            codes.add(locale.split("-")[0]);
+        }
+        HashSet<Character> hashSet = new HashSet<>();
+        language.Foreach(n->{
+            for (String code : codes)
+            {
+                String st = n.GetContent(code);
+                for (char c : st.toCharArray())
+                    hashSet.add(c);
+            }
+        });
+        String s0 = "";
+        for (Character c : hashSet)
+            s0+=c;
+        new GlyphsForm(s0);
     }
 }

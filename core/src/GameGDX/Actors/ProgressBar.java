@@ -15,11 +15,7 @@ public class ProgressBar extends ScrollImage {
     @Override
     public void SetTexture(TextureRegion tr) {
         if (IsScroll()) super.SetTexture(tr);
-        else sprite.setRegion(tr);
-    }
-    private boolean IsScroll()
-    {
-        return isScrollX || isScrollY;
+        else InitTexture(tr);
     }
     public void SetValue(float percent)
     {
@@ -46,13 +42,13 @@ public class ProgressBar extends ScrollImage {
     }
 
     @Override
-    protected void Scroll(float percent, float scroll) {
-        super.Scroll(this.percent, scroll);
+    protected void Scroll(float percentX, float percentY, float scroll) {
+        super.Scroll(percent, 1f, scroll);
     }
 
     @Override
     protected void Draw(Batch batch, float alpha) {
-        float width = percent*sprite.getTexture().getWidth();
+        float width = percent*trWidth;
         sprite.setRegionWidth((int)width);
         sprite.setSize(percent*getWidth(),getHeight());
         super.Draw(batch, alpha);

@@ -21,13 +21,4 @@ public class IDoAction extends IAction{
     public Action Get(IActor iActor) {
         return Actions.run(()-> iActor.RunAction(actionName));
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IDoAction)) return false;
-        if (!super.equals(o)) return false;
-        IDoAction iDoAction = (IDoAction) o;
-        return actionName.equals(iDoAction.actionName);
-    }
 }

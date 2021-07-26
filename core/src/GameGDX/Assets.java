@@ -27,17 +27,23 @@ public class Assets extends Actor {
     private List<String> packLoaded = new ArrayList<>(); // loaded
     private Map<String, AssetNode> mapAssets = new HashMap<>(); //loaded node
     private GameData gameData;
-    protected AssetManager manager = new AssetManager();
+    protected AssetManager manager = NewAssetManager();
 
     private Runnable doneLoading;
     private GDX.Runnable<Float> cbAssetsUpdate;
 
-    public Assets(GameData gameData)
+    public Assets()
     {
         i = this;
+    }
+    public void SetData(GameData gameData)
+    {
         this.gameData = gameData;
         gameData.Install();
-        Scene.AddActor(this);
+    }
+    protected AssetManager NewAssetManager()
+    {
+        return new AssetManager();
     }
 
     @Override
@@ -92,7 +98,9 @@ public class Assets extends Actor {
                 BitmapFontLoader.BitmapFontParameter pepBitmap = new BitmapFontLoader.BitmapFontParameter();
                 pepBitmap.minFilter = Texture.TextureFilter.Linear;
                 pepBitmap.magFilter = Texture.TextureFilter.Linear;
-                //pepBitmap.bitmapFontData.markupEnabled = true;//multi color
+                pepBitmap.loadedCallback = (assetManager, fileName, type) -> {
+                    manager.get(as.url, BitmapFont.class).getData().markupEnabled = true;
+                };
                 manager.load(as.url, BitmapFont.class,pepBitmap);
                 break;
             case Particle:

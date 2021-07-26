@@ -55,13 +55,4 @@ public class IActionList extends IMultiAction {
 
         return new ArrayList<>(map.values());
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IActionList)) return false;
-        if (!super.equals(o)) return false;
-        IActionList that = (IActionList) o;
-        return map.equals(that.map);
-    }
 }

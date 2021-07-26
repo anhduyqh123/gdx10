@@ -52,7 +52,7 @@ configurations {
 }
 
 dependencies {
-    antTask 'com.jetbrains.intellij.java:java-compiler-ant-tasks:203.7148.30' //gradle 6.3
+    antTask 'com.jetbrains.intellij.java:java-compiler-ant-tasks:211.7442.40' //gradle 6.3 - 203.7148.30
 }
 
 task compileJava(type: JavaCompile, overwrite: true, dependsOn: configurations.compile.getTaskDependencyFromProjectDependency(true, 'jar')) {

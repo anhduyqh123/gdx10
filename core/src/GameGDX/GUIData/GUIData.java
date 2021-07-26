@@ -31,6 +31,11 @@ public class GUIData {
         String data = Json.ToJsonData(miniJson);
         GDX.WriteToFile("mini.d",data);
     }
+    public void Remove(String name)
+    {
+        if (map.containsKey(name))
+            map.remove(name);
+    }
 
     public IActor Get(String name)
     {

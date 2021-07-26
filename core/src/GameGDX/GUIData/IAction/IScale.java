@@ -33,13 +33,4 @@ public class IScale extends IBaseAction {
     {
         return Actions.scaleTo(x,y,duration,GetInterpolation());
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IScale)) return false;
-        if (!super.equals(o)) return false;
-        IScale iScale = (IScale) o;
-        return Float.compare(iScale.scaleX, scaleX) == 0 && Float.compare(iScale.scaleY, scaleY) == 0;
-    }
 }

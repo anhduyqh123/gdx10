@@ -104,6 +104,17 @@ public class Particle extends Actor {
     {
         return pe.getEmitters().get(index);
     }
+    public ParticleEmitter GetEmitter(String name)
+    {
+        return pe.findEmitter(name);
+    }
+    public void SetSprite(String name, TextureRegion tr)
+    {
+        Array<Sprite> arr = new Array<>();
+        arr.add(new Sprite(new TextureRegion(tr)));
+        GetEmitter(name).setSprites(arr);
+    }
+
     public void ForEmitter(GDX.Runnable<ParticleEmitter> cb)
     {
         for(ParticleEmitter e : pe.getEmitters())

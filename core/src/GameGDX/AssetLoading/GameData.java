@@ -1,5 +1,6 @@
 package GameGDX.AssetLoading;
 
+import GameGDX.Assets;
 import GameGDX.GDX;
 import GameGDX.Json;
 import com.badlogic.gdx.files.FileHandle;

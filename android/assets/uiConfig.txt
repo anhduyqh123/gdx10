@@ -1,0 +1,14 @@
+{
+"screen_width": 640,
+"screen_height": 360,
+"game_width": 1280,
+"mapToLoad": {
+	"default": [
+		"default"
+	],
+	"levels": [
+		"levels"
+	]
+},
+"game_height": 720
+}

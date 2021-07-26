@@ -13,6 +13,10 @@ public class ICircleProgress extends IImage {
     }
 
     @Override
+    public void RefreshContent() {
+        SetTexture(GetTexture());
+    }
+    @Override
     public void SetTexture(TextureRegion texture) {
         CircleProgress pro = GetActor();
         pro.SetTexture(texture);

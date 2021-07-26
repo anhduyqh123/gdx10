@@ -1,15 +1,13 @@
 package Extend.Spine;
 
 import GameGDX.AssetLoading.AssetNode;
-import GameGDX.AssetLoading.GameData;
 import GameGDX.Assets;
 import com.esotericsoftware.spine.SkeletonData;
 
 public class Assets2 extends Assets {
 
-    public Assets2(GameData gameData)
+    public Assets2()
     {
-        super(gameData);
         manager.setLoader(SkeletonData.class,new SkeletonDataLoader(manager.getFileHandleResolver()));
     }
     @Override

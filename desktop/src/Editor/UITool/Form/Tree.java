@@ -55,6 +55,10 @@ public class Tree {
         DefaultMutableTreeNode n = (DefaultMutableTreeNode) node;
         return (String) n.getUserObject();
     }
+    public String GetName(Object object)
+    {
+        return GetName(map0.get(object));
+    }
     public void Refresh()
     {
         map.clear();

@@ -33,13 +33,9 @@ public class ICountAction extends IDelay{
         long m = (long) Math.pow(10,tail);
         return Math.round(value*m)*1f/m+"";
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ICountAction)) return false;
-        if (!super.equals(o)) return false;
-        ICountAction that = (ICountAction) o;
-        return Float.compare(that.start, start) == 0 && Float.compare(that.end, end) == 0 && tail == that.tail;
+    public void Set(float start,float end)
+    {
+        this.start = start;
+        this.end = end;
     }
 }

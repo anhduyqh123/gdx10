@@ -23,13 +23,4 @@ public class ITextureAction extends IAction{
         IImage iImage = (IImage) iActor;
         return Actions.run(()->iImage.SetTexture(txtName));
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ITextureAction)) return false;
-        if (!super.equals(o)) return false;
-        ITextureAction that = (ITextureAction) o;
-        return txtName.equals(that.txtName);
-    }
 }

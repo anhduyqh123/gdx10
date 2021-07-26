@@ -78,6 +78,7 @@ public class IPosPanel {
     {
         IPos.Target target = (IPos.Target) ob;
         ui.NewComponent("align",ob,panel);
+        if (target.name.equals("")) target.name = names[0];
         ui.NewComboBox("name",names,target.name,panel,vl->target.name=vl);
     }
 }

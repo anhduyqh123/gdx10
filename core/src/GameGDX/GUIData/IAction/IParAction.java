@@ -30,13 +30,4 @@ public class IParAction extends IAction{
             if (state== State.Reset) par.Reset();
         });
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IParAction)) return false;
-        if (!super.equals(o)) return false;
-        IParAction that = (IParAction) o;
-        return state == that.state;
-    }
 }

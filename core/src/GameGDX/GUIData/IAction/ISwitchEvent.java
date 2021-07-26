@@ -58,13 +58,4 @@ public class ISwitchEvent extends IAction{
             GMusic.DoVibrate(100);
         }
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ISwitchEvent)) return false;
-        if (!super.equals(o)) return false;
-        ISwitchEvent that = (ISwitchEvent) o;
-        return isSwitch == that.isSwitch && type == that.type && nameOn.equals(that.nameOn) && nameOff.equals(that.nameOff);
-    }
 }

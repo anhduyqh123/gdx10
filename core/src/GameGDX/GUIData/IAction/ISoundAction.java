@@ -20,13 +20,4 @@ public class ISoundAction extends IAction{
     public Action Get(IActor iActor) {
         return Get();
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ISoundAction)) return false;
-        if (!super.equals(o)) return false;
-        ISoundAction that = (ISoundAction) o;
-        return soundName.equals(that.soundName);
-    }
 }

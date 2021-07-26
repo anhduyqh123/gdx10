@@ -1,6 +1,11 @@
 package GameGDX;
 
+import com.badlogic.gdx.graphics.g2d.PolygonRegion;
+import com.badlogic.gdx.math.EarClippingTriangulator;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+
+import java.util.List;
 
 public class Util {
     //<editor-fold desc="Vector">
@@ -18,6 +23,14 @@ public class Util {
     public static float GetDistance(Vector2 pos1, Vector2 pos2)
     {
         return GetDirect(pos1,pos2).len();
+    }
+    public static float GetDistance(Vector2 pos,Vector2 p1, Vector2 p2)//p1,p2 is points of line
+    {
+        float a = GetDistance(p1,p2);
+        float b = GetDistance(p1,pos);
+        float c = GetDistance(pos,p2);
+        float p = (a+b+c)/2;
+        return 2*((float)Math.sqrt(p*(p-a)*(p-b)*(p-c))/a);
     }
     public static void Round(Vector2 v)
     {
@@ -41,6 +54,21 @@ public class Util {
     {
         Vector2 mid = Util.GetNormalPos(start,end,percent);
         return new Vector2[]{start,mid,end};
+    }
+    public static short[] GetTriangles(float[] vert)
+    {
+        EarClippingTriangulator triangulate = new EarClippingTriangulator();
+        return triangulate.computeTriangles(vert).toArray();
+    }
+    public static float[] GetVertices(Vector2[] arr)
+    {
+        float[] vert = new float[arr.length*2];
+        for (int i=0;i<arr.length;i++)
+        {
+            vert[i*2] = arr[i].x;
+            vert[i*2+1] = arr[i].y;
+        }
+        return vert;
     }
     //</editor-fold>
 }

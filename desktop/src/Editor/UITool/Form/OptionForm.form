@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.OptionForm">
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
     <constraints>
-      <xy x="20" y="20" width="327" height="200"/>
+      <xy x="20" y="20" width="327" height="248"/>
     </constraints>
     <properties>
       <minimumSize width="300" height="200"/>
@@ -49,8 +49,49 @@
               <text value="Edit"/>
             </properties>
           </component>
+          <component id="5c3d" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="gFont"/>
+            </properties>
+          </component>
+          <component id="b97ec" class="javax.swing.JComboBox" binding="cbFont">
+            <constraints/>
+            <properties/>
+          </component>
         </children>
       </grid>
+      <grid id="a19d5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="200" height="60"/>
+        </properties>
+        <border type="none" title="grid"/>
+        <children>
+          <component id="74d68" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="size"/>
+            </properties>
+          </component>
+          <component id="a330f" class="javax.swing.JTextField" binding="tfSize">
+            <constraints/>
+            <properties/>
+          </component>
+          <component id="15665" class="javax.swing.JButton" binding="btShow">
+            <constraints/>
+            <properties>
+              <text value="Show"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="6c920" class="javax.swing.JCheckBox" binding="cbPhysics">
+        <constraints/>
+        <properties>
+          <text value="Physics"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

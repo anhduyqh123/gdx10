@@ -20,13 +20,4 @@ public class IDelay extends IAction {
     public Action Get(IActor iActor) {
         return Get();
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IDelay)) return false;
-        if (!super.equals(o)) return false;
-        IDelay iDelay = (IDelay) o;
-        return Float.compare(iDelay.duration, duration) == 0;
-    }
 }

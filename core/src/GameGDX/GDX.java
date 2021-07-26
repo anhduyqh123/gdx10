@@ -75,36 +75,36 @@ public class GDX {
     }
 
     //Prefs
-    public static long GetPrefLong(String key, long defaul)
+    public static long GetPrefLong(String key, long value0)
     {
-        return prefs.getLong(key,defaul);
+        return prefs.getLong(key,value0);
     }
     public static void SetPrefLong(String key, long value)
     {
         prefs.putLong(key,value);
         prefs.flush();
     }
-    public static int GetPrefInteger(String key, int defaul)
+    public static int GetPrefInteger(String key, int value0)
     {
-        return prefs.getInteger(key,defaul);
+        return prefs.getInteger(key,value0);
     }
     public static void SetPrefInteger(String key, int value)
     {
         prefs.putInteger(key,value);
         prefs.flush();
     }
-    public static String GetPrefString(String key, String defaul)
+    public static String GetPrefString(String key, String value0)
     {
-        return prefs.getString(key,defaul);
+        return prefs.getString(key,value0);
     }
     public static void SetPrefString(String key, String value)
     {
         prefs.putString(key,value);
         prefs.flush();
     }
-    public static boolean GetPrefBoolean(String key, boolean defaul)
+    public static boolean GetPrefBoolean(String key, boolean value0)
     {
-        return prefs.getBoolean(key,defaul);
+        return prefs.getBoolean(key,value0);
     }
     public static void SetPrefBoolean(String key, boolean value)
     {
@@ -116,7 +116,7 @@ public class GDX {
     {
         Gdx.app.postRunnable(runnable);
     }
-    public static Timer.Task DelayRunnable(java.lang.Runnable runnable, float delay) // delay by second
+    public static Timer.Task Delay(java.lang.Runnable runnable, float delay) // delay by second
     {
         return Timer.schedule(new Timer.Task() {
             @Override
@@ -125,7 +125,7 @@ public class GDX {
             }
         },delay);
     }
-    //FileHandle
+    //file handle
     public static void WriteToFile(String path,String data)
     {
         Gdx.files.local(path).writeString(data,false);

@@ -2,11 +2,14 @@ package Editor.UITool.Form.Panel;
 
 import Editor.JFameUI;
 import Editor.UITool.Form.IEmitterForm;
+import Editor.UITool.Form.PhysicsForm;
+import Extend.Box2d.IObject;
 import Extend.CircleProgress.ICircleProgress;
 import Extend.Spine.GSpine;
 import Extend.Spine.ISpine;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.Assets;
+import GameGDX.GDX;
 import GameGDX.GUIData.*;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
@@ -32,7 +35,7 @@ public class ContentPanel {
     public Class[] GetTypes()
     {
         Class[] types = {IGroup.class, IImage.class, ILabel.class, ITable.class,IScrollPane.class,IParticle.class, IActor.class,
-                ISpine.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class};
+                ISpine.class, IObject.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class};
         return types;
     }
     public JPanel SetContent(JPanel panel, IActor iActor)
@@ -44,6 +47,7 @@ public class ContentPanel {
         if (iActor instanceof IGroup) return new JIGroup(iActor,panel);
         if (iActor instanceof IParticle) return new JIParticle(iActor,panel);
         if (iActor instanceof ISpine) return new JISpine(iActor,panel);
+        if (iActor instanceof IObject) return new JIObject(iActor,panel);
         return new JIActor(iActor,panel);
     }
     protected class JIActor extends JPanel
@@ -238,6 +242,21 @@ public class ContentPanel {
         @Override
         protected boolean InValidField(String name) {
             if (name.equals("animation")) return true;
+            return false;
+        }
+    }
+    class JIObject extends JIActor
+    {
+        public JIObject(IActor iActor, JPanel panel) {
+            super(iActor, panel);
+            IObject iObject = (IObject)iActor;
+            ui.NewButton("Body",panel,()->{
+                GDX.PostRunnable(()->new PhysicsForm(iObject));
+            });
+        }
+        @Override
+        protected boolean InValidField(String name) {
+            if (name.equals("iBody")) return true;
             return false;
         }
     }

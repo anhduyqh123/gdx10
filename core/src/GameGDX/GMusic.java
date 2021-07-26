@@ -71,7 +71,7 @@ public class GMusic {
         if (singles.contains("vibrate")) return;
         singles.add("vibrate");
         DoVibrate(num);
-        GDX.DelayRunnable(()->singles.remove("vibrate"),delay);
+        GDX.Delay(()->singles.remove("vibrate"),delay);
     }
     public static void DoSingleVibrate(float delay)
     {
@@ -99,7 +99,7 @@ public class GMusic {
         if (singles.contains(name)) return;
         singles.add(name);
         PlaySound(name);
-        GDX.DelayRunnable(()->singles.remove(name),delay);
+        GDX.Delay(()->singles.remove(name),delay);
     }
     public static void PlaySound(String name)
     {
@@ -143,7 +143,7 @@ public class GMusic {
     }
     public static void StopMusic(String name)
     {
-        Assets.GetMusic(name).stop();
+        Assets.GetMusic(name).pause();
     }
     private static void StartMusic(String name)
     {

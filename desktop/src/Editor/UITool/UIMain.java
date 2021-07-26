@@ -3,7 +3,6 @@ package Editor.UITool;
 import Editor.JFameUI;
 import Editor.UITool.Form.MainForm;
 import Editor.UITool.Form.Panel.ContentPanel;
-import GameGDX.GUIData.GUIData;
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTFrame;
 
 import javax.swing.*;
@@ -25,16 +24,16 @@ public class UIMain {
 
         NewContent();
 
-        Config config = Config.NewConfig();
-        MyGame game = NewGame(config.game_width,config.game_height,()->{
+        UIConfig uiConfig = UIConfig.NewConfig();
+        MyGame game = NewGame(uiConfig.game_width, uiConfig.game_height,()->{
             MainForm main = new MainForm();
             frame.add(main.pnMain);
             frame.pack();
         });
-        JFrame gameFrame = new LwjglAWTFrame(game,"game",config.screen_width,config.screen_height);
+        JFrame gameFrame = new LwjglAWTFrame(game,"game", uiConfig.screen_width, uiConfig.screen_height);
         gameFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        gameFrame.setLocation(screenSize.width-config.screen_width,0);
+        gameFrame.setLocation(screenSize.width- uiConfig.screen_width,0);
         gameFrame.setAlwaysOnTop(true);
     }
     protected MyGame NewGame(int width, int height, Runnable done)

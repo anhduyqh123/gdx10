@@ -3,6 +3,7 @@ package GameGDX;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +20,8 @@ import java.util.List;
 public class Scene {
     public static float mWidth, mHeight,scaleX,scaleY,scale;
     public static int width,height;
-    public static Group background,game,ui,ui2;
-    public static Stage stage;
+    public static Group bg,game,ui,ui2;
+    public static Stage stage,gStage;
 
     public Scene(float gWidth,float gHeight)
     {
@@ -41,22 +43,24 @@ public class Scene {
         scaleY = height/ mHeight;
         scale = Math.max(scaleX,scaleY);
     }
-    private void Init(Batch batch)
+    protected void Init(Batch batch)
     {
-        background = new Group();
-        game = new Group();
-        ui = new Group();
-        ui2 = new Group();
-
+        gStage = new Stage(new ExtendViewport(mWidth, mHeight),batch);
         stage = new Stage(new ExtendViewport(mWidth, mHeight),batch);
-
-        stage.addActor(background);
-        stage.addActor(game);
-        stage.addActor(ui);
-        stage.addActor(ui2);
+        bg = NewGroup(gStage);
+        game = NewGroup(gStage);
+        ui = NewGroup(stage);
+        ui2 = NewGroup(stage);
 
         Gdx.input.setInputProcessor(stage);
     }
+    private Group NewGroup(Stage stage)
+    {
+        Group group = new Group();
+        stage.addActor(group);
+        return group;
+    }
+
     public void AddBackHandle(Runnable callback)
     {
         Gdx.input.setCatchBackKey(true);
@@ -68,32 +72,35 @@ public class Scene {
             }
         });
     }
-    //static
-    public static void AddActor(Actor actor)
+    public void Act(float delta)
     {
-        stage.addActor(actor);
+        gStage.act(delta);
+        stage.act(delta);
     }
-    public static void Act()
+    public void Dispose()
     {
-        stage.act(GDX.DeltaTime());
-    }
-    public static void Dispose()
-    {
+        gStage.dispose();
         stage.dispose();
     }
-    public static void Render()
+    public void Render()
     {
+        gStage.draw();
         stage.draw();
     }
-    public static void Resize(int width,int height)
+    public void Resize(int width,int height)
     {
+        gStage.getViewport().update(width, height);
         stage.getViewport().update(width,height);
     }
-    public static Camera GetCamera()
+    //static
+    public static OrthographicCamera GetUICamera()
     {
-        return stage.getCamera();
+        return (OrthographicCamera)stage.getCamera();
     }
-
+    public static OrthographicCamera GetGCamera()
+    {
+        return (OrthographicCamera)gStage.getCamera();
+    }
     //extend
     public static Vector2 GetMousePos()
     {
@@ -141,9 +148,25 @@ public class Scene {
     {
         SetPosition(actor,pos,Align.bottomLeft);
     }
+    public static void SetStagePosition(Actor actor,Vector2 pos)
+    {
+        SetStagePosition(actor,pos,Align.bottomLeft);
+    }
+    public static void SetStagePosition(Actor actor,Vector2 pos,int align)
+    {
+        actor.stageToLocalCoordinates(pos);
+        actor.setPosition(pos.x,pos.y,align);
+    }
     public static Rectangle GetRect(Actor actor)
     {
         return new Rectangle(actor.getX(),actor.getY(),actor.getWidth(),actor.getHeight());
+    }
+    //Bounds
+    public static void SetBounds(Actor actor,float x,float y,int align,float width,float height,Group parent)
+    {
+        actor.setSize(width, height);
+        actor.setPosition(x,y,align);
+        parent.addActor(actor);
     }
     //convert
     public static Group TableToGroup(Table table)

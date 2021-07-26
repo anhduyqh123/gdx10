@@ -27,13 +27,4 @@ public class IRotate extends IBaseAction{
     {
         return Actions.rotateTo(angle,duration, iInter.value);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IRotate)) return false;
-        if (!super.equals(o)) return false;
-        IRotate iRotate = (IRotate) o;
-        return angle == iRotate.angle;
-    }
 }

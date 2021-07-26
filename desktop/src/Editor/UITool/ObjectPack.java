@@ -21,6 +21,12 @@ public class ObjectPack extends IGroup {
     {
         this.pack = pack;
         assetPackage = Assets.GetAssetPackage(pack);
+        Renew();
+    }
+    public void Renew()
+    {
+        list.clear();
+        map.clear();
         for(AssetNode n : assetPackage.GetNodes(AssetNode.Kind.Object))
         {
             IActor iActor = GUIData.i.Get(pack,n.name);
@@ -56,6 +62,12 @@ public class ObjectPack extends IGroup {
         map.put(childName,child);
         child.SetConnect(null);
     }
+
+    @Override
+    public void Refresh() {
+
+    }
+
     @Override
     public Collection<String> GetChildName() {
         List<String> list = new ArrayList<>(map.keySet());

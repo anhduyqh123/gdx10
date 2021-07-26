@@ -4,6 +4,7 @@ import GameGDX.Assets;
 import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Language;
+import GameGDX.Reflect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -49,7 +50,7 @@ public class IImage extends IActor {
 
     @Override
     public void RefreshContent() {
-        SetTexture(iTexture.GetTexture(GetExtend()));
+        SetDrawable(iTexture.GetDrawable(GetExtend()));
     }
 
     @Override
@@ -68,22 +69,21 @@ public class IImage extends IActor {
     }
     public void SetTexture(TextureRegion texture)
     {
+        SetDrawable(NewDrawable(texture));
+    }
+    public void SetDrawable(Drawable drawable)
+    {
         Image img = GetActor();
-        img.setDrawable(NewDrawable(texture));
+        img.setDrawable(drawable);
     }
     private String GetExtend()
     {
         if (multiLanguage) return Language.GetCode();
         return "";
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IImage)) return false;
-        if (!super.equals(o)) return false;
-        IImage iImage = (IImage) o;
-        return Float.compare(iImage.sizeScale, sizeScale) == 0 && multiLanguage == iImage.multiLanguage && iTexture.equals(iImage.iTexture);
+    protected TextureRegion GetTexture()
+    {
+        return iTexture.GetTexture(GetExtend());
     }
 
     //class
@@ -103,13 +103,9 @@ public class IImage extends IActor {
                 return new TextureRegion(emptyTexture);
             }
         }
-
         @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof ITexture)) return false;
-            ITexture iTexture = (ITexture) o;
-            return name.equals(iTexture.name);
+        public boolean equals(Object obj) {
+            return Reflect.equals(this,obj);
         }
     }
     public static class INinePath extends ITexture
@@ -119,15 +115,6 @@ public class IImage extends IActor {
         public Drawable GetDrawable(String extend) {
             NinePatch ninePatch = new NinePatch(GetTexture(extend),left,right,top,bottom);
             return new NinePatchDrawable(ninePatch);
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof INinePath)) return false;
-            if (!super.equals(o)) return false;
-            INinePath iNinePath = (INinePath) o;
-            return left == iNinePath.left && right == iNinePath.right && top == iNinePath.top && bottom == iNinePath.bottom;
         }
     }
 

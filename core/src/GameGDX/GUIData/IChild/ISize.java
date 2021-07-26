@@ -1,6 +1,7 @@
 package GameGDX.GUIData.IChild;
 
 import GameGDX.GDX;
+import GameGDX.Reflect;
 import GameGDX.Scene;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -61,10 +62,7 @@ public class ISize {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ISize)) return false;
-        ISize iSize = (ISize) o;
-        return Float.compare(iSize.width, width) == 0 && Float.compare(iSize.height, height) == 0 && Float.compare(iSize.scale, scale) == 0 && Float.compare(iSize.rotate, rotate) == 0 && extendScreen == iSize.extendScreen && fillW == iSize.fillW && fillH == iSize.fillH && origin == iSize.origin;
+    public boolean equals(Object obj) {
+        return Reflect.equals(this,obj);
     }
 }

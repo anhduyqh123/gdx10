@@ -26,13 +26,4 @@ public class IMove extends IBaseAction{
         if (useY) y0 = iPos.GetY();
         return Actions.moveToAligned(x0,y0,align,duration,iInter.value);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IMove)) return false;
-        if (!super.equals(o)) return false;
-        IMove iMove = (IMove) o;
-        return useX == iMove.useX && useY == iMove.useY && iPos.equals(iMove.iPos);
-    }
 }

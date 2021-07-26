@@ -32,13 +32,4 @@ public class IMoveArc extends IMovePath{
         mid.add(dir.setLength(l*Math.abs(percent)));
         return mid;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IMoveArc)) return false;
-        if (!super.equals(o)) return false;
-        IMoveArc iMoveArc = (IMoveArc) o;
-        return Float.compare(iMoveArc.percent, percent) == 0;
-    }
 }

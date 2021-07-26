@@ -20,7 +20,7 @@ public class ILabel extends IActor {
     public String text = "text";
     public IAlign alignment = IAlign.center;
     public float fontScale = 1f;
-    public boolean bestFix,wrap,multiLanguage;
+    public boolean bestFix,wrap,multiLanguage,markup;
 
     //Multi Language
     private String GetValue(String value)
@@ -110,6 +110,9 @@ public class ILabel extends IActor {
     public void RefreshContent() {
         Label lb = GetActor();
         lb.setText(GetText());
+        lb.setStyle(new Label.LabelStyle(GetFont(), Color.WHITE));
+        lb.setWrap(wrap);
+        if (bestFix) BestFix(GetActor());
     }
 
     @Override
@@ -135,21 +138,6 @@ public class ILabel extends IActor {
         lb.setText(text);
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (!(object instanceof ILabel)) return false;
-        if (!super.equals(object)) return false;
-        ILabel iLabel = (ILabel) object;
-        return Float.compare(iLabel.fontScale, fontScale) == 0 &&
-                bestFix == iLabel.bestFix &&
-                wrap == iLabel.wrap &&
-                multiLanguage == iLabel.multiLanguage &&
-                font.equals(iLabel.font) &&
-                text.equals(iLabel.text) &&
-                alignment == iLabel.alignment;
-    }
-
     //static
     public static String gFont = "font";
     private static void BestFix(Label label)
@@ -162,9 +150,9 @@ public class ILabel extends IActor {
         if (label.getWrap())
         {
             label.validate();
-            float area = label.getGlyphLayout().width*label.getGlyphLayout().height;
-            float fixArea = label.getWidth()*label.getHeight();
-            scale = (float) Math.sqrt(fixArea/area);
+            float w = label.getGlyphLayout().width,h=label.getGlyphLayout().height,w0=label.getWidth(),h0=label.getHeight();
+            scale = (float) Math.sqrt((w0*h0)/(w*h));
+            if (scale>1) scale = Math.min(w0/w,h0/h);
         }
         if (scale>1) scale = 1;
         label.setFontScale(scale*label.getFontScaleX());

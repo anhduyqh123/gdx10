@@ -26,8 +26,9 @@ public class ITable extends IGroup {
         return new Table();
     }
 
-    protected void ForEach(GDX.Runnable<IActor> cb)
+    public void ForEach(GDX.Runnable<IActor> cb)
     {
+        if (getChildren==null) return;
         for(IActor i : getChildren.Run())
             cb.Run(i);
     }
@@ -36,6 +37,11 @@ public class ITable extends IGroup {
         super.StopAction();
         Table table = GetActor();
         table.layout();
+    }
+
+    @Override
+    public void AddChildAndConnect(String name, IActor child) {
+        AddChild(name,child);
     }
 
     @Override
@@ -72,9 +78,9 @@ public class ITable extends IGroup {
     public void RefreshIActor(Collection<IActor> iActors)
     {
         List<Actor> children = new ArrayList<>();
+        for(IActor i : iActors) i.SetConnect(this::GetActor);
         for(IActor i : iActors)
         {
-            i.SetConnect(this::GetActor);
             i.Refresh();
             children.add(i.GetActor());
         }
@@ -105,14 +111,5 @@ public class ITable extends IGroup {
         for(int i=0;i<list.size();i++)
             cb.Run(list.get(i),iActors.get(i));
         return iActors;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ITable)) return false;
-        if (!super.equals(o)) return false;
-        ITable table = (ITable) o;
-        return Float.compare(table.childWidth, childWidth) == 0 && Float.compare(table.childHeight, childHeight) == 0 && column == table.column && Float.compare(table.spaceX, spaceX) == 0 && Float.compare(table.spaceY, spaceY) == 0 && Float.compare(table.padX, padX) == 0 && Float.compare(table.padY, padY) == 0 && contentAlign == table.contentAlign && rowAlign == table.rowAlign;
     }
 }

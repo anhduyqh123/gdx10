@@ -30,13 +30,4 @@ public class IColor extends IBaseAction{
         if (current) return Get(iActor.GetActor().getColor());
         return Get();
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IColor)) return false;
-        if (!super.equals(o)) return false;
-        IColor iColor = (IColor) o;
-        return hexColor.equals(iColor.hexColor);
-    }
 }

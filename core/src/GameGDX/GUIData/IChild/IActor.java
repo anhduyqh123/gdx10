@@ -19,7 +19,6 @@ public class IActor {
     public IActionList acList = new IActionList();
 
     protected GDX.Func1<Actor,String> connect;
-    //protected GDX.Func<IActor> getMain;
     private GDX.Func<Actor> getActor;
 
     public IActor(){}
@@ -122,19 +121,6 @@ public class IActor {
         iSize.getTarget = connect;
     }
 
-//    public void InitMain()
-//    {
-//        SetMain(()->this);
-//    }
-//    public IActor GetMain()
-//    {
-//        return getMain.Run();
-//    }
-//    public void SetMain(GDX.Func<IActor> getMain)
-//    {
-//        this.getMain = getMain;
-//    }
-
     //action
     public void StopAction()
     {
@@ -156,10 +142,7 @@ public class IActor {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IActor)) return false;
-        IActor iActor = (IActor) o;
-        return visible == iActor.visible && prefab.equals(iActor.prefab) && touchable == iActor.touchable && hexColor.equals(iActor.hexColor) && iSize.equals(iActor.iSize) && iPos.equals(iActor.iPos) && acList.equals(iActor.acList);
+    public boolean equals(Object obj) {
+        return Reflect.equals(this,obj);
     }
 }

@@ -2,7 +2,7 @@ package Editor.UITool.Form;
 
 import Editor.GDXTool;
 import Editor.JFameUI;
-import Editor.UITool.Config;
+import Editor.UITool.UIConfig;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.AssetLoading.AssetPackage;
 import GameGDX.AssetLoading.GameData;
@@ -36,7 +36,7 @@ public class PackForm {
     {
         InitPackages(packs);
         Click(btSave, ()->{
-            Config.Save();
+            UIConfig.Save();
             ui.NewDialog("Success!",panel1);
         });
         Click(btGenerateAtlas,()->{

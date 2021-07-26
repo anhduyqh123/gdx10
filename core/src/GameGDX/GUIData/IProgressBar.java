@@ -18,13 +18,4 @@ public class IProgressBar extends IScrollImage{
         ProgressBar pro = GetActor();
         pro.SetValue(percent);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IProgressBar)) return false;
-        if (!super.equals(o)) return false;
-        IProgressBar that = (IProgressBar) o;
-        return Float.compare(that.percent, percent) == 0;
-    }
 }

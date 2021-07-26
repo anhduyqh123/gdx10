@@ -2,11 +2,86 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.ConfigForm">
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
     <constraints>
-      <xy x="20" y="20" width="675" height="480"/>
+      <xy x="20" y="20" width="723" height="480"/>
     </constraints>
-    <properties/>
+    <properties>
+      <preferredSize width="700" height="460"/>
+    </properties>
     <border type="none"/>
     <children>
+      <grid id="61ae5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="450" height="450"/>
+        </properties>
+        <border type="none" title="config"/>
+        <children>
+          <grid id="bfcbe" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <preferredSize width="100" height="400"/>
+            </properties>
+            <border type="none" title="var"/>
+            <children>
+              <scrollpane id="7546">
+                <constraints/>
+                <properties>
+                  <horizontalScrollBarPolicy value="31"/>
+                  <preferredSize width="80" height="128"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="2971e" class="javax.swing.JList" binding="list1" default-binding="true">
+                    <constraints/>
+                    <properties>
+                      <preferredSize width="80" height="120"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="90091" class="javax.swing.JComboBox" binding="cbType">
+                <constraints/>
+                <properties>
+                  <preferredSize width="80" height="30"/>
+                </properties>
+              </component>
+              <component id="1ded9" class="javax.swing.JTextField" binding="tfName">
+                <constraints/>
+                <properties>
+                  <preferredSize width="70" height="30"/>
+                  <text value="name"/>
+                </properties>
+              </component>
+              <component id="4dc2f" class="javax.swing.JButton" binding="btAdd">
+                <constraints/>
+                <properties>
+                  <text value="Add"/>
+                </properties>
+              </component>
+              <component id="6cda2" class="javax.swing.JButton" binding="btDelete">
+                <constraints/>
+                <properties>
+                  <text value="Delete"/>
+                </properties>
+              </component>
+              <component id="2b593" class="javax.swing.JButton" binding="btSave2">
+                <constraints/>
+                <properties>
+                  <text value="Save"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="3788b" binding="pnValue" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <preferredSize width="300" height="400"/>
+            </properties>
+            <border type="none" title="value"/>
+            <children/>
+          </grid>
+        </children>
+      </grid>
       <grid id="38f9b" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints/>
         <properties>
@@ -19,7 +94,7 @@
             <properties>
               <preferredSize width="200" height="200"/>
             </properties>
-            <border type="line" title="Config">
+            <border type="line" title="UIConfig">
               <color color="-4473925"/>
             </border>
             <children/>

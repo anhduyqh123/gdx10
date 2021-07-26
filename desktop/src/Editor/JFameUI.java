@@ -19,6 +19,13 @@ import java.util.List;
 public class JFameUI {
 
     //<editor-fold desc="Object">
+    public List<String> GetDeclaredFields(Object object)
+    {
+        List<String> list = new ArrayList<>();
+        for(Field f : Reflect.GetDeclaredFields(object.getClass()))
+            list.add(f.getName());
+        return list;
+    }
     public List<String> GetFields(Object object)
     {
         List<String> list = new ArrayList<>();
@@ -60,7 +67,9 @@ public class JFameUI {
             }
             if (Reflect.IsBaseType(type))
             {
-                NewTextField(name,value,parent,st->SetField(field,object,st));
+                int w = 50;
+                if (type == String.class) w = 80;
+                NewTextField(name,value,w,parent,st->SetField(field,object,st));
                 return;
             }
             InitComponents(value, parent);
@@ -137,6 +146,19 @@ public class JFameUI {
     }
     //</editor-fold>
     //<editor-fold desc="TextField">
+    public void TextField(JTextField textField, String value, GDX.Runnable<String> onChange)
+    {
+        textField.setText(value);
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                try {
+                    onChange.Run(textField.getText());
+                }catch (Exception ex){}
+            }
+        });
+    }
+
     private JTextField NewTextField(String value,int width,int height)
     {
         JTextField textField = new JTextField(value);
@@ -456,10 +478,8 @@ public class JFameUI {
     }
     public JFrame NewJFrame(String name,int width,int height)
     {
-        JFrame frame = new JFrame(name);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        JFrame frame = NewJFrame(name);
+        frame.setSize(width, height);
         return frame;
     }
 

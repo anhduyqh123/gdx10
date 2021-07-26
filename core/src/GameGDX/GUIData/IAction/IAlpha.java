@@ -42,13 +42,4 @@ public class IAlpha extends IBaseAction{
         if (current) return Get(iActor.GetActor().getColor().a);
         return Get();
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IAlpha)) return false;
-        if (!super.equals(o)) return false;
-        IAlpha iAlpha = (IAlpha) o;
-        return Float.compare(iAlpha.alpha, alpha) == 0;
-    }
 }

@@ -7,6 +7,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
 public class GDXGame extends ApplicationAdapter {
+    private Scene scene;
+    private Assets assets;
+
     @Override
     public void pause() {
         GMusic.OnPause();
@@ -18,32 +21,39 @@ public class GDXGame extends ApplicationAdapter {
     }
     @Override
     public void create() {
+        Init();
+        DoneLoading();
+    }
+    protected void Init()
+    {
         new GDX();
         new GMusic();
-        NewScene().AddBackHandle(Screen::BackButtonEvent);
-        DoneLoading();
+        scene = NewScene();
+        scene.AddBackHandle(Screen::BackButtonEvent);
+        assets = NewAssets();
+        Scene.stage.addActor(assets);
     }
 
     @Override
     public void resize(int width, int height) {
-        Scene.Resize(width, height);
+        scene.Resize(width, height);
     }
 
     @Override
     public void render() {
-        Scene.Act();
+        scene.Act(GDX.DeltaTime());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Scene.Render();
+        scene.Render();
     }
 
     @Override
     public void dispose() {
-        Scene.Dispose();
+        scene.Dispose();
     }
 
     public void DoneLoading() //need to Override
     {
-        new Assets(GetGameData(true));
+        assets.SetData(GetGameData(true));
         Assets.LoadPackages(()->{
             //done loading
         },"first");//load first package
@@ -59,6 +69,10 @@ public class GDXGame extends ApplicationAdapter {
     protected Scene NewScene()
     {
         return new Scene(720,1280);
+    }
+    protected Assets NewAssets()
+    {
+        return new Assets();
     }
 
     protected GameData GetGameData(boolean makeNew)

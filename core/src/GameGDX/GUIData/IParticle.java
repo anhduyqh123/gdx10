@@ -3,6 +3,7 @@ package GameGDX.GUIData;
 import GameGDX.Assets;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Actors.Particle;
+import GameGDX.Reflect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -88,13 +89,9 @@ public class IParticle extends IActor {
             if (size!=null) size.SetScale(e.getXScale(),e.getYScale());
             if (offset!=null) offset.SetRanged(e.getXOffsetValue(),e.getYOffsetValue());
         }
-
         @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof IEmitter)) return false;
-            IEmitter iEmitter = (IEmitter) o;
-            return index == iEmitter.index && sprite.equals(iEmitter.sprite) && size.equals(iEmitter.size) && offset.equals(iEmitter.offset);
+        public boolean equals(Object obj) {
+            return Reflect.equals(this,obj);
         }
     }
     public static class Value
@@ -126,11 +123,8 @@ public class IParticle extends IActor {
         }
 
         @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Value)) return false;
-            Value value = (Value) o;
-            return minX == value.minX && maxX == value.maxX && minY == value.minY && maxY == value.maxY;
+        public boolean equals(Object obj) {
+            return Reflect.equals(this,obj);
         }
     }
 }

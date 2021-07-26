@@ -26,13 +26,4 @@ public class IBaseAction extends IDelay{
     {
         return iInter.value;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IBaseAction)) return false;
-        if (!super.equals(o)) return false;
-        IBaseAction that = (IBaseAction) o;
-        return current == that.current && iInter == that.iInter;
-    }
 }

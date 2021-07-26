@@ -20,13 +20,4 @@ public class IVisible extends IAction{
     public Action Get(IActor iActor) {
         return Get();
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IVisible)) return false;
-        if (!super.equals(o)) return false;
-        IVisible iVisible = (IVisible) o;
-        return visible == iVisible.visible;
-    }
 }

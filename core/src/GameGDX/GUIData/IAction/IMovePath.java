@@ -4,6 +4,7 @@ import GameGDX.Actions.MovePath;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
 import GameGDX.GUIData.IChild.IPos;
+import GameGDX.Reflect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -40,15 +41,6 @@ public class IMovePath extends IDelay{
         return movePath;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IMovePath)) return false;
-        if (!super.equals(o)) return false;
-        IMovePath iMovePath = (IMovePath) o;
-        return continuous == iMovePath.continuous && isRotate == iMovePath.isRotate && Float.compare(iMovePath.delAngle, delAngle) == 0 && points.equals(iMovePath.points) && iInter == iMovePath.iInter && iAlign == iMovePath.iAlign;
-    }
-
     public static class IPosX {
 
         public boolean useX = true, useY = true;
@@ -73,11 +65,8 @@ public class IMovePath extends IDelay{
         }
 
         @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof IPosX)) return false;
-            IPosX iPosX = (IPosX) o;
-            return useX == iPosX.useX && useY == iPosX.useY && current == iPosX.current && iPos.equals(iPosX.iPos);
+        public boolean equals(Object obj) {
+            return Reflect.equals(this,obj);
         }
     }
 }

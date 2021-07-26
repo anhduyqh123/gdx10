@@ -1,10 +1,12 @@
 package Editor.UITool.Form;
 
 import Editor.JFameUI;
-import Editor.UITool.Config;
+import Editor.UITool.UIConfig;
 import Editor.UITool.Form.Panel.ContentPanel;
 import Editor.UITool.ObjectData;
 import Editor.UITool.ObjectPack;
+import Extend.Box2d.GBox2d;
+import GameGDX.AssetLoading.AssetNode;
 import GameGDX.Assets;
 import GameGDX.GDX;
 import GameGDX.GUIData.*;
@@ -51,7 +53,7 @@ public class DataForm {
     private IActor selectedMain;
     private ObjectPack data;
     private ObjectData objectData = new ObjectData();
-    private Config config = Config.i;
+    private UIConfig uiConfig = UIConfig.i;
 
     private final List<String> allPack = new ArrayList<>(Assets.GetData().GetKeys());
 
@@ -92,7 +94,7 @@ public class DataForm {
 
         Click(pEdit,()->{
             String pack = cbPack.getSelectedItem()+"";
-            ui.NewJFrame("Package",new PackForm(config.GetPacks(pack)).panel1,
+            ui.NewJFrame("Package",new PackForm(uiConfig.GetPacks(pack)).panel1,
             ()->LoadPackage(pack));
         });
 
@@ -126,15 +128,19 @@ public class DataForm {
         ui.ComboBox(cbPack,pack,pack[0],vl->{
             LoadPackage(vl);
             data = objectData.Get(vl);
+            data.Renew();
             gTree.Refresh();
             gTree.SetSelection(data);
         });
     }
     private void LoadPackage(String pack)
     {
-        List<String> list = config.GetPacks(pack);
+        List<String> list = uiConfig.GetPacks(pack);
         for(String p : list) Assets.RemovePackage(p);
+        for (AssetNode n : Assets.GetAssetPackage(pack).GetNodes(AssetNode.Kind.Object))
+            GUIData.i.Remove(n.name);
         Assets.LoadPackages(null,list.toArray(new String[0]));
+
     }
     private void Click(JButton bt,Runnable run)
     {
@@ -155,10 +161,11 @@ public class DataForm {
     {
         tfName.setText(name);
         IActor object = gTree.GetObject(gTree.GetMainNode());
-        if (object.equals(selectedMain)) return;
+        if (object.equals(selectedMain) && gTree.GetName(object).equals(gTree.GetName(selectedMain))) return;
         if (selectedMain!=null) selectedMain.GetActor().remove();
+        GBox2d.Clear();
         selectedMain = object;
-        selectedMain.SetConnect(n-> Scene.ui);
+        selectedMain.SetConnect(n-> Scene.ui2);
         selectedMain.Refresh();
         //selectedMain.InitMain();
     }
@@ -207,8 +214,8 @@ public class DataForm {
         }
         iGroup.Refresh();
         gTree.Refresh();
-        if (iActor ==null) gTree.SetSelection(iGroup);
-        else gTree.SetSelection(iActor);
+        if (iActor==null) iActor = iGroup;
+        gTree.SetSelection(iActor);
     }
     private void AddTo()
     {

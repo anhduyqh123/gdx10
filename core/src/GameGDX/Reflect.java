@@ -10,6 +10,25 @@ public class Reflect {
     private static final Map<Class,Object> typeToDefaultObject = new HashMap<>();
     private static final Map<Class,Map<String, Field>> typeToFields = new HashMap<>();
 
+    public static boolean equals(Object ob1,Object ob2) //for class
+    {
+        if (ob1==null && ob2==null) return true;
+        if (ob1!=null && ob2!=null) return EqualsFields(ob1,ob2);
+        return false;
+    }
+    private static boolean EqualsFields(Object ob1,Object ob2)
+    {
+        Class type1 = ob1.getClass();
+        Class type2 = ob2.getClass();
+        if (!type1.equals(type2)) return false;
+        for (Field f : Reflect.GetFields(type1).values())
+        {
+            Object e1 = Reflect.GetValue(f,ob1);
+            Object e2 = Reflect.GetValue(f,ob2);
+            if (!e1.equals(e2)) return false;
+        }
+        return true;
+    }
     public static boolean Equals(Object objectA,Object objectB)
     {
         if (objectA==null && objectB==null) return true;
@@ -80,6 +99,13 @@ public class Reflect {
         }catch (Exception e){}
         return null;
     }
+    public static Field[] GetDeclaredFields(Class type) //only local field
+    {
+        try {
+            return ClassReflection.getDeclaredFields(type);
+        }catch (Exception e){}
+        return null;
+    }
     public static List<Field> GetAllFields(Class type) //All Field
     {
         Array<Class> classHierarchy = new Array();
@@ -124,21 +150,21 @@ public class Reflect {
         return null;
     }
 
-    public static Object NewInstance (Class type) {
-        if (IsBaseType(type)) return NewBaseType(type);
+    public static <T> T NewInstance (Class type) {
+        if (IsBaseType(type)) return (T)NewBaseType(type);
         try {
-            return ClassReflection.newInstance(type);
+            return (T)ClassReflection.newInstance(type);
         } catch (Exception ex) {
             try {
                 // Try a private constructor.
                 Constructor constructor = ClassReflection.getDeclaredConstructor(type);
                 constructor.setAccessible(true);
-                return constructor.newInstance();
+                return (T)constructor.newInstance();
             } catch (SecurityException ignored) {
             } catch (ReflectionException ignored) {
                 if (ClassReflection.isAssignableFrom(Enum.class, type)) {
                     if (type.getEnumConstants() == null) type = type.getSuperclass();
-                    return type.getEnumConstants()[0];
+                    return (T)type.getEnumConstants()[0];
                 }
                 if (type.isArray())
                     throw new SerializationException("Encountered JSON object when expected array of type: " + type.getName(), ex);

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.PhysicsForm">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="838" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="f2412" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="200" height="200"/>
+        </properties>
+        <border type="none" title="mark"/>
+        <children>
+          <scrollpane id="42c66">
+            <constraints/>
+            <properties>
+              <horizontalScrollBarPolicy value="31"/>
+              <preferredSize width="80" height="128"/>
+            </properties>
+            <border type="none" title="my"/>
+            <children>
+              <component id="34323" class="javax.swing.JList" binding="list2">
+                <constraints/>
+                <properties>
+                  <preferredSize width="80" height="120"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <scrollpane id="89aa1">
+            <constraints/>
+            <properties>
+              <horizontalScrollBarPolicy value="31"/>
+              <preferredSize width="80" height="128"/>
+            </properties>
+            <border type="none" title="all"/>
+            <children>
+              <component id="eeefc" class="javax.swing.JList" binding="list1">
+                <constraints/>
+                <properties>
+                  <preferredSize width="80" height="120"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <component id="94427" class="javax.swing.JButton" binding="btAdd">
+            <constraints/>
+            <properties>
+              <text value="Add"/>
+            </properties>
+          </component>
+          <component id="bcc51" class="javax.swing.JButton" binding="btDelete">
+            <constraints/>
+            <properties>
+              <text value="Delete"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="e9056" binding="pnBody" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="200" height="300"/>
+        </properties>
+        <border type="none" title="body"/>
+        <children>
+          <component id="33f2" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="category"/>
+            </properties>
+          </component>
+          <component id="9704" class="javax.swing.JComboBox" binding="cbCategory">
+            <constraints/>
+            <properties>
+              <preferredSize width="100" height="30"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="a79aa" binding="pnFixture" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="200" height="330"/>
+        </properties>
+        <border type="none" title="fixture"/>
+        <children>
+          <component id="9b03c" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="Shape"/>
+            </properties>
+          </component>
+          <component id="53196" class="javax.swing.JComboBox" binding="cbShape">
+            <constraints/>
+            <properties>
+              <preferredSize width="100" height="30"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

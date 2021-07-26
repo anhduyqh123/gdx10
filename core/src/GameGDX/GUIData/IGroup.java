@@ -2,6 +2,7 @@ package GameGDX.GUIData;
 
 import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -42,7 +43,7 @@ public class IGroup extends IActor {
     public void AddChildAndConnect(String name, IActor child)
     {
         AddChild(name,child);
-        child.SetConnect(n->GetActor(n));
+        child.SetConnect(this::GetActor);
 
         //SetMain(getMain);
     }
@@ -137,17 +138,16 @@ public class IGroup extends IActor {
     {
         return list;
     }
-    protected void ForEach(GDX.Runnable<IActor> cb)
+    public void ForEach(GDX.Runnable<IActor> cb)
     {
         for(String n : list) cb.Run(GetIActor(n));
     }
 
     @Override
     public void SetConnect(GDX.Func1 connect) {
-        iSize.getDefaultSize = ()->GetDefaultSize(sizeName);
         super.SetConnect(connect);
-        for(String name : list)
-            map.get(name).SetConnect(n->GetActor(n));
+        ForEach(i->i.SetConnect(this::GetActor));
+        iSize.getDefaultSize = ()->GetDefaultSize(sizeName);
     }
 
 //    @Override
@@ -166,18 +166,5 @@ public class IGroup extends IActor {
     public void StopAction() {
         super.StopAction();
         ForEach(IActor::StopAction);
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (!(object instanceof IGroup)) return false;
-        if (!super.equals(object)) return false;
-
-        IGroup iGroup = (IGroup) object;
-
-        if (!map.equals(iGroup.map)) return false;
-        if (!list.equals(iGroup.list)) return false;
-        return sizeName.equals(iGroup.sizeName);
     }
 }

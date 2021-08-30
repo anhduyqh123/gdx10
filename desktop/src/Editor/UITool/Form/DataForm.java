@@ -13,6 +13,7 @@ import GameGDX.GUIData.*;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
 import GameGDX.Scene;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -157,6 +158,12 @@ public class DataForm {
         }
         return node;
     }
+    private void ResetCamera()
+    {
+        OrthographicCamera camera = Scene.GetUICamera();
+        camera.zoom = 1;
+        camera.position.set(Scene.width/2,Scene.height/2,0);
+    }
     private void OnSelect(String name)
     {
         tfName.setText(name);
@@ -167,6 +174,7 @@ public class DataForm {
         selectedMain = object;
         selectedMain.SetConnect(n-> Scene.ui2);
         selectedMain.Refresh();
+        ResetCamera();
         //selectedMain.InitMain();
     }
     private void NewChild(IActor newObject)

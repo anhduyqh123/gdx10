@@ -20,7 +20,7 @@ public class ILabel extends IActor {
     public String text = "text";
     public IAlign alignment = IAlign.center;
     public float fontScale = 1f;
-    public boolean bestFix,wrap,multiLanguage,markup;
+    public boolean bestFix,wrap,multiLanguage;
 
     //Multi Language
     private String GetValue(String value)

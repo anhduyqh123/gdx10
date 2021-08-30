@@ -1,20 +1,21 @@
 package Editor.UITool.Form.Panel;
 
 import Editor.JFameUI;
+import Editor.UITool.Form.AnimForm;
 import Editor.UITool.Form.IEmitterForm;
-import Editor.UITool.Form.PhysicsForm;
-import Extend.Box2d.IObject;
+import Extend.Box2d.GRope;
 import Extend.CircleProgress.ICircleProgress;
+import Extend.Frame.IFrame;
 import Extend.Spine.GSpine;
 import Extend.Spine.ISpine;
+import Extend.Frame.GFrame;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.Assets;
-import GameGDX.GDX;
 import GameGDX.GUIData.*;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
-import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.Field;
+import javafx.scene.control.ComboBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +26,7 @@ import java.util.List;
 public class ContentPanel {
 
     public static ContentPanel i;
+
     private String[] GetFonts()
     {
         List<String> list = new ArrayList<>();
@@ -35,7 +37,7 @@ public class ContentPanel {
     public Class[] GetTypes()
     {
         Class[] types = {IGroup.class, IImage.class, ILabel.class, ITable.class,IScrollPane.class,IParticle.class, IActor.class,
-                ISpine.class, IObject.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class};
+                ISpine.class, IFrame.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class, GRope.class};
         return types;
     }
     public JPanel SetContent(JPanel panel, IActor iActor)
@@ -47,7 +49,7 @@ public class ContentPanel {
         if (iActor instanceof IGroup) return new JIGroup(iActor,panel);
         if (iActor instanceof IParticle) return new JIParticle(iActor,panel);
         if (iActor instanceof ISpine) return new JISpine(iActor,panel);
-        if (iActor instanceof IObject) return new JIObject(iActor,panel);
+        if (iActor instanceof IFrame) return new JIFrame(iActor,panel);
         return new JIActor(iActor,panel);
     }
     protected class JIActor extends JPanel
@@ -55,39 +57,39 @@ public class ContentPanel {
         protected JFameUI ui = new JFameUI();
         protected IActor iActor;
         protected JPanel panel;
+        protected List<String> fields = new ArrayList<>();
+        protected List<String> removeFields = new ArrayList<>();
 
         public JIActor(){}
         public JIActor(IActor iActor, JPanel panel)
         {
             this.iActor = iActor;
             this.panel = panel;
+            fields = ui.GetFields(iActor);
+            InitInValidFields();
+            fields.removeAll(removeFields);
             Init(panel);
         }
         protected void Init(JPanel panel)
         {
             ui.NewLabel(iActor.getClass().getSimpleName(),panel).setForeground(Color.BLUE);
-            ui.InitComponents(Arrays.asList("visible","touchable"), iActor,panel);
             ui.NewColorPicker(panel, iActor.hexColor, hex->{
                 iActor.hexColor=hex;
                 iActor.Refresh();
             });
-            InitField(iActor.getClass(),panel);
             if (!iActor.prefab.equals(""))
                 ui.NewLabel("prefab:"+ iActor.prefab,panel);
+
+            ui.InitComponents(fields,iActor,panel);
         }
-        protected boolean InValidField(String name)
+        protected void InitInValidFields()
         {
-            return true;
+            InitInValidFields("iSize","iPos","acList","hexColor","prefab");
         }
-        protected void InitField(Class type,JPanel panel)
+        protected void InitInValidFields(String... arr)
         {
-            for(Field field : ClassReflection.getDeclaredFields(type))
-            {
-                if (field.isStatic()) continue;
-                if (field.getType().isInterface()) continue;
-                if (InValidField(field.getName())) continue;
-                ui.NewComponent(field, iActor,panel);
-            }
+            for (String s : arr)
+                removeFields.add(s);
         }
     }
     class JIGroup extends JIActor
@@ -104,33 +106,29 @@ public class ContentPanel {
         }
 
         @Override
-        protected boolean InValidField(String name) {
-            if (name.equals("sizeName")) return true;
-            return false;
+        protected void InitInValidFields() {
+            super.InitInValidFields();
+            InitInValidFields("sizeName");
         }
     }
     class JIImage extends JIActor
     {
-        protected JPanel left,right;
         public JIImage(IActor iActor, JPanel panel)
         {
-            this.iActor = iActor;
-            this.panel = panel;
-            IImage iImage = (IImage) iActor;
-
-            left = ui.NewPanel(200,140,panel);
-            right = ui.NewPanel(500,140,panel);
-            ui.SetGap(left,0,0);
-            ui.SetGap(right,0,0);
-            InitITexturePanel(iImage,left);
-            Init(right);
+            super(iActor, panel);
         }
 
         @Override
-        protected boolean InValidField(String name) {
-            if (name.equals("hexColor")) return true;
-            if (name.equals("iTexture")) return true;
-            return false;
+        protected void Init(JPanel panel) {
+            IImage iImage = (IImage) iActor;
+            InitITexturePanel(iImage,panel);
+            super.Init(panel);
+        }
+
+        @Override
+        protected void InitInValidFields() {
+            super.InitInValidFields();
+            InitInValidFields("iTexture");
         }
 
         private void InitITexturePanel(IImage iImage, JPanel parent)
@@ -174,7 +172,7 @@ public class ContentPanel {
     {
         public JIProgressBar(IActor iActor, JPanel panel) {
             super(iActor, panel);
-            InitField(IScrollImage.class,right);
+            //InitField(panel);
         }
     }
     class JILabel extends JIActor
@@ -188,9 +186,9 @@ public class ContentPanel {
         }
 
         @Override
-        protected boolean InValidField(String name) {
-            if (name.equals("font")) return true;
-            return false;
+        protected void InitInValidFields() {
+            super.InitInValidFields();
+            InitInValidFields("font");
         }
     }
     class JIParticle extends JIActor
@@ -206,11 +204,6 @@ public class ContentPanel {
                         500,400,par::RefreshEmitter);
             });
         }
-
-        @Override
-        protected boolean InValidField(String name) {
-            return false;
-        }
     }
     class JITable extends JIActor
     {
@@ -221,11 +214,6 @@ public class ContentPanel {
             JTextField tfSL = ui.NewTextField("SL","1",panel);
             ui.NewButton("Clone",panel).addActionListener(e->table.CloneChild(Integer.parseInt(tfSL.getText())));
         }
-
-        @Override
-        protected boolean InValidField(String name) {
-            return false;
-        }
     }
 
     class JISpine extends JIActor
@@ -233,31 +221,51 @@ public class ContentPanel {
         public JISpine(IActor iActor, JPanel panel)
         {
             super(iActor,panel);
+            ISpine iSpine = (ISpine)iActor;
             GSpine spine = iActor.GetActor();
+            String[] skins = spine.GetSkinNames();
+            if (skins!=null)
+                ui.NewComboBox("skins",skins,iSpine.skin,panel,st->{
+                    iSpine.skin = st;
+                    spine.SetSkin(st);
+                });
+
             String[] ani = spine.GetAnimationNames();
             if (ani!=null)
                 ui.NewComboBox("animation",ani,ani[0],panel,st->spine.SetAnimation(st,true));
         }
 
         @Override
-        protected boolean InValidField(String name) {
-            if (name.equals("animation")) return true;
-            return false;
+        protected void InitInValidFields() {
+            super.InitInValidFields();
+            InitInValidFields("animation","skin");
         }
     }
-    class JIObject extends JIActor
+    class JIFrame extends JIActor
     {
-        public JIObject(IActor iActor, JPanel panel) {
-            super(iActor, panel);
-            IObject iObject = (IObject)iActor;
-            ui.NewButton("Body",panel,()->{
-                GDX.PostRunnable(()->new PhysicsForm(iObject));
-            });
+        public JIFrame(IActor iActor, JPanel panel)
+        {
+            super(iActor,panel);
+            IFrame iFrame = (IFrame)iActor;
+            GFrame frame = iActor.GetActor();
+            String[] ani = frame.GetAnimationNames();
+            if (ani.length>0)
+            {
+                JComboBox cb = ui.NewComboBox("animation",ani,ani[0],panel, frame::SetAnimation);
+                cb.setSelectedIndex(0);
+            }
+            ui.NewButton("IAnim",panel,()->new AnimForm(iFrame.iAniMap,()->{
+                iActor.Refresh();
+                panel.removeAll();
+                SetContent(panel, iActor);
+                ui.Repaint(panel);
+            }));
         }
+
         @Override
-        protected boolean InValidField(String name) {
-            if (name.equals("iBody")) return true;
-            return false;
+        protected void InitInValidFields() {
+            super.InitInValidFields();
+            InitInValidFields("iAniMap");
         }
     }
 }

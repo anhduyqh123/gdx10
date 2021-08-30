@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,componentMap:{flat:{class:Extend.Box2d.IPlatform,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:2.612915,y:60.209076},{x:201.38708,y:60.63565},{x:201.38708,y:83.669586},{x:2.1863403,y:84.09613}]},friction:0.4}]}},iTexture:{name:plane1}}

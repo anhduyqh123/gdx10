@@ -31,6 +31,8 @@ public class MainForm {
         optionForm.getObjects = GUIData.i::GetAll;
         optionForm.onClosePack = dataForm::RefreshData;
 
+        iActorForm.isDrag = optionForm::IsDrag;
+
         pnTop.add(dataForm.panel1);
         pnTop.add(optionForm.panel1);
 

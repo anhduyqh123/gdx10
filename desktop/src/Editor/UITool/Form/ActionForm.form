@@ -43,7 +43,7 @@
         <constraints/>
         <properties>
           <horizontalScrollBarPolicy value="31"/>
-          <preferredSize width="200" height="240"/>
+          <preferredSize width="220" height="240"/>
         </properties>
         <border type="none"/>
         <children>

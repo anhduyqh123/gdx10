@@ -1,6 +1,7 @@
 package Editor.UITool;
 
 import Extend.Box2d.GBox2d;
+import Extend.Spine.Assets2;
 import GameGDX.*;
 import GameGDX.AssetLoading.GameData;
 import GameGDX.GUIData.IImage;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -33,19 +35,25 @@ public class MyGame extends GDXGame {
         super.Init();
         GBox2d.active = false;
         gBox2d = new GBox2d();
-        gBox2d.Debug();
-        Scene.stage.addActor(gBox2d);
+        gBox2d.Debug(Scene.GetUICamera());
+
+        Actor actor = new Actor();
+        actor.setSize(Scene.width,Scene.height);
+        actor.setTouchable(Touchable.disabled);
+        actor.setDebug(true);
+        Scene.ui2.addActor(actor);
+        //Scene.stage.addActor(gBox2d);
 
         //screen
-        gBox2d.setSize(Scene.width,Scene.height);
-        gBox2d.setTouchable(Touchable.disabled);
-        gBox2d.setDebug(true);
+//        gBox2d.setSize(Scene.width,Scene.height);
+//        gBox2d.setTouchable(Touchable.disabled);
+//        gBox2d.setDebug(true);
     }
 
     @Override
     public void DoneLoading() {
         GameData data = GetGameData(true);
-        new Assets().SetData(data);
+        new Assets2().SetData(data);
         IImage.NewImage(Color.BLACK,0,0, Align.bottomLeft,Scene.width,Scene.height,Scene.ui);
         Assets.LoadPackages(done,data.GetKeys().toArray(new String[0]));
 
@@ -61,7 +69,6 @@ public class MyGame extends GDXGame {
             public boolean scrolled(InputEvent event, float x, float y, float amountX, float amountY) {
                 float delta = amountY*GDX.DeltaTime();
                 camera.zoom+=delta;
-                gBox2d.Zoom(delta);
                 return super.scrolled(event, x, y, amountX, amountY);
             }
 
@@ -81,7 +88,6 @@ public class MyGame extends GDXGame {
                 dir.setLength(len);
                 Vector2 cPos = new Vector2(camPos).add(dir.x,-dir.y);
                 camera.position.set(cPos,0);
-                gBox2d.Position(new Vector2(camera.position.x,camera.position.y));
             }
         });
     }
@@ -95,5 +101,12 @@ public class MyGame extends GDXGame {
     @Override
     protected Scene NewScene() {
         return new Scene(width,height,new PolygonSpriteBatch());
+    }
+
+    @Override
+    public void render() {
+        gBox2d.Act(GDX.DeltaTime());
+        super.render();
+        gBox2d.Render();
     }
 }

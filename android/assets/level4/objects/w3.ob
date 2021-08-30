@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:40.128906,y:117.804474},{x:67.81537,y:114.25493},{x:82.72347,y:148.3306},{x:38.709076,y:148.3306}]}}]}},iTexture:{name:wood3}}

@@ -21,6 +21,7 @@ public class ListForm {
         parent.add(panel1);
 
         list1.addListSelectionListener(e->{
+            if (e.getValueIsAdjusting()) return;
             int index = list1.getSelectedIndex();
             if (index<0) return;
             onSelect.Run(GetSelected());
@@ -46,7 +47,6 @@ public class ListForm {
     {
         DefaultListModel l = new DefaultListModel<>();
         List<String> data = getData.Run();
-        System.out.println("x"+data);
         for (String s : data) l.addElement(s);
         list1.setModel(l);
     }

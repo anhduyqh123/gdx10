@@ -3,10 +3,12 @@ package Editor.UITool.Form;
 import Editor.JFameUI;
 import Editor.UITool.Form.Panel.ContentPanel;
 import Editor.UITool.Form.Panel.IPosPanel;
+import Editor.UITool.Physics.Box2DMouse;
+import Editor.WrapLayout;
+import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IPos;
 import GameGDX.Scene;
-import GameGDX.Screens.Screen;
 import GameGDX.Util;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -24,10 +26,12 @@ public class IActorForm {
     private JPanel pInfo;
     private JPanel pSize;
     private JPanel pPos;
+    private JPanel pnComponent;
 
     private Runnable onRefresh;
     private JFameUI ui = new JFameUI();
     private Runnable unDrag;
+    public GDX.Func<Boolean> isDrag;
 
     public IActorForm()
     {
@@ -35,13 +39,21 @@ public class IActorForm {
     }
     public void SetData(IActor iActor, List<String> list)
     {
-        //SetDrag(iActor);
+        if (isDrag.Run())
+            SetDrag(iActor);
+        else new Box2DMouse(iActor);
+
+        pnComponent.removeAll();
         pInfo.removeAll();
         pSize.removeAll();
         pPos.removeAll();
 
+        new ComponentForm(iActor,pnComponent);
+
+        pInfo.setLayout(new WrapLayout());
+
         ContentPanel.i.SetContent(pInfo, iActor);
-        ui.InitComponents(Arrays.asList("width","height","origin","scale","rotate","extendScreen","fillW","fillH")
+        ui.InitComponents(Arrays.asList("width","height","origin","scale","rotate","extendScreen","fillW","fillH","scaleX","scaleY")
                 ,iActor.iSize,pSize);
         //int w = iActor.GetActor().getWidth();
         ui.NewLabel("size:"+(int)iActor.GetActor().getWidth()+"-"+(int)iActor.GetActor().getHeight(),pSize);
@@ -60,15 +72,17 @@ public class IActorForm {
     private void SetDrag(IActor iActor)
     {
         if (unDrag!=null) unDrag.run();
-        unDrag = Screen.Return(iActor.GetActor());
         Actor actor = iActor.GetActor();
+        actor.toFront();
         actor.clearListeners();
+        unDrag = ()->actor.clearListeners();
 
         Vector2 p0 = new Vector2();
         Vector2 p = new Vector2();
         actor.addListener(new ClickListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if (button!=0) return false;
                 p0.set(Scene.GetMousePos());
                 p.set(Scene.GetPosition(actor));
                 return true;
@@ -78,6 +92,7 @@ public class IActorForm {
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
                 Vector2 dir = Util.GetDirect(p0,Scene.GetMousePos());
                 Vector2 pos = dir.add(p);
+                Util.Round(pos);
                 Scene.SetPosition(actor,pos);
                 SetPosition(iActor.iPos,Scene.GetPosition(actor,iActor.iPos.align.value));
             }

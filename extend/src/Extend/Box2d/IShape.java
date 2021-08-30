@@ -53,14 +53,21 @@ public abstract class IShape {
 
         @Override
         public void OnCreate(GDX.Runnable<Shape> onCreate) {
+            PolygonShape shape = new PolygonShape();
             Vector2[] points = GetPoints();
-            short[] tri = Util.GetTriangles(Util.GetVertices(points));
-            for (int i=0;i<tri.length;i+=3)
+            if (IsConvexPolygon(points))
             {
-                Vector2[] arr = {points[tri[i]],points[tri[i+1]],points[tri[i+2]]};
-                PolygonShape shape = new PolygonShape();
-                shape.set(arr);
+                shape.set(points);
                 onCreate.Run(shape);
+            }
+            else {
+                short[] tri = Util.GetTriangles(Util.GetVertices(points));
+                for (int i=0;i<tri.length;i+=3)
+                {
+                    Vector2[] arr = {points[tri[i]],points[tri[i+1]],points[tri[i+2]]};
+                    shape.set(arr);
+                    onCreate.Run(shape);
+                }
             }
         }
         protected Vector2[] GetPoints()
@@ -69,6 +76,28 @@ public abstract class IShape {
             for(int i=0;i<arr.length;i++)
                 arr[i] = GBox2d.GameToPhysics(points.get(i));
             return arr;
+        }
+
+        //check ConvexPolygon
+        private boolean IsConvexPolygon(Vector2[] points)
+        {
+            if (points.length<3||points.length>8) return false;
+            for(int i=0;i< points.length;i++)
+                if (GetAngle(points,i)>=180) return false;
+            return true;
+        }
+        private float GetAngle(Vector2[] points, int index)
+        {
+            Vector2 p1 = GetValue(points, index-1);
+            Vector2 p2 = GetValue(points, index);
+            Vector2 p3 = GetValue(points, index+1);
+            return Util.GetAngle(p1,p2,p3);
+        }
+        private Vector2 GetValue(Vector2[] points,int index)
+        {
+            if (index<0) index = points.length-1;
+            if (index>= points.length) index = 0;
+            return points[index];
         }
     }
     public static class IChain extends IPolygon{

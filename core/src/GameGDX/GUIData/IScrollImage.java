@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class IScrollImage extends IImage{
-    public float speed = 1f;
+    public float speed,scroll;
     public boolean isScrollX,isScrollY,keepSize;
     @Override
     protected Actor NewActor() {
@@ -25,5 +25,6 @@ public class IScrollImage extends IImage{
         img.isScrollY = isScrollY;
         img.keepSize = keepSize;
         img.SetTexture(texture);
+        img.SetValue(scroll);
     }
 }

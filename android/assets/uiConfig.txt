@@ -1,14 +1,23 @@
 {
 "screen_width": 640,
 "screen_height": 360,
-"game_width": 1280,
+"game_width": 1024,
 "mapToLoad": {
+	"level15": [
+		"level15"
+	],
 	"default": [
 		"default"
+	],
+	"level10": [
+		"level10"
+	],
+	"level11": [
+		"level11"
 	],
 	"levels": [
 		"levels"
 	]
 },
-"game_height": 720
+"game_height": 576
 }

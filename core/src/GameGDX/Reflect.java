@@ -50,13 +50,17 @@ public class Reflect {
         for(Field f : GetAllFields(type))
         {
             if (!f.isAccessible()) f.setAccessible(true);
-            if (f.isStatic()) continue;
-            if (IsInterface(f.getType())) continue;
-
-            map.put(f.getName(),f);
+            if (IsValidField(f))
+                map.put(f.getName(),f);
         }
         typeToFields.put(type,map);
         return map;
+    }
+    public static boolean IsValidField(Field field)
+    {
+        if (field.isStatic()) return false;
+        if (IsInterface(field.getType())) return false;
+        return true;
     }
     private static boolean IsInterface(Class type)
     {
@@ -211,6 +215,18 @@ public class Reflect {
         if (type==char.class || type == Character.class) return '0';
         if (type == CharSequence.class) return '0';
         return null;
+    }
+
+    public static  <T> T GetConfig(String result,T value0)
+    {
+        try {
+            if (value0 instanceof Long) return (T)Reflect.ToBaseType(result,Long.class);
+            if (value0 instanceof Integer) return (T)Reflect.ToBaseType(result,Integer.class);
+            if (value0 instanceof Float) return (T)Reflect.ToBaseType(result,Float.class);
+            if (value0 instanceof Boolean) return (T)Reflect.ToBaseType(result,Boolean.class);
+            return (T)result;
+        }catch (Exception e){}
+        return value0;
     }
 
     //<editor-fold desc="Clone">

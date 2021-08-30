@@ -54,6 +54,7 @@ public class ConfigForm {
     {
         Refresh();
         list1.addListSelectionListener(e->{
+            if (e.getValueIsAdjusting()) return;
             int index = list1.getSelectedIndex();
             if (index<0) return;
             String name = (String) list1.getSelectedValue();
@@ -122,6 +123,7 @@ public class ConfigForm {
         listForm.onAdd = n->value.addChild(new JsonValue(n));
         listForm.onDelete = i->value.remove(i);
         listForm.onSelect = n->{};
+        listForm.Refresh();
         ui.Repaint(pnValue);
     }
     private void SetObject(JsonValue value)

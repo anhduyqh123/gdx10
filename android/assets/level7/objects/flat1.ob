@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,prefab:objects/platforms,componentMap:{plat:{class:Extend.Box2d.IPlatform,fixtures:[{iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:2.784027,y:178.41867},{x:296.0647,y:179.43854},{x:296.31964,y:203.91577},{x:2.784027,y:203.15088}]}}]}},iTexture:{name:plane1}}

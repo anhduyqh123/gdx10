@@ -1,6 +1,14 @@
 {
 category: [
-	ball
+	object
+	player
 	ground
+	water
+	box
+	bridge
+	target
+	un_jump
+	enemy
+	unObject
 ]
 }

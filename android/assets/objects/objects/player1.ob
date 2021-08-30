@@ -1,0 +1,1 @@
+{class:Extend.Frame.IFrame,componentMap:{body:{class:Extend.Box2d.IBody,allowSleep:false,type:DynamicBody,category:player,fixtures:[{density:1.4,restitution:0.0,iShape:{class:Extend.Box2d.IShape$ICircle,pos:{x:32.0,y:32.0},radius:30.785822},category:2,friction:0.15}]}},iAniMap:{idle:{},happy:{start:3,end:7},drowning:{start:45,end:45},smile:{start:40,end:41}},name:player_01_}

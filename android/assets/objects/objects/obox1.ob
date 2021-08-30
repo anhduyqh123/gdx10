@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,type:DynamicBody,category:box,fixtures:[{density:0.2,restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:1.8468628,y:4.1531677},{x:120.282166,y:4.1531677},{x:119.84674,y:120.84677},{x:1.411438,y:120.41135}]},friction:0.7}]}},iTexture:{name:box1}}

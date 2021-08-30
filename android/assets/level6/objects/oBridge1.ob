@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:2.932785,y:348.54785},{x:295.94507,y:349.75305},{x:295.94507,y:374.30408},{x:2.713913,y:373.4986}]},friction:0.4}]}},iTexture:{name:bridgePlane1}}

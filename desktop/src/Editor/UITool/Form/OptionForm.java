@@ -25,6 +25,7 @@ public class OptionForm {
     private JTextField tfSize;
     private JButton btShow;
     private JCheckBox cbPhysics;
+    private JCheckBox cbDrag;
 
     public GDX.Func<List<String>> getObjects;
     public Runnable onClosePack;
@@ -52,6 +53,10 @@ public class OptionForm {
         cbPhysics.addActionListener(e->{
             GBox2d.active = cbPhysics.isSelected();
         });
+    }
+    public boolean IsDrag()
+    {
+        return cbDrag.isSelected();
     }
     private void InitSetFont()
     {

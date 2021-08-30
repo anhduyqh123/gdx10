@@ -66,6 +66,13 @@ public class GSpine extends Group {
         clearChildren();
         this.addActor(actor);
     }
+    public void SetSkin(String name)
+    {
+        Skin skin = data.findSkin(name);
+        if (skin==null) skin = data.getSkins().get(0);
+        actor.getSkeleton().setSkin(skin);
+    }
+
     public AnimationState.TrackEntry SetAnimation(String name)
     {
         return SetAnimation(name,"idle");
@@ -97,6 +104,14 @@ public class GSpine extends Group {
         List<String> list = new ArrayList<>();
         for(Animation a : data.getAnimations())
             list.add(a.getName());
+        return list.toArray(new String[list.size()]);
+    }
+    public String[] GetSkinNames()
+    {
+        if (data==null) return null;
+        List<String> list = new ArrayList<>();
+        for (Skin s : data.getSkins())
+            list.add(s.getName());
         return list.toArray(new String[list.size()]);
     }
 }

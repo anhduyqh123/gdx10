@@ -5,8 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class ScrollImage extends GSprite {
-    protected float scroll;
-    public float speed = 1f;
+    public float scroll,speed;
     public boolean isScrollX,isScrollY,keepSize;
     protected float trWidth,trHeight;
 
@@ -21,13 +20,22 @@ public class ScrollImage extends GSprite {
     {
         trWidth = tr.getRegionWidth();
         trHeight = tr.getRegionHeight();
-        sprite.setRegion(tr);
+        tRegion.setRegion(tr);
+        //sprite.setRegion(tr);
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
-        scroll += delta*speed;
+        if (speed!=0)
+        {
+            scroll += delta*speed;
+            SetValue(scroll);
+        }
+    }
+    public void SetValue(float percent) //percent 0->1
+    {
+        this.scroll = percent;
         if (scroll > 1.0f)  scroll = 0.0f;
         float percentX = 1;
         float percentY = 1;
@@ -45,13 +53,13 @@ public class ScrollImage extends GSprite {
     {
         if (isScrollX)
         {
-            sprite.setU(-scroll);
-            sprite.setU2(percentX-scroll);
+            tRegion.setU(-scroll);
+            tRegion.setU2(percentX-scroll);
         }
         if (isScrollY)
         {
-            sprite.setV(-scroll);
-            sprite.setV2(percentY-scroll);
+            tRegion.setV(-scroll);
+            tRegion.setV2(percentY-scroll);
         }
     }
 }

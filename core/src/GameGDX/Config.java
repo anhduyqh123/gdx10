@@ -29,4 +29,14 @@ public class Config {
             GDX.WriteToFile("config.json",data.toString());
         }catch (Exception e){}
     }
+
+    //get value
+    public <T> T GetConfig(String name,T value0)
+    {
+        try {
+            String result = data.getString(name);
+            return Reflect.GetConfig(result,value0);
+        }catch (Exception e){}
+        return value0;
+    }
 }

@@ -47,10 +47,14 @@ public class ProgressBar extends ScrollImage {
     }
 
     @Override
+    protected float GetDrawWith() {
+        return super.GetDrawWith()*percent;
+    }
+
+    @Override
     protected void Draw(Batch batch, float alpha) {
         float width = percent*trWidth;
-        sprite.setRegionWidth((int)width);
-        sprite.setSize(percent*getWidth(),getHeight());
+        tRegion.setRegionWidth((int)width);
         super.Draw(batch, alpha);
     }
 }

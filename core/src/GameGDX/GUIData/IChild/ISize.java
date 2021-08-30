@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class ISize {
-    public float width,height,scale=1f,rotate;
+    public float width,height,scale=1f,scaleX,scaleY,rotate;
     public IAlign origin = IAlign.bottomLeft;
     public boolean extendScreen,fillW,fillH;//fill screen
     public GDX.Func<Vector2> getDefaultSize;
@@ -52,8 +52,16 @@ public class ISize {
     }
     public float GetScale()
     {
-        if (extendScreen) return Scene.scale;
+        if (extendScreen) return Scene.scale*scale;
         return scale;
+    }
+    public float GetScaleX()
+    {
+        return scaleX!=0?scaleX:GetScale();
+    }
+    public float GetScaleY()
+    {
+        return scaleY!=0?scaleY:GetScale();
     }
     public void Set(float width,float height)
     {

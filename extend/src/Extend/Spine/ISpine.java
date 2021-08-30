@@ -7,8 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.esotericsoftware.spine.SkeletonData;
 
 public class ISpine extends IActor {
-
-    public String name = "";
+    public String name = "",skin="";
     public float delX,delY;
 
     @Override
@@ -35,6 +34,7 @@ public class ISpine extends IActor {
             SkeletonData data = Assets.Get(name,SkeletonData.class);
             GSpine gSpine = GetActor();
             gSpine.SetData(data);
+            gSpine.SetSkin(skin);
             gSpine.SetSpinePositionBy(delX,delY);
         }catch (Exception e){}
     }

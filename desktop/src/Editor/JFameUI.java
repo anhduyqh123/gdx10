@@ -19,12 +19,16 @@ import java.util.List;
 public class JFameUI {
 
     //<editor-fold desc="Object">
-    public List<String> GetDeclaredFields(Object object)
+    public List<String> GetDeclaredFields(Class type)
     {
         List<String> list = new ArrayList<>();
-        for(Field f : Reflect.GetDeclaredFields(object.getClass()))
-            list.add(f.getName());
+        for(Field f : Reflect.GetDeclaredFields(type))
+            if (Reflect.IsValidField(f)) list.add(f.getName());
         return list;
+    }
+    public List<String> GetDeclaredFields(Object object)
+    {
+        return GetDeclaredFields(object.getClass());
     }
     public List<String> GetFields(Object object)
     {
@@ -72,7 +76,7 @@ public class JFameUI {
                 NewTextField(name,value,w,parent,st->SetField(field,object,st));
                 return;
             }
-            InitComponents(value, parent);
+            InitComponents(value, NewPanel(name,parent));
 
         }catch (ReflectionException e){e.printStackTrace();}
     }
@@ -94,6 +98,22 @@ public class JFameUI {
     public void AutoFixSize(JPanel panel)
     {
         panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
+    }
+
+    public JPanel NewPanel(JPanel parent)
+    {
+        JPanel panel = new JPanel();
+        parent.add(panel);
+        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panel.setMaximumSize(new Dimension(parent.getWidth(),1000));
+        panel.setLayout(new WrapLayout());
+        return panel;
+    }
+    public JPanel NewPanel(String name,JPanel parent)
+    {
+        JPanel pn = NewPanel(parent);
+        pn.setBorder(BorderFactory.createTitledBorder(pn.getBorder(),name));
+        return pn;
     }
     public JPanel NewPanel(int width, int height)
     {

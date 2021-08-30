@@ -61,6 +61,27 @@
           </component>
         </children>
       </grid>
+      <grid id="b318" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="80" height="60"/>
+        </properties>
+        <border type="line"/>
+        <children>
+          <component id="6c920" class="javax.swing.JCheckBox" binding="cbPhysics">
+            <constraints/>
+            <properties>
+              <text value="Physics"/>
+            </properties>
+          </component>
+          <component id="1c342" class="javax.swing.JCheckBox" binding="cbDrag">
+            <constraints/>
+            <properties>
+              <text value="Drag"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
       <grid id="a19d5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints/>
         <properties>
@@ -86,12 +107,6 @@
           </component>
         </children>
       </grid>
-      <component id="6c920" class="javax.swing.JCheckBox" binding="cbPhysics">
-        <constraints/>
-        <properties>
-          <text value="Physics"/>
-        </properties>
-      </component>
     </children>
   </grid>
 </form>

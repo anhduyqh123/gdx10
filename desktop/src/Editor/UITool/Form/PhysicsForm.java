@@ -2,19 +2,28 @@ package Editor.UITool.Form;
 
 import Editor.JFameUI;
 import Editor.UITool.EConfig;
+import Editor.UITool.Physics.FixtureForm;
+import Editor.UITool.Physics.FixtureListPanel;
+import Editor.UITool.Physics.MarkForm;
 import Editor.UITool.Pointed.ChainPointed;
 import Editor.UITool.Pointed.CirclePointed;
+import Editor.UITool.Pointed.Pointed;
 import Editor.UITool.Pointed.PolygonPointed;
+import Editor.WrapLayout;
 import Extend.Box2d.*;
 import GameGDX.GDX;
+import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Scene;
 import GameGDX.Screens.Screen;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Align;
 
 import javax.swing.*;
-import java.util.ArrayList;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,66 +31,51 @@ public class PhysicsForm {
     private JPanel panel1;
     private JPanel pnBody;
     private JPanel pnFixture;
-    private JComboBox cbShape;
-    private JComboBox cbCategory;
-    private JList list1;
-    private JButton btAdd;
-    private JButton btDelete;
     private JPanel pnFix;
-    private JList list2;
+    private JList list3;
+    private JButton btNew3;
+    private JButton btDelete3;
+    private JPanel pnMark;
 
     private JFameUI ui = new JFameUI();
     private Group group = new Group();
+    private Actor actor;
+    private Pointed shape;
 
 
-    public PhysicsForm(IObject iObject)
+    public PhysicsForm(IBody iBody,IActor iActor)
     {
-        GBox2d.SetCategory(EConfig.e.Get("category").asStringArray());
+        String[] categories = EConfig.e.Get("category").asStringArray();
+        GBox2d.SetCategory(categories);
 
-        IBody iBody = iObject.iBody;
-        GObject actor = iObject.GetActor();
-        Init(iObject);
+        actor = iActor.GetActor();
+        iBody.DestroyBody();
+        Init(iActor);
 
-        List<String> list = ui.GetDeclaredFields(iBody);
+        List<String> list = ui.GetFields(iBody);
         list.remove("fixtures");
-        list.remove("category");list.remove("mark");
+        //list.remove("category");
+        //ui.NewComboBox("category",categories,iBody.category,pnBody, vl->iBody.category =vl);
+
+        pnBody.setLayout(new WrapLayout());
         ui.InitComponents(list,iBody,pnBody);
-
-        IFixture iFixture = iBody.fixtures.get(0);
-        List<String> list1 = ui.GetDeclaredFields(iFixture);
-        list1.remove("iShape");
-        ui.InitComponents(list1,iFixture,pnFixture);
-
-        String[] arr = EConfig.e.Get("category").asStringArray();
-        ui.ComboBox(cbCategory,arr,GBox2d.GetCategory((short) iBody.category),
-                name->iBody.category=GBox2d.GetCategoryBit(name));
-
-
-        Class[] classes = {IShape.ICircle.class, IShape.IPolygon.class,IShape.IChain.class};
-        String[] types = ui.ClassToName(classes);
-        ui.ComboBox(cbShape,types,iFixture.iShape.getClass().getSimpleName());
-        cbShape.addActionListener(e->{
-            int index = cbShape.getSelectedIndex();
-            if (index==0) iFixture.iShape = new IShape.ICircle(actor.getWidth());
-            if (index==1) iFixture.iShape = new IShape.IPolygon(actor.getWidth(),actor.getHeight());
-            if (index==2) iFixture.iShape = new IShape.IChain(actor.getWidth());
-
-            GDX.PostRunnable(()->{
-                group.clearChildren();
-                InitGroup(actor);
-                InitShape(iFixture.iShape);
-            });
+        JTextField tf = ui.NewTextField("size",Pointed.size,pnBody);
+        tf.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode()==KeyEvent.VK_ENTER)
+                {
+                    float size = Float.parseFloat(tf.getText());
+                    shape.Resize(size);
+                }
+            }
         });
 
         InitGroup(actor);
-        InitShape(iFixture.iShape);
-        InitMark(iBody);
+        InitFixtures(iBody.fixtures);
     }
-    private void Init(IObject iObject)
+    private void Init(IActor iActor)
     {
-        GObject gObject = iObject.GetActor();
-        gObject.SetBody(null);
-
         GBox2d.debug = false;
         Runnable run = Screen.Returns(Arrays.asList(Scene.ui2.getChildren().toArray()));
         Scene.ui2.clearChildren();
@@ -90,62 +84,62 @@ public class PhysicsForm {
             GBox2d.debug = true;
             group.remove();
             run.run();
-            iObject.Refresh();
+            iActor.Refresh();
         });
         jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
     private void InitGroup(Actor actor)
     {
         group.setDebug(true);
-        Scene.SetBounds(group,Scene.width/2,Scene.height/2, Align.center,actor.getWidth(),actor.getHeight(),Scene.ui2);
+        Vector3 camPos = Scene.GetUICamera().position;
+        Scene.SetBounds(group,camPos.x,camPos.y, Align.center,actor.getWidth(),actor.getHeight(),Scene.ui2);
         group.addActor(actor);
         actor.setPosition(0,0);
     }
-    private void InitMark(IBody iBody)
+    private void InitFixture(IFixture iFixture)
     {
-        String[] all = EConfig.e.Get("category").asStringArray();
-        ui.ListSetModel(list1,Arrays.asList(all));
-        List<String> cats = GetCategory(iBody.mark,all);
-        ui.ListSetModel(list2,cats);
+        pnFixture.removeAll();
+        FixtureForm fixtureForm = new FixtureForm(iFixture,actor,pnFixture);
+        fixtureForm.onNewShape = ()->{
+            shape = InitShape(iFixture.iShape);
+        };
+        ui.Repaint(pnFixture);
 
-        btAdd.addActionListener(e->{
-            String name = (String) list1.getSelectedValue();
-            if (name==null || cats.contains(name)) return;
-            cats.add(name);
-            iBody.mark = GetBit(cats);
-            ui.ListSetModel(list2,cats);
+        InitMark(iFixture);
+        shape = InitShape(iFixture.iShape);
+    }
+
+    private void InitFixtures(List<IFixture> list)
+    {
+        FixtureListPanel panel = new FixtureListPanel(list);
+        list3.addListSelectionListener(e->{
+            int index = list3.getSelectedIndex();
+            if (index<0) return;
+            GDX.PostRunnable(()->InitFixture(list.get(index)));
         });
-        btDelete.addActionListener(e->{
-            String name = (String) list2.getSelectedValue();
-            if (name==null) return;
-            cats.remove(name);
-            iBody.mark = GetBit(cats);
-            ui.ListSetModel(list2,cats);
-        });
+        panel.getIndex = ()->list3.getSelectedIndex();
+        panel.onRefresh = index->{
+            ui.ListSetModel(list3,panel.GetData());
+            if (index<0) return;
+            list3.setSelectedIndex(index);
+        };
+        panel.onRefresh.Run(0);
+        btNew3.addActionListener(e->panel.New());
+        btDelete3.addActionListener(e->panel.Delete());
 
     }
-    private int GetBit(List<String> list)
+    private void InitMark(IFixture iFixture)
     {
-        int bit = 0;
-        for(String s : list) bit+=GBox2d.GetCategoryBit(s);
-        return bit;
-    }
-    private List<String> GetCategory(int bit,String[] all)
-    {
-        List<String> list = new ArrayList<>();
-        if (bit<0){
-            list.addAll(Arrays.asList(all));
-            return list;
-        }
-        String st = Integer.toBinaryString(bit);
-        for (int i=0;i<st.length();i++)
-            if (st.charAt(i)=='1') list.add(all[i]);
-        return list;
+        pnMark.removeAll();
+        new MarkForm(iFixture,pnMark);
+        ui.Repaint(pnMark);
     }
 
     //Shape
-    private Actor InitShape(IShape shape)
+    private Pointed InitShape(IShape shape)
     {
+        group.clearChildren();
+        group.addActor(actor);
         if (shape instanceof IShape.IChain) return new ChainPointed((IShape.IPolygon) shape,group);
         if (shape instanceof IShape.IPolygon)return new PolygonPointed((IShape.IPolygon) shape,group);
         return new CirclePointed((IShape.ICircle) shape,group);

@@ -4,6 +4,7 @@ import Extend.GShapeRenderer;
 import GameGDX.GDX;
 import GameGDX.GUIData.IImage;
 import GameGDX.Scene;
+import GameGDX.Util;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Pointed extends Actor {
+    public static float size = 20;
     protected Map<Image, Vector2> map = new HashMap<>();
     protected Image selected;
     protected GShapeRenderer renderer;
@@ -37,7 +39,7 @@ public class Pointed extends Actor {
     }
     protected Image NewPoint(Vector2 pos, GDX.Runnable<Vector2> onDrag)
     {
-        Image img = IImage.NewImage(Color.WHITE,pos, Align.center,20,20,group);
+        Image img = IImage.NewImage(Color.WHITE,pos, Align.center,size,size,group);
         map.put(img,pos);
 
         img.addListener(new ClickListener(){
@@ -51,6 +53,7 @@ public class Pointed extends Actor {
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
                 Vector2 p = new Vector2(Gdx.input.getX(),Gdx.input.getY());
                 p = group.screenToLocalCoordinates(p);
+                Util.Round(p);
                 img.setPosition(p.x,p.y,Align.center);
                 onDrag.Run(p);
             }
@@ -60,5 +63,15 @@ public class Pointed extends Actor {
     protected Vector2 GetPos(Vector2 p)
     {
         return group.localToStageCoordinates(new Vector2(p));
+    }
+    public void Resize(float s)
+    {
+        size = s;
+        for (Image i : map.keySet())
+        {
+            Vector2 p = Scene.GetPosition(i,Align.center);
+            i.setSize(size,size);
+            Scene.SetPosition(i,p,Align.center);
+        }
     }
 }

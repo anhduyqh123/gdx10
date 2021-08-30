@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,type:DynamicBody,category:boss,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:3.6497192,y:3.6708374},{x:94.85455,y:3.9446106},{x:94.838806,y:97.5314},{x:3.6497192,y:97.634125}]},friction:0.4}]}},iTexture:{name:boss1_base}}

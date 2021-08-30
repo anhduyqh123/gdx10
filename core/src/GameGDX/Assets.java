@@ -3,6 +3,7 @@ package GameGDX;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.AssetLoading.AssetPackage;
 import GameGDX.AssetLoading.GameData;
+import GameGDX.GUIData.GUIData;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.BitmapFontLoader;
 import com.badlogic.gdx.assets.loaders.ParticleEffectLoader;
@@ -140,7 +141,11 @@ public class Assets extends Actor {
         if (!i.gameData.Contains(pack)) return;
         RemovePackage(pack);
         for (AssetNode n : GetAssetPackage(pack).loadableNode)
-            i.manager.unload(n.url);
+        {
+            GUIData.i.Remove(n.name);
+            if (i.manager.contains(n.url))
+                i.manager.unload(n.url);
+        }
     }
     public static void RemovePackage(String pack)
     {

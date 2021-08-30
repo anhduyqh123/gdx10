@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:95.50137,y:58.992767},{x:224.38416,y:82.45177},{x:328.00095,y:149.29948},{x:318.81732,y:168.27899},{x:211.59842,y:103.07521},{x:92.35864,y:81.44032}]},friction:0.4}]}},iTexture:{name:jumper1}}

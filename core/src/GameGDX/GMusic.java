@@ -150,8 +150,10 @@ public class GMusic {
         musicName = name;
         if (!music) return;
         Music music = Assets.GetMusic(name);
-        music.setLooping(true);
-        music.play();
+        GDX.PostRunnable(()->{
+            music.setLooping(true);
+            music.play();
+        });
     }
 
     public static void OnPause()

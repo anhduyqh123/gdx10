@@ -2,7 +2,6 @@ package GameGDX;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,16 +11,20 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Scene {
+
+    public static Scene i;
     public static float mWidth, mHeight,scaleX,scaleY,scale;
     public static int width,height;
-    public static Group bg,game,ui,ui2;
-    public static Stage stage,gStage;
+    public static Group ui,ui2;
+    public static Stage stage;
+
+    private final Map<String,Stage> mapStage = new HashMap<>();
+    private final List<String> stageNames = new ArrayList<>();
+    private final Batch batch;
 
     public Scene(float gWidth,float gHeight)
     {
@@ -29,9 +32,12 @@ public class Scene {
     }
     public Scene(float gWidth,float gHeight,Batch batch)
     {
+        i = this;
+        this.batch = batch;
+
         mWidth = gWidth;
         mHeight = gHeight;
-        Init(batch);
+        Init();
         InitSize();
     }
 
@@ -43,17 +49,35 @@ public class Scene {
         scaleY = height/ mHeight;
         scale = Math.max(scaleX,scaleY);
     }
-    protected void Init(Batch batch)
+    protected void Init()
     {
-        gStage = new Stage(new ExtendViewport(mWidth, mHeight),batch);
-        stage = new Stage(new ExtendViewport(mWidth, mHeight),batch);
-        bg = NewGroup(gStage);
-        game = NewGroup(gStage);
+        stage = NewStage("stage");
         ui = NewGroup(stage);
         ui2 = NewGroup(stage);
 
         Gdx.input.setInputProcessor(stage);
     }
+    public Stage NewStage(String name)
+    {
+        stageNames.add(name);
+        return PutStage(name);
+    }
+    public Stage NewStage(int index,String name)
+    {
+        stageNames.add(index,name);
+        return PutStage(name);
+    }
+    private Stage PutStage(String name)
+    {
+        Stage newStage = NewStage();
+        mapStage.put(name,newStage);
+        return newStage;
+    }
+    private Stage NewStage()
+    {
+        return new Stage(new ExtendViewport(mWidth, mHeight),batch);
+    }
+
     private Group NewGroup(Stage stage)
     {
         Group group = new Group();
@@ -74,32 +98,29 @@ public class Scene {
     }
     public void Act(float delta)
     {
-        gStage.act(delta);
-        stage.act(delta);
+        for (String n : stageNames)
+            mapStage.get(n).act(delta);
     }
     public void Dispose()
     {
-        gStage.dispose();
-        stage.dispose();
+        for (String n : stageNames)
+            mapStage.get(n).dispose();
     }
     public void Render()
     {
-        gStage.draw();
-        stage.draw();
+        for (String n : stageNames)
+            mapStage.get(n).draw();
     }
     public void Resize(int width,int height)
     {
-        gStage.getViewport().update(width, height);
-        stage.getViewport().update(width,height);
+        for (String n : stageNames)
+            mapStage.get(n).
+                    getViewport().update(width,height);
     }
     //static
     public static OrthographicCamera GetUICamera()
     {
         return (OrthographicCamera)stage.getCamera();
-    }
-    public static OrthographicCamera GetGCamera()
-    {
-        return (OrthographicCamera)gStage.getCamera();
     }
     //extend
     public static Vector2 GetMousePos()
@@ -114,6 +135,27 @@ public class Scene {
         actor.setPosition(pos2.x,pos2.y);
         group.addActor(actor);
     }
+    //Rotate
+    public static float GetStageRotation(Actor actor)
+    {
+        float rotation = 0.00f;
+        while (actor!=null) {
+            rotation += actor.getRotation();
+            actor = actor.getParent();
+        }
+        return rotation;
+    }
+    public static float SetStageRotation(Actor actor,float rotation)
+    {
+        Actor parent = actor.getParent();
+        while (parent!=null) {
+            rotation -= parent.getRotation();
+            parent = parent.getParent();
+        }
+        actor.setRotation(rotation);
+        return rotation;
+    }
+    //Position
     public static Vector2 GetActorPosition(Actor actor,Actor target,int align)
     {
         Vector2 pos = GetPosition(target,align).sub(GetPosition(target,Align.bottomLeft));
@@ -126,6 +168,11 @@ public class Scene {
     public static Vector2 GetStagePosition(Actor actor, int align)
     {
         Vector2 pos = GetPosition(actor,align).sub(GetPosition(actor));
+        return actor.localToStageCoordinates(pos);
+    }
+    public static Vector2 GetStagePosition(Actor actor, Vector2 local)
+    {
+        Vector2 pos = new Vector2(local).sub(GetPosition(actor));
         return actor.localToStageCoordinates(pos);
     }
     public static Vector2 GetLocalPosition(Actor actor,Vector2 pos)//pos = stage position
@@ -154,7 +201,7 @@ public class Scene {
     }
     public static void SetStagePosition(Actor actor,Vector2 pos,int align)
     {
-        actor.stageToLocalCoordinates(pos);
+        pos = actor.getParent().stageToLocalCoordinates(pos);
         actor.setPosition(pos.x,pos.y,align);
     }
     public static Rectangle GetRect(Actor actor)

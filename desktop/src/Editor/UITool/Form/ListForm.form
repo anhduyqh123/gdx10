@@ -20,9 +20,7 @@
         <children>
           <component id="65aa7" class="javax.swing.JList" binding="list1" default-binding="true">
             <constraints/>
-            <properties>
-              <preferredSize width="80" height="120"/>
-            </properties>
+            <properties/>
           </component>
         </children>
       </scrollpane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Physics.JointForm">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="439"/>
+    </constraints>
+    <properties/>
+    <border type="none" title="joints"/>
+    <children>
+      <scrollpane id="9d3f0">
+        <constraints/>
+        <properties>
+          <horizontalScrollBarPolicy value="31"/>
+          <preferredSize width="250" height="400"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="c3b15" binding="pnJoint" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <autoscrolls value="true"/>
+              <maximumSize width="250" height="32767"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

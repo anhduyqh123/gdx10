@@ -2,7 +2,7 @@ package Extend.Box2d;
 
 import GameGDX.Config;
 import GameGDX.GDX;
-import GameGDX.Scene;
+import GameGDX.Ref;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.GearJoint;
 import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
+import com.badlogic.gdx.utils.Array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,9 +18,9 @@ import java.util.List;
 
 public class GBox2d{
     public static GBox2d i;
-    private static World world;
+    public static World world;
 
-    public static boolean active=true;
+    private static boolean active=true;
     private static final float PTM = 0.01f;
     private static final float TIME_STEP = 1/60f;
     private static final int VELOCITY_ITERATIONS = 6, POSITION_ITERATIONS = 2;
@@ -41,12 +42,12 @@ public class GBox2d{
         SetCategory(Config.i.Get("category").asStringArray());
 
         world = new World(new Vector2(0, -10f), true);
-        world.setContactFilter((fixtureA, fixtureB) -> {
-            if (!IFixture.Mark(fixtureA,fixtureB)) return false;
-            IBody ib1 = (IBody) fixtureA.getBody().getUserData();
-            IBody ib2 = (IBody) fixtureB.getBody().getUserData();
-            return ib1.ShouldCollide(fixtureB) && ib2.ShouldCollide(fixtureA);
-        });
+//        world.setContactFilter((fixtureA, fixtureB) -> {
+//            if (!IFixture.Mark(fixtureA,fixtureB)) return false;
+//            IBody ib1 = (IBody) fixtureA.getBody().getUserData();
+//            IBody ib2 = (IBody) fixtureB.getBody().getUserData();
+//            return ib1.ShouldCollide(fixtureB) && ib2.ShouldCollide(fixtureA);
+//        });
         world.setContactListener(new ContactListener() {
             @Override
             public void beginContact(Contact contact) {
@@ -86,7 +87,7 @@ public class GBox2d{
         debug = true;
         this.camera0 = camera0;
         camera = new OrthographicCamera();
-        camera.setToOrtho(false,Scene.width*PTM,Scene.height*PTM);
+        camera.setToOrtho(false,camera0.viewportWidth*PTM,camera0.viewportHeight*PTM);
         debugRenderer = new Box2DDebugRenderer();
     }
 
@@ -97,7 +98,15 @@ public class GBox2d{
 //            world.step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 //            accumulator -= TIME_STEP;
 //        }
-        world.step(deltaTime, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        //world.step(deltaTime, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+
+        float frameTime = Math.min(deltaTime, TIME_STEP);
+        world.step(frameTime, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        while (frameTime>TIME_STEP)
+        {
+            frameTime-=TIME_STEP;
+            world.step(frameTime, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        }
     }
     public void Act(float delta)
     {
@@ -114,9 +123,22 @@ public class GBox2d{
             debugRenderer.render(world, camera.combined);
         }
     }
+    public static void SetActive(boolean value)
+    {
+        //world.setContinuousPhysics(value);
+        active = value;
+    }
+    public static boolean GetActive()
+    {
+        return active;
+    }
     public static void Clear()
     {
-        List<Joint> joints = new ArrayList<>(i.joints);
+//        List<Joint> joints = new ArrayList<>(i.joints);
+//        for (Joint i : joints)
+//            DestroyJoint(i);
+        Array<Joint> joints = new Array<>();
+        world.getJoints(joints);
         for (Joint i : joints)
             DestroyJoint(i);
 
@@ -198,14 +220,22 @@ public class GBox2d{
     public static Joint CreateJoint(JointDef def)
     {
         Joint joint = world.createJoint(def);
-        if (joint instanceof MouseJoint) i.joints.add(joint);
-        if (joint instanceof GearJoint) i.joints.add(joint);
+        //i.joints.add(joint);
+
+//        if (joint instanceof MouseJoint || joint instanceof GearJoint) i.joints.add(0,joint);
+//        else i.joints.add(joint);
+//        if (joint instanceof MouseJoint) i.joints.add(joint);
+//        if (joint instanceof GearJoint) i.joints.add(joint);
         return joint;
     }
     public static void DestroyJoint(Joint joint)
     {
-        if (!i.joints.contains(joint)) return;
-        i.joints.remove(joint);
-        GDX.PostRunnable(()->world.destroyJoint(joint));
+        //if (!i.joints.contains(joint)) return;
+        //i.joints.remove(joint);
+        Array<Joint> joints = new Array<>();
+        world.getJoints(joints);
+        if (joints.contains(joint,false)) world.destroyJoint(joint);
+        //GDX.PostRunnable(()->world.destroyJoint(joint));
     }
+
 }

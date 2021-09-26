@@ -19,11 +19,10 @@ import java.util.List;
 public class Rope extends Component {
     public int len = 5;
 
-    @Override
-    public void Refresh(Actor actor) {
+    public void Refresh() {
         IGroup iGroup = GetIActor();
-        IActor i1 = iGroup.GetIActor(0);
-        IActor i2 = iGroup.GetIActor(1);
+        IActor i1 = iGroup.GetIChild(0);
+        IActor i2 = iGroup.GetIChild(1);
         List<IActor> list = Clones(len,i1);
         list.add(0,i1);
         list.add(i2);
@@ -45,7 +44,7 @@ public class Rope extends Component {
 
         int x=1;
         for(IActor i : iActors){
-            i.SetConnect(iGroup::GetActor);
+            i.SetConnect(iGroup::GetChild);
             i.iPos.delX=dis*x++;
             IBody iBody = i.GetComponent(IBody.class);
             iBody.type = BodyDef.BodyType.DynamicBody;

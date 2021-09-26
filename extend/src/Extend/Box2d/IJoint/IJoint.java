@@ -15,11 +15,17 @@ public abstract class IJoint extends Component {
 
     protected GDX.Func<Joint> get;
 
-    @Override
-    public void Refresh(Actor actor) {
+    public void BeforeRefresh() {
+        Joint joint = Get();
+        if (joint==null) return;
+        GBox2d.DestroyJoint(joint);
+        get = null;
+    }
+
+    public void Refresh() {
         try {
-            Actor obA = GetIActor(objectA).GetActor();
-            Actor obB = GetIActor(objectB).GetActor();
+            Actor obA = FindIChild(objectA).GetActor();
+            Actor obB = FindIChild(objectB).GetActor();
             GDX.PostRunnable(()->{
                 Joint joint = Create(obA,obB);
                 get = ()->joint;
@@ -28,9 +34,14 @@ public abstract class IJoint extends Component {
     }
     protected abstract Joint Create(Actor obA,Actor obB);
 
+    public void Remove() {
+        Joint joint = Get();
+        if (joint!=null) GBox2d.DestroyJoint(joint);
+    }
+
     protected Body GetBody(String name)
     {
-        IBody iBody = GetIActor(name).GetComponent(IBody.class);
+        IBody iBody = FindIChild(name).GetComponent(IBody.class);
         return iBody.GetBody();
     }
     public <T extends Joint> T Get()

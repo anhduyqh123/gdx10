@@ -10,13 +10,13 @@ public class IGear extends IJoint{
     public String joint1 = "",joint2 = "";
     public float ratio = 1;
 
-    @Override
-    public void BeforeRefresh() {
-        Joint joint = Get();
-        if (joint==null) return;
-        GBox2d.DestroyJoint(joint);
-        get = null;
-    }
+//    @Override
+//    public void BeforeRefresh() {
+//        Joint joint = Get();
+//        if (joint==null) return;
+//        GBox2d.DestroyJoint(joint);
+//        get = null;
+//    }
 
     @Override
     protected Joint Create(Actor obA, Actor obB) {

@@ -1,14 +1,12 @@
 package Extend.Box2d.IAction;
 
 import Extend.Box2d.IBody;
-import GameGDX.GDX;
 import GameGDX.GUIData.IAction.IAction;
 import GameGDX.GUIData.IChild.IActor;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class IBodyAction extends IAction {
-
-    private GDX.Func<IBody> getIBody;
     public IBodyAction()
     {
         name = "iBody";
@@ -19,11 +17,20 @@ public class IBodyAction extends IAction {
     }
     @Override
     public Action Get(IActor iActor) {
-        getIBody = ()->iActor.GetComponent(IBody.class);
-        return null;
+        return Actions.run(()->Run(iActor));
     }
-    protected IBody GetIBody()
+    private void Run(IActor iActor)
     {
-        return getIBody.Run();
+        IBody iBody = iActor.GetComponent(IBody.class);
+        if (iBody==null) return;
+        if (iBody.GetBody()!=null) Set(iBody);
+        else
+            iBody.AddListener(new IBody.IBodyListener(){
+                @Override
+                public void InitBody() {
+                    Set(iBody);
+                }
+            });
     }
+    protected void Set(IBody iBody){}
 }

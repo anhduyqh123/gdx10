@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,prefab:objects/oLand,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{},{x:1291.0},{x:1293.0,y:471.0},{x:876.0,y:473.0},{x:876.0,y:353.0},{x:717.0,y:352.0},{x:716.0,y:232.0},{y:234.0}]},friction:0.4}]}},iTexture:{name:land1}}

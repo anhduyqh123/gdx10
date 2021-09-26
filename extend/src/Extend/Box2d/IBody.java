@@ -6,7 +6,6 @@ import GameGDX.Reflect;
 import GameGDX.Scene;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ public class IBody extends Component {
     public List<IFixture> fixtures = new ArrayList<>();
 
     private GDX.Func<Body> getBody;
-    private GDX.Func<Actor> getActor;
     private GDX.Func<List<IBodyListener>> contacts;
 
     //constant
@@ -62,31 +60,17 @@ public class IBody extends Component {
         if (getBody==null) return null;
         return getBody.Run();
     }
-    public Actor GetActor()
-    {
-        if (getActor==null) return null;
-        return getActor.Run();
-    }
     @Override
-    public void Refresh(Actor actor) {
+    public void Refresh() {
         getVelocity = null;
         getAngularVelocity = null;
+        InitContacts();
 
         DestroyBody();
-        getActor = ()->actor;
-        InitContacts();
         GDX.PostRunnable(()->{
             InitBody();
             UpdateGame();
             ForContacts(ContactListener::InitBody);
-
-            actor.addAction(new Action() {
-                @Override
-                public boolean act(float delta) {
-                    Update(delta);
-                    return false;
-                }
-            });
         });
     }
 
@@ -100,7 +84,7 @@ public class IBody extends Component {
         if (getBody==null) return;
 //        if (GBox2d.active && type==BodyDef.BodyType.DynamicBody) UpdatePhysic();
 //        else UpdateGame();
-        if (!GBox2d.active || type==BodyDef.BodyType.StaticBody) UpdateGame();
+        if (!GBox2d.GetActive() || type==BodyDef.BodyType.StaticBody) UpdateGame();
         else UpdatePhysic();
         ForContacts(i->i.Update(delta));
     }
@@ -144,10 +128,7 @@ public class IBody extends Component {
         Body body = GetBody();
         if (body!=null) GBox2d.Destroy(body);
         getBody = null;
-    }
-    public boolean ShouldCollide(Fixture fixture)
-    {
-        return true;
+        ForContacts(IBodyListener::Destroy);
     }
     public void OnBeginContact(IBody iBody, Fixture fixture,Contact contact)
     {
@@ -167,6 +148,10 @@ public class IBody extends Component {
     public void OnPostSolve(IBody iBody, Fixture fixture,Contact contact,ContactImpulse impulse) {
         InitContact(iBody, fixture, contact);
         ForContacts(i->i.PostSolve(impulse));
+    }
+    public void OnRayCast(String name)
+    {
+        ForContacts(i->i.OnRayCast(name));
     }
 
     private void InitContact(IBody iBodyB, Fixture fixtureB,Contact contact)
@@ -200,7 +185,8 @@ public class IBody extends Component {
     }
     private void ForContacts(GDX.Runnable<IBodyListener> cb)
     {
-        for (IBodyListener i : GetContacts())
+        List<IBodyListener> listeners = new ArrayList<>(GetContacts());
+        for (IBodyListener i : listeners)
             cb.Run(i);
     }
 
@@ -212,6 +198,11 @@ public class IBody extends Component {
 
         @Override
         public void InitBody() {
+
+        }
+
+        @Override
+        public void Destroy() {
 
         }
 
@@ -239,14 +230,21 @@ public class IBody extends Component {
         public void PostSolve(ContactImpulse impulse) {
 
         }
+
+        @Override
+        public void OnRayCast(String name) {
+
+        }
     }
     public interface ContactListener{
         void InitBody();
+        void Destroy();
         void Update(float delta);
         void BeginContact();
         void EndContact();
         void PreSolve(Manifold oldManifold);
         void PostSolve(ContactImpulse impulse);
+        void OnRayCast(String name);//name of RayCast
     }
     public static class Velocity
     {

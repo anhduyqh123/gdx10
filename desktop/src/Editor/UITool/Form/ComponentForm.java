@@ -3,9 +3,8 @@ package Editor.UITool.Form;
 import Editor.JFameUI;
 import Editor.UITool.Form.Panel.ComponentPanel;
 import Extend.Box2d.*;
-import Extend.Box2d.IContact.IBegin;
-import Extend.Box2d.IContact.IInitBody;
 import Extend.Box2d.IJoint.*;
+import Extend.ILineRenderer;
 import GameGDX.GUIData.IChild.Component;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
@@ -30,9 +29,9 @@ public class ComponentForm {
         parent.add(panel1);
         Map<String,Component> map = iActor.GetComponentData();;
 
-        Class[] types = {IBody.class, IWater.class, IPlatform.class,
-                IDistance.class, IRope.class, IWheel.class, IRevolute.class, IPrismatic.class,IGear.class,
-                Rope.class, IInitBody.class, IBegin.class};
+        Class[] types = {IBody.class, IWater.class, IPlatform.class,IConveyor.class,
+                IDistance.class, IRope.class, IWheel.class, IRevolute.class, IPrismatic.class,IPulley.class,IGear.class,
+                IRayCast.class, ILineRenderer.class};
         String[] arr = ui.ClassToName(types);
         ui.ComboBox(cbType,arr,arr[0]);
 

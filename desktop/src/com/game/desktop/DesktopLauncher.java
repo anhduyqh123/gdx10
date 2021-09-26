@@ -35,5 +35,10 @@ public class DesktopLauncher {
 //		new LwjglApplication(new MyGame(), config);
 
 //		new XmlToJson("all");
+
+		int i = 12;
+		int z = -1;
+		boolean r = (i & z)!=0;
+		System.out.println(r);
 	}
 }

@@ -21,9 +21,9 @@ public class FixtureForm {
     public FixtureForm(IFixture iFixture, Actor actor, JPanel parent)
     {
         parent.add(panel1);
-        String[] arr = EConfig.e.Get("category").asStringArray();
-        ui.ComboBox(cbCategory,arr, GBox2d.GetCategory((short) iFixture.category),
-                name->iFixture.category=GBox2d.GetCategoryBit(name));
+//        String[] arr = EConfig.e.Get("category").asStringArray();
+//        ui.ComboBox(cbCategory,arr, GBox2d.GetCategory((short) iFixture.category),
+//                name->iFixture.category=GBox2d.GetCategoryBit(name));
 
         Class[] classes = {IShape.ICircle.class, IShape.IPolygon.class,IShape.IChain.class};
         String[] types = ui.ClassToName(classes);
@@ -42,6 +42,12 @@ public class FixtureForm {
 //                InitShape(iFixture.iShape);
 //            });
         });
+
+        ui.NewButton("category",panel1,()->
+                new MarkForm(iFixture.category, iFixture.mark,(c,m)->{
+                    iFixture.category=c;
+                    iFixture.mark=m;
+                }));
 
         List<String> list1 = ui.GetDeclaredFields(iFixture);
         list1.remove("iShape");list1.remove("category");list1.remove("mark");

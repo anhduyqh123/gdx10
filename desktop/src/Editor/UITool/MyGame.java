@@ -4,9 +4,9 @@ import Extend.Box2d.GBox2d;
 import Extend.Spine.Assets2;
 import GameGDX.*;
 import GameGDX.AssetLoading.GameData;
-import GameGDX.GUIData.IImage;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -14,17 +14,20 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Align;
 
 public class MyGame extends GDXGame {
+    public static MyGame i;
+
     protected Runnable done;
     protected int width;
     protected int height;
+    public Color bg = Color.BLACK;
 
     private GBox2d gBox2d;
 
     public MyGame(int width, int height, Runnable done)
     {
+        i = this;
         this.width = width;
         this.height = height;
         this.done = done;
@@ -33,15 +36,11 @@ public class MyGame extends GDXGame {
     @Override
     protected void Init() {
         super.Init();
-        GBox2d.active = false;
         gBox2d = new GBox2d();
         gBox2d.Debug(Scene.GetUICamera());
+        GBox2d.SetActive(false);
 
-        Actor actor = new Actor();
-        actor.setSize(Scene.width,Scene.height);
-        actor.setTouchable(Touchable.disabled);
-        actor.setDebug(true);
-        Scene.ui2.addActor(actor);
+        DebugBorder();
         //Scene.stage.addActor(gBox2d);
 
         //screen
@@ -49,12 +48,20 @@ public class MyGame extends GDXGame {
 //        gBox2d.setTouchable(Touchable.disabled);
 //        gBox2d.setDebug(true);
     }
+    private void DebugBorder()
+    {
+        Actor actor = new Actor();
+        actor.setSize(Scene.width,Scene.height);
+        actor.setTouchable(Touchable.disabled);
+        actor.setDebug(true);
+        Scene.ui2.addActor(actor);
+    }
 
     @Override
     public void DoneLoading() {
         GameData data = GetGameData(true);
         new Assets2().SetData(data);
-        IImage.NewImage(Color.BLACK,0,0, Align.bottomLeft,Scene.width,Scene.height,Scene.ui);
+        //IImage.NewImage(Color.BLACK,0,0, Align.bottomLeft,Scene.width,Scene.height,Scene.ui);
         Assets.LoadPackages(done,data.GetKeys().toArray(new String[0]));
 
         InitControlCamera();
@@ -106,7 +113,10 @@ public class MyGame extends GDXGame {
     @Override
     public void render() {
         gBox2d.Act(GDX.DeltaTime());
-        super.render();
+        scene.Act(GDX.DeltaTime());
+        Gdx.gl.glClearColor(bg.r,bg.g,bg.b,bg.a);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        scene.Render();
         gBox2d.Render();
     }
 }

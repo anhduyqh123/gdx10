@@ -23,6 +23,8 @@ public class IActor {
     public IActionList acList = new IActionList();
     private Map<String,Component> componentMap = new HashMap<>();
 
+    private Map<String,String> mapParam = new HashMap<>();
+
     protected GDX.Func1<Actor,String> connect;
     private GDX.Func<Actor> getActor;
 
@@ -50,11 +52,12 @@ public class IActor {
         getActor = ()->actor;
     }
 
-    protected void InitActor()
+    public void InitActor()
     {
         if (getActor==null) SetActor(NewActor());
+        GetActor().setUserObject(this);
         try {
-            Group parent = (Group) connect.Run("");
+            Group parent = GetActor("");
             parent.addActor(GetActor());
         }catch (Exception e){}
     }
@@ -79,6 +82,10 @@ public class IActor {
         actor.setColor(GetColor());
         actor.setTouchable(touchable);
         actor.setVisible(visible);
+    }
+    protected void Update(float delta)
+    {
+        ForComponent((k,p)-> p.Update(delta));
     }
     private boolean ContainsEvent(String... events)
     {
@@ -123,20 +130,22 @@ public class IActor {
         BaseRefresh();
         //RefreshEvent();
 
-        GetActor().clearActions();
+        ClearAction();
         RefreshComponent();
         RefreshEvent();
     }
     public void SetConnect(GDX.Func1<Actor,String> connect)//this call when this created by json
     {
         this.connect = connect;
-        iPos.getTarget = connect;
-        iSize.getTarget = connect;
+        iPos.getIActor = ()->this;
+        iSize.getIActor = ()->this;
+        //iPos.getTarget = connect;
+        //iSize.getTarget = connect;
     }
     public void Remove()
     {
-        GetActor().remove();
         ForComponent((n,p)->p.Remove());
+        GetActor().remove();
     }
     //Component
     public Map<String,Component> GetComponentData()
@@ -148,7 +157,7 @@ public class IActor {
         ForComponent((k,p)->p.BeforeRefresh());
         ForComponent((k,p)->{
             p.getMain = ()->this;
-            p.Refresh(GetActor());
+            p.Refresh();
         });
         ForComponent((k,p)->p.AfterRefresh());
     }
@@ -167,16 +176,31 @@ public class IActor {
             if (p.getClass().equals(type)) return (T)p;
         return null;
     }
+    public void AddComponent(String name,Component p)
+    {
+        GetComponentData().put(name,p);
+    }
     //action
     public void StopAction()
     {
         BaseRefresh();
-        GetActor().clearActions();
+        ClearAction();
     }
     public void RunAction(String actionName)
     {
-        if (acList.Contains(actionName))
-            GetActor().addAction(GetAction(actionName));
+        if (!acList.Contains(actionName)) return;
+        GetActor().addAction(GetAction(actionName));
+    }
+    public void ClearAction()
+    {
+        GetActor().clearActions();
+        GetActor().addAction(new Action() {
+            @Override
+            public boolean act(float delta) {
+                Update(delta);
+                return false;
+            }
+        });
     }
     public <T extends IAction> T GetIAction(String name)
     {
@@ -187,8 +211,36 @@ public class IActor {
         return GetIAction(name).Get(this);
     }
 
+    public void SetColor(Color color)
+    {
+        GetActor().setColor(color);
+    }
+
+    //param
+    public Map<String,String> GetParamMap()
+    {
+        return mapParam;
+    }
+    public <T> T GetParam(String name,T value0)
+    {
+        try {
+            String result = mapParam.get(name);
+            return Reflect.GetConfig(result,value0);
+        }catch (Exception e){}
+        return value0;
+    }
+    public boolean HasParam(String name)
+    {
+        return mapParam.containsKey(name);
+    }
+
     @Override
     public boolean equals(Object obj) {
         return Reflect.equals(this,obj);
+    }
+
+    public static <T extends IActor> T GetIActor(Actor actor)
+    {
+        return (T)actor.getUserObject();
     }
 }

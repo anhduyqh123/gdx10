@@ -15,7 +15,7 @@ public abstract class IMultiAction extends IAction {
         Foreach(i->m.put(i.name,i));
         getMap = ()->m;
     }
-    public <T extends IAction> T GetIAction(String name)
+    public <T extends IAction> T FindIAction(String name)
     {
         if (getMap==null) Init();
         if (getMap.Run().containsKey(name)) return (T)getMap.Run().get(name);
@@ -23,33 +23,33 @@ public abstract class IMultiAction extends IAction {
             if (i instanceof IMultiAction)
             {
                 IMultiAction iMul = (IMultiAction) i;
-                IAction iAction = iMul.GetIAction(name);
+                IAction iAction = iMul.FindIAction(name);
                 if (iAction!=null) return (T)iAction;
             }
         return null;
     }
-    public <T extends IAction> T GetIAction(String name,Class<T> type)
+    public <T extends IAction> T FindIAction(String name, Class<T> type)
     {
-        return GetIAction(name);
+        return FindIAction(name);
     }
     public IMultiAction GetIMulti(String name)
     {
-        return GetIAction(name);
+        return FindIAction(name);
     }
 
     public abstract void Move(int del,IAction iAction);
     public abstract void Add(IAction iAction);
     public abstract void Remove(IAction iAction);
-    public abstract List<IAction> GetAll();
+    public abstract <T extends IAction> List<T> GetAll();
     protected void Foreach(GDX.Runnable<IAction> cb)
     {
         for(IAction i : GetAll())
             cb.Run(i);
     }
-    //set
-    public void SetRunnable(String name,Runnable run)
+    //extend
+    public void SetIRun(String name,Runnable run)
     {
-        IRunAction iRun = GetIAction(name);
-        iRun.runnable = run;
+        IRunAction iRun = FindIAction(name);
+        iRun.runnable = ia->run.run();
     }
 }

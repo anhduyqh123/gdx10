@@ -147,6 +147,10 @@ public class Assets extends Actor {
                 i.manager.unload(n.url);
         }
     }
+    public static void UnloadPackages(String... packs)
+    {
+        for (String pack : packs) UnloadPackage(pack);
+    }
     public static void RemovePackage(String pack)
     {
         i.packLoaded.remove(pack);

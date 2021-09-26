@@ -1,0 +1,69 @@
+
+Boss01.png
+size: 436,180
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Ellipse 1
+  rotate: false
+  xy: 303, 0
+  size: 85, 28
+  orig: 85, 28
+  offset: 0, 0
+  index: -1
+M1
+  rotate: true
+  xy: 303, 28
+  size: 149, 62
+  orig: 149, 62
+  offset: 0, 0
+  index: -1
+M2
+  rotate: false
+  xy: 169, 8
+  size: 134, 36
+  orig: 134, 36
+  offset: 0, 0
+  index: -1
+Y1
+  rotate: true
+  xy: 365, 44
+  size: 133, 69
+  orig: 133, 69
+  offset: 0, 0
+  index: -1
+Y2
+  rotate: true
+  xy: 239, 44
+  size: 133, 63
+  orig: 134, 63
+  offset: 0, 0
+  index: -1
+Y3
+  rotate: true
+  xy: 169, 44
+  size: 133, 70
+  orig: 134, 71
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 0, 8
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1
+effect_body
+  rotate: false
+  xy: 0, 7
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+icon_star
+  rotate: false
+  xy: 388, 5
+  size: 37, 39
+  orig: 37, 39
+  offset: 0, 0
+  index: -1

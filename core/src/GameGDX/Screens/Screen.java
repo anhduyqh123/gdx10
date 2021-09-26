@@ -28,8 +28,8 @@ public class Screen extends BaseScreen {
     }
     protected void SetRunAction(String name,String runName)
     {
-        IRunAction iRun = iGroup.acList.GetIMulti(name).GetIAction("done");
-        iRun.runnable = GetRun(runName);
+        IRunAction iRun = iGroup.acList.GetIMulti(name).FindIAction("done");
+        iRun.runnable = i->GetRun(runName).run();
     }
 
     @Override
@@ -53,49 +53,49 @@ public class Screen extends BaseScreen {
     }
     public void AddClick_NoPop(String name, Runnable event)
     {
-        AddClick(GetActor(name),event);
+        AddClick(FindActor(name),event);
     }
 
-    public <T extends Actor> T GetActor(String name)
+    public <T extends Actor> T FindActor(String name)
     {
-        return iGroup.GetActor(name);
+        return iGroup.FindChild(name);
     }
-    public <T extends Actor> T GetActor(String name,Class<T> type)
+    public <T extends Actor> T FindActor(String name,Class<T> type)
     {
-        return GetActor(name);
+        return FindActor(name);
     }
-    public <T extends IActor> T GetIActor(String name)
+    public <T extends IActor> T FindIActor(String name)
     {
-        return iGroup.GetIActor(name);
+        return iGroup.FindIChild(name);
     }
-    public <T extends IActor> T GetIActor(String name, Class<T> type)
+    public <T extends IActor> T FindIActor(String name, Class<T> type)
     {
-        return GetIActor(name);
+        return FindIActor(name);
     }
 
-    //Get IChild
     public IGroup GetIGroup()
     {
         return iGroup;
     }
-    public IGroup GetIGroup(String name)
+    //Find IChild
+    public IGroup FindIGroup(String name)
     {
-        return GetIActor(name);
+        return FindIActor(name);
     }
-    public ILabel GetILabel(String name)
+    public ILabel FindILabel(String name)
     {
-        return GetIActor(name);
+        return FindIActor(name);
     }
-    public IImage GetIImage(String name)
+    public IImage FindIImage(String name)
     {
-        return GetIActor(name);
+        return FindIActor(name);
     }
-    public ITable GetITable(String name)
+    public ITable FindITable(String name)
     {
-        return GetIActor(name);
+        return FindIActor(name);
     }
-    public IParticle GetIParticle(String name)
+    public IParticle FindIParticle(String name)
     {
-        return GetIActor(name);
+        return FindIActor(name);
     }
 }

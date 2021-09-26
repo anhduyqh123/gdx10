@@ -4,7 +4,6 @@ import GameGDX.Actions.MovePath;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
 import GameGDX.GUIData.IChild.IPos;
-import GameGDX.Reflect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -54,7 +53,7 @@ public class IMovePath extends IDelay{
             float x0 = actor.getX(align)+iPos.delX;
             float y0 = actor.getY(align)+iPos.delY;
             if (current) return new Vector2(x0,y0);
-            iPos.getTarget = iActor.iPos.getTarget;
+            iPos.getIActor = iActor.iPos.getIActor;
             if (useX) x0 = iPos.GetX();
             if (useY) y0 = iPos.GetY();
             return new Vector2(x0,y0);
@@ -62,11 +61,6 @@ public class IMovePath extends IDelay{
         public int GetAlign()
         {
             return iPos.align.value;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return Reflect.equals(this,obj);
         }
     }
 }

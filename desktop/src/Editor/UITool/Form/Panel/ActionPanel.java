@@ -2,6 +2,8 @@ package Editor.UITool.Form.Panel;
 
 import Editor.JFameUI;
 import Editor.UITool.Form.PointForm;
+import Editor.UITool.Physics.MarkForm;
+import Extend.Box2d.IAction.IExplosion;
 import GameGDX.GDX;
 import GameGDX.GUIData.IAction.*;
 import GameGDX.Reflect;
@@ -49,6 +51,7 @@ public class ActionPanel {
         if (data instanceof IMove) return new JIMove(data,pn);
         if (data instanceof IColor) return new JIColor(data,pn);
         if (data instanceof IMovePath) return new JIMovePath(data,pn);
+        if (data instanceof IExplosion) return new JExplosion(data,pn);
         return new JIAction(data,pn);
     }
     public class JIAction
@@ -102,6 +105,28 @@ public class ActionPanel {
             IMovePath iMovePath = (IMovePath)data;
             ui.NewButton("Show Points",pn,()->new PointForm(iMovePath.points));
 
+        }
+    }
+
+    //box2d
+    class JExplosion extends JIAction
+    {
+        public JExplosion(IAction data, JPanel pn) {
+            super(data, pn);
+            IExplosion iAction = (IExplosion)data;
+            ui.NewButton("category",pn,()->
+                    new MarkForm(iAction.category, iAction.mark,(c, m)->{
+                        iAction.category=c;
+                        iAction.mark=m;
+                    }));
+
+        }
+        @Override
+        protected List<String> GetFields() {
+            List<String> list = ui.GetFields(data);
+            list.remove("category");
+            list.remove("mark");
+            return list;
         }
     }
 }

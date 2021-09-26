@@ -7,8 +7,8 @@ category: [
 	box
 	bridge
 	target
-	un_jump
+	boss
 	enemy
-	unObject
+	unRayCast
 ]
 }

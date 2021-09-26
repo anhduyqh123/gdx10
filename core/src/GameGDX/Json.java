@@ -250,6 +250,11 @@ public class Json {
     }
     //</editor-fold>
     //<editor-fold desc="Static From JsonValue">
+    public static void ReadFields(Object object,String data)
+    {
+        new Json().ReadFields(object,DataToJson(data));
+    }
+
     public static <T> List<T> ToList(Class<T> elementType,JsonValue js)
     {
         Json json = new Json();

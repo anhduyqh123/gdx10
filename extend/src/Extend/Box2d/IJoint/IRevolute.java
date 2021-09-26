@@ -8,8 +8,9 @@ import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class IRevolute extends IDistance{
-    public boolean enableLimit;
-    public float lowerAngle,upperAngle,motorSpeed;
+    public boolean enableLimit,enableMotor;
+    public float lowerAngle,upperAngle,motorSpeed,maxMotorTorque;
+
     @Override
     protected Joint Create(Actor obA, Actor obB) {
         Body bodyA = GetBody(objectA);
@@ -24,10 +25,15 @@ public class IRevolute extends IDistance{
         jointDef.localAnchorB.set(bodyB.getLocalPoint(pB));
 
         jointDef.collideConnected = collideConnected;
+
         jointDef.enableLimit = enableLimit;
         jointDef.lowerAngle = (float) Math.toRadians(lowerAngle);
         jointDef.upperAngle = (float) Math.toRadians(upperAngle);
-        jointDef.motorSpeed = (float) Math.toRadians(motorSpeed);
+
+        jointDef.enableMotor = enableMotor;
+        jointDef.motorSpeed = motorSpeed;
+        jointDef.maxMotorTorque = maxMotorTorque;
+
         return GBox2d.CreateJoint(jointDef);
     }
 }

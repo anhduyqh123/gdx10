@@ -2,6 +2,7 @@ package Editor.UITool.Physics;
 
 import Extend.Box2d.IFixture;
 import GameGDX.GDX;
+import GameGDX.Reflect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,13 @@ public class FixtureListPanel {
     public void New()
     {
         list.add(new IFixture());
+        onRefresh.Run(list.size()-1);
+    }
+    public void Clone()
+    {
+        int index= getIndex.Run();
+        IFixture clone = Reflect.Clone(list.get(index));
+        list.add(clone);
         onRefresh.Run(list.size()-1);
     }
     public void Delete()

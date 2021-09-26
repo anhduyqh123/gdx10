@@ -3,9 +3,10 @@ package Editor.UITool.Form.Panel;
 import Editor.JFameUI;
 import Editor.UITool.Form.AnimForm;
 import Editor.UITool.Form.IEmitterForm;
-import Extend.Box2d.GRope;
 import Extend.CircleProgress.ICircleProgress;
 import Extend.Frame.IFrame;
+import Extend.ITabGroup;
+import Extend.PagedScroll.IPagedScroll;
 import Extend.Spine.GSpine;
 import Extend.Spine.ISpine;
 import Extend.Frame.GFrame;
@@ -15,7 +16,6 @@ import GameGDX.GUIData.*;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
 import com.badlogic.gdx.utils.reflect.Field;
-import javafx.scene.control.ComboBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +37,8 @@ public class ContentPanel {
     public Class[] GetTypes()
     {
         Class[] types = {IGroup.class, IImage.class, ILabel.class, ITable.class,IScrollPane.class,IParticle.class, IActor.class,
-                ISpine.class, IFrame.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class, GRope.class};
+                ISpine.class, IFrame.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class, ITabGroup.class,
+                IPagedScroll.class};
         return types;
     }
     public JPanel SetContent(JPanel panel, IActor iActor)
@@ -211,8 +212,8 @@ public class ContentPanel {
         {
             super(iActor,panel);
             ITable table = (ITable) iActor;
-            JTextField tfSL = ui.NewTextField("SL","1",panel);
-            ui.NewButton("Clone",panel).addActionListener(e->table.CloneChild(Integer.parseInt(tfSL.getText())));
+            //JTextField tfSL = ui.NewTextField("SL","1",panel);
+            //ui.NewButton("Clone",panel).addActionListener(e->table.CloneChild(Integer.parseInt(tfSL.getText())));
         }
     }
 
@@ -230,9 +231,13 @@ public class ContentPanel {
                     spine.SetSkin(st);
                 });
 
-            String[] ani = spine.GetAnimationNames();
-            if (ani!=null)
-                ui.NewComboBox("animation",ani,ani[0],panel,st->spine.SetAnimation(st,true));
+            List<String> ani = spine.GetAnimationNames();
+            ani.add(0,"");
+            String[] arr = ani.toArray(new String[0]);
+            ui.NewComboBox("animation",arr,iSpine.animation,panel,st->{
+                iSpine.animation = st;
+                spine.SetAnimation(st,true);
+            });
         }
 
         @Override

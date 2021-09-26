@@ -1,18 +1,21 @@
 package Editor.UITool.Form.Panel;
 
+import Editor.JFameUI;
 import Editor.UITool.Form.PhysicsForm;
-import Editor.UITool.Physics.ContactForm;
 import Editor.UITool.Physics.JointForm;
+import Editor.UITool.Physics.MarkForm;
 import Extend.Box2d.IBody;
-import Extend.Box2d.IContact.IContact;
 import Extend.Box2d.IJoint.IJoint;
+import Extend.Box2d.IRayCast;
 import GameGDX.GDX;
 import GameGDX.GUIData.IChild.Component;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IGroup;
+import GameGDX.Reflect;
 
-import java.util.ArrayList;
+import javax.swing.*;
 import java.util.List;
+
 
 public class ComponentPanel {
 
@@ -22,16 +25,42 @@ public class ComponentPanel {
         {
             IBody body = (IBody) cp;
             GDX.PostRunnable(()->new PhysicsForm(body,iActor));
+            return;
         }
         if (cp instanceof IJoint)
         {
             IGroup iGroup = (IGroup)iActor;
-            List<String> list = new ArrayList<>(iGroup.GetChildName());
-            new JointForm(list,(IJoint) cp,()->iGroup.Refresh());
+            new JointForm(iGroup.GetChildName(),(IJoint) cp,()->iGroup.Refresh());
+            return;
         }
-        if (cp instanceof IContact)
+        if (cp instanceof IRayCast)
         {
-            new ContactForm((IContact)cp);
+            NewIRayCast((IRayCast) cp);
+            return;
         }
+        NewFrame(cp);
+    }
+    private void NewIRayCast(IRayCast iRayCast)
+    {
+        JFameUI ui = new JFameUI();
+        JPanel pn = ui.NewPanel(500,400);
+        List<String> list = ui.GetFields(iRayCast);
+        list.remove("mark");
+        list.remove("category");
+        ui.InitComponents(list,iRayCast,pn);
+        //ui.NewButton("mark",pn,()->new MarkForm(iRayCast.mark, m->iRayCast.mark=m));
+        ui.NewButton("category",pn,()->
+                new MarkForm(iRayCast.category, iRayCast.mark,(c,m)->{
+                    iRayCast.category=c;
+                    iRayCast.mark=m;
+                }));
+        ui.NewJFrame("Component",pn);
+    }
+    private void NewFrame(Component cp)
+    {
+        JFameUI ui = new JFameUI();
+        JPanel pn = ui.NewPanel(500,400);
+        ui.InitComponents(cp,pn);
+        ui.NewJFrame("Componenet",pn);
     }
 }

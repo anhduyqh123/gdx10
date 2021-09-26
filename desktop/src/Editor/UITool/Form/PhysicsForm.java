@@ -35,7 +35,7 @@ public class PhysicsForm {
     private JList list3;
     private JButton btNew3;
     private JButton btDelete3;
-    private JPanel pnMark;
+    private JButton btClone3;
 
     private JFameUI ui = new JFameUI();
     private Group group = new Group();
@@ -103,9 +103,9 @@ public class PhysicsForm {
         fixtureForm.onNewShape = ()->{
             shape = InitShape(iFixture.iShape);
         };
+
         ui.Repaint(pnFixture);
 
-        InitMark(iFixture);
         shape = InitShape(iFixture.iShape);
     }
 
@@ -126,13 +126,7 @@ public class PhysicsForm {
         panel.onRefresh.Run(0);
         btNew3.addActionListener(e->panel.New());
         btDelete3.addActionListener(e->panel.Delete());
-
-    }
-    private void InitMark(IFixture iFixture)
-    {
-        pnMark.removeAll();
-        new MarkForm(iFixture,pnMark);
-        ui.Repaint(pnMark);
+        btClone3.addActionListener(e->panel.Clone());
     }
 
     //Shape

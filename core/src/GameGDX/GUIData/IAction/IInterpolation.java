@@ -18,7 +18,13 @@ public enum IInterpolation {
     fastSlow(Interpolation.fastSlow),
     sine(Interpolation.sine),
     sineIn(Interpolation.sineIn),
-    sineOut(Interpolation.sineOut);
+    sineOut(Interpolation.sineOut),
+    elastic(Interpolation.elastic),
+    elasticIn(Interpolation.elasticIn),
+    elasticOut(Interpolation.elasticOut),
+    pow2(Interpolation.pow2),
+    pow2In(Interpolation.pow2In),
+    pow2Out(Interpolation.pow2Out);
 
     public Interpolation value;
     IInterpolation(Interpolation value)

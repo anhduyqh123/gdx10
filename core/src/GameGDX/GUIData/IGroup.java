@@ -1,10 +1,12 @@
 package GameGDX.GUIData;
 
-import GameGDX.Actors.GGroup;
 import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 
 import java.util.*;
 
@@ -13,11 +15,6 @@ public class IGroup extends IActor {
     protected List<String> list = new ArrayList<>();
     public String sizeName = "";
     public boolean clip;
-
-    @Override
-    protected Actor NewActor() {
-        return new GGroup();
-    }
 
     public void Move(String childName, int dir)
     {
@@ -43,11 +40,11 @@ public class IGroup extends IActor {
     public void AddChildAndConnect(String name, IActor child)
     {
         AddChild(name,child);
-        child.SetConnect(this::GetActor);
+        child.SetConnect(this::GetChild);
     }
     public void Remove(String name)
     {
-        Actor child = GetActor(name);
+        Actor child = GetChild(name);
         if (child!=null) child.remove();
         map.remove(name);
         list.remove(name);
@@ -62,62 +59,86 @@ public class IGroup extends IActor {
         int index = list.indexOf(oldName);
         list.set(index,newName);
     }
-    public <T extends IActor> T GetIActor(int index){
-        String name = list.get(index);
-        return GetIActor(name);
+
+    @Override
+    protected Actor NewActor() {
+        return new Group(){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                if (clip)
+                {
+                    batch.flush();
+                    if (clipBegin())
+                    {
+                        super.draw(batch, parentAlpha);
+                        clipEnd();
+                    }
+                }
+                else
+                    super.draw(batch, parentAlpha);
+            }
+        };
     }
-    public <T extends IActor> T GetIActor(String name)
+
+    public <T extends IActor> T GetIChild(int index){
+        String name = list.get(index);
+        return GetIChild(name);
+    }
+    public <T extends IActor> T GetIChild(String name)
     {
-        if (Contain(name)) return (T)map.get(name);
+        return (T)map.get(name);
+    }
+    //Find IActor
+    public <T extends IActor> T FindIChild(String name)
+    {
+        if (Contain(name)) return GetIChild(name);
         for(IActor ic : map.values())
             if (ic instanceof IGroup)
             {
-                IActor result = ((IGroup)ic).GetIActor(name);
+                IActor result = ((IGroup)ic).FindIChild(name);
                 if (result!=null) return (T)result;
             }
         return null;
     }
-    public <T extends IActor> T GetIActor(String name, Class<T> type)
+    public <T extends IActor> T FindIChild(String name, Class<T> type)
     {
-        return GetIActor(name);
+        return FindIChild(name);
+    }
+    public IGroup FindIGroup(String name)
+    {
+        return FindIChild(name);
+    }
+    public ILabel FindILabel(String name)
+    {
+        return FindIChild(name);
+    }
+    public IImage FindIImage(String name)
+    {
+        return FindIChild(name);
+    }
+    public ITable FindITable(String name)
+    {
+        return FindIChild(name);
+    }
+    public IParticle FindIParticle(String name)
+    {
+        return FindIChild(name);
     }
 
-    //Get IActor
-    public IGroup GetIGroup(String name)
-    {
-        return GetIActor(name);
-    }
-    public ILabel GetILabel(String name)
-    {
-        return GetIActor(name);
-    }
-    public IImage GetIImage(String name)
-    {
-        return GetIActor(name);
-    }
-    public ITable GetITable(String name)
-    {
-        return GetIActor(name);
-    }
-    public IParticle GetIParticle(String name)
-    {
-        return GetIActor(name);
-    }
-
-    public <T extends Actor> T GetActor(String name,Class<T> type)
-    {
-        return GetActor(name);
-    }
-    public <T extends Actor> T GetActor(String name){
+    public  <T extends Actor> T GetChild(String name){
         if (name.equals("")) return GetActor();
-        IActor iActor = GetIActor(name);
+        IActor iActor = GetIChild(name);
         if (iActor !=null) return iActor.GetActor();
         return null;
+    }
+    public  <T extends Actor> T FindChild(String name)
+    {
+        return FindIChild(name).GetActor();
     }
 
     protected Vector2 GetDefaultSize(String name) {
         try {
-            return GetIActor(name).GetSize();
+            return FindIChild(name).GetSize();
         }catch (Exception e){}
         return null;
     }
@@ -133,16 +154,13 @@ public class IGroup extends IActor {
         BaseRefresh();
         //RefreshEvent();
 
-        GGroup group = GetActor();
-        group.clip = clip;
-
-        GetActor().clearActions();
+        ClearAction();
         ForComponent((k,p)->p.BeforeRefresh());
 
         for(int i=0;i<list.size();i++)
         {
-            GetIActor(list.get(i)).Refresh();
-            GetActor(list.get(i)).setZIndex(i);
+            GetIChild(list.get(i)).Refresh();
+            GetChild(list.get(i)).setZIndex(i);
         }
         RefreshComponent();
         RefreshEvent();
@@ -152,26 +170,38 @@ public class IGroup extends IActor {
     protected void RefreshComponent() {
         ForComponent((k,p)->{
             p.getMain = ()->this;
-            p.getIActor = this::GetIActor;
-            p.Refresh(GetActor());
+            p.findIChild = this::FindIChild;
+            p.Refresh();
         });
     }
 
-    public Collection<String> GetChildName()
+    public List<String> GetChildName()
     {
         return list;
     }
     public void ForEach(GDX.Runnable<IActor> cb)
     {
-        for(String n : list) cb.Run(GetIActor(n));
+        for(String n : list) cb.Run(GetIChild(n));
+    }
+    public <T extends IActor> List<T> GetChildren()
+    {
+        List<T> children = new ArrayList<>();
+        ForEach(i->children.add((T)i));
+        return children;
     }
 
     @Override
     public void SetConnect(GDX.Func1 connect) {
         super.SetConnect(connect);
-        ForEach(i->i.SetConnect(this::GetActor));
+        ForEach(i->i.SetConnect(this::GetChild));
         iSize.getDefaultSize = ()->GetDefaultSize(sizeName);
     }
+    public void Remove()
+    {
+        super.Remove();
+        ForEach(IActor::Remove);
+    }
+
 
     @Override
     public void RunAction(String actionName) {
@@ -183,5 +213,11 @@ public class IGroup extends IActor {
     public void StopAction() {
         super.StopAction();
         ForEach(IActor::StopAction);
+    }
+
+    @Override
+    public void SetColor(Color color) {
+        super.SetColor(color);
+        ForEach(i->i.SetColor(color));
     }
 }

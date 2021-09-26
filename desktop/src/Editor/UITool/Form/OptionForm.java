@@ -2,6 +2,7 @@ package Editor.UITool.Form;
 
 import Editor.JFameUI;
 import Editor.LanguageTool.LanguageMain;
+import Editor.UITool.MyGame;
 import Extend.Box2d.GBox2d;
 import Extend.GShapeRenderer;
 import GameGDX.*;
@@ -39,8 +40,7 @@ public class OptionForm {
         configButton.addActionListener(e->new ConfigForm());
         BGColorButton.addActionListener(e->{
             ui.NewColorChooserWindow(Color.WHITE,hex->{
-                Actor bg = Scene.ui.getChild(0);
-                bg.setColor(Color.valueOf(hex));
+                MyGame.i.bg.set(Color.valueOf(hex));
             });
         });
         try {
@@ -49,9 +49,11 @@ public class OptionForm {
         InitSetFont();
         InitGrid();
 
-        cbPhysics.setSelected(GBox2d.active);
+
+        cbPhysics.setSelected(GBox2d.GetActive());
         cbPhysics.addActionListener(e->{
-            GBox2d.active = cbPhysics.isSelected();
+            //GBox2d.active = cbPhysics.isSelected();
+            GBox2d.SetActive(cbPhysics.isSelected());
         });
     }
     public boolean IsDrag()

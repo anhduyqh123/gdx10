@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
@@ -17,8 +16,8 @@ import java.util.*;
 public class Scene {
 
     public static Scene i;
-    public static float mWidth, mHeight,scaleX,scaleY,scale;
-    public static int width,height;
+    public static float scaleX,scaleY,scale;
+    public static int width,height,mWidth,mHeight;
     public static Group ui,ui2;
     public static Stage stage;
 
@@ -26,11 +25,11 @@ public class Scene {
     private final List<String> stageNames = new ArrayList<>();
     private final Batch batch;
 
-    public Scene(float gWidth,float gHeight)
+    public Scene(int gWidth,int gHeight)
     {
         this(gWidth,gHeight,new SpriteBatch());
     }
-    public Scene(float gWidth,float gHeight,Batch batch)
+    public Scene(int gWidth,int gHeight,Batch batch)
     {
         i = this;
         this.batch = batch;
@@ -45,37 +44,36 @@ public class Scene {
     {
         width = (int)stage.getViewport().getWorldWidth();
         height = (int)stage.getViewport().getWorldHeight();
-        scaleX = width/ mWidth;
-        scaleY = height/ mHeight;
+        scaleX = width*1f/ mWidth;
+        scaleY = height*1f/ mHeight;
         scale = Math.max(scaleX,scaleY);
     }
     protected void Init()
     {
-        stage = NewStage("stage");
+        stage = NewStage();
+        AddStage("stage",stage);
         ui = NewGroup(stage);
         ui2 = NewGroup(stage);
 
         Gdx.input.setInputProcessor(stage);
     }
-    public Stage NewStage(String name)
+    public Stage NewStage()
+    {
+        return NewStage(mWidth,mHeight);
+    }
+    public Stage NewStage(int width,int height)
+    {
+        return new Stage(new ExtendViewport(width, height),batch);
+    }
+    public void AddStageAtFirst(String name,Stage newStage)
+    {
+        stageNames.add(0,name);
+        mapStage.put(name,newStage);
+    }
+    public void AddStage(String name,Stage newStage)
     {
         stageNames.add(name);
-        return PutStage(name);
-    }
-    public Stage NewStage(int index,String name)
-    {
-        stageNames.add(index,name);
-        return PutStage(name);
-    }
-    private Stage PutStage(String name)
-    {
-        Stage newStage = NewStage();
         mapStage.put(name,newStage);
-        return newStage;
-    }
-    private Stage NewStage()
-    {
-        return new Stage(new ExtendViewport(mWidth, mHeight),batch);
     }
 
     private Group NewGroup(Stage stage)
@@ -201,8 +199,9 @@ public class Scene {
     }
     public static void SetStagePosition(Actor actor,Vector2 pos,int align)
     {
-        pos = actor.getParent().stageToLocalCoordinates(pos);
-        actor.setPosition(pos.x,pos.y,align);
+        Vector2 p = new Vector2(pos);
+        actor.getParent().stageToLocalCoordinates(p);
+        actor.setPosition(p.x,p.y,align);
     }
     public static Rectangle GetRect(Actor actor)
     {
@@ -214,22 +213,5 @@ public class Scene {
         actor.setSize(width, height);
         actor.setPosition(x,y,align);
         parent.addActor(actor);
-    }
-    //convert
-    public static Group TableToGroup(Table table)
-    {
-        Group parent = table.getParent();
-        int index = table.getZIndex();
-        Group group = new Group();
-        group.setSize(table.getWidth(),table.getHeight());
-        group.setPosition(table.getX(),table.getY());
-        parent.addActorAt(index,group);
-        List<Actor> list = new ArrayList<>();
-        for(Actor child : table.getChildren()) list.add(child);
-        table.remove();
-        for(Actor child : list)
-            group.addActor(child);
-
-        return group;
     }
 }

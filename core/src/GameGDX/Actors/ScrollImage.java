@@ -21,7 +21,6 @@ public class ScrollImage extends GSprite {
         trWidth = tr.getRegionWidth();
         trHeight = tr.getRegionHeight();
         tRegion.setRegion(tr);
-        //sprite.setRegion(tr);
     }
 
     @Override

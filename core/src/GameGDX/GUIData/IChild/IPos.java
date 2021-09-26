@@ -5,6 +5,7 @@ import GameGDX.Reflect;
 import GameGDX.Scene;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class IPos {
     public enum Type{
@@ -17,7 +18,27 @@ public class IPos {
     public IAlign align = IAlign.bottomLeft;
     public float delX,delY;
     public Type type = Type.Local;
-    public GDX.Func1<Actor,String> getTarget;
+
+    public GDX.Func<IActor> getIActor;
+    //public GDX.Func1<Actor,String> getTarget;
+
+    private IActor GetIActor()
+    {
+        return getIActor.Run();
+    }
+    private Actor GetActor()
+    {
+        return GetIActor().GetActor();
+    }
+    private Actor GetActor(String name)
+    {
+        return GetIActor().GetActor(name);
+    }
+    private Stage GetStage()
+    {
+        if (GetActor().getStage()==null) return Scene.stage;
+        return GetActor().getStage();
+    }
 
     public float GetX()
     {
@@ -32,26 +53,28 @@ public class IPos {
         if (x instanceof Value) return ((Value) x).value;
         if (x instanceof Ratio) return ((Ratio) x).ratio*GetWidth();
         Target target = (Target)x;
-        return getTarget.Run(target.name).getX(target.align.value);
+        return GetActor(target.name).getX(target.align.value);
     }
     public float GetY0()
     {
         if (y instanceof Value) return ((Value) y).value;
         if (y instanceof Ratio) return ((Ratio) y).ratio*GetHeight();
         Target target = (Target)y;
-        return getTarget.Run(target.name).getY(target.align.value);
+        return GetActor(target.name).getY(target.align.value);
     }
     private float GetWidth()
     {
-        if (getTarget==null || type==Type.Global) return Scene.width;
-        float width = getTarget.Run("").getWidth();
-        return width<=0?Scene.width:width;
+        if (type==Type.Global) return GetStage().getWidth();
+        float width = GetActor("").getWidth();
+        float w0 = GetStage().getWidth();
+        return width<=0?w0:width;
     }
     private float GetHeight()
     {
-        if (getTarget==null || type==Type.Global) return Scene.height;
-        float height = getTarget.Run("").getHeight();
-        return height<=0?Scene.height:height;
+        if (type==Type.Global) return GetStage().getHeight();
+        float height = GetActor("").getHeight();
+        float h0 = GetStage().getHeight();
+        return height<=0?h0:height;
     }
     public void Set(Vector2 pos)
     {
@@ -66,8 +89,8 @@ public class IPos {
     public Vector2 Get()
     {
         Vector2 pos = new Vector2(GetX(),GetY());
-        if (getTarget==null || type==Type.Local) return pos;
-        pos = getTarget.Run("").stageToLocalCoordinates(pos);
+        if (type==Type.Local) return pos;
+        pos = GetActor("").stageToLocalCoordinates(pos);
         return pos;
     }
 

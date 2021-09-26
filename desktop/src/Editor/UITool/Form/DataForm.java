@@ -20,6 +20,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DataForm {
@@ -60,6 +61,7 @@ public class DataForm {
 
     public DataForm()
     {
+        Collections.sort(allPack);
         objectData.Load(allPack);
 
         gTree = new Tree(tree);
@@ -80,7 +82,7 @@ public class DataForm {
         });
         Click(btPrefab,()->{
             String name = selectedList.get(0);
-            IActor iActor = objectData.Get(selectedPack).GetIActor(name).Clone();
+            IActor iActor = objectData.Get(selectedPack).GetIChild(name).Clone();
             iActor.prefab = GetPrefab(selectedPack,name);
             NewChild(iActor);
         });
@@ -154,7 +156,7 @@ public class DataForm {
         {
             IGroup gGroup = (IGroup) iActor;
             for(String childName : gGroup.GetChildName())
-                node.add(GetNode(childName,gGroup.GetIActor(childName)));
+                node.add(GetNode(childName,gGroup.GetIChild(childName)));
         }
         return node;
     }
@@ -215,7 +217,7 @@ public class DataForm {
         IActor iActor = null;
         for(String name : selectedList)
         {
-            iActor = grSelected.GetIActor(name).Clone();
+            iActor = grSelected.GetIChild(name).Clone();
             String newName = name;
             if (iGroup.Contain(newName)) newName+="clone";
             iGroup.AddChildAndConnect(newName, iActor);
@@ -230,7 +232,7 @@ public class DataForm {
         IGroup iGroup = gTree.GetSelectedObject();
         for(String name : selectedList)
         {
-            IActor iActor = grSelected.GetIActor(name);
+            IActor iActor = grSelected.GetIChild(name);
             grSelected.Remove(name);
             iGroup.AddChildAndConnect(name, iActor);
         }
@@ -256,7 +258,7 @@ public class DataForm {
         IGroup iGroup = gTree.GetParentObject(gTree.GetSelectedObject());
         iGroup.Move(name,dir);
         gTree.Refresh();
-        gTree.SetSelection(iGroup.GetIActor(name));
+        gTree.SetSelection(iGroup.GetIChild(name));
         iGroup.Refresh();
     }
     private void Rename()
@@ -266,7 +268,7 @@ public class DataForm {
         IGroup iGroup = gTree.GetParentObject(gTree.GetSelectedObject());
         iGroup.Rename(oldName,newName);
         gTree.Refresh();
-        gTree.SetSelection(iGroup.GetIActor(newName));
+        gTree.SetSelection(iGroup.GetIChild(newName));
     }
     private void Save()
     {

@@ -1,0 +1,1 @@
+{class:Extend.Spine.ISpine,componentMap:{body:{class:Extend.Box2d.IBody,type:DynamicBody,category:boss,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:22.0,y:3.0},{x:124.0,y:3.0},{x:124.0,y:108.0},{x:22.0,y:108.0}]},category:128,friction:0.4}]}},iSize:{scale:0.6},animation:01 Idle,name:Boss02}

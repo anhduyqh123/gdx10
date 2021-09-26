@@ -10,6 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IPlatform extends IBody{
+    public enum Side{
+        Top(new Vector2(0,1)),
+        Bottom(new Vector2(0,-1)),
+        Left(new Vector2(-1,0)),
+        Right(new Vector2(1,0));
+        private Vector2 v;
+        Side(Vector2 v)
+        {
+            this.v = v;
+        }
+        public boolean Check(Vector2 vel)
+        {
+            if (vel.x*v.x<0 || vel.y*v.y<0) return true;
+            return false;
+        }
+    }
+    private Side side = Side.Top;
     private GDX.Func<List<Fixture>> getFixtures;
 
     public IPlatform()
@@ -32,8 +49,9 @@ public class IPlatform extends IBody{
             Vector2 pointVelOther = iBody.GetBody().getLinearVelocityFromWorldPoint(points[i]);
             //Vector2 relativeVel = GetBody().getLocalVector(pointVelOther.sub(pointVelPlatform));
 
-            if ( pointVelOther.y < 0 )
-                return;//point is moving down, leave contact solid and exit
+            if (side.Check(pointVelOther)) return;
+//            if ( pointVelOther.y < 0 )
+//                return;//point is moving down, leave contact solid and exit
 
 //            if ( relativeVel.y < -1 ) //if moving down faster than 1 m/s, handle as before
 //                return;//point is moving into platform, leave contact solid and exit
@@ -51,17 +69,21 @@ public class IPlatform extends IBody{
         //no points are moving into platform, contact should not be solid
         Fixtures().add(fixture);
         contact.setEnabled(false);
+
+        super.OnBeginContact(iBody, fixture, contact);
     }
 
     @Override
     public void OnPreSolve(IBody iBody, Fixture fixture, Contact contact, Manifold oldManifold) {
         if (Fixtures().contains(fixture))
             contact.setEnabled(false);
+        super.OnPreSolve(iBody, fixture, contact, oldManifold);
     }
 
     @Override
     public void OnEndContact(IBody iBody, Fixture fixture, Contact contact) {
         contact.setEnabled(true);
         Fixtures().remove(fixture);
+        super.OnEndContact(iBody, fixture, contact);
     }
 }

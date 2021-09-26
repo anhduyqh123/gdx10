@@ -1,18 +1,25 @@
 package Extend.Spine;
 
 import GameGDX.Assets;
+import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.esotericsoftware.spine.SkeletonData;
 
 public class ISpine extends IActor {
-    public String name = "",skin="";
+    public String name = "",skin="",animation="";
     public float delX,delY;
 
     @Override
     protected Actor NewActor() {
         return new GSpine();
+    }
+
+    @Override
+    public void SetConnect(GDX.Func1<Actor, String> connect) {
+        super.SetConnect(connect);
+        SetSize();
     }
 
     @Override
@@ -36,6 +43,8 @@ public class ISpine extends IActor {
             gSpine.SetData(data);
             gSpine.SetSkin(skin);
             gSpine.SetSpinePositionBy(delX,delY);
+            if (!animation.equals(""))
+                gSpine.SetAnimation(animation,true);
         }catch (Exception e){}
     }
 

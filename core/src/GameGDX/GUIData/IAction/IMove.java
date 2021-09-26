@@ -21,7 +21,7 @@ public class IMove extends IBaseAction{
         float x0 = actor.getX(align)+iPos.delX;
         float y0 = actor.getY(align)+iPos.delY;
         if (current) return Actions.moveToAligned(x0,y0,align,duration,iInter.value);
-        iPos.getTarget = iActor.iPos.getTarget;
+        iPos.getIActor = iActor.iPos.getIActor;
         if (useX) x0 = iPos.GetX();
         if (useY) y0 = iPos.GetY();
         return Actions.moveToAligned(x0,y0,align,duration,iInter.value);

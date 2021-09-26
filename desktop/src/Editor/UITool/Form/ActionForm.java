@@ -3,9 +3,8 @@ package Editor.UITool.Form;
 import Editor.JFameUI;
 import Editor.UITool.Form.Panel.ActionPanel;
 import Editor.WrapLayout;
-import Extend.Box2d.IAction.IAngular;
-import Extend.Box2d.IAction.IBegin;
-import Extend.Box2d.IAction.IVelocity;
+import Extend.Box2d.IAction.*;
+import Extend.Shake.IShake;
 import GameGDX.GDX;
 import GameGDX.GUIData.IAction.*;
 import GameGDX.Reflect;
@@ -68,8 +67,8 @@ public class ActionForm {
         Class[] types = {IDelay.class, IMove.class,IScale.class,IRotate.class,IParallel.class,ISequence.class,
                 IRunAction.class,IForever.class,IRepeat.class,IAlpha.class,IColor.class,IParAction.class,ISoundAction.class,
                 IMovePath.class,IMoveArc.class,ITextureAction.class,ICountAction.class,IDoAction.class,
-                IOther.class,IVisible.class,ISwitchEvent.class,
-                IAngular.class, IVelocity.class, IBegin.class};
+                IOther.class,ITarget.class,IVisible.class,ISwitchEvent.class,IJsonAction.class, IShake.class,
+                IAngular.class, IVelocity.class, IExplosion.class, IContact.class};
         List<String> names = new ArrayList<>();
         for(Class t : types) names.add(t.getSimpleName());
         Object[] arr = names.toArray();

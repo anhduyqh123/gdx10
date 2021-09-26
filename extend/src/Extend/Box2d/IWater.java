@@ -5,8 +5,6 @@ import com.badlogic.gdx.math.GeometryUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import javafx.util.Pair;
 
 import java.util.*;
 
@@ -14,7 +12,7 @@ public class IWater extends IBody{
     public float dragMod=0.25f,liftMod=0.25f;
     public float maxDrag=2000,maxLift=500;
 
-    private GDX.Func<Set<Pair<Fixture, Fixture>>> getFixturePairs;
+    private GDX.Func<Set<Pair>> getFixturePairs;
     private GDX.Func<Float> getDensity;
 
     public IWater()
@@ -40,15 +38,15 @@ public class IWater extends IBody{
     }
 
     private void update() {
-        Set<Pair<Fixture, Fixture>> fixturePairs = getFixturePairs.Run();
+        Set<Pair> fixturePairs = getFixturePairs.Run();
         float density = getDensity.Run();
         Body body = GetBody();
         if (body != null && fixturePairs != null) {
             World world = body.getWorld();
-            for (Pair<Fixture, Fixture> pair : fixturePairs) {
+            for (Pair pair : fixturePairs) {
 
-                Fixture fixtureA = pair.getKey();
-                Fixture fixtureB = pair.getValue();
+                Fixture fixtureA = pair.a;
+                Fixture fixtureB = pair.b;
 
                 List<Vector2> clippedPolygon = new ArrayList<>();
                 if (findIntersectionOfFixtures(fixtureA, fixtureB, clippedPolygon)) {
@@ -135,23 +133,32 @@ public class IWater extends IBody{
 
     @Override
     public void OnBeginContact(IBody iBody, Fixture fixture, Contact contact) {
-        Set<Pair<Fixture, Fixture>> fixturePairs = getFixturePairs.Run();
+        Set<Pair> fixturePairs = getFixturePairs.Run();
         Body bodyB = iBody.GetBody();
         if (bodyB.getType()== BodyDef.BodyType.DynamicBody)
         {
             Fixture fixture0 = GetBody().getFixtureList().get(0);
-            fixturePairs.add(new Pair<>(fixture0,fixture));
+            fixturePairs.add(new Pair(fixture0,fixture));
         }
     }
 
     @Override
     public void OnEndContact(IBody iBody, Fixture fixture, Contact contact) {
-        Set<Pair<Fixture, Fixture>> fixturePairs = getFixturePairs.Run();
+        Set<Pair> fixturePairs = getFixturePairs.Run();
         Body bodyB = iBody.GetBody();
         if (bodyB.getType()== BodyDef.BodyType.DynamicBody)
         {
             Fixture fixture0 = GetBody().getFixtureList().get(0);
-            fixturePairs.remove(new Pair<>(fixture0,fixture));
+            fixturePairs.remove(new Pair(fixture0,fixture));
+        }
+    }
+    public class Pair
+    {
+        public Fixture a,b;
+        public Pair(Fixture a,Fixture b)
+        {
+            this.a = a;
+            this.b = b;
         }
     }
     //static

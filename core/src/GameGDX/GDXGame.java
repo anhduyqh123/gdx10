@@ -7,8 +7,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
 public class GDXGame extends ApplicationAdapter {
-    private Scene scene;
-    private Assets assets;
+    protected Scene scene;
+    protected Assets assets;
 
     @Override
     public void pause() {

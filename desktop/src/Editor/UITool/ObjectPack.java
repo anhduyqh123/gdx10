@@ -35,7 +35,7 @@ public class ObjectPack extends IGroup {
     }
     @Override
     public void Remove(String name) {
-        Actor child = GetActor(name);
+        Actor child = GetChild(name);
         if (child!=null) child.remove();
         map.remove(name);
         AssetNode node = assetPackage.Get(name);
@@ -69,11 +69,12 @@ public class ObjectPack extends IGroup {
     }
 
     @Override
-    public Collection<String> GetChildName() {
+    public List<String> GetChildName() {
         List<String> list = new ArrayList<>(map.keySet());
         Collections.sort(list);
         return list;
     }
+
     public void Save(String name,Runnable done)
     {
         String url = assetPackage.url+"/objects/"+name+".ob";

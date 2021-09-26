@@ -79,18 +79,22 @@ public class GSpine extends Group {
     }
     public AnimationState.TrackEntry SetAnimation(String name, String idle)
     {
-        AnimationState.TrackEntry track = actor.getAnimationState().setAnimation(1,name,false);
-        track.setListener(new AnimationState.AnimationStateAdapter() {
-            @Override
-            public void complete(AnimationState.TrackEntry entry) {
-                SetAnimation(idle,true);
-            }
-        });
-        return track;
+        return SetAnimation(name,()->SetAnimation(idle,true));
     }
     public AnimationState.TrackEntry SetAnimation(String name, boolean loop)
     {
         return actor.getAnimationState().setAnimation(1,name,loop);
+    }
+    public AnimationState.TrackEntry SetAnimation(String name, Runnable done)
+    {
+        AnimationState.TrackEntry track = SetAnimation(name,false);
+        track.setListener(new AnimationState.AnimationStateAdapter() {
+            @Override
+            public void complete(AnimationState.TrackEntry entry) {
+                done.run();
+            }
+        });
+        return track;
     }
 
     @Override
@@ -98,13 +102,13 @@ public class GSpine extends Group {
         Free(data,actor);
         return super.remove();
     }
-    public String[] GetAnimationNames()
+    public List<String> GetAnimationNames()
     {
-        if (data==null) return null;
         List<String> list = new ArrayList<>();
+        if (data==null) return list;
         for(Animation a : data.getAnimations())
             list.add(a.getName());
-        return list.toArray(new String[list.size()]);
+        return list;
     }
     public String[] GetSkinNames()
     {

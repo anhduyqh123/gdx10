@@ -15,16 +15,19 @@ public class MainForm {
         DataForm dataForm = new DataForm();
         IActorForm iActorForm = new IActorForm();
         ActionForm actionForm = new ActionForm();
+        ParamForm paramForm = new ParamForm();
 
         dataForm.onSelect = (iActor,list)->{
             iActorForm.SetData(iActor,list);
 
             actionForm.SetData(iActor.acList);
             actionForm.onRun = name->{
-                iActor.StopAction();
+                //iActor.StopAction();
                 iActor.RunAction(name);
             };
             actionForm.onStop = iActor::StopAction;
+
+            paramForm.SetData(iActor.GetParamMap());
         };
 
         OptionForm optionForm = new OptionForm();
@@ -35,8 +38,10 @@ public class MainForm {
 
         pnTop.add(dataForm.panel1);
         pnTop.add(optionForm.panel1);
+        pnTop.add(paramForm.panel1);
 
         tabbedPane.add("Info", iActorForm.panel1);
         tabbedPane.add("Action",actionForm.panel1);
+        tabbedPane.add("Param",paramForm.panel1);
     }
 }

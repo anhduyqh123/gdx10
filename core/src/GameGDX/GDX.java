@@ -171,7 +171,9 @@ public class GDX {
     public static Texture GetFrameBuffer(Actor actor)
     {
         Batch batch = actor.getStage().getBatch();
-        FrameBuffer fbo = new FrameBuffer(Pixmap.Format.RGBA8888, Scene.width, Scene.height, false);
+        int width = (int)actor.getStage().getWidth();
+        int height = (int)actor.getStage().getHeight();
+        FrameBuffer fbo = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
 
         fbo.begin();
         batch.begin();

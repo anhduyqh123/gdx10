@@ -1,14 +1,13 @@
 package Editor.UITool.Pointed;
 
-import Extend.Box2d.IShape;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 import java.util.List;
 
 public class ChainPointed extends PolygonPointed{
-    public ChainPointed(IShape.IPolygon iPolygon, Group group) {
-        super(iPolygon, group);
+    public ChainPointed(List<Vector2> points, Group group) {
+        super(points, group);
     }
     protected Vector2 GetPos(Vector2 p, int del)
     {

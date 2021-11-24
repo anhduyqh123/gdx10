@@ -25,7 +25,7 @@ public class FixtureForm {
 //        ui.ComboBox(cbCategory,arr, GBox2d.GetCategory((short) iFixture.category),
 //                name->iFixture.category=GBox2d.GetCategoryBit(name));
 
-        Class[] classes = {IShape.ICircle.class, IShape.IPolygon.class,IShape.IChain.class};
+        Class[] classes = {IShape.ICircle.class, IShape.IPolygon.class,IShape.IChain.class, IShape.IEdge.class};
         String[] types = ui.ClassToName(classes);
         ui.ComboBox(cbShape,types,iFixture.iShape.getClass().getSimpleName());
         cbShape.addActionListener(e->{
@@ -33,6 +33,7 @@ public class FixtureForm {
             if (index==0) iFixture.iShape = new IShape.ICircle(actor.getWidth());
             if (index==1) iFixture.iShape = new IShape.IPolygon(actor.getWidth(),actor.getHeight());
             if (index==2) iFixture.iShape = new IShape.IChain(actor.getWidth());
+            if (index==3) iFixture.iShape = new IShape.IEdge(actor.getWidth());
             GDX.PostRunnable(onNewShape);
 
 //            GDX.PostRunnable(()->{

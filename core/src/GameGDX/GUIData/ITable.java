@@ -26,11 +26,11 @@ public class ITable extends IGroup {
         return new Table();
     }
 
-    public void ForIChild(GDX.Runnable<IActor> cb)
+    public <T extends IActor> void ForIChild(GDX.Runnable<T> cb)
     {
         if (getChildren==null) return;
         for(IActor i : getChildren.Run())
-            cb.Run(i);
+            cb.Run((T)i);
     }
 
     @Override
@@ -57,10 +57,11 @@ public class ITable extends IGroup {
     public void Refresh() {
         InitActor();
         BaseRefresh();
+        ForIChild(IActor::Remove);
         if (clone>0) CloneChild(clone);
         else RefreshChildren();
     }
-    private void RefreshChildren()
+    protected void RefreshChildren()
     {
         List<IActor> iActors = new ArrayList<>();
         for (String n : list) iActors.add(GetIChild(n));
@@ -110,7 +111,7 @@ public class ITable extends IGroup {
         List<IActor> iActors = new ArrayList<>();
         if (list.size()<=0) return iActors;
         IActor child = GetIChild(list.get(0));
-        child.Refresh();
+        //child.Refresh();
 
         for(int i=0;i<amount;i++)
             iActors.add(Reflect.Clone(child));

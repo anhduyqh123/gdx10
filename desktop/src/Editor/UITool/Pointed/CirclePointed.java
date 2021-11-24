@@ -1,6 +1,6 @@
 package Editor.UITool.Pointed;
 
-import Extend.Box2d.IShape;
+import GameGDX.Reflect;
 import GameGDX.Util;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -9,20 +9,25 @@ import com.badlogic.gdx.utils.Align;
 
 public class CirclePointed extends Pointed {
 
-    private IShape.ICircle iShape;
-    public CirclePointed(IShape.ICircle iShape, Group group) {
+    private Object circle;
+    public CirclePointed(Object circle, Group group) {
         super(group);
-        this.iShape = iShape;
+        this.circle = circle;
+        Vector2 pos = Reflect.GetValue("pos",circle);
+        float radius = Reflect.GetValue("radius",circle);
 
-        Vector2 p = new Vector2(iShape.pos).add(iShape.radius,0);
+        Vector2 p = new Vector2(pos).add(radius,0);
         Image img = NewPoint(p, x->{
             p.set(x);
-            iShape.radius = Util.GetDistance(p,iShape.pos);
+            Reflect.SetValue("radius",circle,Util.GetDistance(p,pos));
+            //iShape.radius = Util.GetDistance(p,pos);
             SetRender();
         });
-        NewPoint(iShape.pos,x->{
-            iShape.pos.set(x);
-            p.set(x.x+iShape.radius,x.y);
+        NewPoint(pos,x->{
+            pos.set(x);
+            //iShape.pos.set(x);
+            float r = Reflect.GetValue("radius",circle);
+            p.set(x.x+r,x.y);
             img.setPosition(p.x,p.y, Align.center);
             SetRender();
         });
@@ -31,6 +36,8 @@ public class CirclePointed extends Pointed {
     private void SetRender()
     {
         renderer.Clear();
-        renderer.NewCircle(GetPos(iShape.pos),iShape.radius);
+        Vector2 pos = Reflect.GetValue("pos",circle);
+        float radius = Reflect.GetValue("radius",circle);
+        renderer.NewCircle(GetPos(pos),radius);
     }
 }

@@ -122,14 +122,20 @@ public class MainForm {
         pnNode.add(line.panel1);
         return line;
     }
+    private KeyForm NewKeyLine()
+    {
+        KeyForm line = new KeyForm();
+        pnNode.add(line.panel1);
+        return line;
+    }
     private void InitNode(String key)
     {
         pnNode.removeAll();
         Language.Node node = language.GetNode(key);
         String mainCode = language.GetCodes().get(0);
 
-        LineForm keyLine = NewLine("Key");
-        keyLine.SetButton("Translate",()->{
+        KeyForm keyLine = NewKeyLine();
+        keyLine.SetButton(()->{
             for(String code : language.GetCodes())
             {
                 if (code.equals(mainCode)) continue;

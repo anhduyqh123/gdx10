@@ -25,10 +25,10 @@ public class PointForm {
     private JButton btRefresh;
     private JPanel pnInfo;
     private JFameUI ui = new JFameUI();
-    private List<IMovePath.IPosX> data;
+    private List<IMovePath.MPos> data;
     private Group group = new Group();
 
-    public PointForm(List<IMovePath.IPosX> data)
+    public PointForm(List<IMovePath.MPos> data)
     {
         this.data = data;
         pnInfo.setLayout(new WrapLayout());
@@ -37,9 +37,9 @@ public class PointForm {
             int index = list1.getSelectedIndex();
             if (index<0) return;
             pnInfo.removeAll();
-            IMovePath.IPosX iPosX = data.get(index);
-            ui.InitComponents(Arrays.asList("current","useX","useY"),iPosX,pnInfo);
-            new IPosPanel(Arrays.asList(), iPosX.iPos,pnInfo);
+            IMovePath.MPos mPos = data.get(index);
+            ui.InitComponents(Arrays.asList("current","useX","useY"), mPos,pnInfo);
+            new IPosPanel(Arrays.asList(), mPos.iPos,pnInfo);
             ui.Repaint(pnInfo);
         });
         Refresh();
@@ -47,9 +47,9 @@ public class PointForm {
             list1.setSelectedValue(GetView(0),true);
 
         Click(btNew,()->{
-            IMovePath.IPosX iPosX = new IMovePath.IPosX();
-            iPosX.iPos.Set(new Vector2(Scene.width/2,Scene.height/2));
-            data.add(iPosX);
+            IMovePath.MPos mPos = new IMovePath.MPos();
+            mPos.iPos.Set(new Vector2(Scene.width/2,Scene.height/2));
+            data.add(mPos);
             Refresh();
             list1.setSelectedValue(GetView(data.size()-1),true);
         });
@@ -69,9 +69,9 @@ public class PointForm {
     private void ShowPoint()
     {
         group.clearChildren();
-        for(IMovePath.IPosX p : data) NewPoint(p);
+        for(IMovePath.MPos p : data) NewPoint(p);
     }
-    private void NewPoint(IMovePath.IPosX p)
+    private void NewPoint(IMovePath.MPos p)
     {
         Vector2 pos = p.iPos.Get();
         Image img = IImage.NewImage(Color.BROWN,pos, Align.center,20,20,group);

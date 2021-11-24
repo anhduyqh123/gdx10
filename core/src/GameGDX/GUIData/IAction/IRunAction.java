@@ -21,21 +21,23 @@ public class IRunAction extends IAction {
     {
         name = "run";
     }
-    @Override
-    public Action Get() {
-        return null;
-    }
 
     @Override
     public Action Get(IActor iActor) {
-        GDX.Runnable<IActor> run = GetRun();
-        return Actions.run(()->{
-            if (run!=null) run.Run(iActor);
-        });
+        return Actions.run(()->Run(iActor));
     }
-    private GDX.Runnable<IActor> GetRun()
+
+    @Override
+    public void Run(IActor iActor) {
+        GDX.Runnable<IActor> run = GetRun(iActor);
+        if (run!=null) run.Run(iActor);
+    }
+
+    private GDX.Runnable<IActor> GetRun(IActor iActor)
     {
-        if (map.containsKey(name)) return map.get(name);
-        return runnable;
+        if (runnable!=null) return runnable;
+        GDX.Runnable<IActor> run = iActor.GetRunnable(name);
+        if (run!=null) return run;
+        return map.get(name);
     }
 }

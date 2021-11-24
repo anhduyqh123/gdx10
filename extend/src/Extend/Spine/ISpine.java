@@ -13,7 +13,13 @@ public class ISpine extends IActor {
 
     @Override
     protected Actor NewActor() {
-        return new GSpine();
+        return new GSpine(){
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                Update(delta);
+            }
+        };
     }
 
     @Override

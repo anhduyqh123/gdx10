@@ -20,14 +20,10 @@ public class IColor extends IBaseAction{
     public Action Get(Color color) {
         return Actions.color(color,duration, iInter.value);
     }
-    @Override
-    public Action Get() {
-        return Get(GetColor());
-    }
 
     @Override
     public Action Get(IActor iActor) {
         if (current) return Get(iActor.GetActor().getColor());
-        return Get();
+        else return Get(GetColor());
     }
 }

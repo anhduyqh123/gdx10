@@ -4,6 +4,7 @@ import GameGDX.Actions.MovePath;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
 import GameGDX.GUIData.IChild.IPos;
+import GameGDX.Reflect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -14,7 +15,7 @@ import java.util.List;
 public class IMovePath extends IDelay{
 
     private boolean continuous,isRotate;
-    public List<IPosX> points = new ArrayList<>();
+    public List<MPos> points = new ArrayList<>();
     private float delAngle;
     private IInterpolation iInter = IInterpolation.linear;
     private IAlign iAlign = IAlign.center;
@@ -40,7 +41,7 @@ public class IMovePath extends IDelay{
         return movePath;
     }
 
-    public static class IPosX {
+    public static class MPos {
 
         public boolean useX = true, useY = true;
         public boolean current;
@@ -61,6 +62,11 @@ public class IMovePath extends IDelay{
         public int GetAlign()
         {
             return iPos.align.value;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return Reflect.equals(this,obj);
         }
     }
 }

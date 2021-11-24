@@ -18,16 +18,12 @@ public class IScale extends IBaseAction {
         this.scaleX = scaleX;
         this.scaleY = scaleY;
     }
-    @Override
-    public Action Get() {
-        return Get(scaleX,scaleY);
-    }
 
     @Override
     public Action Get(IActor iActor) {
         Actor actor = iActor.GetActor();
         if (current) return Get(actor.getScaleX(),actor.getScaleY());
-        return Get();
+        return Get(scaleX,scaleY);
     }
     private Action Get(float x,float y)
     {

@@ -12,10 +12,6 @@ public class IBaseAction extends IDelay{
     {
         name = "base";
     }
-    @Override
-    public Action Get() {
-        return null;
-    }
 
     @Override
     public Action Get(IActor iActor) {

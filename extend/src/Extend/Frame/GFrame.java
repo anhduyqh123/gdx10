@@ -50,7 +50,7 @@ public class GFrame extends Actor {
         Color color = new Color(getColor());
         color.a*=parentAlpha;
         batch.setColor(color);
-        batch.draw(currentFrame,getX(),getY(),getOriginY(),getOriginY(),getWidth(),getHeight()
+        batch.draw(currentFrame,getX(),getY(),getOriginX(),getOriginY(),getWidth(),getHeight()
                 ,getScaleX(),getScaleY(),getRotation());
         if (animation.isAnimationFinished(stateTime))
         {

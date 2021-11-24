@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IGroup,componentMap:{main:{class:Extend.GShape.IMask,shape:{class:Extend.GShape.Shape$Polygon,type:Filled,points:[{},{},{},{},{}]}},body:{class:Extend.Box2d.IBody,category:ground,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IEdge,points:[{},{}]},category:4,friction:0.4}]}}}

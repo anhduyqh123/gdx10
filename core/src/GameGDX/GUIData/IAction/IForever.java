@@ -17,11 +17,6 @@ public class IForever extends IParallel{
     }
 
     @Override
-    public Action Get() {
-        return Actions.forever(list.get(0).Get());
-    }
-
-    @Override
     public Action Get(IActor iActor) {
         return Actions.forever(list.get(0).Get(iActor));
     }

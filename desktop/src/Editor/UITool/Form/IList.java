@@ -35,7 +35,7 @@ public class IList {
     {
         return (String) list.getSelectedValue();
     }
-    private void Refresh()
+    public void Refresh()
     {
         DefaultListModel l = new DefaultListModel<>();
         List<String> data = getData.Run();

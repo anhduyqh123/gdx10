@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.LanguageTool.KeyForm">
+  <grid id="27dc6" binding="panel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="90451" class="javax.swing.JLabel" binding="label">
+        <constraints/>
+        <properties>
+          <text value="Key"/>
+        </properties>
+      </component>
+      <component id="f54b0" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+        <constraints/>
+        <properties>
+          <preferredSize width="170" height="30"/>
+        </properties>
+      </component>
+      <component id="6b57c" class="javax.swing.JButton" binding="button">
+        <constraints/>
+        <properties>
+          <text value="Translate"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

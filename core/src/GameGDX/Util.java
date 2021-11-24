@@ -76,5 +76,14 @@ public class Util {
         }
         return vert;
     }
+    public static void ForTriangles(Vector2[] points, GDX.Runnable<Vector2[]> cb)
+    {
+        short[] tri = GetTriangles(GetVertices(points));
+        for (int i=0;i<tri.length;i+=3)
+        {
+            Vector2[] arr = {points[tri[i]],points[tri[i+1]],points[tri[i+2]]};
+            cb.Run(arr);
+        }
+    }
     //</editor-fold>
 }

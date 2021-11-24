@@ -33,6 +33,15 @@ public class ObjectPack extends IGroup {
             AddChildAndConnect(n.name, iActor);
         }
     }
+    public IActor Renew(String name)
+    {
+        Actor child = GetChild(name);
+        if (child!=null) child.remove();
+        IActor iActor = GUIData.i.Get(pack,name);
+        AddChildAndConnect(name, iActor);
+        return iActor;
+    }
+
     @Override
     public void Remove(String name) {
         Actor child = GetChild(name);

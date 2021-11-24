@@ -273,4 +273,17 @@ public class ContentPanel {
             InitInValidFields("iAniMap");
         }
     }
+    class JIMask extends JIGroup
+    {
+        public JIMask(IActor iActor, JPanel panel)
+        {
+            super(iActor,panel);
+            //ui.NewButton("Shape",panel,()->new MaskForm((IMask) iActor));
+        }
+        @Override
+        protected void InitInValidFields() {
+            super.InitInValidFields();
+            InitInValidFields("shape","renderer");
+        }
+    }
 }

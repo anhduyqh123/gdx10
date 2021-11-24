@@ -12,13 +12,14 @@ public class IDoAction extends IAction{
     {
         name = "do";
     }
-    @Override
-    public Action Get() {
-        return null;
-    }
 
     @Override
     public Action Get(IActor iActor) {
-        return Actions.run(()-> iActor.RunAction(actionName));
+        return Actions.run(()->Run(iActor));
+    }
+
+    @Override
+    public void Run(IActor iActor) {
+        iActor.RunAction(actionName);
     }
 }

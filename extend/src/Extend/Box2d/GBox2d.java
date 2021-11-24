@@ -2,21 +2,19 @@ package Extend.Box2d;
 
 import GameGDX.Config;
 import GameGDX.GDX;
-import GameGDX.Ref;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.physics.box2d.joints.GearJoint;
-import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.JsonValue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-public class GBox2d{
+public class GBox2d extends Actor {
     public static GBox2d i;
     public static World world;
 
@@ -24,30 +22,24 @@ public class GBox2d{
     private static final float PTM = 0.01f;
     private static final float TIME_STEP = 1/60f;
     private static final int VELOCITY_ITERATIONS = 6, POSITION_ITERATIONS = 2;
-    private float accumulator = 0;
 
     //debug
-    public static boolean debug;
     private OrthographicCamera camera0,camera;
     private Box2DDebugRenderer debugRenderer;
 
-    private List<Joint> joints = new ArrayList<>();
     private List<Body> bodies = new ArrayList<>();
     private List<String> category = new ArrayList<>();
+    private Map<String,GDX.Runnable<Body>> destroyEvent = new HashMap<>();
 
     public GBox2d()
     {
         i = this;
         Box2D.init();
-        SetCategory(Config.i.Get("category").asStringArray());
+
+        JsonValue js = Config.i.Get("category");
+        if (js!=null) SetCategory(js.asStringArray());
 
         world = new World(new Vector2(0, -10f), true);
-//        world.setContactFilter((fixtureA, fixtureB) -> {
-//            if (!IFixture.Mark(fixtureA,fixtureB)) return false;
-//            IBody ib1 = (IBody) fixtureA.getBody().getUserData();
-//            IBody ib2 = (IBody) fixtureB.getBody().getUserData();
-//            return ib1.ShouldCollide(fixtureB) && ib2.ShouldCollide(fixtureA);
-//        });
         world.setContactListener(new ContactListener() {
             @Override
             public void beginContact(Contact contact) {
@@ -82,9 +74,31 @@ public class GBox2d{
             }
         });
     }
-    public void Debug(OrthographicCamera camera0)
+
+    @Override
+    public void setDebug(boolean debug) {
+        super.setDebug(debug);
+        if (getStage()!=null)
+            SetDebug((OrthographicCamera) getStage().getCamera());
+    }
+
+    @Override
+    public void act(float delta) {
+        Act(delta);
+    }
+
+    @Override
+    public void drawDebug(ShapeRenderer shapes) {
+        if (debugRenderer==null) return;
+        camera.zoom = camera0.zoom;
+        camera.position.set(GameToPhysics(camera0.position));
+        camera.update();
+        debugRenderer.render(world, camera.combined);
+    }
+
+    private void SetDebug(OrthographicCamera camera0)
     {
-        debug = true;
+        if (debugRenderer!=null) return;
         this.camera0 = camera0;
         camera = new OrthographicCamera();
         camera.setToOrtho(false,camera0.viewportWidth*PTM,camera0.viewportHeight*PTM);
@@ -92,36 +106,17 @@ public class GBox2d{
     }
 
     private void DoPhysicsStep(float deltaTime) {
-//        float frameTime = Math.min(deltaTime, 0.25f);
-//        accumulator += frameTime;
-//        while (accumulator >= TIME_STEP) {
-//            world.step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        world.step( Math.min(deltaTime, 0.1f), VELOCITY_ITERATIONS, POSITION_ITERATIONS);//to front
+//        accumulator += Math.min(deltaTime, 0.25f);
+//        if (accumulator >= TIME_STEP) {
 //            accumulator -= TIME_STEP;
+//            world.step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 //        }
-        //world.step(deltaTime, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
-
-        float frameTime = Math.min(deltaTime, TIME_STEP);
-        world.step(frameTime, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
-        while (frameTime>TIME_STEP)
-        {
-            frameTime-=TIME_STEP;
-            world.step(frameTime, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
-        }
     }
-    public void Act(float delta)
+    private void Act(float delta)
     {
         if (active)
             DoPhysicsStep(delta);
-    }
-    public void Render()
-    {
-        if (debug)
-        {
-            camera.zoom = camera0.zoom;
-            camera.position.set(GameToPhysics(camera0.position));
-            camera.update();
-            debugRenderer.render(world, camera.combined);
-        }
     }
     public static void SetActive(boolean value)
     {
@@ -134,20 +129,19 @@ public class GBox2d{
     }
     public static void Clear()
     {
-//        List<Joint> joints = new ArrayList<>(i.joints);
-//        for (Joint i : joints)
-//            DestroyJoint(i);
-        Array<Joint> joints = new Array<>();
-        world.getJoints(joints);
-        for (Joint i : joints)
-            DestroyJoint(i);
+        for (Joint i : GetJoints()) world.destroyJoint(i);
 
         List<Body> list = new ArrayList<>(i.bodies);
-        for (Body b : list) Destroy(b);
+        for (Body i : list) Destroy(i);
+    }
+    public static boolean IsDestroyed(Body body)
+    {
+        return !i.bodies.contains(body);
     }
     public static void Destroy(Body body)
     {
-        if (!i.bodies.contains(body)) return;
+        if (IsDestroyed(body)) return;
+        for (GDX.Runnable<Body> b : i.destroyEvent.values()) b.Run(body);
         i.bodies.remove(body);
         if (!world.isLocked()) body.setActive(false);
         GDX.PostRunnable(()->world.destroyBody(body));
@@ -157,6 +151,21 @@ public class GBox2d{
         Body body = world.createBody(bodyDef);
         i.bodies.add(body);
         return body;
+    }
+    public static Joint CreateJoint(JointDef def)
+    {
+        return world.createJoint(def);
+    }
+    public static Array<Joint> GetJoints()
+    {
+        Array<Joint> joints = new Array<>();
+        world.getJoints(joints);
+        return joints;
+    }
+    public static void DestroyJoint(Joint joint)
+    {
+        if (GetJoints().contains(joint,false))
+            world.destroyJoint(joint);
     }
 
     public static Vector2 GetGameCenter(Body body)//Get the world position of the center of body
@@ -217,25 +226,9 @@ public class GBox2d{
         return value*PTM;
     }
 
-    public static Joint CreateJoint(JointDef def)
+    //event
+    public static void AddDestroyEvent(String key, GDX.Runnable<Body> cb)
     {
-        Joint joint = world.createJoint(def);
-        //i.joints.add(joint);
-
-//        if (joint instanceof MouseJoint || joint instanceof GearJoint) i.joints.add(0,joint);
-//        else i.joints.add(joint);
-//        if (joint instanceof MouseJoint) i.joints.add(joint);
-//        if (joint instanceof GearJoint) i.joints.add(joint);
-        return joint;
+        i.destroyEvent.put(key, cb);
     }
-    public static void DestroyJoint(Joint joint)
-    {
-        //if (!i.joints.contains(joint)) return;
-        //i.joints.remove(joint);
-        Array<Joint> joints = new Array<>();
-        world.getJoints(joints);
-        if (joints.contains(joint,false)) world.destroyJoint(joint);
-        //GDX.PostRunnable(()->world.destroyJoint(joint));
-    }
-
 }

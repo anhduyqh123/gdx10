@@ -21,9 +21,11 @@ public class Box2DMouse {
     private MouseJoint mouseJoint;
     public Box2DMouse(IActor iActor)
     {
+        if (iActor.GetActor()==null) return;
         IBody iBody = iActor.GetComponent(IBody.class);
         if (iBody==null) return;
         MouseJointDef def = MouseJointDef();
+
         iActor.GetActor().addListener(new ClickListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -33,9 +35,7 @@ public class Box2DMouse {
                 def.bodyB = body;
                 Vector2 p = GBox2d.GameToPhysics(Scene.GetMousePos());
                 def.target.set(p);
-                GDX.PostRunnable(()->{
-                    mouseJoint = (MouseJoint) GBox2d.CreateJoint(def);
-                });
+                mouseJoint = (MouseJoint) GBox2d.CreateJoint(def);
                 return true;
             }
 
@@ -70,8 +70,8 @@ public class Box2DMouse {
         MouseJointDef jointDef = new MouseJointDef();
         jointDef.bodyA = NewEdge();
         jointDef.frequencyHz = 30;
-        jointDef.dampingRatio = 0.2f;
-        jointDef.maxForce = 20;
+        jointDef.dampingRatio = 0.8f;
+        jointDef.maxForce = 140;
         jointDef.collideConnected = true;
 
         return jointDef;

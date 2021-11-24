@@ -13,7 +13,7 @@ public class IAnchor {
 
     public Vector2 GetPos(Actor actor)
     {
-        Vector2 local = Scene.GetPosition(actor,iAlign.value).add(delX,delY);
+        Vector2 local = Scene.GetLocal(actor,iAlign.value).add(delX,delY);
         return Scene.GetStagePosition(actor,local);
         //return Scene.GetStagePosition(actor,iAlign.value).add(delX,delY);
     }

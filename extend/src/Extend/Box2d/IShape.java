@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class IShape {
 
-    public abstract void OnCreate(GDX.Runnable<Shape> onCreate);
+    public abstract void OnCreate(Vector2 origin,GDX.Runnable<Shape> onCreate);
 
     @Override
     public boolean equals(Object obj) {
@@ -31,9 +31,9 @@ public abstract class IShape {
         }
 
         @Override
-        public void OnCreate(GDX.Runnable<Shape> onCreate) {
+        public void OnCreate(Vector2 origin,GDX.Runnable<Shape> onCreate) {
             CircleShape shape = new CircleShape();
-            shape.setPosition(GBox2d.GameToPhysics(pos));
+            shape.setPosition(GBox2d.GameToPhysics(new Vector2(pos).sub(origin)));
             shape.setRadius(GBox2d.GameToPhysics(radius));
             onCreate.Run(shape);
         }
@@ -52,29 +52,26 @@ public abstract class IShape {
         }
 
         @Override
-        public void OnCreate(GDX.Runnable<Shape> onCreate) {
+        public void OnCreate(Vector2 origin,GDX.Runnable<Shape> onCreate) {
             PolygonShape shape = new PolygonShape();
-            Vector2[] points = GetPoints();
+            Vector2[] points = GetPoints(origin);
             if (IsConvexPolygon(points))
             {
                 shape.set(points);
                 onCreate.Run(shape);
             }
             else {
-                short[] tri = Util.GetTriangles(Util.GetVertices(points));
-                for (int i=0;i<tri.length;i+=3)
-                {
-                    Vector2[] arr = {points[tri[i]],points[tri[i+1]],points[tri[i+2]]};
+                Util.ForTriangles(points,arr->{
                     shape.set(arr);
                     onCreate.Run(shape);
-                }
+                });
             }
         }
-        protected Vector2[] GetPoints()
+        protected Vector2[] GetPoints(Vector2 origin)
         {
             Vector2[] arr = new Vector2[points.size()];
             for(int i=0;i<arr.length;i++)
-                arr[i] = GBox2d.GameToPhysics(points.get(i));
+                arr[i] = GBox2d.GameToPhysics(new Vector2(points.get(i)).sub(origin));
             return arr;
         }
 
@@ -109,10 +106,29 @@ public abstract class IShape {
         }
 
         @Override
-        public void OnCreate(GDX.Runnable<Shape> onCreate) {
+        public void OnCreate(Vector2 origin,GDX.Runnable<Shape> onCreate) {
             ChainShape shape = new ChainShape();
-            shape.createChain(GetPoints());
+            shape.createChain(GetPoints(origin));
             onCreate.Run(shape);
+        }
+    }
+    public static class IEdge extends IPolygon{
+        public IEdge(){}
+        public IEdge(float size)
+        {
+            points.add(new Vector2(0,0));
+            points.add(new Vector2(size,0));
+        }
+
+        @Override
+        public void OnCreate(Vector2 origin,GDX.Runnable<Shape> onCreate) {
+            Vector2[] arr = GetPoints(origin);
+            EdgeShape shape = new EdgeShape();
+            for (int i=0;i< arr.length-1;i++)
+            {
+                shape.set(arr[i],arr[i+1]);
+                onCreate.Run(shape);
+            }
         }
     }
 }

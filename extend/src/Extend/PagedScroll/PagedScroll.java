@@ -116,6 +116,13 @@ public class PagedScroll extends ScrollPane {
     }
 
     @Override
+    public void clear() {
+        clearActions();
+        //clearListeners();
+        clearChildren();
+    }
+
+    @Override
     public void setDebug(boolean enabled) {
         super.setDebug(enabled);
         content.setDebug(enabled);

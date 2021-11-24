@@ -5,10 +5,7 @@ import Editor.UITool.EConfig;
 import Editor.UITool.Physics.FixtureForm;
 import Editor.UITool.Physics.FixtureListPanel;
 import Editor.UITool.Physics.MarkForm;
-import Editor.UITool.Pointed.ChainPointed;
-import Editor.UITool.Pointed.CirclePointed;
-import Editor.UITool.Pointed.Pointed;
-import Editor.UITool.Pointed.PolygonPointed;
+import Editor.UITool.Pointed.*;
 import Editor.WrapLayout;
 import Extend.Box2d.*;
 import GameGDX.GDX;
@@ -38,9 +35,10 @@ public class PhysicsForm {
     private JButton btClone3;
 
     private JFameUI ui = new JFameUI();
-    private Group group = new Group();
+//    private Group group = new Group();
     private Actor actor;
-    private Pointed shape;
+//    private Pointed shape;
+    private Display display;
 
 
     public PhysicsForm(IBody iBody,IActor iActor)
@@ -48,8 +46,9 @@ public class PhysicsForm {
         String[] categories = EConfig.e.Get("category").asStringArray();
         GBox2d.SetCategory(categories);
 
+        display = new Display(iActor);
         actor = iActor.GetActor();
-        iBody.DestroyBody();
+        iBody.Remove();
         Init(iActor);
 
         List<String> list = ui.GetFields(iBody);
@@ -66,47 +65,51 @@ public class PhysicsForm {
                 if (e.getKeyCode()==KeyEvent.VK_ENTER)
                 {
                     float size = Float.parseFloat(tf.getText());
-                    shape.Resize(size);
+                    display.Resize(size);
+                    //shape.Resize(size);
                 }
             }
         });
 
-        InitGroup(actor);
+        //InitGroup(actor);
         InitFixtures(iBody.fixtures);
     }
     private void Init(IActor iActor)
     {
-        GBox2d.debug = false;
-        Runnable run = Screen.Returns(Arrays.asList(Scene.ui2.getChildren().toArray()));
-        Scene.ui2.clearChildren();
+        GBox2d.i.setDebug(false);
+//        Runnable run = Screen.Returns(Arrays.asList(Scene.ui2.getChildren().toArray()));
+//        Scene.ui2.clearChildren();
 
         JFrame jFrame = ui.NewJFrame("body",panel1,()->{
-            GBox2d.debug = true;
-            group.remove();
-            run.run();
-            iActor.Refresh();
+            GBox2d.i.setDebug(true);
+            display.Close();
+//            group.remove();
+//            run.run();
+//            iActor.Refresh();
         });
         jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
-    private void InitGroup(Actor actor)
-    {
-        group.setDebug(true);
-        Vector3 camPos = Scene.GetUICamera().position;
-        Scene.SetBounds(group,camPos.x,camPos.y, Align.center,actor.getWidth(),actor.getHeight(),Scene.ui2);
-        group.addActor(actor);
-        actor.setPosition(0,0);
-    }
+//    private void InitGroup(Actor actor)
+//    {
+//        group.setDebug(true);
+//        Vector3 camPos = Scene.GetUICamera().position;
+//        Scene.SetBounds(group,camPos.x,camPos.y, Align.center,actor.getWidth(),actor.getHeight(),Scene.ui2);
+//        group.addActor(actor);
+//        actor.setPosition(0,0);
+//    }
     private void InitFixture(IFixture iFixture)
     {
         pnFixture.removeAll();
         FixtureForm fixtureForm = new FixtureForm(iFixture,actor,pnFixture);
         fixtureForm.onNewShape = ()->{
-            shape = InitShape(iFixture.iShape);
+            //shape = InitShape(iFixture.iShape);
+            InitShape(iFixture.iShape);
         };
 
         ui.Repaint(pnFixture);
 
-        shape = InitShape(iFixture.iShape);
+        InitShape(iFixture.iShape);
+        //shape = InitShape(iFixture.iShape);
     }
 
     private void InitFixtures(List<IFixture> list)
@@ -130,12 +133,26 @@ public class PhysicsForm {
     }
 
     //Shape
-    private Pointed InitShape(IShape shape)
+    private void InitShape(IShape shape)
     {
-        group.clearChildren();
-        group.addActor(actor);
-        if (shape instanceof IShape.IChain) return new ChainPointed((IShape.IPolygon) shape,group);
-        if (shape instanceof IShape.IPolygon)return new PolygonPointed((IShape.IPolygon) shape,group);
-        return new CirclePointed((IShape.ICircle) shape,group);
+        if (shape instanceof  IShape.IEdge){
+            display.ChainShape(shape);
+            return;
+        }
+        if (shape instanceof  IShape.IChain){
+            display.ChainShape(shape);
+            return;
+        }
+        if (shape instanceof  IShape.IPolygon){
+            display.PolygonShape(shape);
+            return;
+        }
+        display.CircleShape(shape);
+//        group.clearChildren();
+//        group.addActor(actor);
+//        if (shape instanceof IShape.IEdge) return new ChainPointed((IShape.IPolygon) shape,group);
+//        if (shape instanceof IShape.IChain) return new ChainPointed((IShape.IPolygon) shape,group);
+//        if (shape instanceof IShape.IPolygon)return new PolygonPointed((IShape.IPolygon) shape,group);
+//        return new CirclePointed(shape,group);
     }
 }

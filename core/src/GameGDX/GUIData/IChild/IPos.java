@@ -90,8 +90,7 @@ public class IPos {
     {
         Vector2 pos = new Vector2(GetX(),GetY());
         if (type==Type.Local) return pos;
-        pos = GetActor("").stageToLocalCoordinates(pos);
-        return pos;
+        return GetActor("").stageToLocalCoordinates(pos);
     }
 
     @Override

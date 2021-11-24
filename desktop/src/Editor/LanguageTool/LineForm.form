@@ -13,10 +13,11 @@
           <text value="Key"/>
         </properties>
       </component>
-      <component id="2b02b" class="javax.swing.JTextField" binding="textField">
+      <component id="96177" class="javax.swing.JTextArea" binding="textArea">
         <constraints/>
         <properties>
           <preferredSize width="170" height="30"/>
+          <wrapStyleWord value="true"/>
         </properties>
       </component>
       <component id="37da0" class="javax.swing.JButton" binding="button">

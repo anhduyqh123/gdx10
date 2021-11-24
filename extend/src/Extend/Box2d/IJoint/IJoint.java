@@ -41,7 +41,7 @@ public abstract class IJoint extends Component {
 
     protected Body GetBody(String name)
     {
-        IBody iBody = FindIChild(name).GetComponent(IBody.class);
+        IBody iBody = FindIChild(name).GetComponent("body");
         return iBody.GetBody();
     }
     public <T extends Joint> T Get()

@@ -11,13 +11,9 @@ public class IShake extends IDelay {
     {
         name = "shake";
     }
-    @Override
-    public Action Get() {
-        return GShake.Get(offsetX,offsetY,duration);
-    }
 
     @Override
     public Action Get(IActor iActor) {
-        return Get();
+        return GShake.Get(offsetX,offsetY,duration);
     }
 }

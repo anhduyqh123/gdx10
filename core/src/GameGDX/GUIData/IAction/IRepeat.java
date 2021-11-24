@@ -11,10 +11,6 @@ public class IRepeat extends IForever{
     {
         name = "repeat";
     }
-    @Override
-    public Action Get() {
-        return Actions.repeat(count,list.get(0).Get());
-    }
 
     @Override
     public Action Get(IActor iActor) {

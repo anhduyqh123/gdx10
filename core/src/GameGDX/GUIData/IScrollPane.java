@@ -15,6 +15,10 @@ public class IScrollPane extends IGroup {
         };
     }
 
+    @Override
+    protected void Clear() {
+    }
+
     public void AddChildAndConnect(String childName, IActor child)
     {
         AddChild(childName,child);
@@ -32,6 +36,7 @@ public class IScrollPane extends IGroup {
         if (list.size()<=0) return;
         IActor iActor = GetIChild(0);
         iActor.Refresh();
+
 //        ScrollPane scroll = GetActor();
 //        scroll.setActor(iActor.GetActor());
     }

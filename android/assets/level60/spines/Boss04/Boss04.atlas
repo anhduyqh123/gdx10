@@ -1,0 +1,153 @@
+
+Boss04.png
+size: 2708,1000
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Ellipse 1
+  rotate: false
+  xy: 2639, 58
+  size: 53, 47
+  orig: 53, 47
+  offset: 0, 0
+  index: -1
+M1
+  rotate: true
+  xy: 2643, 591
+  size: 148, 61
+  orig: 148, 61
+  offset: 0, 0
+  index: -1
+M2
+  rotate: true
+  xy: 2577, 357
+  size: 134, 36
+  orig: 134, 36
+  offset: 0, 0
+  index: -1
+Matkinh
+  rotate: true
+  xy: 2500, 279
+  size: 212, 77
+  orig: 212, 77
+  offset: 0, 0
+  index: -1
+Y1
+  rotate: false
+  xy: 2500, 37
+  size: 139, 68
+  orig: 139, 68
+  offset: 0, 0
+  index: -1
+Y2
+  rotate: true
+  xy: 2643, 462
+  size: 129, 58
+  orig: 129, 58
+  offset: 0, 0
+  index: -1
+Y3
+  rotate: true
+  xy: 2613, 320
+  size: 142, 70
+  orig: 142, 70
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2500, 105
+  size: 174, 174
+  orig: 174, 174
+  offset: 0, 0
+  index: -1
+effect_1
+  rotate: false
+  xy: 0, 500
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_10
+  rotate: false
+  xy: 2000, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_2
+  rotate: false
+  xy: 0, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_3
+  rotate: false
+  xy: 500, 500
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_4
+  rotate: false
+  xy: 500, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_5
+  rotate: false
+  xy: 1000, 500
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_6
+  rotate: false
+  xy: 1000, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_7
+  rotate: false
+  xy: 1500, 500
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_8
+  rotate: false
+  xy: 1500, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_9
+  rotate: false
+  xy: 2000, 500
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+effect_body
+  rotate: true
+  xy: 2500, 739
+  size: 261, 206
+  orig: 261, 207
+  offset: 0, 0
+  index: -1
+icon_star
+  rotate: false
+  xy: 2577, 281
+  size: 37, 39
+  orig: 37, 39
+  offset: 0, 0
+  index: -1
+sau
+  rotate: true
+  xy: 2500, 491
+  size: 248, 143
+  orig: 248, 143
+  offset: 0, 0
+  index: -1

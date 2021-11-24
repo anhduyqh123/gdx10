@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Align;
 
 public class ILineRenderer extends Component {
+    public String p1="p1",p2="p2",line = "line";
+
     @Override
     protected void Update(float delta) {
         try {
@@ -16,12 +18,12 @@ public class ILineRenderer extends Component {
     }
     private void Update()
     {
-        Vector2 p1 = Scene.GetPosition(FindIChild("p1").GetActor(),Align.center);
-        Vector2 p2 = Scene.GetPosition(FindIChild("p2").GetActor(),Align.center);
-        Actor line = FindIChild("line").GetActor();
-        Vector2 dir = Util.GetDirect(p1,p2);
-        line.setWidth(dir.len());
-        line.setPosition(p1.x,p1.y, Align.left);
-        line.setRotation(dir.angleDeg());
+        Vector2 pos1 = Scene.GetPosition(FindIChild(p1).GetActor(),Align.center);
+        Vector2 pos2 = Scene.GetPosition(FindIChild(p2).GetActor(),Align.center);
+        Actor aline = FindIChild(line).GetActor();
+        Vector2 dir = Util.GetDirect(pos1,pos2);
+        aline.setWidth(dir.len());
+        aline.setPosition(pos1.x,pos1.y, Align.left);
+        aline.setRotation(dir.angleDeg());
     }
 }

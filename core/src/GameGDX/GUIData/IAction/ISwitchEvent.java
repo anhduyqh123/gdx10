@@ -1,13 +1,9 @@
 package GameGDX.GUIData.IAction;
 
-import GameGDX.Assets;
-import GameGDX.GMusic;
+import GameGDX.GAudio;
 import GameGDX.GUIData.IChild.IActor;
-import GameGDX.GUIData.IImage;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-
-import java.util.Objects;
 
 public class ISwitchEvent extends IAction{
     public enum Type{
@@ -16,46 +12,26 @@ public class ISwitchEvent extends IAction{
         Vibrate
     }
     private Type type = Type.Sound;
-    private String nameOn = "";
-    private String nameOff = "";
-    private boolean isSwitch;
 
     public ISwitchEvent()
     {
-        name = "event";
-    }
-    @Override
-    public Action Get() {
-        return null;
+        name = "switch_event";
     }
 
     @Override
     public Action Get(IActor iActor) {
-        IImage img = (IImage) iActor;
-        return Actions.run(()->{
-            if (isSwitch) Switch();
-            img.SetTexture(Assets.GetTexture(GetState()?nameOn:nameOff));
-        });
+        return Actions.run(this::Run);
     }
-    private boolean GetState()
-    {
-        if (type== ISwitchEvent.Type.Sound) return GMusic.IsSound();
-        if (type== ISwitchEvent.Type.Music) return GMusic.IsMusic();
-        return GMusic.IsVibrate();
+
+    @Override
+    public void Run(IActor iActor) {
+
     }
-    private void Switch()
+
+    private void Run()
     {
-        if (type==Type.Sound){
-            GMusic.SwitchSound();
-            GMusic.PlaySound("pop");
-        }
-        if (type==Type.Music){
-            GMusic.PlaySound("pop");
-            GMusic.SwitchMusic();
-        }
-        if (type==Type.Vibrate){
-            GMusic.SwitchVibrate();
-            GMusic.DoVibrate(100);
-        }
+        if (type==Type.Sound) GAudio.i.SwitchSound();
+        if (type==Type.Music) GAudio.i.SwitchMusic();
+        if (type==Type.Vibrate) GAudio.i.SwitchVibrate();
     }
 }

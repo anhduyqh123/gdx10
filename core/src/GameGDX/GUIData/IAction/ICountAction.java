@@ -19,8 +19,7 @@ public class ICountAction extends IDelay{
     @Override
     public Action Get(IActor iActor) {
         ILabel iLabel = (ILabel) iActor;
-        String text = iLabel.GetText();
-        return CountAction.Get(vl->iLabel.SetNumber(Format(vl),text),start,end,duration);
+        return CountAction.Get(vl->iLabel.ReplaceText(Format(vl)),start,end,duration);
     }
     private String Format(float value)
     {

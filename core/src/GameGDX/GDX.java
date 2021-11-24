@@ -93,6 +93,15 @@ public class GDX {
         prefs.putInteger(key,value);
         prefs.flush();
     }
+    public static float GetPrefFloat(String key, float value0)
+    {
+        return prefs.getFloat(key,value0);
+    }
+    public static void SetPrefFloat(String key, float value)
+    {
+        prefs.putFloat(key,value);
+        prefs.flush();
+    }
     public static String GetPrefString(String key, String value0)
     {
         return prefs.getString(key,value0);

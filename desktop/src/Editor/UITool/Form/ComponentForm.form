@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.ComponentForm">
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
     <constraints>
-      <xy x="20" y="20" width="446" height="400"/>
+      <xy x="20" y="20" width="529" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -10,7 +10,7 @@
       <scrollpane id="26a45">
         <constraints/>
         <properties>
-          <preferredSize width="100" height="180"/>
+          <preferredSize width="100" height="200"/>
         </properties>
         <border type="none"/>
         <children>
@@ -20,10 +20,10 @@
           </component>
         </children>
       </scrollpane>
-      <grid id="fb98a" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+      <grid id="fb98a" layout-manager="FlowLayout" hgap="0" vgap="0" flow-align="1">
         <constraints/>
         <properties>
-          <preferredSize width="100" height="180"/>
+          <preferredSize width="100" height="200"/>
         </properties>
         <border type="none"/>
         <children>
@@ -56,6 +56,12 @@
             <constraints/>
             <properties>
               <text value="select"/>
+            </properties>
+          </component>
+          <component id="1ab0e" class="javax.swing.JButton" binding="btClone">
+            <constraints/>
+            <properties>
+              <text value="clone"/>
             </properties>
           </component>
         </children>

@@ -20,7 +20,7 @@ public class MainForm {
         dataForm.onSelect = (iActor,list)->{
             iActorForm.SetData(iActor,list);
 
-            actionForm.SetData(iActor.acList);
+            actionForm.SetData(iActor,iActor.acList);
             actionForm.onRun = name->{
                 //iActor.StopAction();
                 iActor.RunAction(name);

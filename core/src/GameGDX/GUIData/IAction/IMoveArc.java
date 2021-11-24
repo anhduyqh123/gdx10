@@ -8,8 +8,8 @@ public class IMoveArc extends IMovePath{
     public IMoveArc()
     {
         name = "moveArc";
-        points.add(new IPosX());
-        points.add(new IPosX());
+        points.add(new MPos());
+        points.add(new MPos());
     }
     protected Vector2[] GetPath(IActor iActor)
     {

@@ -14,6 +14,7 @@ public class IWater extends IBody{
 
     private GDX.Func<Set<Pair>> getFixturePairs;
     private GDX.Func<Float> getDensity;
+    private List<Event> events = new ArrayList(){};
 
     public IWater()
     {
@@ -56,6 +57,7 @@ public class IWater extends IBody{
                     Vector2 centroid = new Vector2();
                     GeometryUtils.polygonCentroid(interPolygon.getVertices(), 0, interPolygon.getVertices().length, centroid);
                     float area = interPolygon.area();
+                    ForEvent(i->i.Area(fixtureB,area));
 
                     /* Get fixtures bodies */
                     Body fluidBody = fixtureA.getBody();
@@ -140,6 +142,7 @@ public class IWater extends IBody{
             Fixture fixture0 = GetBody().getFixtureList().get(0);
             fixturePairs.add(new Pair(fixture0,fixture));
         }
+        super.OnBeginContact(iBody, fixture, contact);
     }
 
     @Override
@@ -151,7 +154,29 @@ public class IWater extends IBody{
             Fixture fixture0 = GetBody().getFixtureList().get(0);
             fixturePairs.remove(new Pair(fixture0,fixture));
         }
+        super.OnEndContact(iBody, fixture, contact);
     }
+
+    //events
+    private void ForEvent(GDX.Runnable<Event> cb)
+    {
+        for (Event i : events)
+            cb.Run(i);
+    }
+    public void AddEvent(Event cb)
+    {
+        events.add(cb);
+    }
+    public void ClearEvent()
+    {
+        events.clear();
+    }
+
+    public interface Event
+    {
+        void Area(Fixture fixture,float area);
+    }
+
     public class Pair
     {
         public Fixture a,b;

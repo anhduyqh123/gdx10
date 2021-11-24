@@ -1,6 +1,7 @@
 package GameGDX.GUIData.IAction;
 
 import GameGDX.GDX;
+import GameGDX.GUIData.IChild.IActor;
 
 import java.util.HashMap;
 import java.util.List;
@@ -51,5 +52,10 @@ public abstract class IMultiAction extends IAction {
     {
         IRunAction iRun = FindIAction(name);
         iRun.runnable = ia->run.run();
+    }
+
+    @Override
+    public void Run(IActor iActor) {
+        Foreach(i->i.Run(iActor));
     }
 }

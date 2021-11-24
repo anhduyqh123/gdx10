@@ -1,7 +1,6 @@
 package GameGDX.Screens;
 
 import GameGDX.Actions.FrameAction;
-import GameGDX.GMusic;
 import GameGDX.GUIData.*;
 import GameGDX.GUIData.IAction.IRunAction;
 import GameGDX.GUIData.IChild.IActor;
@@ -46,14 +45,7 @@ public class Screen extends BaseScreen {
 
     public void AddClick(String name, Runnable event)
     {
-        AddClick_NoPop(name,()->{
-            GMusic.PlaySound("pop");
-            event.run();
-        });
-    }
-    public void AddClick_NoPop(String name, Runnable event)
-    {
-        AddClick(FindActor(name),event);
+        FindIActor(name).AddClick(event);
     }
 
     public <T extends Actor> T FindActor(String name)

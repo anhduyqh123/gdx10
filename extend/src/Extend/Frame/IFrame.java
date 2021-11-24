@@ -12,11 +12,17 @@ import java.util.Map;
 
 public class IFrame extends IActor {
     public Map<String,IAnim> iAniMap = new HashMap<>();
-    public String name = "";
+    public String frame = "";
 
     @Override
     protected Actor NewActor() {
-        return new GFrame();
+        return new GFrame(){
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                Update(delta);
+            }
+        };
     }
 
     @Override
@@ -28,7 +34,7 @@ public class IFrame extends IActor {
     protected Vector2 GetDefaultSize() {
         try {
             Vector2 size = new Vector2();
-            TextureRegion tr = Assets.GetTexture(name+"0");
+            TextureRegion tr = Assets.GetTexture(frame);
             size.set(tr.getRegionWidth(),tr.getRegionHeight());
             return size;
         }catch (Exception e){}
@@ -40,7 +46,7 @@ public class IFrame extends IActor {
         GFrame frame = GetActor();
         try {
             for (String k : iAniMap.keySet())
-                frame.Add(k,iAniMap.get(k).Get(name));
+                frame.Add(k,iAniMap.get(k).Get());
             if (iAniMap.containsKey("idle"))
                 frame.SetAnimation("idle");
         }catch (Exception e){e.printStackTrace();}

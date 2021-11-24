@@ -14,6 +14,7 @@ import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
 import GameGDX.Scene;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.game.desktop.XmlLevel;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -41,6 +42,7 @@ public class DataForm {
     private JComboBox cbPack;
     private JButton btPrefab;
     private JButton pEdit;
+    private JButton btReload;
 
     private Tree gTree;
 
@@ -94,6 +96,21 @@ public class DataForm {
         Click(downButton,()->Move(1));
         Click(btPaste,this::Paste);
         Click(saveButton,this::Save);
+
+        Click(btReload,()->{
+//            IActor iActor = data.Renew(gTree.GetName(selectedMain));
+//            gTree.Refresh();
+//            gTree.SetSelection(iActor);
+
+            String name = tfName.getText();
+            IGroup iGroup = gTree.GetSelectedObject();
+            XmlLevel x = new XmlLevel(name,iGroup);
+
+            iGroup.Refresh();
+            gTree.Refresh();
+            gTree.SetSelection(iGroup);
+
+        });
 
         Click(pEdit,()->{
             String pack = cbPack.getSelectedItem()+"";
@@ -170,8 +187,13 @@ public class DataForm {
     {
         tfName.setText(name);
         IActor object = gTree.GetObject(gTree.GetMainNode());
+
         if (object.equals(selectedMain) && gTree.GetName(object).equals(gTree.GetName(selectedMain))) return;
-        if (selectedMain!=null) selectedMain.GetActor().remove();
+        //if (selectedMain!=null) selectedMain.GetActor().remove();
+        if (selectedMain!=null){
+            selectedMain.Disconnect();
+            selectedMain.Remove();
+        }
         GBox2d.Clear();
         selectedMain = object;
         selectedMain.SetConnect(n-> Scene.ui2);
@@ -198,7 +220,10 @@ public class DataForm {
     private void Delete()
     {
         IGroup iGroup = gTree.GetParentObject(gTree.GetSelectedObject());
-        gTree.GetName(gTree.GetSelectedList(),name->iGroup.Remove(name));
+        gTree.GetName(gTree.GetSelectedList(),name->{
+            iGroup.GetChild(name).remove();
+            iGroup.Remove(name);
+        });
         iGroup.Refresh();
         gTree.Refresh();
         gTree.SetSelection(iGroup);
@@ -230,15 +255,19 @@ public class DataForm {
     private void AddTo()
     {
         IGroup iGroup = gTree.GetSelectedObject();
+        IActor iChild = null;
+
         for(String name : selectedList)
         {
             IActor iActor = grSelected.GetIChild(name);
             grSelected.Remove(name);
             iGroup.AddChildAndConnect(name, iActor);
+            iChild = iActor;
         }
         iGroup.Refresh();
         gTree.Refresh();
-        gTree.SetSelection(iGroup);
+        if (iChild!=null) gTree.SetSelection(iChild);
+        else gTree.SetSelection(iGroup);
         SelectList();
     }
     private void Clone()

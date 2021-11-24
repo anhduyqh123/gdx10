@@ -2,11 +2,11 @@ package Extend.Box2d;
 
 import GameGDX.GDX;
 import GameGDX.GUIData.IChild.Component;
-import GameGDX.Reflect;
 import GameGDX.Scene;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.Align;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +15,11 @@ public class IBody extends Component {
     public BodyDef.BodyType type = BodyDef.BodyType.StaticBody;
     public String category = "";
     public float linearDamping,angularDamping,gravityScale=1;
-    public boolean fixedRotation,bullet,allowSleep=true;
+    public boolean fixedRotation,bullet,allowSleep=true,active=true,updateGame;
     public List<IFixture> fixtures = new ArrayList<>();
 
     private GDX.Func<Body> getBody;
     private GDX.Func<List<IBodyListener>> contacts;
-
-    //constant
-    public GDX.Func<Velocity> getVelocity;
-    public GDX.Func<Float> getAngularVelocity;
 
     public IBody()
     {
@@ -39,14 +35,17 @@ public class IBody extends Component {
         bodyDef.bullet = bullet;
         bodyDef.allowSleep = allowSleep;
         bodyDef.gravityScale = gravityScale;
+        bodyDef.active = active;
         return bodyDef;
     }
     private Body Get()
     {
         BodyDef bodyDef = GetBodyDef();
         Body body = GBox2d.NewBody(bodyDef);
+
+        Vector2 origin = new Vector2(GetActor().getOriginX(),GetActor().getOriginY());
         for (IFixture i : fixtures)
-            i.OnCreateFixture(body::createFixture);
+            i.OnCreateFixture(origin,body::createFixture);
         return body;
     }
     protected void InitBody()
@@ -62,11 +61,10 @@ public class IBody extends Component {
     }
     @Override
     public void Refresh() {
-        getVelocity = null;
-        getAngularVelocity = null;
         InitContacts();
 
         DestroyBody();
+        getBody = null;
         GDX.PostRunnable(()->{
             InitBody();
             UpdateGame();
@@ -77,6 +75,9 @@ public class IBody extends Component {
     @Override
     public void Remove() {
         DestroyBody();
+        GDX.PostRunnable(()->getBody=null);
+        if (contacts==null) return;
+        ForContacts(IBodyListener::Destroy);
     }
 
     protected void Update(float delta)
@@ -84,68 +85,62 @@ public class IBody extends Component {
         if (getBody==null) return;
 //        if (GBox2d.active && type==BodyDef.BodyType.DynamicBody) UpdatePhysic();
 //        else UpdateGame();
-        if (!GBox2d.GetActive() || type==BodyDef.BodyType.StaticBody) UpdateGame();
+        if (!GBox2d.GetActive() || !GetBody().isActive()
+                || updateGame || type==BodyDef.BodyType.StaticBody) UpdateGame();
         else UpdatePhysic();
         ForContacts(i->i.Update(delta));
     }
     private void UpdateGame()
     {
+        //int align = GetIActor().iSize.origin.value;
         Body body = GetBody();
         Actor actor = GetActor();
-        Vector2 pos = Scene.GetStagePosition(actor);
+        //Vector2 pos = Scene.GetStagePosition(actor).add(actor.getOriginX(),actor.getOriginY());
+        Vector2 local = Scene.GetLocalOrigin(actor);
+        Vector2 pos = Scene.GetStagePosition(actor,local);
+        //System.out.println(pos0);
+        float angle = fixedRotation?0:Scene.GetStageRotation(actor);
         //GBox2d.SetTransform(body,pos,actor.getRotation());
-        GBox2d.SetTransform(body,pos,Scene.GetStageRotation(actor));
+        GBox2d.SetTransform(body,pos,angle);
     }
     private void UpdatePhysic()
     {
-        UpdateConstVelocity();
-
+        int align = GetIActor().iSize.origin.value;
         Body body = GetBody();
         Actor actor = GetActor();
         Vector2 pos = GBox2d.GetGamePosition(body);
-        Scene.SetStagePosition(actor,pos);
+        Scene.SetStagePosition(actor,pos,align);
         //actor.setRotation((float) Math.toDegrees(body.getAngle()));
         Scene.SetStageRotation(actor,(float) Math.toDegrees(body.getAngle()));
     }
-    private void UpdateConstVelocity()
-    {
-        if (getVelocity!=null)
-            getVelocity.Run().Run(GetBody());
-        if (getAngularVelocity!=null)
-            GetBody().setAngularVelocity(getAngularVelocity.Run());
-    }
-    public void SetVelocity(Velocity velocity)
-    {
-        getVelocity = ()->velocity;
-    }
-    public void SetAngularVelocity(float value)
-    {
-        getAngularVelocity = ()->value;
-    }
 
-    public void DestroyBody()
+    private void DestroyBody()
     {
         Body body = GetBody();
         if (body!=null) GBox2d.Destroy(body);
-        getBody = null;
-        ForContacts(IBodyListener::Destroy);
+        //getBody = null;
     }
+
     public void OnBeginContact(IBody iBody, Fixture fixture,Contact contact)
     {
+        if (iBody.GetBody()==null) return;
         InitContact(iBody, fixture, contact);
         ForContacts(IBodyListener::BeginContact);
     }
     public void OnEndContact(IBody iBody, Fixture fixture,Contact contact)
     {
+        if (iBody.GetBody()==null) return;
         InitContact(iBody, fixture, contact);
         ForContacts(IBodyListener::EndContact);
     }
     public void OnPreSolve(IBody iBody, Fixture fixture,Contact contact,Manifold oldManifold) {
+        if (iBody.GetBody()==null) return;
         InitContact(iBody, fixture, contact);
         ForContacts(i->i.PreSolve(oldManifold));
     }
 
     public void OnPostSolve(IBody iBody, Fixture fixture,Contact contact,ContactImpulse impulse) {
+        if (iBody.GetBody()==null) return;
         InitContact(iBody, fixture, contact);
         ForContacts(i->i.PostSolve(impulse));
     }
@@ -235,6 +230,12 @@ public class IBody extends Component {
         public void OnRayCast(String name) {
 
         }
+
+        public Vector2 GetDirect()
+        {
+            Vector2 p = GBox2d.GameToPhysics(Scene.GetStagePosition(iBodyA.GetActor(), Align.center));
+            return new Vector2(contact.getWorldManifold().getPoints()[0]).sub(p);
+        }
     }
     public interface ContactListener{
         void InitBody();
@@ -245,22 +246,5 @@ public class IBody extends Component {
         void PreSolve(Manifold oldManifold);
         void PostSolve(ContactImpulse impulse);
         void OnRayCast(String name);//name of RayCast
-    }
-    public static class Velocity
-    {
-        public boolean usedX,usedY;
-        public Vector2 value = new Vector2();
-        public void Run(Body body)
-        {
-            if (!usedX && !usedY) return;
-            Vector2 v = body.getLinearVelocity();
-            if (usedX) v.x = value.x;
-            if (usedY) v.y = value.y;
-            body.setLinearVelocity(v);
-        }
-        @Override
-        public boolean equals(Object obj) {
-            return Reflect.equals(this,obj);
-        }
     }
 }

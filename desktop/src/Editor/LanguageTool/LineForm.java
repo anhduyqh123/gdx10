@@ -9,8 +9,8 @@ import java.awt.event.KeyEvent;
 public class LineForm {
     public JPanel panel1;
     private JLabel label;
-    private JTextField textField;
     private JButton button;
+    private JTextArea textArea;
 
     public LineForm(String name)
     {
@@ -24,25 +24,25 @@ public class LineForm {
     public void SetKey(String key,GDX.Runnable<String> onChange)
     {
         SetText(key);
-        textField.addKeyListener(new KeyAdapter() {
+        textArea.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode()==KeyEvent.VK_ENTER)
-                    onChange.Run(textField.getText());
+                    onChange.Run(textArea.getText());
             }
         });
     }
     public void SetText(String text)
     {
-        textField.setText(text);
+        textArea.setText(text);
     }
     public void SetText(String text, GDX.Runnable<String> onChange)
     {
         SetText(text);
-        textField.addKeyListener(new KeyAdapter() {
+        textArea.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                onChange.Run(textField.getText());
+                onChange.Run(textArea.getText());
             }
         });
     }

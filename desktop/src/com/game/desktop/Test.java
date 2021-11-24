@@ -1,10 +1,11 @@
 package com.game.desktop;
 
+import GameGDX.GUIData.IChild.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Test {
 
-    public int a = 1;
-    public String b = "123";
+    public Map<String, Component> map = new HashMap<>();
 }

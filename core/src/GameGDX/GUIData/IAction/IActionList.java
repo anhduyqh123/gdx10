@@ -9,13 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class IActionList extends IMultiAction {
-
     private Map<String,IAction> map = new HashMap<>();
-
-    @Override
-    public Action Get() {
-        return null;
-    }
 
     @Override
     public Action Get(IActor iActor) {
@@ -43,6 +37,7 @@ public class IActionList extends IMultiAction {
 
     @Override
     public void Remove(IAction iAction) {
+        if (iAction==null) return;
         map.remove(iAction.name);
     }
     public void Remove(String key)

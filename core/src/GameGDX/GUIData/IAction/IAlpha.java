@@ -31,15 +31,11 @@ public class IAlpha extends IBaseAction{
     {
         return Actions.alpha(alpha,duration, iInter.value);
     }
-    @Override
-    public Action Get() {
-        return Get(alpha);
-    }
 
     @Override
     public Action Get(IActor iActor) {
 
         if (current) return Get(iActor.GetActor().getColor().a);
-        return Get();
+        return Get(alpha);
     }
 }

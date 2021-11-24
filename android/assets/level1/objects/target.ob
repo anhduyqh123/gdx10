@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IChild.IActor,componentMap:{body:{class:Extend.Box2d.IBody,category:target,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{},{x:10.0},{x:10.0,y:720.0},{y:720.0}]},isSensor:true,category:32,friction:0.0}]}},iSize:{width:10.0,height:720.0}}

@@ -20,18 +20,14 @@ public class IExplosion extends IAction {
     {
         name = "explosion";
     }
-    @Override
-    public Action Get() {
-        return null;
-    }
 
     @Override
     public Action Get(IActor iActor) {
-        return Actions.run(()->Run(iActor.GetActor()));
+        return Actions.run(()->Run(iActor));
     }
-    private void Run(Actor actor)
+    public void Run(IActor iActor)
     {
-        RayCast(anchor.GetPos(actor),radius,blastPower,rayNum);
+        RayCast(anchor.GetPos(iActor.GetActor()),radius,blastPower,rayNum);
     }
 
     private void ApplyBlastImpulse(Body body, Vector2 blastCenter, Vector2 applyPoint, float blastPower) {

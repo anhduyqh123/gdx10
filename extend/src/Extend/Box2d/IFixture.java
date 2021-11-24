@@ -2,6 +2,7 @@ package Extend.Box2d;
 
 import GameGDX.GDX;
 import GameGDX.Reflect;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
@@ -27,9 +28,9 @@ public class IFixture {
         fixtureDef.isSensor = isSensor;
         return fixtureDef;
     }
-    public void OnCreateFixture(GDX.Runnable<FixtureDef> onCreate)
+    public void OnCreateFixture(Vector2 origin, GDX.Runnable<FixtureDef> onCreate)
     {
-        iShape.OnCreate(s->onCreate.Run(Get(s)));
+        iShape.OnCreate(origin,s->onCreate.Run(Get(s)));
     }
     @Override
     public boolean equals(Object obj) {

@@ -102,7 +102,6 @@ public abstract class BaseScreen extends Group {
         Scene.ui.addActor(this);
         main.setTouchable(Touchable.enabled);
 
-        main.clearActions();
         GetRun("show").run();
     }
     public void Hide()
@@ -112,7 +111,6 @@ public abstract class BaseScreen extends Group {
         list.remove(this);
 
         main.setTouchable(Touchable.disabled);
-        main.clearActions();
         GetRun("hide").run();
     }
     public void OnBackButtonPressed()

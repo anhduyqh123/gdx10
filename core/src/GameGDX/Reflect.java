@@ -10,6 +10,10 @@ public class Reflect {
     private static final Map<Class,Object> typeToDefaultObject = new HashMap<>();
     private static final Map<Class,Map<String, Field>> typeToFields = new HashMap<>();
 
+    public static boolean isAssignableFrom(Class type,Class superClass)
+    {
+        return ClassReflection.isAssignableFrom(superClass,type);
+    }
     public static boolean equals(Object ob1,Object ob2) //for class
     {
         if (ob1==null && ob2==null) return true;
@@ -59,7 +63,13 @@ public class Reflect {
     public static boolean IsValidField(Field field)
     {
         if (field.isStatic()) return false;
-        if (IsInterface(field.getType())) return false;
+        if (!IsValidClass(field.getType())) return false;
+        return true;
+    }
+    public static boolean IsValidClass(Class type)
+    {
+        if (IsInterface(type)) return false;
+        if (type.isAnonymousClass()) return false;//override class
         return true;
     }
     private static boolean IsInterface(Class type)
@@ -82,12 +92,20 @@ public class Reflect {
             field.set(object,value);
         }catch (Exception e){}
     }
+    public static void SetValue(String filedName,Object object,Object value)
+    {
+        SetValue(GetField(object.getClass(),filedName),object,value);
+    }
     public static <T> T GetValue(Field field,Object object)
     {
         try {
             return (T)field.get(object);
         }catch (Exception e){}
         return null;
+    }
+    public static <T> T GetValue(String filedName,Object object)
+    {
+        return GetValue(GetField(object.getClass(),filedName),object);
     }
     public static Field GetField(Class type,String fieldName) //all field but only public
     {

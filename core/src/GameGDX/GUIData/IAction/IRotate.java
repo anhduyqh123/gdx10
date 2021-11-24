@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 public class IRotate extends IBaseAction{
 
     public int angle;
-    public int delta;
 
     public IRotate()
     {
@@ -15,14 +14,9 @@ public class IRotate extends IBaseAction{
     }
 
     @Override
-    public Action Get() {
-        return Get(angle+delta);
-    }
-
-    @Override
     public Action Get(IActor iActor) {
-        if (current) return Get((int) iActor.GetActor().getRotation()+delta);
-        return Get();
+        if (current) return Get((int) iActor.GetActor().getRotation()+angle);
+        return Get(angle);
     }
     private Action Get(int angle)
     {

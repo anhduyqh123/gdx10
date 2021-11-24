@@ -14,7 +14,7 @@ public class Language {
     public void SetCode(int index)
     {
         if (codes.size()<=0) return;
-        SetCode(codes.get(0));
+        SetCode(codes.get(index));
     }
     public void SetCode(String newCode)
     {
@@ -29,6 +29,10 @@ public class Language {
     public static String GetContent(String key)
     {
         return i.map.get(key).GetContent(GetCode());
+    }
+    public static String GetContent(String key,Object replace)//replace %
+    {
+        return GetContent(key).replace("%",replace+"");
     }
     public static void AddChangeCallback(String key,GDX.Runnable cb)
     {
@@ -107,6 +111,11 @@ public class Language {
     {
         i = Json.FromJson(Language.class,jsData);
         return i;
+    }
+    public static Language Init()
+    {
+        String dataLang = GDX.GetString(Assets.GetNode("translate").url);
+        return NewLanguage(dataLang);
     }
 
     public static class Node

@@ -1,6 +1,5 @@
 package Editor.UITool.Pointed;
 
-import Extend.Box2d.IShape;
 import GameGDX.GDX;
 import GameGDX.Util;
 import com.badlogic.gdx.Input;
@@ -15,10 +14,10 @@ import java.util.List;
 public class PolygonPointed extends Pointed {
     protected List<Vector2> points;
 
-    public PolygonPointed(IShape.IPolygon iPolygon, Group group)
+    public PolygonPointed(List<Vector2> points, Group group)
     {
         super(group);
-        this.points = iPolygon.points;
+        this.points = points;
         addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {

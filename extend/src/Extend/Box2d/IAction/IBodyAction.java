@@ -12,14 +12,10 @@ public class IBodyAction extends IAction {
         name = "iBody";
     }
     @Override
-    public Action Get() {
-        return null;
-    }
-    @Override
     public Action Get(IActor iActor) {
         return Actions.run(()->Run(iActor));
     }
-    private void Run(IActor iActor)
+    public void Run(IActor iActor)
     {
         IBody iBody = iActor.GetComponent(IBody.class);
         if (iBody==null) return;

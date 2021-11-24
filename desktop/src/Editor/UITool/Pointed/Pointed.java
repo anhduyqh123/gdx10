@@ -1,6 +1,6 @@
 package Editor.UITool.Pointed;
 
-import Extend.GShapeRenderer;
+import Extend.GShape.GShapeRenderer;
 import GameGDX.GDX;
 import GameGDX.GUIData.IImage;
 import GameGDX.Scene;

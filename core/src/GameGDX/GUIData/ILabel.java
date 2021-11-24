@@ -22,57 +22,15 @@ public class ILabel extends IActor {
     public float fontScale = 1f;
     public boolean bestFix,wrap,multiLanguage;
 
-    //Multi Language
-    private String GetValue(String value)
-    {
-        return value.substring(1,value.length()-1);
-    }
-    private List<String> GetKeys(String data)
-    {
-        List<String> list = new ArrayList<>();
-        while (true)
-        {
-            String key = GetKey(data);
-            if (key==null) return list;
-            list.add(key);
-            data = data.replace(key,"");
-        }
-    }
-    private String GetKey(String data)
-    {
-        try {
-            int s = data.indexOf("{");
-            int e = data.indexOf("}");
-            if (s==-1 || e==-1) return null;
-            return data.substring(s,e+1);
-        }catch (Exception ignored){}
-        return null;
-    }
-
-    public void SetNumber(Object value) //count %->count 1000
-    {
-        SetNumber(value,GetText());
-    }
-    public void SetNumber(Object value,String text) //count %->count 1000
-    {
-        Label lb = GetActor();
-        if (text.contains("%")) lb.setText(text.replace("%",value+""));
-        else lb.setText(value+"");
-    }
-    public String GetText()
-    {
-        if (multiLanguage){
-            List<String> keys = GetKeys(text);
-            if (keys.size()<=0) return Language.GetContent(text);
-            String txt = text;
-            for(String key : keys) txt = txt.replace(key,Language.GetContent(GetValue(key)));
-            return txt;
-        }
-        return text;
-    }
     @Override
     protected Actor NewActor() {
         return New(text,GetFontName());
+    }
+
+    public String GetText()
+    {
+        if (multiLanguage) return GetTranslate(text);
+        return text;
     }
     private BitmapFont GetFont()
     {
@@ -95,6 +53,16 @@ public class ILabel extends IActor {
         Label lb = GetActor();
         lb.setText(text+"");
         if (bestFix) BestFix(lb);
+    }
+    public void ReplaceText(Object value)//default %
+    {
+        ReplaceText(value,"%");
+    }
+    public void ReplaceText(Object value,String target)//target = %
+    {
+        String txt = GetText();
+        Label lb = GetActor();
+        lb.setText(txt.replace(target,value+""));
     }
 
     @Override
@@ -139,6 +107,43 @@ public class ILabel extends IActor {
     }
 
     //static
+    //Multi Language
+    public static String GetTranslate(String text)//{key}->en-hello,vi->xin chao;
+    {
+        List<String> keys = GetKeys(text);
+        if (keys.size()<=0) return Language.GetContent(text);
+        String txt = text;
+        for(String key : keys) txt = txt.replace(key,Language.GetContent(GetValue(key)));
+        return txt;
+    }
+    private static String GetValue(String value)
+    {
+        return value.substring(1,value.length()-1);
+    }
+    private static List<String> GetKeys(String data)
+    {
+        List<String> list = new ArrayList<>();
+        while (true)
+        {
+            String key = GetKey(data);
+            if (key==null) return list;
+            list.add(key);
+            data = data.replace(key,"");
+        }
+    }
+    private static String GetKey(String data)
+    {
+        try {
+            int s = data.indexOf("{");
+            int e = data.indexOf("}");
+            if (s==-1 || e==-1) return null;
+            return data.substring(s,e+1);
+        }catch (Exception ignored){}
+        return null;
+    }
+
+    //other
+
     public static String gFont = "font";
     private static void BestFix(Label label)
     {

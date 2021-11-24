@@ -1,0 +1,621 @@
+<level_61>
+  <checkPoints>
+    <p0 x="-1697" y="-976.05"/>
+    <p1 x="-440" y="-740"/>
+  </checkPoints>
+  <viewPoints>
+    <p0 x="-1830.3" f="0.3" h="-700"/>
+    <p1 x="-1140" f="0.3" h="-700"/>
+    <p2 x="-1005" f="0.5" h="-700"/>
+    <p3 x="-750" f="0.5" h="-700"/>
+    <p4 x="-480" f="0.5" h="-795"/>
+    <p5 x="-300" f="0.3" h="-795"/>
+    <p6 x="510.15" f="0.5" h="-795"/>
+  </viewPoints>
+  <joints/>
+  <frame x="-1830.3" y="-1110.1" w="2340.45" h="690.25"/>
+  <frameLeft x="0" y="0" rot="0" type="0" den="0" frc="0" rst="0" sens="false" geom="1" category="65535" mask="65535">
+    <v0 x="-1830.3" y="-1110.1"/>
+    <v1 x="-1830.3" y="-419.85"/>
+  </frameLeft>
+  <frameRight x="0" y="0" rot="0" type="0" den="0" frc="0" rst="0" sens="false" geom="1" category="65535" mask="65239">
+    <v0 x="510.15" y="-419.85"/>
+    <v1 x="510.15" y="-1110.1"/>
+  </frameRight>
+  <decor_1 x="-1692.05" y="-688.2" rot="0" z="28" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_2 x="-1590.8" y="-684.7" rot="0" z="29" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_3 x="-1546.5" y="-726.7" rot="-53.4707" z="37" dx="0.5" dy="0.5" sx="1" sy="1" image="backWood"/>
+  <decor_4 x="-1536.1" y="-721.85" rot="58.7003" z="38" dx="0.5" dy="0.5" sx="1" sy="1.0303" image="backWood"/>
+  <decor_5 x="-1634.25" y="-729.35" rot="0" z="39" dx="0.5" dy="0.5" sx="1" sy="0.6001" image="backWood"/>
+  <decor_6 x="-1696.35" y="-971.8" rot="45.042" z="40" dx="0.5" dy="0.5" sx="1.0284" sy="0.7279" image="backWood"/>
+  <decor_7 x="-1692.5" y="-966.35" rot="134.8168" z="41" dx="0.5" dy="0.5" sx="0.9636" sy="0.7029" image="backWood"/>
+  <decor_8 x="-1694.4" y="-849.2" rot="45.042" z="42" dx="0.5" dy="0.5" sx="1.0284" sy="0.7369" image="backWood"/>
+  <decor_9 x="-1693.75" y="-849.9" rot="136.5474" z="43" dx="0.5" dy="0.5" sx="0.9637" sy="0.7573" image="backWood"/>
+  <decor_10 x="-1694.5" y="-795.05" rot="-90" z="44" dx="0.5" dy="0.5" sx="1" sy="0.57" image="backWood"/>
+  <decor_11 x="-1399.2" y="-698.75" rot="134.9996" z="45" dx="0.5" dy="0.5" sx="1" sy="0.4328" image="backWood"/>
+  <decor_12 x="-1365.55" y="-635.7" rot="0" z="46" dx="0.5" dy="0.5" sx="1" sy="0.3621" image="backWood"/>
+  <decor_13 x="-1151.2" y="-634.65" rot="0" z="47" dx="0.5" dy="0.5" sx="1" sy="0.3825" image="backWood"/>
+  <decor_14 x="-895.2" y="-693.65" rot="0" z="48" dx="0.5" dy="0.4991" sx="1.4283" sy="1.4283" image="backStones"/>
+  <decor_15 x="-957.6" y="-729.25" rot="-60.14" z="49" dx="0.5" dy="0.5" sx="1" sy="1.0766" image="backWood"/>
+  <decor_16 x="-855.2" y="-696.4" rot="0" z="50" dx="0.5" dy="0.5" sx="1" sy="0.3825" image="backWood"/>
+  <decor_17 x="-358.75" y="-815.25" rot="-33.207" z="51" dx="0.5" dy="0.5" sx="1" sy="1.0424" image="backWood"/>
+  <decor_18 x="-359.75" y="-813.3" rot="39.0326" z="52" dx="0.5" dy="0.5" sx="1" sy="1.0684" image="backWood"/>
+  <decor_19 x="-492.3" y="-755" rot="32.7165" z="53" dx="0.5" dy="0.5" sx="1" sy="1" image="backWood"/>
+  <decor_20 x="-657.35" y="-727.85" rot="59.9615" z="54" dx="0.5" dy="0.5" sx="1" sy="1.073" image="backWood"/>
+  <decor_21 x="-760.3" y="-697.75" rot="0" z="55" dx="0.5" dy="0.5" sx="1" sy="0.3825" image="backWood"/>
+  <decor_22 x="-48.25" y="-623.4" rot="-137.3013" z="56" dx="0.5" dy="0.5" sx="1" sy="0.6187" image="backWood"/>
+  <decor_23 x="-44.85" y="-520.95" rot="-137.3013" z="57" dx="0.5" dy="0.5" sx="1" sy="0.6187" image="backWood"/>
+  <decor_24 x="-45.8" y="-721.95" rot="-137.3013" z="58" dx="0.5" dy="0.5" sx="1" sy="0.6187" image="backWood"/>
+  <decor_25 x="-38.5" y="-620.45" rot="-47.3022" z="59" dx="0.5" dy="0.5" sx="1" sy="0.6187" image="backWood"/>
+  <decor_26 x="-45.8" y="-721.95" rot="-47.3022" z="60" dx="0.5" dy="0.5" sx="1" sy="0.6187" image="backWood"/>
+  <decor_27 x="-102.65" y="-839.8" rot="0" z="61" dx="0.5" dy="0.5" sx="1" sy="0.6266" image="backWood"/>
+  <decor_28 x="-533.25" y="-693.35" rot="0" z="62" dx="0.5" dy="0.499" sx="1.2767" sy="1.2767" image="backStones"/>
+  <decor_29 x="-550.55" y="-721.65" rot="0" z="63" dx="0.5" dy="0.5" sx="1" sy="0.6266" image="backWood"/>
+  <decor_30 x="-593.6" y="-677.5" rot="0" z="64" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_31 x="-429.8" y="-783.4" rot="0" z="65" dx="0.5" dy="0.5" sx="1" sy="0.6266" image="backWood"/>
+  <decor_32 x="-406.65" y="-745.4" rot="0" z="66" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_33 x="122.2" y="-844.3" rot="-146.9383" z="67" dx="0.5" dy="0.5" sx="0.9985" sy="0.7409" image="backWood"/>
+  <decor_34 x="122.2" y="-844.3" rot="148.4438" z="68" dx="0.5" dy="0.5" sx="0.9985" sy="0.7395" image="backWood"/>
+  <decor_35 x="16.4" y="-833.4" rot="0" z="69" dx="0.5" dy="0.5" sx="1" sy="0.6266" image="backWood"/>
+  <decor_36 x="375.4" y="-783.4" rot="0" z="70" dx="0.5" dy="0.5" sx="1" sy="0.6266" image="backWood"/>
+  <decor_37 x="251.85" y="-721.55" rot="0" z="71" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_38 x="243.65" y="-693.25" rot="0" z="72" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_39 x="229.85" y="-699.75" rot="0" z="73" dx="0.5" dy="0.5" sx="1" sy="0.3765" image="backWood"/>
+  <decor_40 x="-283.65" y="-838.45" rot="0" z="74" dx="0.5" dy="0.5" sx="1" sy="0.6266" image="backWood"/>
+  <decor_41 x="229.55" y="-839.8" rot="0" z="75" dx="0.5" dy="0.5" sx="1" sy="0.6266" image="backWood"/>
+  <decor_42 x="-1065.25" y="-719.35" rot="0" z="76" dx="0.5" dy="0.5" sx="1" sy="0.6843" image="backWood"/>
+  <decor_43 x="-44.3" y="-771.2" rot="-90" z="77" dx="0.5" dy="0.5" sx="1" sy="0.5416" image="backWood"/>
+  <decor_44 x="-1390.15" y="-620.85" rot="0" z="78" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_45 x="-1118.8" y="-624.1" rot="0" z="79" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_46 x="-183.05" y="-801.15" rot="0" z="80" dx="0.5" dy="0.4989" sx="0.7747" sy="0.7747" image="backStones"/>
+  <decor_47 x="168.4" y="-689.6" rot="0" z="81" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_48 x="322.9" y="-694.5" rot="0" z="82" dx="0.5" dy="0.4991" sx="1" sy="1" image="backStones"/>
+  <decor_49 x="-231.8" y="-802.25" rot="0" z="83" dx="0.5" dy="0.4992" sx="1.051" sy="1.051" image="backStones"/>
+  <decor_50 x="-1693.5" y="-910.7" rot="-90" z="84" dx="0.5" dy="0.5" sx="1" sy="0.57" image="backWood"/>
+  <decor_51 x="-499.85" y="-781.8" rot="-31.177" z="85" dx="0.5" dy="0.5" sx="1" sy="0.7415" image="backWood"/>
+  <decor_52 x="-44.3" y="-676.2" rot="-90" z="86" dx="0.5" dy="0.5" sx="1" sy="0.5416" image="backWood"/>
+  <decor_53 x="-42.9" y="-514.55" rot="-47.3022" z="87" dx="0.5" dy="0.5" sx="1" sy="0.6187" image="backWood"/>
+  <decor_54 x="-44.3" y="-566.2" rot="-90" z="88" dx="0.5" dy="0.5" sx="1" sy="0.5416" image="backWood"/>
+  <decor_55 x="-44.3" y="-471.2" rot="-90" z="89" dx="0.5" dy="0.5" sx="1" sy="0.5416" image="backWood"/>
+  <decor_56 x="409.45" y="-812.1" rot="0" z="91" dx="0.7338" dy="0.4919" sx="1" sy="1" image="spiderNetA"/>
+  <decor_57 x="-1668.45" y="-667.9" rot="0" z="92" dx="0.6288" dy="0.003" sx="1" sy="1" image="dangerPlate"/>
+  <decor_58 x="-384.3" y="-917.35" rot="0" z="93" dx="0.5054" dy="0.8987" sx="1" sy="1" image="chainA"/>
+  <decor_59 x="-321.35" y="-864.55" rot="0" z="94" dx="0.5036" dy="0.0217" sx="1" sy="1" image="chainB"/>
+  <decor_60 x="-490.2" y="-811.5" rot="0" z="95" dx="0.6742" dy="0.5077" sx="1" sy="1" image="spiderNetB"/>
+  <decor_61 x="-1571.45" y="-744.35" rot="0" z="96" dx="0.5036" dy="0.0217" sx="1" sy="1" image="chainB"/>
+  <decor_62 x="-1565.75" y="-758" rot="0" z="97" dx="0.5036" dy="0.0217" sx="1" sy="1" image="chainB"/>
+  <decor_63 x="-1502.65" y="-798.15" rot="0" z="98" dx="0.5054" dy="0.8987" sx="1" sy="1" image="chainA"/>
+  <decor_64 x="-884.6" y="-753.65" rot="0" z="99" dx="0.7338" dy="0.4919" sx="1" sy="1" image="spiderNetA"/>
+  <decor_65 x="159.2" y="-691" rot="0" z="100" dx="0.6742" dy="0.5077" sx="1" sy="1" image="spiderNetB"/>
+  <decor_66 x="-1107.25" y="-784.45" rot="0" z="101" dx="0.4907" dy="0.8132" sx="1" sy="1" image="lamp"/>
+  <decor_67 x="-49.35" y="-904.4" rot="0" z="102" dx="0.4907" dy="0.8132" sx="1" sy="1" image="lamp"/>
+  <decor_68 x="290.6" y="-906.4" rot="0" z="103" dx="0.4907" dy="0.8132" sx="1" sy="1" image="lamp"/>
+  <decor_69 x="-1692.15" y="-899.95" rot="0" z="104" dx="0.5008" dy="0.5" sx="4.9136" sy="2.7518" image="backShadow"/>
+  <decor_70 x="-43.8" y="-606.85" rot="180" z="105" dx="0.5009" dy="0.5" sx="4.4175" sy="3.6071" image="backShadow"/>
+  <decor_71 x="-1672.55" y="-654.6" rot="0" z="106" dx="0.5" dy="0.5" sx="1.138" sy="1" image="groundLong"/>
+  <decor_72 x="-1540.8" y="-654.6" rot="0" z="107" dx="0.5" dy="0.5" sx="1.138" sy="1" image="groundLong"/>
+  <decor_73 x="-1373.2" y="-595.2" rot="0" z="108" dx="0.5" dy="0.5" sx="1.138" sy="1" image="groundLong"/>
+  <decor_74 x="-1133.65" y="-595.2" rot="0" z="109" dx="0.5" dy="0.5" sx="0.9056" sy="1" image="groundLong"/>
+  <decor_75 x="-1277.15" y="-595.2" rot="0" z="110" dx="0.5" dy="0.5" sx="1.138" sy="1" image="groundShort"/>
+  <decor_76 x="-978.35" y="-655.3" rot="0" z="111" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_77 x="-186.7" y="-775.6" rot="0" z="112" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_78 x="-836" y="-655.3" rot="0" z="113" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_79 x="-694.3" y="-655.3" rot="0" z="114" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_80 x="-551.95" y="-655.3" rot="0" z="115" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_81 x="-372.05" y="-714.85" rot="0" z="116" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_82 x="121.4" y="-775.6" rot="0" z="117" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_83 x="191.3" y="-655.8" rot="0" z="118" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_84 x="289.05" y="-655.8" rot="0" z="119" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLong"/>
+  <decor_85 x="-1213.15" y="-595.2" rot="0" z="120" dx="0.5" dy="0.5" sx="1.138" sy="1" image="groundShort"/>
+  <decor_86 x="-249.8" y="-727" rot="0" z="121" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_87 x="-150.35" y="-719.75" rot="0" z="122" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_88 x="-341.9" y="-665.55" rot="0" z="123" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_89 x="68.95" y="-628.35" rot="0" z="124" dx="0.501" dy="0.5" sx="1" sy="1" image="darkStoneD"/>
+  <decor_90 x="-223.1" y="-679.15" rot="0" z="125" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_91 x="55.55" y="-719.75" rot="0" z="126" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_92 x="-141.6" y="-604" rot="0" z="127" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_93 x="-157.45" y="-478.05" rot="0" z="128" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_94 x="41" y="-609.65" rot="0" z="129" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_95 x="59" y="-509.65" rot="0" z="130" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_96 x="253.15" y="-607.1" rot="0" z="131" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_97 x="91.65" y="-426.65" rot="0" z="132" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_98 x="49.55" y="-641.5" rot="0" z="133" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_99 x="428.8" y="-659.5" rot="0" z="134" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_100 x="192.3" y="-618.1" rot="0" z="135" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_101 x="154.4" y="-605.7" rot="0" z="136" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_102 x="469.15" y="-772.95" rot="0" z="137" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_103 x="402.25" y="-884.2" rot="0" z="138" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_104 x="452.95" y="-867.15" rot="0" z="139" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_105 x="281" y="-947.45" rot="0" z="140" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_106 x="-433.45" y="-638.4" rot="0" z="141" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_107 x="-552.4" y="-597.3" rot="0" z="142" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_108 x="-704.85" y="-610.8" rot="0" z="143" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_109 x="-636.5" y="-609.65" rot="0" z="144" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_110 x="-454.35" y="-589.7" rot="0" z="145" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_111 x="-129.1" y="-542.5" rot="0" z="146" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_112 x="-179.1" y="-561.85" rot="0" z="147" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_113 x="-142.25" y="-669.7" rot="0" z="148" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_114 x="-856.5" y="-588.85" rot="0" z="149" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_115 x="-1004.8" y="-605.4" rot="0" z="150" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_116 x="-957.7" y="-619.6" rot="0" z="151" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_117 x="-1058.55" y="-554.2" rot="0" z="152" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_118 x="-1155.45" y="-539.2" rot="0" z="153" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_119 x="-1175.5" y="-812.6" rot="0" z="154" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_120 x="-1508.4" y="-562.3" rot="0" z="155" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_121 x="-1375.2" y="-776.3" rot="0" z="156" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_122 x="-1336.35" y="-744.85" rot="0" z="157" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_123 x="-1449.4" y="-536.45" rot="0" z="158" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_124 x="-1326.4" y="-700.8" rot="0" z="159" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_125 x="-815" y="-774.2" rot="0" z="160" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_126 x="-1496.8" y="-861.8" rot="0" z="161" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_127 x="-1616.75" y="-814" rot="0" z="162" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_128 x="-1272.45" y="-536.05" rot="0" z="163" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_129 x="-1312.75" y="-559.5" rot="0" z="164" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_130 x="-1252.25" y="-561.85" rot="0" z="165" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_131 x="-1792.95" y="-666.5" rot="0" z="166" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_132 x="-1457.75" y="-829" rot="0" z="167" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_133 x="-1493.95" y="-819.15" rot="0" z="168" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_134 x="-1780.55" y="-621.75" rot="0" z="169" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_135 x="-1776.95" y="-708" rot="0" z="170" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_136 x="-1720.25" y="-592.85" rot="0" z="171" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_137 x="-1559.85" y="-621.25" rot="0" z="172" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_138 x="-1410.7" y="-817.95" rot="0" z="173" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_139 x="-1129.75" y="-817.95" rot="0" z="174" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_140 x="-1198.85" y="-792.95" rot="0" z="175" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_141 x="-1183.7" y="-700.8" rot="0" z="176" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_142 x="-1772.25" y="-1013.9" rot="0" z="177" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_143 x="-1777.55" y="-1048.7" rot="0" z="178" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_144 x="-1599.7" y="-1048.35" rot="0" z="179" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_145 x="-1597.25" y="-981.55" rot="0" z="180" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_146 x="-1611.1" y="-939.15" rot="0" z="181" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_147 x="-1772.25" y="-819.15" rot="0" z="182" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_148 x="-1787.55" y="-881.45" rot="0" z="183" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_149 x="-1698.6" y="-1072.1" rot="0" z="184" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_150 x="-843.65" y="-621.05" rot="0" z="185" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_151 x="-767.7" y="-606.95" rot="0" z="186" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_152 x="-864.15" y="-817.95" rot="0" z="187" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_153 x="-783.65" y="-827.25" rot="49.0009" z="188" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_154 x="-606.35" y="-818.6" rot="0" z="189" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_155 x="-553.4" y="-873" rot="0" z="190" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_156 x="-1004.8" y="-815.35" rot="0" z="191" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_157 x="-418.1" y="-937.8" rot="0" z="192" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_158 x="-471.8" y="-888.7" rot="0" z="193" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_159 x="-326.3" y="-943.65" rot="0" z="194" dx="0.501" dy="0.5" sx="1" sy="1" image="darkStoneD"/>
+  <decor_160 x="-521.1" y="-884.15" rot="0" z="195" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_161 x="-202.25" y="-955.55" rot="0" z="196" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_162 x="-109.6" y="-926.9" rot="0" z="197" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_163 x="87.55" y="-944.4" rot="0" z="198" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_164 x="38.95" y="-934.5" rot="0" z="199" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_165 x="165" y="-930.75" rot="0" z="200" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_166 x="-207.25" y="-713.95" rot="-35.4662" z="201" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_167 x="-171.8" y="-681.35" rot="0" z="202" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_168 x="-131.5" y="-683.95" rot="0" z="203" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_169 x="-132.3" y="-747.4" rot="0" z="204" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_170 x="-267.25" y="-673.3" rot="-41.2081" z="205" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_171 x="33.8" y="-738.75" rot="0" z="206" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_172 x="84.3" y="-739.65" rot="0" z="207" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_173 x="44.6" y="-689.75" rot="78.4811" z="208" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_174 x="77.8" y="-673.35" rot="0" z="209" dx="0.501" dy="0.5" sx="1" sy="1" image="darkStoneD"/>
+  <decor_175 x="82.3" y="-717" rot="0" z="210" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_176 x="106.25" y="-629.4" rot="8.7449" z="211" dx="0.501" dy="0.5" sx="1" sy="1" image="darkStoneD"/>
+  <decor_177 x="82.1" y="-696.45" rot="15.223" z="212" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_178 x="-228.4" y="-737.9" rot="8.7449" z="213" dx="0.501" dy="0.5" sx="1" sy="1" image="darkStoneD"/>
+  <decor_179 x="-140" y="-644.2" rot="3.7905" z="214" dx="0.5006" dy="0.4992" sx="0.7225" sy="0.7225" image="darkStoneB"/>
+  <decor_180 x="86.6" y="-602.25" rot="50.9716" z="215" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_181 x="302.35" y="-612.35" rot="124.6797" z="216" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_182 x="351.3" y="-607.85" rot="-36.4982" z="217" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_183 x="399.8" y="-680.25" rot="0" z="218" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_184 x="407.95" y="-620.5" rot="0" z="219" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_185 x="472.35" y="-725.15" rot="0" z="220" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_186 x="474.15" y="-679.95" rot="-138.7503" z="221" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_187 x="471.9" y="-862" rot="83.9491" z="222" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_188 x="463.95" y="-817.05" rot="97.9387" z="223" dx="0.5007" dy="0.4993" sx="0.9999" sy="0.9999" image="darkStoneA"/>
+  <decor_189 x="394.1" y="-932.3" rot="-117.5207" z="224" dx="0.5007" dy="0.4993" sx="0.9999" sy="0.9999" image="darkStoneA"/>
+  <decor_190 x="331.65" y="-948.15" rot="138.6773" z="225" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_191 x="-426.65" y="-676" rot="-135" z="226" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_192 x="-399.35" y="-679.35" rot="0" z="227" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_193 x="-486.7" y="-938.35" rot="54.535" z="228" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_194 x="-1024.2" y="-574.5" rot="0" z="229" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_195 x="-1038.15" y="-606.55" rot="0" z="230" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_196 x="-950.75" y="-588.6" rot="55.2317" z="231" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_197 x="-914.95" y="-611.7" rot="0" z="232" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_198 x="-1390.5" y="-550.45" rot="0" z="233" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_199 x="-1345.8" y="-537.25" rot="-64.4623" z="234" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_200 x="-1507" y="-607.6" rot="15.9708" z="235" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_201 x="-1544.3" y="-596.75" rot="0" z="236" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_202 x="-1812.05" y="-625.4" rot="0" z="237" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_203 x="-1794.45" y="-734.9" rot="-78.2102" z="238" dx="0.5003" dy="0.5" sx="1" sy="1" image="darkStoneC"/>
+  <decor_204 x="-1638.25" y="-611.75" rot="0" z="239" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_205 x="-1543.5" y="-831.45" rot="-81.2278" z="240" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_206 x="-1567.55" y="-883.95" rot="-162.5592" z="241" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_207 x="-1192.8" y="-721.9" rot="0" z="242" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_208 x="-1251.35" y="-695.2" rot="0" z="243" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_209 x="-1210.25" y="-691.4" rot="0" z="244" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_210 x="-1095.05" y="-832.45" rot="-43.7351" z="245" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_211 x="-1047" y="-834.2" rot="44.9996" z="246" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_212 x="-1152.45" y="-848.95" rot="0" z="247" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_213 x="-971.65" y="-813.5" rot="0" z="248" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_214 x="-829.5" y="-753.85" rot="0" z="249" dx="0.5018" dy="0.4978" sx="1" sy="1" image="darkStoneE"/>
+  <decor_215 x="-938.25" y="-823.5" rot="-95.5178" z="250" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_216 x="-684.2" y="-827.4" rot="165.81" z="251" dx="0.5009" dy="0.4994" sx="1" sy="1" image="darkStoneB"/>
+  <decor_217 x="-487.25" y="-613.3" rot="-70.7299" z="252" dx="0.5007" dy="0.4993" sx="1" sy="1" image="darkStoneA"/>
+  <decor_218 x="-188.9" y="-603.35" rot="-175.8041" z="253" dx="0.5007" dy="0.4993" sx="0.9982" sy="0.9982" image="darkStoneA"/>
+  <decor_219 x="-271.45" y="-637.45" rot="-175.8041" z="254" dx="0.5018" dy="0.4978" sx="0.9982" sy="0.9982" image="darkStoneE"/>
+  <decor_220 x="-227.3" y="-950.9" rot="178.1926" z="255" dx="0.5003" dy="0.5" sx="0.9979" sy="0.9979" image="darkStoneC"/>
+  <decor_221 x="-310.4" y="-633.95" rot="-2.8085" z="256" dx="0.501" dy="0.5" sx="0.9979" sy="0.9979" image="darkStoneD"/>
+  <decor_222 x="-1595.95" y="-840.35" rot="73.17" z="257" dx="0.5007" dy="0.4993" sx="0.9991" sy="0.9991" image="darkStoneA"/>
+  <decor_223 x="-1332.9" y="-798.7" rot="-105.8309" z="258" dx="0.5003" dy="0.5" sx="0.9991" sy="0.9991" image="darkStoneC"/>
+  <decor_224 x="-1600.65" y="-906.2" rot="73.17" z="259" dx="0.501" dy="0.5" sx="0.9991" sy="0.9991" image="darkStoneD"/>
+  <decor_225 x="-1308.2" y="-764.95" rot="73.17" z="260" dx="0.5018" dy="0.4978" sx="0.9991" sy="0.9991" image="darkStoneE"/>
+  <decor_226 x="-1256.4" y="-727.85" rot="-113.8338" z="261" dx="0.5007" dy="0.4993" sx="0.9988" sy="0.9988" image="darkStoneA"/>
+  <decor_227 x="-1299.3" y="-720.65" rot="67.1657" z="262" dx="0.5003" dy="0.5" sx="0.9989" sy="0.9989" image="darkStoneC"/>
+  <decor_228 x="-1215.15" y="-749.1" rot="-113.8338" z="263" dx="0.501" dy="0.5" sx="0.9988" sy="0.9988" image="darkStoneD"/>
+  <decor_229 x="-1191.15" y="-758.85" rot="-113.8338" z="264" dx="0.5018" dy="0.4978" sx="0.9988" sy="0.9988" image="darkStoneE"/>
+  <decor_230 x="454.05" y="-913.9" rot="0" z="265" dx="0.501" dy="0.5" sx="1" sy="1" image="darkStoneD"/>
+  <decor_231 x="-42.5" y="-440.5" rot="0" z="266" dx="0.5" dy="0.5" sx="1.0324" sy="1" image="groundLong"/>
+  <decor_232 x="12.7" y="-521.45" rot="90" z="267" dx="0.5" dy="0.5" sx="1.1508" sy="1" image="woodStandart"/>
+  <decor_233 x="12.7" y="-689" rot="90" z="268" dx="0.5" dy="0.5" sx="1.2107" sy="1" image="woodStandart"/>
+  <decor_234 x="-102.9" y="-689.7" rot="-90" z="269" dx="0.5" dy="0.5" sx="1.1942" sy="1" image="woodStandart"/>
+  <decor_235 x="-102.9" y="-520.85" rot="-90" z="270" dx="0.5" dy="0.5" sx="1.1508" sy="1" image="woodStandart"/>
+  <decor_236 x="372.85" y="-882.15" rot="90" z="271" dx="0.5" dy="0.5" sx="0.5757" sy="1" image="woodStandart"/>
+  <decor_237 x="298.65" y="-912.65" rot="0" z="272" dx="0.5" dy="0.5" sx="1.1554" sy="1" image="woodStandart"/>
+  <decor_238 x="133.25" y="-912.65" rot="0" z="273" dx="0.5" dy="0.5" sx="1.0786" sy="1" image="woodStandart"/>
+  <decor_239 x="-24.75" y="-912.65" rot="0" z="274" dx="0.5" dy="0.5" sx="1.0567" sy="1" image="woodStandart"/>
+  <decor_240 x="-182.7" y="-912.65" rot="0" z="275" dx="0.5" dy="0.5" sx="1.0567" sy="1" image="woodStandart"/>
+  <decor_241 x="-431.9" y="-882.05" rot="-90" z="276" dx="0.5" dy="0.5" sx="0.5784" sy="1" image="woodStandart"/>
+  <decor_242 x="-352.85" y="-912.65" rot="0" z="277" dx="0.5" dy="0.5" sx="1.2191" sy="1" image="woodStandart"/>
+  <decor_243 x="-552.8" y="-822.35" rot="-90" z="278" dx="0.5" dy="0.5" sx="0.5659" sy="1" image="woodStandart"/>
+  <decor_244 x="-492.35" y="-851.9" rot="0" z="279" dx="0.5" dy="0.5" sx="0.9756" sy="1" image="woodStandart"/>
+  <decor_245 x="-1752.35" y="-942" rot="-90" z="280" dx="0.5" dy="0.5" sx="1.3848" sy="1" image="woodStandart"/>
+  <decor_246 x="-1752.35" y="-747.75" rot="-90" z="281" dx="0.5" dy="0.5" sx="1.2129" sy="1" image="woodStandart"/>
+  <decor_247 x="-762.55" y="-762.75" rot="-90" z="282" dx="0.5" dy="0.5" sx="0.5729" sy="1" image="woodStandart"/>
+  <decor_248 x="-657.1" y="-792.85" rot="0" z="283" dx="0.5" dy="0.5" sx="1.5662" sy="1" image="woodStandart"/>
+  <decor_249 x="-857" y="-761.65" rot="90" z="284" dx="0.5" dy="0.5" sx="0.5507" sy="1" image="woodStandart"/>
+  <decor_250 x="-810" y="-732.65" rot="0" z="285" dx="0.5" dy="0.5" sx="0.8004" sy="1" image="woodStandart"/>
+  <decor_251 x="-932.35" y="-792.85" rot="0" z="286" dx="0.5" dy="0.5" sx="1.1654" sy="1" image="woodStandart"/>
+  <decor_252 x="-1636.95" y="-854.8" rot="90" z="287" dx="0.5" dy="0.5" sx="0.9979" sy="1" image="woodStandart"/>
+  <decor_253 x="-1426.9" y="-762.25" rot="90" z="288" dx="0.5" dy="0.5" sx="0.5696" sy="1" image="woodStandart"/>
+  <decor_254 x="-1531.7" y="-792.85" rot="0" z="289" dx="0.5" dy="0.5" sx="1.5706" sy="1" image="woodStandart"/>
+  <decor_255 x="-1636.95" y="-976.85" rot="90" z="290" dx="0.5" dy="0.5" sx="0.9064" sy="1" image="woodStandart"/>
+  <decor_256 x="-1367.05" y="-702.4" rot="90" z="291" dx="0.5" dy="0.5" sx="0.5632" sy="1" image="woodStandart"/>
+  <decor_257 x="-1305.2" y="-672.95" rot="0" z="292" dx="0.5" dy="0.5" sx="1" sy="1" image="woodStandart"/>
+  <decor_258 x="-1396.75" y="-732.65" rot="0" z="293" dx="0.5" dy="0.5" sx="0.5688" sy="1" image="woodStandart"/>
+  <decor_259 x="-1152.8" y="-732.75" rot="-90" z="294" dx="0.5" dy="0.5" sx="0.9737" sy="1" image="woodStandart"/>
+  <decor_260 x="-1077.45" y="-792.85" rot="0" z="295" dx="0.5" dy="0.5" sx="1.1694" sy="1" image="woodStandart"/>
+  <decor_261 x="107.45" y="-703.3" rot="-90" z="296" dx="0.5" dy="0.5" sx="0.554" sy="1" image="woodStandart"/>
+  <decor_262 x="372.85" y="-685.1" rot="89.9895" z="297" dx="0.5" dy="0.5" sx="0.5" sy="1" image="woodStandart"/>
+  <decor_263 x="227.2" y="-749.95" rot="-90" z="298" dx="0.5" dy="0.5" sx="0.4032" sy="1" image="woodStandart"/>
+  <decor_264 x="167.85" y="-732.4" rot="0" z="299" dx="0.5" dy="0.5" sx="0.9622" sy="1" image="woodStandart"/>
+  <decor_265 x="430.75" y="-716.15" rot="0" z="300" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLeft"/>
+  <decor_266 x="433" y="-788.55" rot="90" z="301" dx="0.5" dy="0.5" sx="1.0094" sy="1" image="woodStandart"/>
+  <decor_267 x="403.2" y="-852" rot="0" z="302" dx="0.5" dy="0.5" sx="0.5683" sy="1" image="woodStandart"/>
+  <decor_268 x="-467.3" y="-691.65" rot="90" z="303" dx="0.5" dy="0.5" sx="0.4938" sy="1" image="woodStandart"/>
+  <decor_269 x="-1067.3" y="-627.8" rot="90" z="304" dx="0.5" dy="0.5" sx="0.5729" sy="1" image="woodStandart"/>
+  <decor_270 x="-1215" y="-672.95" rot="0" z="305" dx="0.5" dy="0.5" sx="1" sy="1" image="woodStandart"/>
+  <decor_271 x="-1453.25" y="-623.3" rot="-90" z="306" dx="0.5" dy="0.5" sx="0.5355" sy="1" image="woodStandart"/>
+  <decor_272 x="-287.35" y="-749" rot="90" z="307" dx="0.5" dy="0.5" sx="0.4938" sy="1" image="woodStandart"/>
+  <decor_273 x="12.7" y="-599.6" rot="90" z="308" dx="0.5001" dy="0.5" sx="2.1934" sy="1" image="woodShadow"/>
+  <decor_274 x="-102.9" y="-692.9" rot="-90" z="309" dx="0.5001" dy="0.5" sx="1.1508" sy="1" image="woodShadow"/>
+  <decor_275 x="-102.9" y="-520.85" rot="-90" z="310" dx="0.5001" dy="0.5" sx="1.1508" sy="1" image="woodShadow"/>
+  <decor_276 x="298.65" y="-912.65" rot="0" z="311" dx="0.5001" dy="0.5" sx="1.1554" sy="1" image="woodShadow"/>
+  <decor_277 x="133.25" y="-912.65" rot="0" z="312" dx="0.5002" dy="0.5" sx="1.0567" sy="1" image="woodShadow"/>
+  <decor_278 x="-24.75" y="-912.65" rot="0" z="313" dx="0.5002" dy="0.5" sx="1.0567" sy="1" image="woodShadow"/>
+  <decor_279 x="-182.7" y="-912.65" rot="0" z="314" dx="0.5002" dy="0.5" sx="1.0567" sy="1" image="woodShadow"/>
+  <decor_280 x="-352.85" y="-912.65" rot="0" z="315" dx="0.5003" dy="0.5" sx="1.2191" sy="1" image="woodShadow"/>
+  <decor_281 x="-492.25" y="-851.9" rot="0" z="316" dx="0.5002" dy="0.5" sx="0.9773" sy="1" image="woodShadow"/>
+  <decor_282 x="-1693.4" y="-1032.5" rot="0" z="317" dx="0.5" dy="0.5" sx="0.9272" sy="1" image="woodStandart"/>
+  <decor_283 x="-1693.4" y="-1032.5" rot="0" z="318" dx="0.5002" dy="0.5" sx="0.9272" sy="1" image="woodShadow"/>
+  <decor_284 x="-1752.35" y="-942" rot="-90" z="319" dx="0.5001" dy="0.5" sx="1.3848" sy="1" image="woodShadow"/>
+  <decor_285 x="-1752.35" y="-747.75" rot="-90" z="320" dx="0.5001" dy="0.5" sx="1.2129" sy="1" image="woodShadow"/>
+  <decor_286 x="-670.05" y="-792.85" rot="0" z="321" dx="0.5002" dy="0.5" sx="1.3946" sy="1" image="woodShadow"/>
+  <decor_287 x="-917.4" y="-792.85" rot="0" z="322" dx="0.5002" dy="0.5" sx="0.9655" sy="1" image="woodShadow"/>
+  <decor_288 x="-1259.95" y="-672.95" rot="0" z="323" dx="0.5002" dy="0.5" sx="1.6039" sy="1" image="woodShadow"/>
+  <decor_289 x="-1636.95" y="-857.55" rot="90" z="324" dx="0.5" dy="0.5" sx="0.6977" sy="1" image="woodShadow"/>
+  <decor_290 x="-1426.9" y="-774.95" rot="90" z="325" dx="0.5" dy="0.5" sx="0.4008" sy="1" image="woodShadow"/>
+  <decor_291 x="-1531.7" y="-792.85" rot="0" z="326" dx="0.5002" dy="0.5" sx="1.5703" sy="1" image="woodShadow"/>
+  <decor_292 x="-1636.95" y="-977.85" rot="90" z="327" dx="0.5002" dy="0.5" sx="0.9064" sy="1" image="woodShadow"/>
+  <decor_293 x="-1367.05" y="-715.05" rot="90" z="328" dx="0.5004" dy="0.5" sx="0.3939" sy="1" image="woodShadow"/>
+  <decor_294 x="-1396.75" y="-732.65" rot="0" z="329" dx="0.5003" dy="0.5" sx="0.569" sy="1" image="woodShadow"/>
+  <decor_295 x="-1152.8" y="-745.25" rot="-90" z="330" dx="0.5002" dy="0.5" sx="0.8064" sy="1" image="woodShadow"/>
+  <decor_296 x="-1077.45" y="-792.85" rot="0" z="331" dx="0.5003" dy="0.5" sx="1.1694" sy="1" image="woodShadow"/>
+  <decor_297 x="-857" y="-775.45" rot="90" z="332" dx="0.5004" dy="0.5" sx="0.4109" sy="1" image="woodShadow"/>
+  <decor_298 x="-809.7" y="-732.65" rot="0" z="333" dx="0.5002" dy="0.5" sx="0.8027" sy="1" image="woodShadow"/>
+  <decor_299 x="-762.55" y="-774.4" rot="-90" z="334" dx="0.5" dy="0.5" sx="0.4175" sy="1" image="woodShadow"/>
+  <decor_300 x="-552.8" y="-835.3" rot="-90" z="335" dx="0.5" dy="0.5" sx="0.3929" sy="1" image="woodShadow"/>
+  <decor_301 x="-431.9" y="-894.55" rot="-90" z="336" dx="0.5004" dy="0.5" sx="0.412" sy="1" image="woodShadow"/>
+  <decor_302 x="107.45" y="-703.3" rot="-90" z="337" dx="0.5003" dy="0.5" sx="0.554" sy="1" image="woodShadow"/>
+  <decor_303 x="372.85" y="-668.6" rot="89.9939" z="338" dx="0.5" dy="0.5" sx="0.3" sy="1" image="woodShadow"/>
+  <decor_304 x="227.2" y="-762.45" rot="-90" z="339" dx="0.5" dy="0.5" sx="0.2364" sy="1" image="woodShadow"/>
+  <decor_305 x="166.55" y="-732.4" rot="0" z="340" dx="0.5002" dy="0.5" sx="0.9451" sy="1" image="woodShadow"/>
+  <decor_306 x="433" y="-788.55" rot="90" z="341" dx="0.5002" dy="0.5" sx="1.0094" sy="1" image="woodShadow"/>
+  <decor_307 x="372.85" y="-894.4" rot="90" z="342" dx="0.5" dy="0.5" sx="0.3976" sy="1" image="woodShadow"/>
+  <decor_308 x="403.15" y="-852" rot="0" z="343" dx="0.5" dy="0.5" sx="0.5685" sy="1" image="woodShadow"/>
+  <decor_309 x="-467.3" y="-691.65" rot="90" z="344" dx="0.5" dy="0.5" sx="0.4938" sy="1" image="woodShadow"/>
+  <decor_310 x="-1067.3" y="-627.8" rot="90" z="345" dx="0.5003" dy="0.5" sx="0.5729" sy="1" image="woodShadow"/>
+  <decor_311 x="-1453.25" y="-623.3" rot="-90" z="346" dx="0.5003" dy="0.5" sx="0.5355" sy="1" image="woodShadow"/>
+  <decor_312 x="-287.35" y="-749" rot="90" z="347" dx="0.5" dy="0.5" sx="0.4938" sy="1" image="woodShadow"/>
+  <decor_313 x="-107.6" y="-436.5" rot="0" z="348" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver"/>
+  <decor_314 x="16.65" y="-436.45" rot="0" z="349" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver"/>
+  <decor_315 x="-1752.3" y="-650" rot="0" z="350" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver"/>
+  <decor_316 x="-1067.3" y="-583.9" rot="0" z="351" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver2"/>
+  <decor_317 x="-471.05" y="-645.95" rot="0" z="352" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver2"/>
+  <decor_318 x="-1451.75" y="-584.8" rot="0" z="353" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver"/>
+  <decor_319 x="-290.15" y="-704.85" rot="0" z="354" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver"/>
+  <decor_320 x="70.1" y="-776.2" rot="0" z="356" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLeft"/>
+  <decor_321 x="-230.2" y="-775.55" rot="0" z="357" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLeft"/>
+  <decor_322 x="-410.9" y="-715.1" rot="0" z="358" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLeft"/>
+  <decor_323 x="-1010.85" y="-655.75" rot="0" z="359" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundLeft"/>
+  <decor_324 x="-1510.6" y="-654.35" rot="0" z="360" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundRight"/>
+  <decor_325 x="-160.6" y="-775.8" rot="0" z="361" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundRight"/>
+  <decor_326 x="170.9" y="-775.8" rot="0" z="362" dx="0.5" dy="0.5" sx="1.2019" sy="1" image="groundRight"/>
+  <decor_327 x="109.1" y="-654.35" rot="0" z="363" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver"/>
+  <decor_328 x="368.05" y="-646.45" rot="0" z="364" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver2"/>
+  <decor_329 x="433.15" y="-706.3" rot="0" z="365" dx="0.5" dy="0.5" sx="1" sy="1" image="stonesOver"/>
+  <decor_330 x="213.1" y="-719.2" rot="-90" z="366" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_331 x="358.55" y="-866.75" rot="0" z="367" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_332 x="-446.75" y="-839" rot="-90" z="368" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_333 x="-777.65" y="-719.8" rot="-90" z="369" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_334 x="-568.05" y="-779.85" rot="-90" z="370" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_335 x="-870.4" y="-747.75" rot="0" z="371" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_336 x="-1167.75" y="-659.55" rot="-90" z="372" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_337 x="-1380.25" y="-687.9" rot="0" z="373" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_338 x="-1440.4" y="-747.6" rot="0" z="374" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <decor_339 x="-1650.05" y="-808.05" rot="0" z="375" dx="0.0239" dy="0.9761" sx="1" sy="1" image="steelOver"/>
+  <playerBall x="-1697" y="-976.05" rot="0" type="2" den="1" frc="0.15" rst="0" sens="false" geom="0" z="380" dx="0.4824" dy="0.2923" category="100" mask="65533">
+    <radius>40</radius>
+  </playerBall>
+  <door0 x="-45" y="-779.85" rot="0" type="0" den="0" frc="0.4" rst="0" sens="false" geom="2" z="355" dx="0.5014" dy="0.9181" check="10">
+    <p0>
+      <v0 x="45" y="0"/>
+      <v1 x="45" y="20"/>
+      <v2 x="-45" y="20"/>
+      <v3 x="-45" y="0"/>
+    </p0>
+  </door0>
+  <key0 x="150.1" y="-689.65" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="2" z="376" dx="0.5033" dy="0.4983">
+    <p0>
+      <v0 x="-18" y="18"/>
+      <v1 x="-18" y="-18"/>
+      <v2 x="18" y="-18"/>
+      <v3 x="18" y="18"/>
+    </p0>
+  </key0>
+  <star1 x="-1469.4" y="-690" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star1>
+  <star2 x="-1005.15" y="-750" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star2>
+  <star3 x="-615.15" y="-750" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star3>
+  <star4 x="389.85" y="-750" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star4>
+  <star5 x="389.85" y="-810" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star5>
+  <star6 x="-210.15" y="-869.5" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star6>
+  <star7 x="-1469.4" y="-750" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star7>
+  <star8 x="-1260.15" y="-630" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star8>
+  <star9 x="119.85" y="-869.5" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+    <radius>20</radius>
+  </star9>
+  <star10 x="-46" y="-694" rot="0" type="0" den="0" frc="0" rst="0" sens="true" geom="0" z="50" dx="0.494" dy="0.5008">
+      <radius>20</radius>
+  </star10>
+  <body_15 x="0" y="0" rot="0" type="0" den="0" frc="0.4" rst="0" sens="false" geom="1">
+    <v0 x="420" y="-840"/>
+    <v1 x="420" y="-720"/>
+    <v2 x="360" y="-720"/>
+    <v3 x="360" y="-660"/>
+    <v4 x="120" y="-660"/>
+    <v5 x="120" y="-720"/>
+    <v6 x="240" y="-720"/>
+    <v7 x="240" y="-780"/>
+    <v8 x="0" y="-780"/>
+    <v9 x="0" y="-450"/>
+    <v10 x="-90" y="-450"/>
+    <v11 x="-90" y="-780"/>
+    <v12 x="-300" y="-780"/>
+    <v13 x="-300" y="-720"/>
+    <v14 x="-480" y="-720"/>
+    <v15 x="-480" y="-660"/>
+    <v16 x="-1080" y="-660"/>
+    <v17 x="-1080" y="-600"/>
+    <v18 x="-1440" y="-600"/>
+    <v19 x="-1440" y="-660"/>
+    <v20 x="-1740" y="-660"/>
+    <v21 x="-1740" y="-1020"/>
+    <v22 x="-1650" y="-1020"/>
+    <v23 x="-1650" y="-780"/>
+    <v24 x="-1440" y="-780"/>
+    <v25 x="-1440" y="-720"/>
+    <v26 x="-1380" y="-720"/>
+    <v27 x="-1380" y="-660"/>
+    <v28 x="-1140" y="-660"/>
+    <v29 x="-1140" y="-780"/>
+    <v30 x="-870" y="-780"/>
+    <v31 x="-870" y="-720"/>
+    <v32 x="-750" y="-720"/>
+    <v33 x="-750" y="-780"/>
+    <v34 x="-540" y="-780"/>
+    <v35 x="-540" y="-840"/>
+    <v36 x="-420" y="-840"/>
+    <v37 x="-420" y="-900"/>
+    <v38 x="360" y="-900"/>
+    <v39 x="360" y="-840"/>
+  </body_15>
+  <roll1 x="-960.55" y="-678.05" rot="0" type="2" den="1" frc="0.5" rst="0" sens="false" geom="2" z="377" dx="0.4824" dy="0.4473" x1="-1050" x2="-510" phase="1">
+    <p0>
+      <v0 x="12.25" y="-17.75"/>
+      <v1 x="16.95" y="-16.95"/>
+      <v2 x="17.75" y="-11.95"/>
+      <v3 x="17.75" y="11.95"/>
+      <v4 x="17" y="17.1"/>
+      <v5 x="12.25" y="17.75"/>
+      <v6 x="-12" y="17.75"/>
+      <v7 x="-16.9" y="16.85"/>
+      <v8 x="-17.75" y="12.4"/>
+      <v9 x="-17.75" y="-12"/>
+      <v10 x="-17.1" y="-17"/>
+      <v11 x="-12.75" y="-17.75"/>
+    </p0>
+  </roll1>
+  <roll2 x="-659.55" y="-678.05" rot="0" type="2" den="1" frc="0.5" rst="0" sens="false" geom="2" z="378" dx="0.4824" dy="0.4473" x1="-1050" x2="-510" phase="-1">
+    <p0>
+      <v0 x="12.25" y="-17.75"/>
+      <v1 x="16.95" y="-16.95"/>
+      <v2 x="17.75" y="-11.95"/>
+      <v3 x="17.75" y="11.95"/>
+      <v4 x="17" y="17.1"/>
+      <v5 x="12.25" y="17.75"/>
+      <v6 x="-12" y="17.75"/>
+      <v7 x="-16.9" y="16.85"/>
+      <v8 x="-17.75" y="12.4"/>
+      <v9 x="-17.75" y="-12"/>
+      <v10 x="-17.1" y="-17"/>
+      <v11 x="-12.75" y="-17.75"/>
+    </p0>
+  </roll2>
+  <boom1 x="54.35" y="-796.85" rot="0" type="2" den="1" frc="0.5" rst="0" sens="false" geom="2" z="389" dx="0.5" dy="0.5" x1="-260" x2="215" phase="-1">
+    <p0>
+      <v0 x="12.25" y="-17.75"/>
+      <v1 x="16.95" y="-16.95"/>
+      <v2 x="17.75" y="-11.95"/>
+      <v3 x="17.75" y="11.95"/>
+      <v4 x="17" y="17.1"/>
+      <v5 x="12.25" y="17.75"/>
+      <v6 x="-12" y="17.75"/>
+      <v7 x="-16.9" y="16.85"/>
+      <v8 x="-17.75" y="12.4"/>
+      <v9 x="-17.75" y="-12"/>
+      <v10 x="-17.1" y="-17"/>
+      <v11 x="-12.75" y="-17.75"/>
+    </p0>
+  </boom1>
+  <caveMask>
+    <p0>
+      <v0 x="-540" y="-840"/>
+      <v1 x="-420" y="-840"/>
+      <v2 x="-300" y="-720"/>
+      <v3 x="-480" y="-720"/>
+      <v4 x="-540" y="-780"/>
+    </p0>
+    <p1>
+      <v0 x="-750" y="-780"/>
+      <v1 x="-540" y="-780"/>
+      <v2 x="-480" y="-720"/>
+      <v3 x="-480" y="-660"/>
+      <v4 x="-750" y="-720"/>
+    </p1>
+    <p2>
+      <v0 x="-870" y="-780"/>
+      <v1 x="-870" y="-720"/>
+      <v2 x="-1140" y="-660"/>
+      <v3 x="-1140" y="-780"/>
+    </p2>
+    <p3>
+      <v0 x="-870" y="-720"/>
+      <v1 x="-750" y="-720"/>
+      <v2 x="-1140" y="-660"/>
+    </p3>
+    <p4>
+      <v0 x="-1380" y="-720"/>
+      <v1 x="-1380" y="-660"/>
+      <v2 x="-1440" y="-720"/>
+    </p4>
+    <p5>
+      <v0 x="-1440" y="-780"/>
+      <v1 x="-1440" y="-720"/>
+      <v2 x="-1650" y="-780"/>
+    </p5>
+    <p6>
+      <v0 x="-1440" y="-720"/>
+      <v1 x="-1380" y="-660"/>
+      <v2 x="-1740" y="-660"/>
+      <v3 x="-1650" y="-780"/>
+    </p6>
+    <p7>
+      <v0 x="-1650" y="-1020"/>
+      <v1 x="-1650" y="-780"/>
+      <v2 x="-1740" y="-660"/>
+      <v3 x="-1740" y="-1020"/>
+    </p7>
+    <p9>
+      <v0 x="-1440" y="-660"/>
+      <v1 x="-1140" y="-660"/>
+      <v2 x="-1440" y="-600"/>
+    </p9>
+    <p10>
+      <v0 x="-1140" y="-660"/>
+      <v1 x="-750" y="-720"/>
+      <v2 x="-1080" y="-660"/>
+      <v3 x="-1440" y="-600"/>
+    </p10>
+    <p11>
+      <v0 x="-1080" y="-600"/>
+      <v1 x="-1440" y="-600"/>
+      <v2 x="-1080" y="-660"/>
+    </p11>
+    <p12>
+      <v0 x="-1080" y="-660"/>
+      <v1 x="-750" y="-720"/>
+      <v2 x="-480" y="-660"/>
+    </p12>
+    <p13>
+      <v0 x="-420" y="-840"/>
+      <v1 x="-420" y="-900"/>
+      <v2 x="-300" y="-780"/>
+      <v3 x="-300" y="-720"/>
+    </p13>
+    <p14>
+      <v0 x="-300" y="-780"/>
+      <v1 x="-420" y="-900"/>
+      <v2 x="-90" y="-780"/>
+    </p14>
+    <p15>
+      <v0 x="-90" y="-450"/>
+      <v1 x="-90" y="-780"/>
+      <v2 x="0" y="-780"/>
+      <v3 x="0" y="-450"/>
+    </p15>
+    <p16>
+      <v0 x="-90" y="-780"/>
+      <v1 x="-420" y="-900"/>
+      <v2 x="0" y="-780"/>
+    </p16>
+    <p17>
+      <v0 x="0" y="-780"/>
+      <v1 x="-420" y="-900"/>
+      <v2 x="360" y="-900"/>
+      <v3 x="360" y="-840"/>
+      <v4 x="240" y="-780"/>
+    </p17>
+    <p18>
+      <v0 x="120" y="-720"/>
+      <v1 x="240" y="-720"/>
+      <v2 x="360" y="-660"/>
+      <v3 x="120" y="-660"/>
+    </p18>
+    <p19>
+      <v0 x="240" y="-720"/>
+      <v1 x="240" y="-780"/>
+      <v2 x="360" y="-720"/>
+      <v3 x="360" y="-660"/>
+    </p19>
+    <p20>
+      <v0 x="360" y="-720"/>
+      <v1 x="240" y="-780"/>
+      <v2 x="360" y="-840"/>
+      <v3 x="420" y="-840"/>
+      <v4 x="420" y="-720"/>
+    </p20>
+  </caveMask>
+</level_61>

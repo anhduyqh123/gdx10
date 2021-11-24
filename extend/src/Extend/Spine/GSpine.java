@@ -99,9 +99,10 @@ public class GSpine extends Group {
 
     @Override
     public boolean remove() {
-        Free(data,actor);
+        //Free(data,actor);
         return super.remove();
     }
+
     public List<String> GetAnimationNames()
     {
         List<String> list = new ArrayList<>();

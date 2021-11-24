@@ -18,4 +18,9 @@ public class ITarget extends IParallel{
         Action action = super.Get(iTarget);
         return Actions.run(()->iTarget.GetActor().addAction(action));
     }
+    @Override
+    public void Run(IActor iActor) {
+        IActor iTarget = IActor.GetIActor(iActor.GetActor(targetName));
+        super.Run(iTarget);
+    }
 }

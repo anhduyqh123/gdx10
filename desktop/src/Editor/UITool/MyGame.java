@@ -1,6 +1,7 @@
 package Editor.UITool;
 
 import Extend.Box2d.GBox2d;
+import Extend.GShape.GShapeRenderer;
 import Extend.Spine.Assets2;
 import GameGDX.*;
 import GameGDX.AssetLoading.GameData;
@@ -24,6 +25,7 @@ public class MyGame extends GDXGame {
     public Color bg = Color.BLACK;
 
     private GBox2d gBox2d;
+    public GShapeRenderer renderer;
 
     public MyGame(int width, int height, Runnable done)
     {
@@ -37,8 +39,11 @@ public class MyGame extends GDXGame {
     protected void Init() {
         super.Init();
         gBox2d = new GBox2d();
-        gBox2d.Debug(Scene.GetUICamera());
+        Scene.stage.addActor(gBox2d);
+        gBox2d.setDebug(true);
         GBox2d.SetActive(false);
+
+        renderer = new GShapeRenderer(Scene.GetUICamera(),Scene.ui2);
 
         DebugBorder();
         //Scene.stage.addActor(gBox2d);
@@ -56,7 +61,6 @@ public class MyGame extends GDXGame {
         actor.setDebug(true);
         Scene.ui2.addActor(actor);
     }
-
     @Override
     public void DoneLoading() {
         GameData data = GetGameData(true);
@@ -112,11 +116,9 @@ public class MyGame extends GDXGame {
 
     @Override
     public void render() {
-        gBox2d.Act(GDX.DeltaTime());
         scene.Act(GDX.DeltaTime());
         Gdx.gl.glClearColor(bg.r,bg.g,bg.b,bg.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         scene.Render();
-        gBox2d.Render();
     }
 }

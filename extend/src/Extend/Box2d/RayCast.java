@@ -10,6 +10,7 @@ public class RayCast {
     public String name = "";
     public Vector2 p1, p2;
     public int category=1,mark = -1;
+    public boolean isSensor;//contain fixture is sensor
 
     public RayCast() {}
     public RayCast(String name) {
@@ -27,8 +28,8 @@ public class RayCast {
     }
     public void Run(GDX.Runnable2<IBody, Vector2> onRayCast) {
         GBox2d.world.rayCast((fixture, point, normal, fraction) -> {
-            //String category = GBox2d.GetCategory(fixture.getFilterData().categoryBits);
-            //if (category.equals("unRayCast")) return 1;
+            if (!isSensor && fixture.isSensor()) return 1;
+
             int categoryB = fixture.getFilterData().categoryBits;
             int markB = fixture.getFilterData().maskBits;
             if (!Check(category,markB) || !Check(categoryB,mark)) return 1;
@@ -45,8 +46,8 @@ public class RayCast {
         Ref<Float> minFraction = new Ref<>();
         Vector2 p = new Vector2();
         GBox2d.world.rayCast((fixture, point, normal, fraction) -> {
-//            String category = GBox2d.GetCategory(fixture.getFilterData().categoryBits);
-//            if (category.equals("unRayCast")) return 1;
+            if (!isSensor && fixture.isSensor()) return 1;
+
             int categoryB = fixture.getFilterData().categoryBits;
             int markB = fixture.getFilterData().maskBits;
             if (!Check(category,markB) || !Check(categoryB,mark)) return 1;

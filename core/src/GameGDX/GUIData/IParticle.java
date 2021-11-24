@@ -19,7 +19,13 @@ public class IParticle extends IActor {
 
     @Override
     protected Actor NewActor() {
-        return new Particle();
+        return new Particle(){
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                Update(delta);
+            }
+        };
     }
 
     @Override
@@ -29,7 +35,10 @@ public class IParticle extends IActor {
         BaseRefresh();
         if (start)
             Continuous();
+
+        AfterRefresh();
     }
+
     private void RefreshEffect()
     {
         try {

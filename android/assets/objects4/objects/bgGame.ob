@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IGroup,iSize:{width:1024.0,extendScreen:true,height:576.0},list:[top],acList:{map:{init:{class:GameGDX.GUIData.IAction.IPlayAudio,name:init,base:{class:GameGDX.GUIData.IAction.IPlayAudio$IMusic,name:game4}},shake:{class:Extend.Shake.IShake,duration:0.2}}},map:{top:{class:GameGDX.GUIData.IScrollImage,iTexture:{name:back1},iSize:{scale:1.2},isScrollX:true}}}

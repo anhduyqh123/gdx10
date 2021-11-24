@@ -8,6 +8,7 @@ import GameGDX.Reflect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -21,12 +22,21 @@ import com.badlogic.gdx.utils.Align;
 
 public class IImage extends IActor {
     public ITexture iTexture = new ITexture();
-    public float sizeScale = 1f;
     public boolean multiLanguage;
 
     @Override
     protected Actor NewActor() {
-        return new Image();
+        return new Image(){
+            @Override
+            public void act(float delta) {
+                super.act(delta);
+                Update(delta);
+            }
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                OnDraw(batch,parentAlpha,()->super.draw(batch, parentAlpha));
+            }
+        };
     }
 
     @Override
@@ -36,16 +46,8 @@ public class IImage extends IActor {
     }
 
     protected Vector2 GetDefaultSize() {
-        Vector2 size = new Vector2();
         TextureRegion tr = iTexture.GetTexture(GetExtend());
-        size.set(tr.getRegionWidth(),tr.getRegionHeight());
-        return size;
-    }
-
-    @Override
-    public Vector2 GetSize() {
-        Vector2 size = super.GetSize();
-        return size.scl(sizeScale);
+        return new Vector2(tr.getRegionWidth(),tr.getRegionHeight());
     }
 
     @Override
@@ -61,7 +63,11 @@ public class IImage extends IActor {
 
     public void SetTexture(String name)
     {
-        SetTexture(Assets.GetTexture(name));
+        String preName = iTexture.name;
+        iTexture.name = name;
+        SetDrawable(iTexture.GetDrawable(GetExtend()));
+        iTexture.name = preName;
+        //SetTexture(Assets.GetTexture(name));
     }
     public void SetTexture(Texture texture)
     {

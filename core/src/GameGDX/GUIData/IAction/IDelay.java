@@ -11,13 +11,14 @@ public class IDelay extends IAction {
     {
         name = "delay";
     }
+
     @Override
-    public Action Get() {
+    public Action Get(IActor iActor) {
         return Actions.delay(duration);
     }
 
     @Override
-    public Action Get(IActor iActor) {
-        return Get();
+    public void Run(IActor iActor) {
+
     }
 }

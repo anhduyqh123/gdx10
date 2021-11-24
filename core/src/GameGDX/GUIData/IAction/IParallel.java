@@ -45,12 +45,6 @@ public class IParallel extends IMultiAction{
     {
         return Actions.parallel();
     }
-    @Override
-    public Action Get() {
-        ParallelAction action = GetAction();
-        for(IAction i : list) action.addAction(i.Get());
-        return action;
-    }
 
     @Override
     public Action Get(IActor iActor) {

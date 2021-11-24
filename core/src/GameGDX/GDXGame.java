@@ -1,23 +1,27 @@
 package GameGDX;
 
 import GameGDX.AssetLoading.GameData;
+import GameGDX.GUIData.ILabel;
 import GameGDX.Screens.Screen;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class GDXGame extends ApplicationAdapter {
     protected Scene scene;
     protected Assets assets;
+    protected GAudio audio;
 
     @Override
     public void pause() {
-        GMusic.OnPause();
+        audio.PauseMusic();
     }
 
     @Override
     public void resume() {
-        GMusic.OnResume();
+        audio.ResumeMusic();
     }
     @Override
     public void create() {
@@ -27,7 +31,7 @@ public class GDXGame extends ApplicationAdapter {
     protected void Init()
     {
         new GDX();
-        new GMusic();
+        audio = new GAudio();
         scene = NewScene();
         scene.AddBackHandle(Screen::BackButtonEvent);
         assets = NewAssets();
@@ -83,5 +87,18 @@ public class GDXGame extends ApplicationAdapter {
             if (data!=null) return data;
         }catch (Exception e){e.printStackTrace(); }
         return new GameData();
+    }
+    protected void ShowFPS()
+    {
+        Label lb = ILabel.New("");
+        lb.setPosition(10,20);
+        Scene.ui2.addActor(lb);
+        lb.addAction(new Action() {
+            @Override
+            public boolean act(float delta) {
+                lb.setText(GDX.GetFPS()+"");
+                return false;
+            }
+        });
     }
 }

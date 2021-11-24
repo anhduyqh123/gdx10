@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.utils.Array;
 
 import java.util.*;
 
@@ -14,7 +15,23 @@ public class IGroup extends IActor {
     protected Map<String, IActor> map = new HashMap<>();
     protected List<String> list = new ArrayList<>();
     public String sizeName = "";
-    public boolean clip;
+
+    //Clone
+    public <T extends IActor> T Clone(int index)
+    {
+        return Clone(GetIChild(index));
+    }
+    public <T extends IActor> T Clone(String name)
+    {
+        return Clone(GetIChild(name));
+    }
+    private <T extends IActor> T Clone(IActor iActor)
+    {
+        T clone = iActor.Clone();
+        clone.SetConnect(this::GetChild);
+        clone.Refresh();
+        return clone;
+    }
 
     public void Move(String childName, int dir)
     {
@@ -44,8 +61,6 @@ public class IGroup extends IActor {
     }
     public void Remove(String name)
     {
-        Actor child = GetChild(name);
-        if (child!=null) child.remove();
         map.remove(name);
         list.remove(name);
     }
@@ -64,18 +79,13 @@ public class IGroup extends IActor {
     protected Actor NewActor() {
         return new Group(){
             @Override
+            public void act(float delta) {
+                super.act(delta);
+                Update(delta);
+            }
+            @Override
             public void draw(Batch batch, float parentAlpha) {
-                if (clip)
-                {
-                    batch.flush();
-                    if (clipBegin())
-                    {
-                        super.draw(batch, parentAlpha);
-                        clipEnd();
-                    }
-                }
-                else
-                    super.draw(batch, parentAlpha);
+                OnDraw(batch,parentAlpha,()->super.draw(batch, parentAlpha));
             }
         };
     }
@@ -155,19 +165,23 @@ public class IGroup extends IActor {
         //RefreshEvent();
 
         ClearAction();
-        ForComponent((k,p)->p.BeforeRefresh());
+        //ForComponent((k,p)->p.BeforeRefresh());
 
+        RefreshChildren();
+        RefreshComponent();
+        RefreshEvent();
+    }
+    protected void RefreshChildren()
+    {
         for(int i=0;i<list.size();i++)
         {
             GetIChild(list.get(i)).Refresh();
             GetChild(list.get(i)).setZIndex(i);
         }
-        RefreshComponent();
-        RefreshEvent();
     }
-
     @Override
     protected void RefreshComponent() {
+        getComponent = null;
         ForComponent((k,p)->{
             p.getMain = ()->this;
             p.findIChild = this::FindIChild;
@@ -193,15 +207,38 @@ public class IGroup extends IActor {
     @Override
     public void SetConnect(GDX.Func1 connect) {
         super.SetConnect(connect);
-        ForEach(i->i.SetConnect(this::GetChild));
+
+        for(String n : list)
+        {
+            GetIChild(n).SetConnect(this::GetChild);
+            GetIChild(n).SetName(n);
+        }
+        //ForEach(i->i.SetConnect(this::GetChild));
         iSize.getDefaultSize = ()->GetDefaultSize(sizeName);
     }
+    public void Disconnect()
+    {
+        super.Disconnect();
+        ForEach(IActor::Disconnect);
+    }
+
     public void Remove()
     {
         super.Remove();
         ForEach(IActor::Remove);
     }
 
+    @Override
+    public void RemoveEvent(String name) {
+        super.RemoveEvent(name);
+        ForEach(i->i.RemoveEvent(name));
+    }
+
+    protected void RunEventAction(String event)//init,destroy
+    {
+        if (!acList.Contains(event)) return;
+        super.RunAction(event);
+    }
 
     @Override
     public void RunAction(String actionName) {

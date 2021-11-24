@@ -2,6 +2,7 @@ package GameGDX.GUIData.IAction;
 
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IPos;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -22,8 +23,9 @@ public class IMove extends IBaseAction{
         float y0 = actor.getY(align)+iPos.delY;
         if (current) return Actions.moveToAligned(x0,y0,align,duration,iInter.value);
         iPos.getIActor = iActor.iPos.getIActor;
-        if (useX) x0 = iPos.GetX();
-        if (useY) y0 = iPos.GetY();
+        Vector2 pos = iPos.Get();
+        if (useX) x0 = pos.x;
+        if (useY) y0 = pos.y;
         return Actions.moveToAligned(x0,y0,align,duration,iInter.value);
     }
 }

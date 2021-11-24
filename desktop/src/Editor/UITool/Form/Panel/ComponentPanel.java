@@ -1,17 +1,18 @@
 package Editor.UITool.Form.Panel;
 
 import Editor.JFameUI;
+import Editor.UITool.Form.MaskForm;
 import Editor.UITool.Form.PhysicsForm;
 import Editor.UITool.Physics.JointForm;
 import Editor.UITool.Physics.MarkForm;
 import Extend.Box2d.IBody;
 import Extend.Box2d.IJoint.IJoint;
 import Extend.Box2d.IRayCast;
+import Extend.GShape.IMask;
 import GameGDX.GDX;
 import GameGDX.GUIData.IChild.Component;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IGroup;
-import GameGDX.Reflect;
 
 import javax.swing.*;
 import java.util.List;
@@ -38,6 +39,11 @@ public class ComponentPanel {
             NewIRayCast((IRayCast) cp);
             return;
         }
+        if (cp instanceof IMask)
+        {
+            NewIMark(cp);
+            return;
+        }
         NewFrame(cp);
     }
     private void NewIRayCast(IRayCast iRayCast)
@@ -62,5 +68,9 @@ public class ComponentPanel {
         JPanel pn = ui.NewPanel(500,400);
         ui.InitComponents(cp,pn);
         ui.NewJFrame("Componenet",pn);
+    }
+    private void NewIMark(Component cp)
+    {
+        new MaskForm((IMask) cp);
     }
 }

@@ -10,5 +10,6 @@ category: [
 	boss
 	enemy
 	unRayCast
+	bullet
 ]
 }

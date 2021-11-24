@@ -53,7 +53,8 @@ public class IActorForm {
         pInfo.setLayout(new WrapLayout());
 
         ContentPanel.i.SetContent(pInfo, iActor);
-        ui.InitComponents(Arrays.asList("width","height","origin","scale","rotate","extendScreen","fillW","fillH","scaleX","scaleY")
+        ui.InitComponents(Arrays.asList("width","height","origin","originX","originY",
+                        "scale","rotate","extendScreen","fillW","fillH","scaleX","scaleY")
                 ,iActor.iSize,pSize);
         //int w = iActor.GetActor().getWidth();
         ui.NewLabel("size:"+(int)iActor.GetActor().getWidth()+"-"+(int)iActor.GetActor().getHeight(),pSize);
@@ -75,10 +76,15 @@ public class IActorForm {
         Actor actor = iActor.GetActor();
         actor.toFront();
         actor.clearListeners();
-        unDrag = ()->actor.clearListeners();
+        unDrag = ()->{
+            actor.setDebug(false);
+            actor.clearListeners();
+        };
 
         Vector2 p0 = new Vector2();
         Vector2 p = new Vector2();
+
+        actor.setDebug(true);
         actor.addListener(new ClickListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {

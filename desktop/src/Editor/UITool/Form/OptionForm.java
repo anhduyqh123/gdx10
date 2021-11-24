@@ -4,13 +4,12 @@ import Editor.JFameUI;
 import Editor.LanguageTool.LanguageMain;
 import Editor.UITool.MyGame;
 import Extend.Box2d.GBox2d;
-import Extend.GShapeRenderer;
+import Extend.GShape.GShapeRenderer;
 import GameGDX.*;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.GUIData.ILabel;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -23,10 +22,9 @@ public class OptionForm {
     private JComboBox cbCode;
     private JButton btEdit;
     private JComboBox cbFont;
-    private JTextField tfSize;
-    private JButton btShow;
     private JCheckBox cbPhysics;
     private JCheckBox cbDrag;
+    private JCheckBox cbBox2d;
 
     public GDX.Func<List<String>> getObjects;
     public Runnable onClosePack;
@@ -43,17 +41,19 @@ public class OptionForm {
                 MyGame.i.bg.set(Color.valueOf(hex));
             });
         });
-        try {
-            InitLanguage();
-        }catch (Exception e){}
+        InitLanguage();
         InitSetFont();
-        InitGrid();
+        //InitGrid();
 
 
         cbPhysics.setSelected(GBox2d.GetActive());
         cbPhysics.addActionListener(e->{
             //GBox2d.active = cbPhysics.isSelected();
             GBox2d.SetActive(cbPhysics.isSelected());
+        });
+        cbBox2d.setSelected(GBox2d.i.getDebug());
+        cbBox2d.addActionListener(e->{
+            GBox2d.i.setDebug(cbBox2d.isSelected());
         });
     }
     public boolean IsDrag()
@@ -70,7 +70,7 @@ public class OptionForm {
     private void InitLanguage()
     {
         String url = Assets.GetNode("translate").url;
-        Language language = Language.NewLanguage(GDX.GetString(url));
+        Language language = GetLanguage(url);
         if (language.GetCodes().size()>0)
         {
             language.SetCode(0);
@@ -81,6 +81,13 @@ public class OptionForm {
                     ()->InitLanguage(language));
         });
     }
+    private Language GetLanguage(String url)
+    {
+        try {
+            return Language.NewLanguage(GDX.GetString(url));
+        }catch (Exception e){}
+        return Language.NewLanguage();
+    }
     private void InitLanguage(Language language)
     {
         String[] codes = language.GetCodes().toArray(new String[0]);
@@ -90,14 +97,14 @@ public class OptionForm {
     }
     private void InitGrid()
     {
-        Ref<Float> size = new Ref<>(50f);
-        tfSize.setText(size.Get()+"");
-        ui.TextField(tfSize,size.Get()+"",vl->size.Set(Float.parseFloat(vl)));
-
-        btShow.addActionListener(e->{
-            if (shapeRenderer.Size()>0) HideGrid();
-            else ShowGrid(size.Get());
-        });
+//        Ref<Float> size = new Ref<>(50f);
+//        tfSize.setText(size.Get()+"");
+//        ui.TextField(tfSize,size.Get()+"",vl->size.Set(Float.parseFloat(vl)));
+//
+//        btShow.addActionListener(e->{
+//            if (shapeRenderer.Size()>0) HideGrid();
+//            else ShowGrid(size.Get());
+//        });
     }
     private void HideGrid()
     {

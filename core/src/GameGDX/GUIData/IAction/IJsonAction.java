@@ -19,15 +19,10 @@ public class IJsonAction extends IAction{
     }
 
     @Override
-    public Action Get() {
-        return null;
-    }
-
-    @Override
     public Action Get(IActor iActor) {
         return Actions.run(()->Run(iActor));
     }
-    private void Run(IActor iActor)
+    public void Run(IActor iActor)
     {
         Object ob = iActor;
         if (kind == Kind.Component) ob = iActor.GetComponent(name);

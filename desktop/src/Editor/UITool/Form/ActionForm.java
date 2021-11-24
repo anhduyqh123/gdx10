@@ -4,9 +4,12 @@ import Editor.JFameUI;
 import Editor.UITool.Form.Panel.ActionPanel;
 import Editor.WrapLayout;
 import Extend.Box2d.IAction.*;
+import Extend.Frame.IFrameAction;
 import Extend.Shake.IShake;
+import Extend.Spine.IAnimation;
 import GameGDX.GDX;
 import GameGDX.GUIData.IAction.*;
+import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
 
 import javax.swing.*;
@@ -42,6 +45,8 @@ public class ActionForm {
     public GDX.Runnable<String> onRun;
     public Runnable onStop;
     private IActionList list;
+    private Class selectedType;
+    private IActor iActor;
 
     public ActionForm()
     {
@@ -51,7 +56,9 @@ public class ActionForm {
         gTree.onSelect = vl->{
             IAction iac = gTree.GetSelectedObject();
             lbType.setText(iac.getClass().getSimpleName());
-            new ActionPanel(iac,pnInfo).onRename = (o,n)->{
+            ActionPanel actionPanel = new ActionPanel(iActor,iac,pnInfo);
+            //actionPanel.iActor = iActor;
+            actionPanel.onRename = (o,n)->{
                 iac.name = n;
                 if (gTree.GetParentObject(iac).equals(list))
                 {
@@ -64,26 +71,35 @@ public class ActionForm {
         };
         gTree.getData = ()->GetNode("Root",list);
 
-        Class[] types = {IDelay.class, IMove.class,IScale.class,IRotate.class,IParallel.class,ISequence.class,
-                IRunAction.class,IForever.class,IRepeat.class,IAlpha.class,IColor.class,IParAction.class,ISoundAction.class,
-                IMovePath.class,IMoveArc.class,ITextureAction.class,ICountAction.class,IDoAction.class,
-                IOther.class,ITarget.class,IVisible.class,ISwitchEvent.class,IJsonAction.class, IShake.class,
-                IAngular.class, IVelocity.class, IExplosion.class, IContact.class};
-        List<String> names = new ArrayList<>();
-        for(Class t : types) names.add(t.getSimpleName());
-        Object[] arr = names.toArray();
-        ui.ComboBox(cbType,arr,ISequence.class.getSimpleName());
+        String[] vl1 = {"GDX","Box2D","Spine","Extend"};
+        Class[] types1 = {IDelay.class, IMove.class,IScale.class,IRotate.class,IParallel.class,ISequence.class,
+                IRunAction.class,IForever.class,IRepeat.class,IAlpha.class,IColor.class,IParAction.class, IPlayAudio.class,
+                IMovePath.class,IMoveArc.class,ITextureAction.class,ILabelAction.class,ICountAction.class,IDoAction.class,
+                IOther.class,ITarget.class,IAudio.class,IEvent.class,IJsonAction.class,IClone.class,IToParent.class};
+        Class[] types2 ={IBodyValue.class,IVelocity.class, IContact.class,IBodyOther.class,
+                IForce.class,IGravity.class,IExplosion.class};
+        Class[] types3 ={IAnimation.class};
+        Class[] types4 ={IShake.class, IFrameAction.class};
 
-        String[] vl1 = {"Child","Parent"};
-        cb.setModel(new DefaultComboBoxModel(vl1));
+        Class[][] types = {types1,types2,types3,types4};
+
+        ui.ComboBox(cb,vl1,vl1[0],vl->{
+            int index = cb.getSelectedIndex();
+            Class[] type = types[index];
+
+            List<String> names = new ArrayList<>();
+            for(Class t : type) names.add(t.getSimpleName());
+
+            ui.ComboBox(cbType,names.toArray(),ISequence.class.getSimpleName(),x->{
+                int id = cbType.getSelectedIndex();
+                if (id>=type.length) id = 0;
+                selectedType = type[id];
+            });
+        });
 
         Click(btNew,()->{
-            int index= cbType.getSelectedIndex();
-            IAction newAc = (IAction) Reflect.NewInstance(types[index]);
-            if (cb.getSelectedIndex()==0) New(newAc);
-            else {
-                if (newAc instanceof IMultiAction) New2((IMultiAction) newAc);
-            }
+            IAction newAc = Reflect.NewInstance(selectedType);
+            New(newAc);
         });
         Click(btDelete,this::Delete);
         Click(cloneButton,this::Clone);
@@ -129,8 +145,10 @@ public class ActionForm {
         RefreshSelected();
     }
 
-    public void SetData(IActionList list)
+    public void SetData(IActor iActor, IActionList list)
     {
+        this.iActor = iActor;
+
         RefreshSelected();
         pnInfo.removeAll();
         ui.Repaint(pnInfo);

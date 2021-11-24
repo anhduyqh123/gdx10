@@ -9,10 +9,7 @@ import com.badlogic.gdx.utils.reflect.ReflectionException;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -329,8 +326,11 @@ public class JFameUI {
     public <T> void ComboBox(JComboBox cb,T[] items, T value,GDX.Runnable<T> onChange)
     {
         ComboBox(cb,items,value);
+        for (ActionListener e : cb.getActionListeners())
+            cb.removeActionListener(e);
         cb.addActionListener(e->onChange.Run((T)cb.getSelectedItem()));
-        onChange.Run(value);
+        cb.setSelectedItem(value);
+        //onChange.Run(value);
     }
     public <T> JComboBox NewComboBox(T[] items, T value, JPanel parent,GDX.Runnable<T> onChange)
     {

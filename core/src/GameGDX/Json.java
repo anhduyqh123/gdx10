@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//update 7/10
+
 public class Json {
     protected static final String stClass = "class";
 
@@ -53,6 +55,21 @@ public class Json {
             }
         });
     }
+    private void ReadFields(Object object,Object object0)//object0 is super new 7/10
+    {
+        Map<String, Field> map = Reflect.GetFields(object0.getClass());
+        for (String k : map.keySet())
+        {
+            Field filed = map.get(k);
+            Object value = Reflect.GetValue(filed,object);
+            Object value0 = Reflect.GetValue(filed,object0);
+            if (Reflect.Equals(value,value0)) continue;
+            if (Reflect.IsBaseType(filed.getType()))
+                Reflect.SetValue(filed,object,value0);
+            else ReadFields(value,value0);
+        }
+    }
+
     private Object NewValue(Field field,Object object,JsonValue js)
     {
         if (js.has(stClass))
@@ -89,6 +106,12 @@ public class Json {
             Object object = map.get(i.name);
             Class childType = GetType(type,i);
             if (object==null) object = Reflect.NewInstance(childType);
+            if (!childType.equals(object.getClass())) //new 7/10
+            {
+                Object object0 = object;
+                object = Reflect.NewInstance(childType);
+                ReadFields(object,object0);
+            }
             newMap.put(i.name,ToObject(childType,object,i));
         });
         return newMap;
@@ -176,6 +199,7 @@ public class Json {
         JsonValue js = new JsonValue(JsonValue.ValueType.array);
         for(Object child : list)
         {
+            if (!Reflect.IsValidClass(child.getClass())) continue;
             boolean isClass = HasSuperClass(child)?true:hasClass;
             js.addChild(ToJson(child,null,isClass));
             //js.addChild(ToJson(child,Reflect.GetDefaultObject(child.getClass()),isClass));
@@ -188,6 +212,7 @@ public class Json {
         for(Object k : map.keySet())
         {
             Object value = map.get(k);
+            if (!Reflect.IsValidClass(value.getClass())) continue;
             Object value0 = defaultMap.get(k);
             boolean isClass = HasSuperClass(value)?true:hasClass;
             MapToJson(k.toString(),value,value0,isClass,js);

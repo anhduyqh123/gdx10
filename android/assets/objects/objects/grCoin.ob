@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.ITable,column:5,list:[i],clone:10,iPos:{x:{class:GameGDX.GUIData.IChild.IPos$Value,value:604.0},y:{class:GameGDX.GUIData.IChild.IPos$Value,value:430.0}},map:{i:{class:GameGDX.GUIData.IImage,prefab:objects/oCoin}}}

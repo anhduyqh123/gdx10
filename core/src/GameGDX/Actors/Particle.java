@@ -51,7 +51,7 @@ public class Particle extends Actor {
     }
     private void RefreshPosition()
     {
-        pe.setPosition(getX(),getY());
+        pe.setPosition(getX()+getOriginX(),getY()+getOriginY());
     }
 
     @Override
@@ -83,6 +83,11 @@ public class Particle extends Actor {
     public void Stop()
     {
         pe.setDuration(0);
+    }
+
+    public void SetPosition(Vector2 pos)
+    {
+        setPosition(pos.x,pos.y);
     }
 
     //extend

@@ -154,29 +154,41 @@ public class Scene {
         return rotation;
     }
     //Position
-    public static Vector2 GetActorPosition(Actor actor,Actor target,int align)
+    public static Vector2 GetLocalOrigin(Actor actor)
     {
-        Vector2 pos = GetPosition(target,align).sub(GetPosition(target,Align.bottomLeft));
-        return target.localToActorCoordinates(actor,pos);
+        return new Vector2(actor.getOriginX(),actor.getOriginY());
     }
+    public static Vector2 GetOrigin(Actor actor)
+    {
+        return GetPosition(actor).add(GetLocalOrigin(actor));
+    }
+    public static Vector2 GetStageOrigin(Actor actor)
+    {
+        return GetStagePosition(actor).add(GetLocalOrigin(actor));
+    }
+
     public static Vector2 GetStagePosition(Actor actor)
     {
         return GetStagePosition(actor,Align.bottomLeft);
     }
     public static Vector2 GetStagePosition(Actor actor, int align)
     {
-        Vector2 pos = GetPosition(actor,align).sub(GetPosition(actor));
-        return actor.localToStageCoordinates(pos);
+        //Vector2 pos = GetPosition(actor,align).sub(GetPosition(actor));
+        Vector2 local = GetLocal(actor,align);
+        return GetStagePosition(actor,local);
     }
     public static Vector2 GetStagePosition(Actor actor, Vector2 local)
     {
-        Vector2 pos = new Vector2(local).sub(GetPosition(actor));
-        return actor.localToStageCoordinates(pos);
+        //Vector2 pos = new Vector2(local).sub(GetPosition(actor));
+        return actor.localToStageCoordinates(local);
     }
-    public static Vector2 GetLocalPosition(Actor actor,Vector2 pos)//pos = stage position
+
+    public static Vector2 GetLocal(Actor actor, int align)
     {
-        return actor.stageToLocalCoordinates(pos);
+        return GetPosition(actor,align).sub(GetPosition(actor));
     }
+
+
     public static Vector2 GetPosition(Actor actor)
     {
         return GetPosition(actor,Align.bottomLeft);
@@ -203,6 +215,12 @@ public class Scene {
         actor.getParent().stageToLocalCoordinates(p);
         actor.setPosition(p.x,p.y,align);
     }
+    //convert
+    public static Vector2 StageToParent(Actor actor, Vector2 stage)
+    {
+        return actor.getParent().stageToLocalCoordinates(new Vector2(stage));
+    }
+
     public static Rectangle GetRect(Actor actor)
     {
         return new Rectangle(actor.getX(),actor.getY(),actor.getWidth(),actor.getHeight());

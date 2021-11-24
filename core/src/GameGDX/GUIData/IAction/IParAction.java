@@ -21,22 +21,21 @@ public class IParAction extends IAction{
     {
         name = "particle";
     }
-    @Override
-    public Action Get() {
-        return null;
-    }
 
     @Override
     public Action Get(IActor iActor) {
-        return Actions.run(()->{
-            if (state==State.New) New(iActor.GetActor());
-            else SetState(iActor.GetActor());
-        });
+        return Actions.run(()->Run(iActor));
     }
-    private void New(Actor actor)
+
+    public void Run(IActor iActor) {
+        if (state==State.New) New(iActor);
+        else SetState(iActor.GetActor());
+    }
+
+    private void New(IActor iActor)
     {
-        Vector2 p = Scene.GetPosition(actor, Align.center);
-        new Particle(name,p,actor.getParent()).Start(true);
+        Vector2 p = Scene.GetPosition(iActor.GetActor(), Align.center);
+        new Particle(name,p,iActor.GetActor("")).Start(true);
     }
     private void SetState(Particle par)
     {

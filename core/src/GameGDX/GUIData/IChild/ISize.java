@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class ISize {
     public float width,height,scale=1f,scaleX,scaleY,rotate;
+    public float originX,originY; //percent 0->1
     public IAlign origin = IAlign.bottomLeft;
     public boolean extendScreen,fillW,fillH;//fill screen
 
@@ -85,6 +86,15 @@ public class ISize {
     {
         this.width = width;
         this.height = height;
+    }
+    public void Set(Actor actor)
+    {
+        actor.setSize(GetWidth(),GetHeight());
+        if (originX!=0 || originY!=0)
+            actor.setOrigin(originX*actor.getWidth(),originY*actor.getHeight());
+        else actor.setOrigin(origin.value);
+        actor.setScale(GetScaleX(), GetScaleY());
+        actor.setRotation(rotate);
     }
 
     @Override

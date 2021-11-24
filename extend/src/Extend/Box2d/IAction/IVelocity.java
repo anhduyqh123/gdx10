@@ -1,17 +1,21 @@
 package Extend.Box2d.IAction;
 
 import Extend.Box2d.IBody;
+import com.badlogic.gdx.math.Vector2;
 
-public class IVelocity extends IBodyAction {
-    public IBody.Velocity velocity = new IBody.Velocity();
-    public boolean isConst = true;//true if velocity is constant;
+public class IVelocity extends IBodyAction{
+    public Vector2 value = new Vector2();
+    public boolean usedX=true,usedY=true;
     public IVelocity()
     {
         name = "velocity";
     }
+
     @Override
     protected void Set(IBody iBody) {
-        if (isConst) iBody.SetVelocity(velocity);
-        else velocity.Run(iBody.GetBody());
+        Vector2 v = iBody.GetBody().getLinearVelocity();
+        if (usedX) v.x = value.x;
+        if (usedY) v.y = value.y;
+        iBody.GetBody().setLinearVelocity(v);
     }
 }

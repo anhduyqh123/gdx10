@@ -1,0 +1,6 @@
+{
+"screen_width": 640,
+"screen_height": 360,
+"game_width": 1280,
+"game_height": 720
+}

@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 public class IColor extends IBaseAction{
 
     public String hexColor = Color.WHITE.toString();
+    public boolean used = true;//by used current
 
     public IColor()
     {
@@ -18,12 +19,13 @@ public class IColor extends IBaseAction{
         return Color.valueOf(hexColor);
     }
     public Action Get(Color color) {
-        return Actions.color(color,duration, iInter.value);
+        return Actions.color(color,GetDuration(), iInter.value);
     }
 
     @Override
     public Action Get(IActor iActor) {
-        if (current) return Get(iActor.GetActor().getColor());
-        else return Get(GetColor());
+        Color color = iActor.GetActor().getColor();
+        if (used) color = GetColor();
+        return Get(color);
     }
 }

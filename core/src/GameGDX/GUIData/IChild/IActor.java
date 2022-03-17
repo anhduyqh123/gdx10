@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Pool;
 
 import java.util.*;
 
@@ -39,7 +40,7 @@ public class IActor {
     private GDX.Func<List<OSound>> loopSounds;
 
     public IActor(){}
-    public  <T> T Clone()
+    public <T> T Clone()
     {
         return Reflect.Clone(this);
     }
@@ -308,13 +309,21 @@ public class IActor {
 //            if (Reflect.isAssignableFrom(p.getClass(),type)) return (T)p;
         return null;
     }
+    public void AddComponentSafety(String name,Component p)
+    {
+        GDX.PostRunnable(()->AddComponent(name, p));
+    }
     public void AddComponent(String name,Component p)
     {
         GetComponent().put(name,p);
     }
     public void RemoveComponent(String name)
     {
-        GDX.PostRunnable(()->GetComponent().remove(name));
+        GetComponent().remove(name);
+    }
+    public void RemoveComponentSafety(String name)
+    {
+        GDX.PostRunnable(()->RemoveComponent(name));
     }
     //action
     public void RemoveEvent(String name)
@@ -397,6 +406,10 @@ public class IActor {
     }
 
     //used function
+    public Vector2 GetLocalPos(int align)
+    {
+        return Scene.GetLocal(GetActor(),align);
+    }
     public Vector2 GetPos()
     {
         return Scene.GetPosition(GetActor(),Align.bottomLeft);

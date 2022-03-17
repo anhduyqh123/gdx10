@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IGroup,list:[img],map:{img:{class:GameGDX.GUIData.IImage,prefab:first/button,acList:{map:{clicked:{class:GameGDX.GUIData.IAction.ISequence,list:[]}}}}}}

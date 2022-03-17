@@ -24,7 +24,10 @@ public class IRunAction extends IAction {
 
     @Override
     public Action Get(IActor iActor) {
-        return Actions.run(()->Run(iActor));
+        GDX.Runnable<IActor> run = GetRun(iActor);
+        return Actions.run(()->{
+            if (run!=null) run.Run(iActor);
+        });
     }
 
     @Override

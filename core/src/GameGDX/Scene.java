@@ -128,9 +128,9 @@ public class Scene {
     }
     public static void AddActorKeepPosition(Actor actor, Group group)
     {
-        Vector2 pos1 = GetStagePosition(actor, Align.bottomLeft);
+        Vector2 pos1 = GetStagePosition(actor, Align.center);
         Vector2 pos2 = group.stageToLocalCoordinates(pos1);
-        actor.setPosition(pos2.x,pos2.y);
+        actor.setPosition(pos2.x,pos2.y,Align.center);
         group.addActor(actor);
     }
     //Rotate

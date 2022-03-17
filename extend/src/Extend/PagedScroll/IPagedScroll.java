@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class IPagedScroll extends IGroup {
     public int pageSpace = 25;
     public float flingTime = 0.1f;
+    public boolean scaleChild;
 
     @Override
     protected Actor NewActor() {
@@ -25,6 +26,7 @@ public class IPagedScroll extends IGroup {
         PagedScroll scroll = GetActor();
         scroll.setFlingTime(flingTime);
         scroll.setPageSpacing(pageSpace);
+        scroll.setScaleChildDist(scaleChild);
         ForEach(IActor::Refresh);
         scroll.clearChildren();
         ForEach(i->scroll.addPage(i.GetActor()));

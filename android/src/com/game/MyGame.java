@@ -15,7 +15,7 @@ public class MyGame extends GDXGame {
     public AdMob adMob;
     @Override
     public void DoneLoading() {
-        new Assets(GetGameData(false));
+        new Assets().SetData(GetGameData(false));
         Assets.LoadPackages(()->{
             //done loading
             IImage.NewImage(Color.BROWN,100,500, Align.bottomLeft,200,200,Scene.ui).addListener(new ClickListener(){

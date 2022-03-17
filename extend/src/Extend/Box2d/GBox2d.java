@@ -144,6 +144,8 @@ public class GBox2d extends Actor {
         for (GDX.Runnable<Body> b : i.destroyEvent.values()) b.Run(body);
         i.bodies.remove(body);
         if (!world.isLocked()) body.setActive(false);
+        for (JointEdge i : body.getJointList())
+            DestroyJoint(i.joint);
         GDX.PostRunnable(()->world.destroyBody(body));
     }
     public static Body NewBody(BodyDef bodyDef)

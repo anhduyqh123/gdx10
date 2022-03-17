@@ -5,6 +5,7 @@ import GameGDX.Reflect;
 import GameGDX.Scene;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class IPos {
@@ -39,6 +40,10 @@ public class IPos {
         if (GetActor().getStage()==null) return Scene.stage;
         return GetActor().getStage();
     }
+    private Group GetParent()
+    {
+        return GetActor().getParent();
+    }
 
     public float GetX()
     {
@@ -65,14 +70,14 @@ public class IPos {
     private float GetWidth()
     {
         if (type==Type.Global) return GetStage().getWidth();
-        float width = GetActor("").getWidth();
+        float width = GetParent().getWidth();
         float w0 = GetStage().getWidth();
         return width<=0?w0:width;
     }
     private float GetHeight()
     {
         if (type==Type.Global) return GetStage().getHeight();
-        float height = GetActor("").getHeight();
+        float height = GetParent().getHeight();
         float h0 = GetStage().getHeight();
         return height<=0?h0:height;
     }
@@ -90,7 +95,7 @@ public class IPos {
     {
         Vector2 pos = new Vector2(GetX(),GetY());
         if (type==Type.Local) return pos;
-        return GetActor("").stageToLocalCoordinates(pos);
+        return GetParent().stageToLocalCoordinates(pos);
     }
 
     @Override

@@ -5,16 +5,22 @@ import Extend.GShape.GShapeRenderer;
 import Extend.Spine.Assets2;
 import GameGDX.*;
 import GameGDX.AssetLoading.GameData;
+import GameGDX.GUIData.IImage;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
+import com.game.GTextureLoader;
 
 public class MyGame extends GDXGame {
     public static MyGame i;
@@ -61,11 +67,20 @@ public class MyGame extends GDXGame {
         actor.setDebug(true);
         Scene.ui2.addActor(actor);
     }
+
+    @Override
+    protected Assets NewAssets() {
+        return new Assets2();
+    }
+
     @Override
     public void DoneLoading() {
         GameData data = GetGameData(true);
-        new Assets2().SetData(data);
-        //IImage.NewImage(Color.BLACK,0,0, Align.bottomLeft,Scene.width,Scene.height,Scene.ui);
+        assets.SetData(data);
+        AssetManager assets = Assets.GetManager();
+        assets.setLoader(Texture.class,new GTextureLoader(assets.getFileHandleResolver()));
+
+        IImage.NewImage(Color.BLACK,0,0, Align.bottomLeft,Scene.width,Scene.height,Scene.ui);
         Assets.LoadPackages(done,data.GetKeys().toArray(new String[0]));
 
         InitControlCamera();

@@ -24,7 +24,6 @@ public class Component {
         return GetIActor().GetActor();
     }
 
-//    public void BeforeRefresh(){}
     public void Refresh(){}
     public void AfterRefresh()
     {

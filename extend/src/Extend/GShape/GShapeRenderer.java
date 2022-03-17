@@ -16,6 +16,12 @@ public class GShapeRenderer extends Actor {
     private List<Shape> shapes = new ArrayList<>();
     private Camera camera;
 
+    public GShapeRenderer(Group parent)
+    {
+        parent.addActor(this);
+        this.camera = parent.getStage().getCamera();
+        renderer.setAutoShapeType(true);
+    }
     public GShapeRenderer(Camera camera,Group parent)
     {
         parent.addActor(this);
@@ -71,6 +77,12 @@ public class GShapeRenderer extends Actor {
     public void NewLine(Vector2 pos1,Vector2 pos2)
     {
         Shape.Line line = new Shape.Line(pos1,pos2);
+        AddShape(line);
+    }
+    public void NewLine(Vector2 pos1,Vector2 pos2,float width)
+    {
+        Shape.Line line = new Shape.Line(pos1,pos2);
+        line.width = width;
         AddShape(line);
     }
 }

@@ -99,7 +99,7 @@ public class ActionPanel {
 
         @Override
         protected List<String> GetFields() {
-            return Arrays.asList("duration","iInter","current","useX","useY");
+            return Arrays.asList("duration","iInter","useX","useY","delX","delY");
         }
     }
     class JIColor extends JIAction
@@ -111,7 +111,7 @@ public class ActionPanel {
         }
         @Override
         protected List<String> GetFields() {
-            return Arrays.asList("duration","iInter","current");
+            return Arrays.asList("duration","iInter");
         }
     }
     class JIMovePath extends JIAction

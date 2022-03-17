@@ -1,7 +1,9 @@
 package Extend.PagedScroll;
 
 import GameGDX.GDX;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -48,6 +50,7 @@ public class PagedScroll extends ScrollPane {
 
     @Override
     public void act (float delta) {
+        if (scaleChildDist) scaleChild();
         super.act(delta);
         if (wasPanDragFling && !isPanning() && !isDragging() && !isFlinging()) {
             wasPanDragFling = false;
@@ -126,5 +129,44 @@ public class PagedScroll extends ScrollPane {
     public void setDebug(boolean enabled) {
         super.setDebug(enabled);
         content.setDebug(enabled);
+    }
+
+    // 8/2
+    public void setNewScrollX(float pixelsX){
+        float overscrollDistance = getOverscrollDistance();
+        float maxX = getMaxX();
+        pixelsX= MathUtils.clamp(pixelsX,-overscrollDistance,maxX + overscrollDistance);
+        scrollX(pixelsX);
+    }
+    public boolean isScaleChildDist() {
+        return scaleChildDist;
+    }
+
+    public void setScaleChildDist(boolean scaleChildDist) {
+        this.scaleChildDist = scaleChildDist;
+    }
+    public Group getTable(){
+        return ((Group)getActor());
+    }
+
+    private boolean scaleChildDist=false;
+    private final float mShrinkAmount = 0.4f;
+    private final float mShrinkDistance = 0.9f;
+    private void scaleChild() {
+        float midpoint = getWidth() / 2.f;
+        float d0 = 0.f;
+        float d1 = mShrinkDistance * midpoint;
+        float s0 = 1.f;
+        float s1 = 1.f - mShrinkAmount;
+        for (int i = 0; i < getTable().getChildren().size; i++) {
+            Actor child = getTable().getChild(i);
+            float childMidpoint = (child.getX()+getTable().getX()+(child.getWidth()/2));
+            float d = Math.min(d1, Math.abs(midpoint - childMidpoint));
+            float scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0);
+            //if(isPanning()==false&&(d>0.f&&d<(midpoint*0.5f))&&isFlinging()==false)setScrollX(i*child.getWidth());
+            child.setScaleX(scale);
+            child.setScaleY(scale);
+        }
+
     }
 }

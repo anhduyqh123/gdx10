@@ -80,13 +80,19 @@ public class DataForm {
 
         Click(btNew,()->{
             IActor iActor = (IActor) Reflect.NewInstance(types[cbType.getSelectedIndex()]);
-            NewChild(iActor);
+            GDX.PostRunnable(()->{
+                NewChild(iActor);
+            });
+            //NewChild(iActor);
         });
         Click(btPrefab,()->{
             String name = selectedList.get(0);
             IActor iActor = objectData.Get(selectedPack).GetIChild(name).Clone();
             iActor.prefab = GetPrefab(selectedPack,name);
-            NewChild(iActor);
+            GDX.PostRunnable(()->{
+                NewChild(iActor);
+            });
+            //NewChild(iActor);
         });
         Click(deleteButton,this::Delete);
         Click(btSelect,this::SelectList);

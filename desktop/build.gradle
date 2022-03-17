@@ -45,7 +45,7 @@ eclipse.project.name = appName + "-desktop"
 repositories {
     mavenCentral()
     maven { url "https://www.jetbrains.com/intellij-repository/releases" }
-    maven { url "https://jetbrains.bintray.com/intellij-third-party-dependencies" }
+    maven { url "https://cache-redirector.jetbrains.com/intellij-dependencies" }
 }
 
 configurations {
@@ -53,7 +53,7 @@ configurations {
 }
 
 dependencies {
-    antTask 'com.jetbrains.intellij.java:java-compiler-ant-tasks:211.7442.40' //gradle 6.3 - 203.7148.30
+    antTask 'com.jetbrains.intellij.java:java-compiler-ant-tasks:203.7148.30' //gradle 6.3 - 203.7148.30
 }
 
 task compileJava(type: JavaCompile, overwrite: true, dependsOn: configurations.compile.getTaskDependencyFromProjectDependency(true, 'jar')) {

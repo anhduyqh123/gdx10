@@ -15,13 +15,6 @@ public abstract class IJoint extends Component {
 
     protected GDX.Func<Joint> get;
 
-    public void BeforeRefresh() {
-        Joint joint = Get();
-        if (joint==null) return;
-        GBox2d.DestroyJoint(joint);
-        get = null;
-    }
-
     public void Refresh() {
         try {
             Actor obA = FindIChild(objectA).GetActor();

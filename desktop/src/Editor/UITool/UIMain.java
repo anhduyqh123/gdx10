@@ -5,6 +5,8 @@ import Editor.UITool.Form.MainForm;
 import Editor.UITool.Form.Panel.ContentPanel;
 import GameGDX.GUIData.GUIData;
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTFrame;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,6 +38,13 @@ public class UIMain {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         gameFrame.setLocation(screenSize.width- uiConfig.screen_width,0);
         gameFrame.setAlwaysOnTop(true);
+//        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+//		config.width = uiConfig.screen_width;
+//		config.height = uiConfig.screen_height;
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//        config.x = screenSize.width- uiConfig.screen_width;
+//        config.y = 0;
+//        LwjglApplication gameFrame = new LwjglApplication(game, config);
     }
     protected MyGame NewGame(int width, int height, Runnable done)
     {

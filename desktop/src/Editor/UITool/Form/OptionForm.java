@@ -41,9 +41,10 @@ public class OptionForm {
                 MyGame.i.bg.set(Color.valueOf(hex));
             });
         });
-        InitLanguage();
-        InitSetFont();
-        //InitGrid();
+        try {
+            InitLanguage();
+            InitSetFont();
+        }catch (Exception e){}
 
 
         cbPhysics.setSelected(GBox2d.GetActive());

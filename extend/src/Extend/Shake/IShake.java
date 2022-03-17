@@ -14,6 +14,6 @@ public class IShake extends IDelay {
 
     @Override
     public Action Get(IActor iActor) {
-        return GShake.Get(offsetX,offsetY,duration);
+        return GShake.Get(offsetX,offsetY,GetDuration());
     }
 }

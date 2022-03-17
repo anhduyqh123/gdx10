@@ -57,9 +57,10 @@ public class IActorForm {
                         "scale","rotate","extendScreen","fillW","fillH","scaleX","scaleY")
                 ,iActor.iSize,pSize);
         //int w = iActor.GetActor().getWidth();
-        ui.NewLabel("size:"+(int)iActor.GetActor().getWidth()+"-"+(int)iActor.GetActor().getHeight(),pSize);
-
-        ui.NewCheckBox("debug", iActor.GetActor().getDebug(), pSize, vl->iActor.GetActor().setDebug(vl));
+        try {
+            ui.NewLabel("size:"+(int)iActor.GetActor().getWidth()+"-"+(int)iActor.GetActor().getHeight(),pSize);
+            ui.NewCheckBox("debug", iActor.GetActor().getDebug(), pSize, vl->iActor.GetActor().setDebug(vl));
+        }catch (Exception e){}
 
         new IPosPanel(list,iActor.iPos,pPos);
 

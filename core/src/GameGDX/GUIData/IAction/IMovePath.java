@@ -34,7 +34,7 @@ public class IMovePath extends IDelay{
 
     @Override
     public Action Get(IActor iActor) {
-        MovePath movePath = MovePath.Get(continuous,GetPath(iActor),duration,iInter.value);
+        MovePath movePath = MovePath.Get(continuous,GetPath(iActor),GetDuration(),iInter.value);
         movePath.align = iAlign.value;
         movePath.delAngle = delAngle;
         movePath.isRotate = isRotate;

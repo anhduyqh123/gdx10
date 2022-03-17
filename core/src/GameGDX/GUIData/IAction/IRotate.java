@@ -5,8 +5,9 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class IRotate extends IBaseAction{
-
     public int angle;
+    public String delta="0";
+    public boolean used = true;//by used current
 
     public IRotate()
     {
@@ -15,11 +16,12 @@ public class IRotate extends IBaseAction{
 
     @Override
     public Action Get(IActor iActor) {
-        if (current) return Get((int) iActor.GetActor().getRotation()+angle);
-        return Get(angle);
+        int value = (int) iActor.GetActor().getRotation();
+        if (used) value = angle;
+        return Get(value+GetInit(delta));
     }
     private Action Get(int angle)
     {
-        return Actions.rotateTo(angle,duration, iInter.value);
+        return Actions.rotateTo(angle,GetDuration(), iInter.value);
     }
 }

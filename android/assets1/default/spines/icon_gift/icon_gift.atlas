@@ -1,0 +1,20 @@
+
+icon_gift.png
+size: 112,68
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+icon_gift_01
+  rotate: false
+  xy: 56, 0
+  size: 56, 68
+  orig: 56, 68
+  offset: 0, 0
+  index: -1
+icon_gift_02
+  rotate: false
+  xy: 0, 0
+  size: 56, 68
+  orig: 56, 68
+  offset: 0, 0
+  index: -1

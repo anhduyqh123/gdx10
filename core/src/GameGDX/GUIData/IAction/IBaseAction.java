@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 
 public class IBaseAction extends IDelay{
-    public boolean current;
     public IInterpolation iInter = IInterpolation.linear;
 
     public IBaseAction()

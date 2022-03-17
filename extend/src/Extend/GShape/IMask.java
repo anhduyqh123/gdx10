@@ -62,7 +62,7 @@ public class IMask extends Component { //support IActor,IImage,IGroup
         /* Render mask elements. */
         renderer.setProjectionMatrix(actor.getStage().getCamera().combined);
         shape.type = ShapeRenderer.ShapeType.Filled;
-        shape.Draw(renderer,pos.x,pos.y);
+        shape.Draw(renderer,actor);
         renderer.flush();
 
         /* Enable RGBA color writing. */
@@ -78,7 +78,7 @@ public class IMask extends Component { //support IActor,IImage,IGroup
         if (actor.getDebug())
         {
             shape.type = ShapeRenderer.ShapeType.Line;
-            shape.Draw(renderer,pos.x,pos.y);
+            shape.Draw(renderer,actor);
         }
 
         renderer.end();

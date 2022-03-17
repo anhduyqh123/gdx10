@@ -1,0 +1,27 @@
+
+icon_wheel.png
+size: 144,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+de
+  rotate: false
+  xy: 0, 0
+  size: 65, 63
+  orig: 65, 63
+  offset: 0, 0
+  index: -1
+kim
+  rotate: false
+  xy: 122, 39
+  size: 22, 24
+  orig: 22, 24
+  offset: 0, 0
+  index: -1
+xoay
+  rotate: false
+  xy: 65, 7
+  size: 57, 56
+  orig: 57, 57
+  offset: 0, 0
+  index: -1

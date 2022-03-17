@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class IDelay extends IAction {
-    public float duration;
+    public String duration = "0";
 
     public IDelay()
     {
@@ -14,11 +14,15 @@ public class IDelay extends IAction {
 
     @Override
     public Action Get(IActor iActor) {
-        return Actions.delay(duration);
+        return Actions.delay(GetDuration());
     }
 
     @Override
     public void Run(IActor iActor) {
 
+    }
+    protected float GetDuration()
+    {
+        return GetFloat(duration);
     }
 }

@@ -19,6 +19,11 @@ public class IClone extends IParallel{
         name = "clone";
     }
 
+    @Override
+    protected void Init(IActor iActor) {
+        InitPool((IGroup) iActor);
+    }
+
     private void InitPool(IGroup iGroup)
     {
         if (getPool!=null) return;
@@ -38,7 +43,6 @@ public class IClone extends IParallel{
     @Override
     public Action Get(IActor iActor) {
         IGroup iGroup = (IGroup) iActor;
-        InitPool(iGroup);
         IActor iChild = iGroup.GetIChild(childName);
 
         return Actions.run(()->{

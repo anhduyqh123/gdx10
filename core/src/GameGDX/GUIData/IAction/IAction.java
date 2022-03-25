@@ -15,6 +15,7 @@ public abstract class IAction {
         return Reflect.equals(this,obj);
     }
 
+    protected void Init(IActor iActor){}
     //param
     public int GetInit(String value)
     {

@@ -44,19 +44,18 @@ public class IMovePath extends IDelay{
     public static class MPos {
 
         public boolean useX = true, useY = true;
-        public boolean current;
         public IPos iPos = new IPos();
 
         public Vector2 Get(IActor iActor)
         {
             Actor actor = iActor.GetActor();
             int align = iPos.align.value;
-            float x0 = actor.getX(align)+iPos.delX;
-            float y0 = actor.getY(align)+iPos.delY;
-            if (current) return new Vector2(x0,y0);
+            float x0 = actor.getX(align);
+            float y0 = actor.getY(align);
             iPos.getIActor = iActor.iPos.getIActor;
-            if (useX) x0 = iPos.GetX();
-            if (useY) y0 = iPos.GetY();
+            Vector2 pos = iPos.Get();
+            if (useX) x0 = pos.x;
+            if (useY) y0 = pos.y;
             return new Vector2(x0,y0);
         }
         public int GetAlign()

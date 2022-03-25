@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IImage,iTexture:{name:btGreen},acList:{map:{exit:{class:GameGDX.GUIData.IAction.IColor,name:exit},enter:{class:GameGDX.GUIData.IAction.IColor,hexColor:666666ff,name:enter}}}}

@@ -14,4 +14,8 @@ public class Popup extends Screen{
         overlay.getColor().a = 0.5f;
         overlay.toBack();
     }
+    public Image GetOverlay()
+    {
+        return overlay;
+    }
 }

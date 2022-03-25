@@ -10,7 +10,7 @@ import java.util.Map;
 public abstract class IMultiAction extends IAction {
     private GDX.Func<Map<String,IAction>> getMap;
 
-    private void Init()
+    protected void Init(IActor iActor)
     {
         Map<String,IAction> m = new HashMap<>();
         Foreach(i->m.put(i.name,i));
@@ -18,7 +18,7 @@ public abstract class IMultiAction extends IAction {
     }
     public <T extends IAction> T FindIAction(String name)
     {
-        if (getMap==null) Init();
+        if (getMap==null) Init(null);
         if (getMap.Run().containsKey(name)) return (T)getMap.Run().get(name);
         for(IAction i : GetAll())
             if (i instanceof IMultiAction)
@@ -46,6 +46,18 @@ public abstract class IMultiAction extends IAction {
     {
         for(IAction i : GetAll())
             cb.Run(i);
+    }
+    protected void ForChild(GDX.Runnable<IAction> cb)
+    {
+        for(IAction i : GetAll())
+        {
+            cb.Run(i);
+            if (i instanceof IMultiAction)
+            {
+                IMultiAction iMul = (IMultiAction) i;
+                iMul.ForChild(cb);
+            }
+        }
     }
     //extend
     public void SetIRun(String name,Runnable run)

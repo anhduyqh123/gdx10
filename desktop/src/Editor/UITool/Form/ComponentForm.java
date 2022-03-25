@@ -5,6 +5,8 @@ import Editor.UITool.Form.Panel.ComponentPanel;
 import Extend.Box2d.*;
 import Extend.Box2d.IJoint.*;
 import Extend.GShape.IMask;
+import Extend.GShape.IMaskGroup;
+import Extend.GShape.IShape;
 import Extend.ILineRenderer;
 import GameGDX.GUIData.IChild.Component;
 import GameGDX.GUIData.IChild.IActor;
@@ -35,7 +37,7 @@ public class ComponentForm {
 
         Class[] types = {IBody.class, IWater.class, IPlatform.class,IConveyor.class,
                 IDistance.class, IRope.class, IWheel.class, IRevolute.class, IPrismatic.class,IPulley.class,IGear.class,
-                IRayCast.class, ILineRenderer.class, IMask.class};
+                IRayCast.class, ILineRenderer.class, IMask.class, IMaskGroup.class, IShape.class};
         String[] arr = ui.ClassToName(types);
         ui.ComboBox(cbType,arr,arr[0]);
 

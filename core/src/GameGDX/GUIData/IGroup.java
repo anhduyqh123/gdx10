@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.SnapshotArray;
 
 import java.util.*;
 
@@ -47,6 +48,10 @@ public class IGroup extends IActor {
     {
         return map.containsKey(name);
     }
+    public Map<String, IActor> GetMap()
+    {
+        return map;
+    }
 
     protected void AddChild(String name, IActor child)
     {
@@ -85,7 +90,12 @@ public class IGroup extends IActor {
             }
             @Override
             public void draw(Batch batch, float parentAlpha) {
-                OnDraw(batch,parentAlpha,()->super.draw(batch, parentAlpha));
+                if (isTransform()) applyTransform(batch, computeTransform());
+                OnDraw(batch,parentAlpha,()->{
+                    super.drawChildren(batch, parentAlpha);
+                });
+                if (isTransform()) resetTransform(batch);
+                //OnDraw(batch,parentAlpha,()->super.draw(batch, parentAlpha));
             }
         };
     }

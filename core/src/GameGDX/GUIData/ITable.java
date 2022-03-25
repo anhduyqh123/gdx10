@@ -18,8 +18,9 @@ public class ITable extends IGroup {
     public IAlign contentAlign = IAlign.center,rowAlign = IAlign.center;
     public int column = 0,clone;
     public float spaceX,spaceY,padX,padY;
+    public boolean autoFill;
 
-    private GDX.Func<List<IActor>> getChildren;
+    private GDX.Func<List<IActor>> getChildren;//current
 
     @Override
     protected Actor NewActor() {
@@ -69,6 +70,11 @@ public class ITable extends IGroup {
     }
     public void RefreshChildren(Collection<Actor> children)
     {
+        FillChildren(column,children);
+        if (autoFill) AutoFill(children);
+    }
+    private void FillChildren(int column,Collection<Actor> children)
+    {
         Table table = GetActor();
         table.clearChildren();
 
@@ -85,6 +91,18 @@ public class ITable extends IGroup {
         }
         table.align(contentAlign.value);
         table.validate();
+    }
+    private void AutoFill(Collection<Actor> children) //width/height
+    {
+        Table table = GetActor();
+        if (table.getColumns()<=0) return;
+        float divide = table.getWidth()/table.getHeight();
+        float multiply = table.getPrefWidth()*table.getPrefHeight();
+        float width = (float) Math.sqrt(divide*multiply);
+        float columnWidth = table.getColumnWidth(0);
+        if (width<table.getWidth()) return;
+        int num = (int)(width/columnWidth);
+        FillChildren(num,children);
     }
     public void RefreshIActor(List<IActor> iActors)
     {
@@ -124,5 +142,27 @@ public class ITable extends IGroup {
         for(int i=0;i<list.size();i++)
             cb.Run(list.get(i),iActors.get(i));
         return iActors;
+    }
+
+    private List<Actor> GetActors()
+    {
+        List<Actor> actors = new ArrayList<>();
+        ForIChild(i->actors.add(i.GetActor()));
+        return actors;
+    }
+    public IActor CloneChild()
+    {
+        IActor child = GetIChild(list.get(0));
+        IActor clone = Reflect.Clone(child);
+        clone.SetConnect(this::GetChild);
+        clone.Refresh();
+        AddChild(clone);
+        RefreshChildren(GetActors());
+        return clone;
+    }
+    private void AddChild(IActor iActor)
+    {
+        List<IActor> iActorList = getChildren.Run();
+        iActorList.add(iActor);
     }
 }

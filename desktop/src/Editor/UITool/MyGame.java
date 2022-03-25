@@ -80,7 +80,8 @@ public class MyGame extends GDXGame {
         AssetManager assets = Assets.GetManager();
         assets.setLoader(Texture.class,new GTextureLoader(assets.getFileHandleResolver()));
 
-        IImage.NewImage(Color.BLACK,0,0, Align.bottomLeft,Scene.width,Scene.height,Scene.ui);
+        IImage.NewImage(Color.GRAY);
+        //IImage.NewImage(Color.CYAN,0,0, Align.bottomLeft,Scene.width,Scene.height,Scene.ui);
         Assets.LoadPackages(done,data.GetKeys().toArray(new String[0]));
 
         InitControlCamera();

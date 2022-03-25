@@ -37,7 +37,7 @@ public class ISize {
     }
     private Stage GetStage()
     {
-        if (GetActor().getStage()==null) return Scene.stage;
+        if (GetActor()==null || GetActor().getStage()==null) return Scene.stage;
         return GetActor().getStage();
     }
 

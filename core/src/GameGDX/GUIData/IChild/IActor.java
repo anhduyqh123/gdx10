@@ -168,6 +168,7 @@ public class IActor {
     protected void RefreshEvent()
     {
         InitSound();
+        acList.Init(this);
         RunEventAction("init");
 
         InitEvent();

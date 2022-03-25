@@ -12,6 +12,12 @@ public class IActionList extends IMultiAction {
     private Map<String,IAction> map = new HashMap<>();
 
     @Override
+    public void Init(IActor iActor) {
+        super.Init(iActor);
+        ForChild(i->i.Init(iActor));
+    }
+
+    @Override
     public Action Get(IActor iActor) {
         return null;
     }

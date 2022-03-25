@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.ShapeForm">
+  <grid id="27dc6" binding="panel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="9fed9" class="javax.swing.JLabel">
+        <constraints/>
+        <properties>
+          <text value="Shape"/>
+        </properties>
+      </component>
+      <component id="23b36" class="javax.swing.JComboBox" binding="cbShape">
+        <constraints/>
+        <properties>
+          <preferredSize width="100" height="30"/>
+        </properties>
+      </component>
+      <component id="28a84" class="javax.swing.JLabel">
+        <constraints/>
+        <properties>
+          <text value="size"/>
+        </properties>
+      </component>
+      <component id="2bb08" class="javax.swing.JTextField" binding="tfSize">
+        <constraints/>
+        <properties>
+          <preferredSize width="50" height="30"/>
+        </properties>
+      </component>
+      <component id="4f3e5" class="javax.swing.JButton" binding="btFreeze">
+        <constraints/>
+        <properties>
+          <text value="Freeze"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

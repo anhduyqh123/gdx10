@@ -1,0 +1,27 @@
+
+aTextures.png
+size: 512, 256
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+stopper
+  rotate: false
+  xy: 304, 199
+  size: 42, 31
+  orig: 42, 31
+  offset: 0, 0
+  index: -1
+wood1
+  rotate: false
+  xy: 2, 198
+  size: 300, 32
+  orig: 300, 32
+  offset: 0, 0
+  index: -1
+wood2
+  rotate: false
+  xy: 2, 2
+  size: 18, 194
+  orig: 18, 194
+  offset: 0, 0
+  index: -1

@@ -117,7 +117,7 @@
           <grid id="eb3de" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints/>
             <properties>
-              <preferredSize width="200" height="100"/>
+              <preferredSize width="250" height="100"/>
             </properties>
             <border type="line"/>
             <children>
@@ -133,6 +133,13 @@
                 <properties>
                   <selected value="true"/>
                   <text value="Textures"/>
+                </properties>
+              </component>
+              <component id="b7bdd" class="javax.swing.JRadioButton" binding="rSpine">
+                <constraints/>
+                <properties>
+                  <selected value="true"/>
+                  <text value="Spines"/>
                 </properties>
               </component>
               <component id="760fa" class="javax.swing.JButton" binding="btEncode">

@@ -1,0 +1,132 @@
+
+textures.png
+size: 2048, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+stumb1
+  rotate: false
+  xy: 1741, 776
+  size: 220, 219
+  orig: 220, 219
+  offset: 0, 0
+  index: -1
+stumb2
+  rotate: false
+  xy: 2, 6
+  size: 309, 336
+  orig: 309, 336
+  offset: 0, 0
+  index: -1
+stumb3
+  rotate: false
+  xy: 827, 124
+  size: 214, 218
+  orig: 214, 218
+  offset: 0, 0
+  index: -1
+wood1
+  rotate: false
+  xy: 2, 344
+  size: 1116, 651
+  orig: 1116, 651
+  offset: 0, 0
+  index: -1
+wood1front
+  rotate: false
+  xy: 1741, 616
+  size: 168, 158
+  orig: 168, 158
+  offset: 0, 0
+  index: -1
+wood2
+  rotate: false
+  xy: 1443, 352
+  size: 296, 643
+  orig: 296, 643
+  offset: 0, 0
+  index: -1
+wood3
+  rotate: false
+  xy: 1120, 296
+  size: 321, 699
+  orig: 321, 699
+  offset: 0, 0
+  index: -1
+water1
+  rotate: false
+  xy: 313, 222
+  size: 512, 120
+  orig: 512, 120
+  offset: 0, 0
+  index: -1
+water1_1
+  rotate: false
+  xy: 313, 200
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_10
+  rotate: false
+  xy: 313, 2
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_2
+  rotate: false
+  xy: 313, 178
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_3
+  rotate: false
+  xy: 313, 156
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_4
+  rotate: false
+  xy: 313, 134
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_5
+  rotate: false
+  xy: 313, 112
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_6
+  rotate: false
+  xy: 313, 90
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_7
+  rotate: false
+  xy: 313, 68
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_8
+  rotate: false
+  xy: 313, 46
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1
+water1_9
+  rotate: false
+  xy: 313, 24
+  size: 512, 20
+  orig: 512, 20
+  offset: 0, 0
+  index: -1

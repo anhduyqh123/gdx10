@@ -3,6 +3,7 @@ package Editor.UITool.Form;
 import GameGDX.GDX;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class IList {
@@ -47,5 +48,9 @@ public class IList {
         Refresh();
         if (getData.Run().size()>0)
             list.setSelectedIndex(0);
+    }
+    public List<String> GetSelectedList()
+    {
+       return list.getSelectedValuesList();
     }
 }

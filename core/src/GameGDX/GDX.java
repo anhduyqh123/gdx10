@@ -147,35 +147,6 @@ public class GDX {
     {
         return Gdx.files.internal(path);
     }
-    //encode
-    private static String endCode = "zen";
-    private static byte[] endBytes = endCode.getBytes();
-    public static void Encode(FileHandle file)
-    {
-        byte[] bytes = file.readBytes();
-        byte[] extendBytes = new byte[endBytes.length];
-        for(int i=0;i<extendBytes.length;i++)
-            extendBytes[i] = bytes[i];
-        String extendSt = new String(extendBytes);
-        if (extendSt.equals(endCode)) return;
-        file.writeBytes(endBytes,false);
-        file.writeBytes(bytes,true);
-    }
-    //decode
-    public static byte[] Decode(FileHandle file)
-    {
-        byte[] bytes = file.readBytes();
-        byte[] extendBytes = new byte[endBytes.length];
-        for(int i=0;i<extendBytes.length;i++)
-            extendBytes[i] = bytes[i];
-        String extendSt = new String(extendBytes);
-        if (!extendSt.equals(endCode)) return bytes;
-        byte[] newBytes = new byte[bytes.length-endBytes.length];
-        for(int i=endBytes.length;i<bytes.length;i++)
-            newBytes[i-endBytes.length] = bytes[i];
-        return newBytes;
-    }
-
     //frame buffer
     public static Texture GetFrameBuffer(Actor actor)
     {

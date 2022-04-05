@@ -25,4 +25,8 @@ public class IDelay extends IAction {
     {
         return GetFloat(duration);
     }
+    public void SetDuration(float value)
+    {
+        duration = value+"";
+    }
 }

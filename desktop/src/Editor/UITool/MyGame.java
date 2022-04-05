@@ -1,5 +1,6 @@
 package Editor.UITool;
 
+import Editor.GTextureLoader;
 import Extend.Box2d.GBox2d;
 import Extend.GShape.GShapeRenderer;
 import Extend.Spine.Assets2;
@@ -13,14 +14,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Align;
-import com.game.GTextureLoader;
 
 public class MyGame extends GDXGame {
     public static MyGame i;

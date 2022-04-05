@@ -16,12 +16,14 @@ public class GDXGame extends ApplicationAdapter {
 
     @Override
     public void pause() {
-        audio.PauseMusic();
+        if (audio!=null)
+            audio.PauseMusic();
     }
 
     @Override
     public void resume() {
-        audio.ResumeMusic();
+        if (audio!=null)
+            audio.ResumeMusic();
     }
     @Override
     public void create() {

@@ -1,0 +1,139 @@
+
+aTextures.png
+size: 2048, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+cross
+  rotate: false
+  xy: 1844, 205
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+jumpPlane
+  rotate: false
+  xy: 387, 35
+  size: 128, 28
+  orig: 128, 28
+  offset: 0, 0
+  index: -1
+middlePlane
+  rotate: false
+  xy: 1992, 204
+  size: 26, 147
+  orig: 26, 147
+  offset: 0, 0
+  index: -1
+plane1
+  rotate: false
+  xy: 2, 35
+  size: 383, 28
+  orig: 383, 28
+  offset: 0, 0
+  index: -1
+plane2
+  rotate: false
+  xy: 1028, 77
+  size: 619, 274
+  orig: 619, 274
+  offset: 0, 0
+  index: -1
+standPlane
+  rotate: false
+  xy: 1649, 85
+  size: 193, 266
+  orig: 193, 266
+  offset: 0, 0
+  index: -1
+stopper1
+  rotate: false
+  xy: 1844, 143
+  size: 84, 60
+  orig: 84, 60
+  offset: 0, 0
+  index: -1
+upPlane
+  rotate: false
+  xy: 2, 2
+  size: 193, 31
+  orig: 193, 31
+  offset: 0, 0
+  index: -1
+water1
+  rotate: false
+  xy: 2, 352
+  size: 1016, 122
+  orig: 1016, 122
+  offset: 0, 0
+  index: -1
+water1_1
+  rotate: false
+  xy: 1020, 435
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_10
+  rotate: false
+  xy: 2, 65
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_2
+  rotate: false
+  xy: 1020, 394
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_3
+  rotate: false
+  xy: 1020, 353
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_4
+  rotate: false
+  xy: 2, 311
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_5
+  rotate: false
+  xy: 2, 270
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_6
+  rotate: false
+  xy: 2, 229
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_7
+  rotate: false
+  xy: 2, 188
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_8
+  rotate: false
+  xy: 2, 147
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1
+water1_9
+  rotate: false
+  xy: 2, 106
+  size: 1024, 39
+  orig: 1024, 39
+  offset: 0, 0
+  index: -1

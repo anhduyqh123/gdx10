@@ -1,0 +1,153 @@
+
+aTextures.png
+size: 2048, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+angleStep
+  rotate: false
+  xy: 2, 194
+  size: 629, 99
+  orig: 629, 99
+  offset: 0, 0
+  index: -1
+bridgePlane1
+  rotate: false
+  xy: 1400, 463
+  size: 299, 377
+  orig: 299, 377
+  offset: 0, 0
+  index: -1
+bridgePlane2
+  rotate: false
+  xy: 1028, 468
+  size: 370, 372
+  orig: 370, 372
+  offset: 0, 0
+  index: -1
+cargo
+  rotate: false
+  xy: 2, 51
+  size: 206, 141
+  orig: 206, 141
+  offset: 0, 0
+  index: -1
+gear1
+  rotate: false
+  xy: 210, 149
+  size: 43, 43
+  orig: 43, 43
+  offset: 0, 0
+  index: -1
+lift
+  rotate: false
+  xy: 633, 267
+  size: 244, 26
+  orig: 244, 26
+  offset: 0, 0
+  index: -1
+liftGearPlane
+  rotate: false
+  xy: 1701, 370
+  size: 27, 470
+  orig: 27, 470
+  offset: 0, 0
+  index: -1
+stopper1
+  rotate: false
+  xy: 1028, 406
+  size: 84, 60
+  orig: 84, 60
+  offset: 0, 0
+  index: -1
+stopper2
+  rotate: false
+  xy: 1730, 798
+  size: 55, 42
+  orig: 55, 42
+  offset: 0, 0
+  index: -1
+wheel1
+  rotate: false
+  xy: 2, 2
+  size: 47, 47
+  orig: 47, 47
+  offset: 0, 0
+  index: -1
+water1
+  rotate: false
+  xy: 2, 545
+  size: 1024, 295
+  orig: 1024, 295
+  offset: 0, 0
+  index: -1
+water_1
+  rotate: false
+  xy: 2, 520
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_10
+  rotate: false
+  xy: 2, 295
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_2
+  rotate: false
+  xy: 2, 495
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_3
+  rotate: false
+  xy: 2, 470
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_4
+  rotate: false
+  xy: 2, 445
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_5
+  rotate: false
+  xy: 2, 420
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_6
+  rotate: false
+  xy: 2, 395
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_7
+  rotate: false
+  xy: 2, 370
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_8
+  rotate: false
+  xy: 2, 345
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1
+water_9
+  rotate: false
+  xy: 2, 320
+  size: 1024, 23
+  orig: 1024, 23
+  offset: 0, 0
+  index: -1

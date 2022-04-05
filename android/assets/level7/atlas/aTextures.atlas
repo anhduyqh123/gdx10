@@ -1,0 +1,132 @@
+
+aTextures.png
+size: 2048, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bridge
+  rotate: false
+  xy: 815, 538
+  size: 305, 31
+  orig: 305, 31
+  offset: 0, 0
+  index: -1
+doublePlane
+  rotate: false
+  xy: 2, 294
+  size: 423, 684
+  orig: 423, 684
+  offset: 0, 0
+  index: -1
+hole
+  rotate: false
+  xy: 2, 2
+  size: 42, 81
+  orig: 42, 81
+  offset: 0, 0
+  index: -1
+key
+  rotate: false
+  xy: 1356, 902
+  size: 407, 76
+  orig: 407, 76
+  offset: 0, 0
+  index: -1
+plane1
+  rotate: false
+  xy: 2, 85
+  size: 299, 207
+  orig: 299, 207
+  offset: 0, 0
+  index: -1
+plane4
+  rotate: false
+  xy: 427, 197
+  size: 386, 372
+  orig: 386, 372
+  offset: 0, 0
+  index: -1
+stopper
+  rotate: false
+  xy: 303, 272
+  size: 26, 20
+  orig: 26, 20
+  offset: 0, 0
+  index: -1
+water1
+  rotate: false
+  xy: 427, 841
+  size: 927, 137
+  orig: 927, 137
+  offset: 0, 0
+  index: -1
+water_1
+  rotate: false
+  xy: 427, 814
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_10
+  rotate: false
+  xy: 427, 571
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_2
+  rotate: false
+  xy: 427, 787
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_3
+  rotate: false
+  xy: 427, 760
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_4
+  rotate: false
+  xy: 427, 733
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_5
+  rotate: false
+  xy: 427, 706
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_6
+  rotate: false
+  xy: 427, 679
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_7
+  rotate: false
+  xy: 427, 652
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_8
+  rotate: false
+  xy: 427, 625
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1
+water_9
+  rotate: false
+  xy: 427, 598
+  size: 948, 25
+  orig: 948, 25
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,118 @@
+
+textures.png
+size: 2048, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+stumb1
+  rotate: false
+  xy: 2, 2
+  size: 250, 219
+  orig: 250, 219
+  offset: 0, 0
+  index: -1
+wood1
+  rotate: false
+  xy: 455, 283
+  size: 277, 642
+  orig: 277, 642
+  offset: 0, 0
+  index: -1
+wood2
+  rotate: false
+  xy: 2, 223
+  size: 451, 702
+  orig: 451, 702
+  offset: 0, 0
+  index: -1
+wood3
+  rotate: false
+  xy: 734, 284
+  size: 275, 641
+  orig: 275, 641
+  offset: 0, 0
+  index: -1
+wood4
+  rotate: false
+  xy: 1011, 284
+  size: 171, 641
+  orig: 171, 641
+  offset: 0, 0
+  index: -1
+water1
+  rotate: false
+  xy: 1184, 815
+  size: 452, 110
+  orig: 452, 110
+  offset: 0, 0
+  index: -1
+water1_1
+  rotate: false
+  xy: 1184, 795
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_10
+  rotate: false
+  xy: 1184, 615
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_2
+  rotate: false
+  xy: 1184, 775
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_3
+  rotate: false
+  xy: 1184, 755
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_4
+  rotate: false
+  xy: 1184, 735
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_5
+  rotate: false
+  xy: 1184, 715
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_6
+  rotate: false
+  xy: 1184, 695
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_7
+  rotate: false
+  xy: 1184, 675
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_8
+  rotate: false
+  xy: 1184, 655
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1
+water1_9
+  rotate: false
+  xy: 1184, 635
+  size: 452, 18
+  orig: 452, 18
+  offset: 0, 0
+  index: -1

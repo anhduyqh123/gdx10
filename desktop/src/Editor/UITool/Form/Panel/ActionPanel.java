@@ -119,6 +119,8 @@ public class ActionPanel {
         public JIMovePath(IAction data, JPanel pn) {
             super(data, pn);
             IMovePath iMovePath = (IMovePath)data;
+            for (IMovePath.MPos p : iMovePath.points)
+                p.iPos.getIActor = ()->iActor;
             ui.NewButton("Show Points",pn,()->new PointForm(iMovePath.points));
 
         }

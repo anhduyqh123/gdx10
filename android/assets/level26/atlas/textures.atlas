@@ -1,0 +1,153 @@
+
+textures.png
+size: 2048, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+nail1
+  rotate: false
+  xy: 1005, 823
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+plank1
+  rotate: false
+  xy: 1028, 162
+  size: 229, 31
+  orig: 229, 31
+  offset: 0, 0
+  index: -1
+stumb1
+  rotate: false
+  xy: 449, 371
+  size: 554, 468
+  orig: 554, 468
+  offset: 0, 0
+  index: -1
+wood1
+  rotate: false
+  xy: 2, 201
+  size: 445, 638
+  orig: 445, 638
+  offset: 0, 0
+  index: -1
+wood2
+  rotate: false
+  xy: 2, 2
+  size: 160, 147
+  orig: 160, 147
+  offset: 0, 0
+  index: -1
+wood2Back
+  rotate: false
+  xy: 1028, 435
+  size: 343, 508
+  orig: 343, 508
+  offset: 0, 0
+  index: -1
+wood3
+  rotate: false
+  xy: 1542, 300
+  size: 375, 643
+  orig: 375, 643
+  offset: 0, 0
+  index: -1
+wood3Back
+  rotate: false
+  xy: 164, 10
+  size: 162, 139
+  orig: 162, 139
+  offset: 0, 0
+  index: -1
+wood4
+  rotate: false
+  xy: 1373, 559
+  size: 167, 384
+  orig: 167, 384
+  offset: 0, 0
+  index: -1
+wood4Back
+  rotate: false
+  xy: 1475, 35
+  size: 202, 263
+  orig: 202, 263
+  offset: 0, 0
+  index: -1
+water1
+  rotate: false
+  xy: 2, 841
+  size: 1024, 102
+  orig: 1024, 102
+  offset: 0, 0
+  index: -1
+water1_1
+  rotate: false
+  xy: 449, 349
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_10
+  rotate: false
+  xy: 2, 151
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_2
+  rotate: false
+  xy: 449, 327
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_3
+  rotate: false
+  xy: 449, 305
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_4
+  rotate: false
+  xy: 449, 283
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_5
+  rotate: false
+  xy: 449, 261
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_6
+  rotate: false
+  xy: 449, 239
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_7
+  rotate: false
+  xy: 449, 217
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_8
+  rotate: false
+  xy: 449, 195
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1
+water1_9
+  rotate: false
+  xy: 2, 173
+  size: 1024, 20
+  orig: 1024, 20
+  offset: 0, 0
+  index: -1

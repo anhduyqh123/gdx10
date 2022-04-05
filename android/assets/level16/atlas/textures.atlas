@@ -1,0 +1,41 @@
+
+textures.png
+size: 1024, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+stumb1
+  rotate: false
+  xy: 185, 133
+  size: 249, 210
+  orig: 249, 210
+  offset: 0, 0
+  index: -1
+stumb2
+  rotate: false
+  xy: 2, 2
+  size: 181, 341
+  orig: 181, 341
+  offset: 0, 0
+  index: -1
+wood1
+  rotate: false
+  xy: 628, 351
+  size: 168, 644
+  orig: 168, 644
+  offset: 0, 0
+  index: -1
+wood2
+  rotate: false
+  xy: 2, 345
+  size: 320, 650
+  orig: 320, 650
+  offset: 0, 0
+  index: -1
+wood3
+  rotate: false
+  xy: 324, 347
+  size: 302, 648
+  orig: 302, 648
+  offset: 0, 0
+  index: -1

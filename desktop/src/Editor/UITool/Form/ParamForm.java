@@ -1,22 +1,28 @@
 package Editor.UITool.Form;
 
 import Editor.JFameUI;
-import Extend.Frame.IAnim;
 import GameGDX.GDX;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParamForm {
+    private static Map<String,String> selectMap = new HashMap<>();
+
     public JPanel panel1;
     private JList list1;
     private JButton btNew;
     private JButton btDelete;
     private JTextField tfValue;
     private JTextField tfName;
+    private JButton btPaste;
+    private JButton btSelect;
+    private JComboBox cbSelect;
 
     private JFameUI ui = new JFameUI();
     private Map<String,String> map;
@@ -40,11 +46,17 @@ public class ParamForm {
         iList.onAdd = ()->{
             String name = tfName.getText();
             map.put(name,"");
-            System.out.println(map.size());
             return name;
         };
         iList.onDelete = name->map.remove(name);
         iList.onSelect = this::OnSelect;
+
+        btSelect.addActionListener(e->{
+            Select(iList.GetSelectedList());
+        });
+        btPaste.addActionListener(e->{
+            Paste();
+        });
     }
     public void SetData(Map<String,String> map)
     {
@@ -66,4 +78,17 @@ public class ParamForm {
         });
     }
 
+    private void Select(List<String> list)
+    {
+        selectMap.clear();
+        for (String k : list)
+            selectMap.put(k,map.get(k));
+        ui.ComboBox(cbSelect,list.toArray());
+    }
+    private void Paste()
+    {
+        for (String k : selectMap.keySet())
+            map.put(k,selectMap.get(k));
+        iList.Refresh();
+    }
 }

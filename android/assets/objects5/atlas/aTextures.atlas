@@ -1,0 +1,608 @@
+
+aTextures.png
+size: 2048, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+backShadow
+  rotate: false
+  xy: 1013, 204
+  size: 42, 138
+  orig: 42, 138
+  offset: 0, 0
+  index: -1
+backStones
+  rotate: false
+  xy: 223, 266
+  size: 194, 93
+  orig: 194, 93
+  offset: 0, 0
+  index: -1
+backWood
+  rotate: false
+  xy: 1092, 10
+  size: 42, 362
+  orig: 42, 362
+  offset: 0, 0
+  index: -1
+bat_0001
+  rotate: false
+  xy: 1136, 97
+  size: 56, 51
+  orig: 56, 51
+  offset: 0, 0
+  index: -1
+bat_0002
+  rotate: false
+  xy: 1136, 44
+  size: 56, 51
+  orig: 56, 51
+  offset: 0, 0
+  index: -1
+bat_0003
+  rotate: false
+  xy: 1208, 321
+  size: 56, 51
+  orig: 56, 51
+  offset: 0, 0
+  index: -1
+bat_0004
+  rotate: false
+  xy: 1194, 268
+  size: 56, 51
+  orig: 56, 51
+  offset: 0, 0
+  index: -1
+boomThorn
+  rotate: false
+  xy: 1609, 445
+  size: 16, 20
+  orig: 16, 20
+  offset: 0, 0
+  index: -1
+bossLabel
+  rotate: false
+  xy: 2, 269
+  size: 219, 214
+  orig: 219, 214
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 1312, 320
+  size: 29, 30
+  orig: 29, 30
+  offset: 0, 0
+  index: -1
+bullet2
+  rotate: false
+  xy: 991, 317
+  size: 20, 25
+  orig: 20, 25
+  offset: 0, 0
+  index: -1
+chainA
+  rotate: false
+  xy: 2031, 423
+  size: 15, 87
+  orig: 15, 87
+  offset: 0, 0
+  index: -1
+chainB
+  rotate: false
+  xy: 223, 361
+  size: 219, 78
+  orig: 219, 78
+  offset: 0, 0
+  index: -1
+dangerPlate
+  rotate: false
+  xy: 945, 213
+  size: 66, 79
+  orig: 66, 79
+  offset: 0, 0
+  index: -1
+dangerStones
+  rotate: false
+  xy: 1252, 265
+  size: 50, 45
+  orig: 50, 45
+  offset: 0, 0
+  index: -1
+darkStoneA
+  rotate: false
+  xy: 1136, 267
+  size: 56, 57
+  orig: 56, 57
+  offset: 0, 0
+  index: -1
+darkStoneB
+  rotate: false
+  xy: 379, 171
+  size: 92, 66
+  orig: 92, 66
+  offset: 0, 0
+  index: -1
+darkStoneC
+  rotate: false
+  xy: 645, 291
+  size: 121, 75
+  orig: 121, 75
+  offset: 0, 0
+  index: -1
+darkStoneD
+  rotate: false
+  xy: 1136, 10
+  size: 40, 32
+  orig: 40, 32
+  offset: 0, 0
+  index: -1
+darkStoneE
+  rotate: false
+  xy: 1093, 398
+  size: 22, 18
+  orig: 22, 18
+  offset: 0, 0
+  index: -1
+door0
+  rotate: false
+  xy: 1852, 408
+  size: 176, 24
+  orig: 176, 24
+  offset: 0, 0
+  index: -1
+door1
+  rotate: false
+  xy: 444, 415
+  size: 176, 24
+  orig: 176, 24
+  offset: 0, 0
+  index: -1
+door1Long
+  rotate: false
+  xy: 2, 485
+  size: 635, 25
+  orig: 635, 25
+  offset: 0, 0
+  index: -1
+door1Middle
+  rotate: false
+  xy: 860, 344
+  size: 211, 24
+  orig: 211, 24
+  offset: 0, 0
+  index: -1
+door2
+  rotate: false
+  xy: 444, 389
+  size: 176, 24
+  orig: 176, 24
+  offset: 0, 0
+  index: -1
+emitter_0001
+  rotate: false
+  xy: 1057, 220
+  size: 31, 55
+  orig: 31, 55
+  offset: 0, 0
+  index: -1
+emitter_0002
+  rotate: false
+  xy: 1057, 277
+  size: 33, 65
+  orig: 33, 65
+  offset: 0, 0
+  index: -1
+frontCargo
+  rotate: false
+  xy: 197, 2
+  size: 170, 77
+  orig: 170, 77
+  offset: 0, 0
+  index: -1
+groundLeft
+  rotate: false
+  xy: 645, 211
+  size: 99, 78
+  orig: 99, 78
+  offset: 0, 0
+  index: -1
+groundLong
+  rotate: false
+  xy: 197, 81
+  size: 190, 81
+  orig: 190, 81
+  offset: 0, 0
+  index: -1
+groundRight
+  rotate: false
+  xy: 746, 204
+  size: 99, 78
+  orig: 99, 78
+  offset: 0, 0
+  index: -1
+groundShort
+  rotate: false
+  xy: 847, 217
+  size: 96, 75
+  orig: 96, 75
+  offset: 0, 0
+  index: -1
+groundShortAngleA
+  rotate: false
+  xy: 768, 284
+  size: 70, 82
+  orig: 70, 82
+  offset: 0, 0
+  index: -1
+groundShortAngleB
+  rotate: false
+  xy: 389, 87
+  size: 70, 82
+  orig: 70, 82
+  offset: 0, 0
+  index: -1
+key0
+  rotate: false
+  xy: 1136, 150
+  size: 55, 56
+  orig: 55, 56
+  offset: 0, 0
+  index: -1
+key1
+  rotate: false
+  xy: 473, 176
+  size: 53, 61
+  orig: 53, 61
+  offset: 0, 0
+  index: -1
+key2
+  rotate: false
+  xy: 1136, 208
+  size: 55, 57
+  orig: 55, 57
+  offset: 0, 0
+  index: -1
+lamp
+  rotate: false
+  xy: 2, 74
+  size: 193, 193
+  orig: 193, 193
+  offset: 0, 0
+  index: -1
+lock0
+  rotate: false
+  xy: 2002, 346
+  size: 44, 60
+  orig: 44, 60
+  offset: 0, 0
+  index: -1
+lock1
+  rotate: false
+  xy: 414, 21
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+lock2
+  rotate: false
+  xy: 1266, 312
+  size: 44, 60
+  orig: 44, 60
+  offset: 0, 0
+  index: -1
+screwNut
+  rotate: false
+  xy: 2030, 408
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: -1
+spiderNetA
+  rotate: false
+  xy: 541, 233
+  size: 102, 110
+  orig: 102, 110
+  offset: 0, 0
+  index: -1
+spiderNetB
+  rotate: false
+  xy: 419, 239
+  size: 120, 104
+  orig: 120, 104
+  offset: 0, 0
+  index: -1
+stairsA
+  rotate: false
+  xy: 369, 2
+  size: 43, 77
+  orig: 43, 77
+  offset: 0, 0
+  index: -1
+stairsB
+  rotate: false
+  xy: 2, 6
+  size: 43, 8
+  orig: 43, 8
+  offset: 0, 0
+  index: -1
+stairsC
+  rotate: false
+  xy: 414, 12
+  size: 43, 7
+  orig: 43, 7
+  offset: 0, 0
+  index: -1
+steelCargo
+  rotate: false
+  xy: 1881, 434
+  size: 148, 76
+  orig: 148, 76
+  offset: 0, 0
+  index: -1
+steelOver
+  rotate: false
+  xy: 945, 164
+  size: 47, 47
+  orig: 47, 47
+  offset: 0, 0
+  index: -1
+steelWheel
+  rotate: false
+  xy: 1312, 352
+  size: 45, 44
+  orig: 45, 44
+  offset: 0, 0
+  index: -1
+stonesOver
+  rotate: false
+  xy: 528, 185
+  size: 70, 46
+  orig: 70, 46
+  offset: 0, 0
+  index: -1
+stonesOver2
+  rotate: false
+  xy: 1136, 326
+  size: 70, 46
+  orig: 70, 46
+  offset: 0, 0
+  index: -1
+thorn
+  rotate: false
+  xy: 1359, 344
+  size: 23, 33
+  orig: 23, 33
+  offset: 0, 0
+  index: -1
+thornCargo
+  rotate: false
+  xy: 197, 164
+  size: 180, 100
+  orig: 180, 100
+  offset: 0, 0
+  index: -1
+woodLong_lvl11_A
+  rotate: false
+  xy: 520, 441
+  size: 112, 42
+  orig: 112, 42
+  offset: 0, 0
+  index: -1
+woodLong_lvl12_A
+  rotate: false
+  xy: 1153, 467
+  size: 241, 43
+  orig: 241, 43
+  offset: 0, 0
+  index: -1
+woodLong_lvl12_B
+  rotate: false
+  xy: 909, 467
+  size: 242, 43
+  orig: 242, 43
+  offset: 0, 0
+  index: -1
+woodLong_lvl13_A
+  rotate: false
+  xy: 1639, 468
+  size: 240, 42
+  orig: 240, 42
+  offset: 0, 0
+  index: -1
+woodShadow
+  rotate: false
+  xy: 1639, 444
+  size: 240, 22
+  orig: 240, 22
+  offset: 0, 0
+  index: -1
+woodShadowA1
+  rotate: false
+  xy: 639, 464
+  size: 241, 22
+  orig: 241, 22
+  offset: 0, 0
+  index: -1
+woodShadowA2
+  rotate: false
+  xy: 1125, 442
+  size: 240, 23
+  orig: 240, 23
+  offset: 0, 0
+  index: -1
+woodShadowA3
+  rotate: false
+  xy: 639, 488
+  size: 268, 22
+  orig: 268, 22
+  offset: 0, 0
+  index: -1
+woodShadowA4
+  rotate: false
+  xy: 882, 442
+  size: 241, 23
+  orig: 241, 23
+  offset: 0, 0
+  index: -1
+woodShadowAA
+  rotate: false
+  xy: 622, 416
+  size: 239, 22
+  orig: 239, 22
+  offset: 0, 0
+  index: -1
+woodShadowAB
+  rotate: false
+  xy: 622, 392
+  size: 236, 22
+  orig: 236, 22
+  offset: 0, 0
+  index: -1
+woodShadowAC
+  rotate: false
+  xy: 622, 368
+  size: 236, 22
+  orig: 236, 22
+  offset: 0, 0
+  index: -1
+woodShadowC1
+  rotate: false
+  xy: 840, 294
+  size: 148, 23
+  orig: 148, 23
+  offset: 0, 0
+  index: -1
+woodShadowC2
+  rotate: false
+  xy: 840, 319
+  size: 149, 23
+  orig: 149, 23
+  offset: 0, 0
+  index: -1
+woodShadowD
+  rotate: false
+  xy: 860, 370
+  size: 214, 22
+  orig: 214, 22
+  offset: 0, 0
+  index: -1
+woodShadowE
+  rotate: false
+  xy: 634, 440
+  size: 240, 22
+  orig: 240, 22
+  offset: 0, 0
+  index: -1
+woodShadowF
+  rotate: false
+  xy: 1367, 423
+  size: 240, 42
+  orig: 240, 42
+  offset: 0, 0
+  index: -1
+woodShadow_lvl11_A
+  rotate: false
+  xy: 847, 193
+  size: 96, 22
+  orig: 96, 22
+  offset: 0, 0
+  index: -1
+woodShadow_lvl11_B
+  rotate: false
+  xy: 1093, 374
+  size: 211, 22
+  orig: 211, 22
+  offset: 0, 0
+  index: -1
+woodShadow_lvl13_A
+  rotate: false
+  xy: 863, 394
+  size: 228, 22
+  orig: 228, 22
+  offset: 0, 0
+  index: -1
+woodShadow_lvl13_B
+  rotate: false
+  xy: 876, 418
+  size: 240, 22
+  orig: 240, 22
+  offset: 0, 0
+  index: -1
+woodShadow_lvl13_C
+  rotate: false
+  xy: 1609, 420
+  size: 241, 22
+  orig: 241, 22
+  offset: 0, 0
+  index: -1
+woodShort
+  rotate: false
+  xy: 600, 189
+  size: 37, 42
+  orig: 37, 42
+  offset: 0, 0
+  index: -1
+woodShortTop
+  rotate: false
+  xy: 1118, 398
+  size: 240, 42
+  orig: 240, 42
+  offset: 0, 0
+  index: -1
+woodStandart
+  rotate: false
+  xy: 1360, 379
+  size: 240, 42
+  orig: 240, 42
+  offset: 0, 0
+  index: -1
+woodStandartA1
+  rotate: false
+  xy: 1396, 467
+  size: 241, 43
+  orig: 241, 43
+  offset: 0, 0
+  index: -1
+woodStandartA2
+  rotate: false
+  xy: 223, 441
+  size: 295, 42
+  orig: 295, 42
+  offset: 0, 0
+  index: -1
+woodStandartC
+  rotate: false
+  xy: 444, 345
+  size: 156, 42
+  orig: 156, 42
+  offset: 0, 0
+  index: -1
+woodStandartC2
+  rotate: false
+  xy: 1844, 363
+  size: 156, 43
+  orig: 156, 43
+  offset: 0, 0
+  index: -1
+woodStandartM
+  rotate: false
+  xy: 1602, 376
+  size: 240, 42
+  orig: 240, 42
+  offset: 0, 0
+  index: -1
+woodTop
+  rotate: false
+  xy: 2, 16
+  size: 184, 56
+  orig: 184, 56
+  offset: 0, 0
+  index: -1
+gai
+  rotate: false
+  xy: 1343, 339
+  size: 14, 11
+  orig: 14, 11
+  offset: 0, 0
+  index: -1

@@ -38,7 +38,7 @@ public class PointForm {
             if (index<0) return;
             pnInfo.removeAll();
             IMovePath.MPos mPos = data.get(index);
-            ui.InitComponents(Arrays.asList("current","useX","useY"), mPos,pnInfo);
+            ui.InitComponents(Arrays.asList("useX","useY"), mPos,pnInfo);
             new IPosPanel(Arrays.asList(), mPos.iPos,pnInfo);
             ui.Repaint(pnInfo);
         });

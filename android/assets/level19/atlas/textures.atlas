@@ -1,0 +1,132 @@
+
+textures.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+gapPlat1
+  rotate: false
+  xy: 2, 2
+  size: 173, 31
+  orig: 173, 31
+  offset: 0, 0
+  index: -1
+wood1
+  rotate: false
+  xy: 548, 630
+  size: 336, 674
+  orig: 336, 674
+  offset: 0, 0
+  index: -1
+wood2
+  rotate: false
+  xy: 2, 1307
+  size: 571, 706
+  orig: 571, 706
+  offset: 0, 0
+  index: -1
+wood3
+  rotate: false
+  xy: 2, 672
+  size: 544, 633
+  orig: 544, 633
+  offset: 0, 0
+  index: -1
+wood4
+  rotate: false
+  xy: 2, 35
+  size: 484, 635
+  orig: 484, 635
+  offset: 0, 0
+  index: -1
+wood5
+  rotate: false
+  xy: 575, 1306
+  size: 427, 707
+  orig: 427, 707
+  offset: 0, 0
+  index: -1
+wood5Back
+  rotate: false
+  xy: 1004, 1556
+  size: 328, 149
+  orig: 328, 149
+  offset: 0, 0
+  index: -1
+water1
+  rotate: false
+  xy: 1004, 1917
+  size: 1024, 96
+  orig: 1024, 96
+  offset: 0, 0
+  index: -1
+water1_1
+  rotate: false
+  xy: 1004, 1896
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_10
+  rotate: false
+  xy: 1004, 1707
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_2
+  rotate: false
+  xy: 1004, 1875
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_3
+  rotate: false
+  xy: 1004, 1854
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_4
+  rotate: false
+  xy: 1004, 1833
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_5
+  rotate: false
+  xy: 1004, 1812
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_6
+  rotate: false
+  xy: 1004, 1791
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_7
+  rotate: false
+  xy: 1004, 1770
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_8
+  rotate: false
+  xy: 1004, 1749
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1
+water1_9
+  rotate: false
+  xy: 1004, 1728
+  size: 1024, 19
+  orig: 1024, 19
+  offset: 0, 0
+  index: -1

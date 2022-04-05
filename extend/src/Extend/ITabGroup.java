@@ -1,16 +1,22 @@
 package Extend;
 
+import GameGDX.GDX;
 import GameGDX.GUIData.IGroup;
 import GameGDX.Screens.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 public class ITabGroup extends IGroup {
+    private GDX.Func<Integer> getSelected;
 
     public ITabGroup()
     {
         AddChild("buttons",new IGroup());
         AddChild("tabs",new IGroup());
+    }
+    public int GetSelected()
+    {
+        return getSelected.Run();
     }
 
     @Override
@@ -39,6 +45,7 @@ public class ITabGroup extends IGroup {
         group.clearChildren();
         group.addActor(tabs.GetIChild(index).GetActor());
         buttons.GetIChild(index).SetColor(Color.WHITE);
+        getSelected = ()->index;
     }
     private void DisableButton()
     {

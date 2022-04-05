@@ -3,6 +3,8 @@ package GameGDX;
 import com.badlogic.gdx.math.EarClippingTriangulator;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.List;
+
 public class Util {
     //<editor-fold desc="Vector">
     public static float GetAngle(Vector2 p1, Vector2 p2,Vector2 p3)
@@ -82,4 +84,10 @@ public class Util {
         }
     }
     //</editor-fold>
+
+    public static <T> void Reverse(List<T> list, GDX.Runnable<T> cb)
+    {
+        for (int i=list.size()-1;i>=0;i--)
+            cb.Run(list.get(i));
+    }
 }

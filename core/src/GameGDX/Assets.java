@@ -115,14 +115,23 @@ public class Assets extends Actor {
         }
     }
 
-    public void LoadPackage(String pack)
+    public void ForceLoadPackage(String pack)
     {
-        if (!gameData.Contains(pack)) return;
-        if (packLoaded.contains(pack)) return;
         packLoaded.add(pack);
         for(AssetNode n : GetAssetPackage(pack).assetNodes)
             mapAssets.put(n.name,n);
         LoadAssets(GetAssetPackage(pack).loadableNode);
+    }
+    public static void ForceLoadPackages(Runnable done, String... packs){
+        for(String pack : packs) i.ForceLoadPackage(pack);
+        i.manager.finishLoading();
+        if(done!=null) done.run();
+    }
+    public void LoadPackage(String pack)
+    {
+        if (!gameData.Contains(pack)) return;
+        if (packLoaded.contains(pack)) return;
+        ForceLoadPackage(pack);
     }
     public static void LoadPackages(Runnable done, String... packs){
         for(String pack : packs) i.LoadPackage(pack);
@@ -209,7 +218,7 @@ public class Assets extends Actor {
     {
         List<AssetNode> list = new ArrayList<>();
         for(AssetNode n : i.mapAssets.values())
-                if (n.kind==kind) list.add(n);
+            if (n.kind==kind) list.add(n);
         return list;
     }
     public static AssetManager GetManager()

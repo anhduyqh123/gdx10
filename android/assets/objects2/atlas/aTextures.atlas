@@ -1,0 +1,174 @@
+
+aTextures.png
+size: 2048, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bushLev
+  rotate: false
+  xy: 511, 381
+  size: 376, 244
+  orig: 376, 244
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 1028, 810
+  size: 370, 86
+  orig: 370, 86
+  offset: 0, 0
+  index: -1
+laminaria
+  rotate: false
+  xy: 1028, 898
+  size: 734, 111
+  orig: 734, 111
+  offset: 0, 0
+  index: -1
+land1
+  rotate: false
+  xy: 2, 819
+  size: 1024, 190
+  orig: 1024, 190
+  offset: 0, 0
+  index: -1
+land1a
+  rotate: false
+  xy: 2, 627
+  size: 1024, 190
+  orig: 1024, 190
+  offset: 0, 0
+  index: -1
+line
+  rotate: false
+  xy: 2, 29
+  size: 1024, 6
+  orig: 1024, 6
+  offset: 0, 0
+  index: -1
+mush1
+  rotate: false
+  xy: 1764, 910
+  size: 111, 99
+  orig: 111, 99
+  offset: 0, 0
+  index: -1
+mush2
+  rotate: false
+  xy: 889, 540
+  size: 100, 85
+  orig: 100, 85
+  offset: 0, 0
+  index: -1
+waterHide1
+  rotate: false
+  xy: 1169, 750
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+waterHide2
+  rotate: false
+  xy: 1877, 951
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+beam
+  rotate: false
+  xy: 1028, 673
+  size: 139, 135
+  orig: 139, 135
+  offset: 0, 0
+  index: -1
+blade
+  rotate: false
+  xy: 511, 216
+  size: 170, 163
+  orig: 170, 163
+  offset: 0, 0
+  index: -1
+buttonHoldLeft
+  rotate: false
+  xy: 889, 481
+  size: 38, 57
+  orig: 38, 57
+  offset: 0, 0
+  index: -1
+buttonHoldRight
+  rotate: false
+  xy: 542, 157
+  size: 38, 57
+  orig: 38, 57
+  offset: 0, 0
+  index: -1
+buttonLeft
+  rotate: false
+  xy: 991, 567
+  size: 22, 58
+  orig: 22, 58
+  offset: 0, 0
+  index: -1
+buttonRight
+  rotate: false
+  xy: 1400, 811
+  size: 22, 58
+  orig: 22, 58
+  offset: 0, 0
+  index: -1
+door
+  rotate: false
+  xy: 511, 65
+  size: 29, 149
+  orig: 29, 149
+  offset: 0, 0
+  index: -1
+hide70
+  rotate: false
+  xy: 683, 354
+  size: 118, 25
+  orig: 118, 25
+  offset: 0, 0
+  index: -1
+hide80
+  rotate: false
+  xy: 1400, 871
+  size: 136, 25
+  orig: 136, 25
+  offset: 0, 0
+  index: -1
+hide90
+  rotate: false
+  xy: 2, 2
+  size: 150, 25
+  orig: 150, 25
+  offset: 0, 0
+  index: -1
+gate2
+  rotate: false
+  xy: 2, 37
+  size: 507, 588
+  orig: 507, 588
+  offset: 0, 0
+  index: -1
+light_0001
+  rotate: false
+  xy: 1028, 636
+  size: 36, 35
+  orig: 36, 35
+  offset: 0, 0
+  index: -1
+light_0002
+  rotate: false
+  xy: 683, 325
+  size: 28, 27
+  orig: 28, 27
+  offset: 0, 0
+  index: -1
+light_0003
+  rotate: false
+  xy: 511, 40
+  size: 22, 23
+  orig: 22, 23
+  offset: 0, 0
+  index: -1

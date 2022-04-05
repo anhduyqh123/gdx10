@@ -19,7 +19,7 @@ public class GDXTool {
         {
             if (f.isDirectory()) Encode(f.path());
             else
-            if (encodeExtension.contains(f.extension())) GDX.Encode(f);
+            if (encodeExtension.contains(f.extension())) GTextureLoader.Encode(f);
         }
     }
     public static void Decode(String path)
@@ -34,7 +34,7 @@ public class GDXTool {
     }
     private static void Decode(FileHandle file)
     {
-        file.writeBytes(GDX.Decode(file),false);
+        file.writeBytes(GTextureLoader.Decode(file),false);
     }
     public static void GenerateMainAtlas(String path,String output)
     {

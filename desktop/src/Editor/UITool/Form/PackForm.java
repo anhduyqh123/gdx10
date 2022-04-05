@@ -30,6 +30,7 @@ public class PackForm {
     private JButton btEncode;
     private JButton btDecode;
     private JButton btUnMini;
+    private JRadioButton rSpine;
     private JFameUI ui = new JFameUI();
 
     public PackForm(List<String> packs)
@@ -88,6 +89,7 @@ public class PackForm {
         AssetPackage aPack = Assets.GetAssetPackage(pack);
         if (rAtlas.isSelected()) GDXTool.Encode(aPack.GetAtlasUrl());
         if (rTexture.isSelected()) GDXTool.Encode(aPack.GetTextureUrl());
+        if (rSpine.isSelected()) GDXTool.Encode(aPack.url+"/spines");
     }
     private void Decode()
     {
@@ -95,6 +97,7 @@ public class PackForm {
         AssetPackage aPack = Assets.GetAssetPackage(pack);
         if (rAtlas.isSelected()) GDXTool.Decode(aPack.GetAtlasUrl());
         if (rTexture.isSelected()) GDXTool.Decode(aPack.GetTextureUrl());
+        if (rSpine.isSelected()) GDXTool.Decode(aPack.url+"/spines");
     }
     private void Click(JButton bt,Runnable run)
     {

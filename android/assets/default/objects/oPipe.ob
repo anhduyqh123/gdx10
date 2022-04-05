@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IGroup,sizeName:img,list:[img,case],map:{img:{class:GameGDX.GUIData.IImage,iTexture:{name:pipe}},case:{class:GameGDX.GUIData.IGroup}}}

@@ -1,4 +1,4 @@
-package com.game;
+package Editor;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
@@ -11,8 +11,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.glutils.FileTextureData;
 import com.badlogic.gdx.utils.Array;
-
-import GameGDX.GDX;
 
 public class GTextureLoader extends AsynchronousAssetLoader<Texture, TextureLoader.TextureParameter> {
 
@@ -32,7 +30,7 @@ public class GTextureLoader extends AsynchronousAssetLoader<Texture, TextureLoad
     public void loadAsync (AssetManager manager, String fileName, FileHandle file, TextureLoader.TextureParameter parameter) {
         info.filename = fileName;
         if (parameter == null || parameter.textureData == null) {
-            byte[] bytes = GDX.Decode(file);
+            byte[] bytes = Decode(file);
             Pixmap pixmap = new Pixmap(bytes, 0, bytes.length);
             Pixmap.Format format = null;
             boolean genMipMaps = false;
@@ -71,5 +69,33 @@ public class GTextureLoader extends AsynchronousAssetLoader<Texture, TextureLoad
     @Override
     public Array<AssetDescriptor> getDependencies (String fileName, FileHandle file, TextureLoader.TextureParameter parameter) {
         return null;
+    }
+    //encode
+    private static String endCode = "zen";
+    private static byte[] endBytes = endCode.getBytes();
+    public static void Encode(FileHandle file)
+    {
+        byte[] bytes = file.readBytes();
+        byte[] extendBytes = new byte[endBytes.length];
+        for(int i=0;i<extendBytes.length;i++)
+            extendBytes[i] = bytes[i];
+        String extendSt = new String(extendBytes);
+        if (extendSt.equals(endCode)) return;
+        file.writeBytes(endBytes,false);
+        file.writeBytes(bytes,true);
+    }
+    //decode
+    public static byte[] Decode(FileHandle file)
+    {
+        byte[] bytes = file.readBytes();
+        byte[] extendBytes = new byte[endBytes.length];
+        for(int i=0;i<extendBytes.length;i++)
+            extendBytes[i] = bytes[i];
+        String extendSt = new String(extendBytes);
+        if (!extendSt.equals(endCode)) return bytes;
+        byte[] newBytes = new byte[bytes.length-endBytes.length];
+        for(int i=endBytes.length;i<bytes.length;i++)
+            newBytes[i-endBytes.length] = bytes[i];
+        return newBytes;
     }
 }

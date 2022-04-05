@@ -40,13 +40,17 @@ public class GameData extends Json.JsonObject {
         for(AssetPackage assetPackage : packs.values())
             assetPackage.Install();
     }
-    public void LoadPackages()
+    public void LoadPackages(String path)
     {
-        for(FileHandle child : GDX.GetFile(".").list())
+        for(FileHandle child : GDX.GetFile(path).list())
         {
             if (!child.isDirectory()) continue;
             LoadPackage(child.nameWithoutExtension(), child.path());
         }
+    }
+    public void LoadPackages()
+    {
+        LoadPackages(".");
     }
     public void LoadPackage(String packName,String path)
     {

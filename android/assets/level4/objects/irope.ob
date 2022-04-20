@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,type:DynamicBody,fixtures:[{density:3.0,restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{},{x:200.0},{x:200.0,y:10.0},{y:10.0}]},friction:0.0,mark:0}]}},iTexture:{name:rope1},iSize:{width:200.0,height:10.0}}

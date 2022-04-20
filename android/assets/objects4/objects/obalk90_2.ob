@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,prefab:objects4/oBalk,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{},{x:144.0},{x:144.0,y:26.0},{x:14.0,y:26.0},{x:7.0,y:23.0},{x:2.0,y:17.0},{y:11.0}]},category:4}]}},iTexture:{name:balk90_2}}

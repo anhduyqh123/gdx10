@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,prefab:objects2/oStumb,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{density:0.0,restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:20.0,y:114.0},{x:5.0,y:13.0},{x:196.0,y:13.0},{x:184.0,y:133.0},{x:172.0,y:259.0},{x:35.0,y:259.0}]},friction:0.4}]}},iTexture:{name:stumb2}}

@@ -1,1 +1,0 @@
-{class:Extend.Frame.IFrame,iAniMap:{idle:{start:1,end:1,key:decor_1_},start:{start:1,end:8,frameDuration:0.1,key:decor_1_}},acList:{map:{init:{class:GameGDX.GUIData.IAction.IForever,name:init,list:[{class:GameGDX.GUIData.IAction.ISequence,list:[{class:GameGDX.GUIData.IAction.IDelay,duration:5.0},{class:Extend.Frame.IFrameAction,ani:start,nextAni:idle}]}]}}},frame:decor_1_1}

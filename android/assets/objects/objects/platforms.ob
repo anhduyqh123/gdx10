@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,componentMap:{plat:{class:Extend.Box2d.IPlatform,fixtures:[{iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{},{x:100.0},{x:100.0,y:100.0},{y:100.0}]}}]}}}

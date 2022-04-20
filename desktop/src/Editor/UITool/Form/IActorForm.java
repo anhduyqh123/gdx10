@@ -53,7 +53,7 @@ public class IActorForm {
         pInfo.setLayout(new WrapLayout());
 
         ContentPanel.i.SetContent(pInfo, iActor);
-        ui.InitComponents(Arrays.asList("width","height","origin","originX","originY",
+        ui.InitComponents(Arrays.asList("width","height","delW","delH","origin","originX","originY",
                         "scale","rotate","extendScreen","fillW","fillH","scaleX","scaleY")
                 ,iActor.iSize,pSize);
         //int w = iActor.GetActor().getWidth();

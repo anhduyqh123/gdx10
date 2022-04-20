@@ -17,7 +17,8 @@ public class ITable extends IGroup {
     public float childWidth,childHeight;
     public IAlign contentAlign = IAlign.center,rowAlign = IAlign.center;
     public int column = 0,clone;
-    public float spaceX,spaceY,padX,padY;
+    public float spaceX,spaceY;
+    public float padLeft,padRight,padTop,padBot;
     public boolean autoFill;
 
     private GDX.Func<List<IActor>> getChildren;//current
@@ -89,6 +90,7 @@ public class ITable extends IGroup {
             i++;
             if (i%column==0) NewRow(table);
         }
+        table.pad(padTop,padLeft,padBot,padRight);
         table.align(contentAlign.value);
         table.validate();
     }
@@ -119,7 +121,7 @@ public class ITable extends IGroup {
     }
     private void NewRow(Table table)
     {
-        Cell cell = table.row().spaceRight(spaceX).spaceTop(spaceY).padRight(padX).padTop(padY);
+        Cell cell = table.row().spaceRight(spaceX).spaceTop(spaceY);
         cell.align(rowAlign.value);
         if (childWidth!=0) cell.width(childWidth);
         if (childHeight!=0) cell.height(childHeight);

@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IGroup,componentMap:{line:{class:Extend.ILineRenderer}},list:[line,p1,p2],map:{p1:{iSize:{width:20.0,height:20.0}},p2:{iSize:{width:20.0,height:20.0},iPos:{x:{class:GameGDX.GUIData.IChild.IPos$Value,value:989.0},y:{class:GameGDX.GUIData.IChild.IPos$Value,value:415.0}}},line:{class:GameGDX.GUIData.IScrollImage,iSize:{origin:left,width:1000.0,height:10.0}}}}

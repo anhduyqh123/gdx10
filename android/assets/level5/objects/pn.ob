@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,type:DynamicBody,fixtures:[{density:5.0,restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{},{x:267.0},{x:266.91266,y:15.528225},{x:0.045150757,y:15.497288}]},friction:10.0,mark:1021}]}},iTexture:{name:gearPlane1}}

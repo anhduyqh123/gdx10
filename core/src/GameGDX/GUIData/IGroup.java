@@ -13,6 +13,10 @@ import com.badlogic.gdx.utils.SnapshotArray;
 import java.util.*;
 
 public class IGroup extends IActor {
+    //GetIChild ->Get child by name
+    //FindChild ->Find child by name
+    //GetIActor ->Get neighbor actor
+
     protected Map<String, IActor> map = new HashMap<>();
     protected List<String> list = new ArrayList<>();
     public String sizeName = "";

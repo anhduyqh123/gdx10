@@ -5,6 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 
 public class IScrollPane extends IGroup {
+    public float percentX,percentY;
+    public String scrollToChild = "";
     @Override
     protected Actor NewActor() {
         return new ScrollPane(null){
@@ -30,14 +32,29 @@ public class IScrollPane extends IGroup {
         InitActor();
         BaseRefresh();
         RefreshChild();
+
+        ScrollPane scroll = GetActor();
+        scroll.layout();
+        scroll.setScrollPercentX(percentX);
+        scroll.setScrollPercentY(percentY);
+        scroll.updateVisualScroll();
+        if (scrollToChild.equals("")) return;
+        ScrollToChild();
+    }
+    private void ScrollToChild()
+    {
+        try {
+            Actor child = FindChild(scrollToChild);
+            ScrollPane scroll = GetActor();
+            scroll.layout();
+            scroll.scrollTo(child.getX(),child.getY()
+                    ,child.getWidth(),child.getHeight(),true,true);
+        }catch (Exception e){}
     }
     private void RefreshChild()
     {
         if (list.size()<=0) return;
         IActor iActor = GetIChild(0);
         iActor.Refresh();
-
-//        ScrollPane scroll = GetActor();
-//        scroll.setActor(iActor.GetActor());
     }
 }

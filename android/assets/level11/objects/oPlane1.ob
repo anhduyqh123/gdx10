@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:1.8561707,y:344.69434},{x:282.8911,y:345.09},{x:282.68774,y:370.29996},{x:1.8561707,y:370.08026}]},friction:0.4}]}},iTexture:{name:waterPlane}}

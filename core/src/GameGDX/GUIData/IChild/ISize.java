@@ -8,10 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class ISize {
+    //width,height 0->1 => ratio
     public float width,height,scale=1f,scaleX,scaleY,rotate;
+    public float delW,delH;
     public float originX,originY; //percent 0->1
     public IAlign origin = IAlign.bottomLeft;
-    public boolean extendScreen,fillW,fillH;//fill screen
+    public boolean extendScreen;//fill screen
 
     //interface
     public GDX.Func<Vector2> getDefaultSize;
@@ -53,21 +55,31 @@ public class ISize {
         if (h>0) return h;
         return GetStage().getHeight();
     }
-    public float GetWidth()
+    private float GetWidth0()
     {
-        if (fillW) return GetFillW();
-        if (width>0) return width;
+        //if (fillW) return GetFillW();
+        if (width>1) return width;
+        if (width>0) return GetFillW()*width;
         Vector2 defaultSize = GetDefault();
         if (defaultSize!=null) return defaultSize.x;
         return width;
     }
-    public float GetHeight()
+    public float GetWidth()
     {
-        if (fillH) return GetFillH();
-        if (height>0) return height;
+        return GetWidth0()+delW;
+    }
+    private float GetHeight0()
+    {
+        //if (fillH) return GetFillH();
+        if (height>1) return height;
+        if (height>0) return GetFillH()*height;
         Vector2 defaultSize = GetDefault();
         if (defaultSize!=null) return defaultSize.y;
         return height;
+    }
+    public float GetHeight()
+    {
+        return GetHeight0()+delH;
     }
     public float GetScale()
     {

@@ -2,9 +2,8 @@ package com.game;
 
 
 import GameGDX.*;
-import GameGDX.AssetLoading.AssetNode;
 import GameGDX.AssetLoading.GameData;
-import GameGDX.GUIData.IImage;
+import GameGDX.Screens.Screen;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 
 public class MyGame extends GDXGame {
@@ -12,16 +11,8 @@ public class MyGame extends GDXGame {
     public void DoneLoading() {
         new Assets().SetData(GetGameData(true));
         Assets.LoadPackages(()->{
-            Assets.GetTexture("back1").getTexture().dispose();
-            IImage.NewImage(Assets.GetTexture("back1"),Scene.ui);
-            //done loading
-//            GFrame frame = new GFrame();
-//            //frame.Set("water1_",1,10,0.1f);
-//            frame.setSize(710,23);
-//            frame.setPosition(200,200);
-//            Scene.ui.addActor(frame);
-
-        },"default","levels");//load first package
+            new Screen("Game").Show();
+        },"first");//load first package
     }
 
     @Override
@@ -33,8 +24,7 @@ public class MyGame extends GDXGame {
     @Override
     protected GameData LoadPackages(String path) {
         GameData data = new GameData();
-        data.LoadPackage("default","default/");
-        data.LoadPackage("levels","levels/");
+        data.LoadPackage("first","first/");
 
         GDX.WriteToFile(path, Json.ToJsonData(data));
         return data;

@@ -105,6 +105,10 @@ public class Particle extends Actor {
         arr.add(new Sprite(new TextureRegion(tr)));
         GetEmitter(index).setSprites(arr);
     }
+    public void SetSprite(int index, String txtName)
+    {
+        SetSprite(index,Assets.GetTexture(txtName));
+    }
     public ParticleEmitter GetEmitter(int index)
     {
         return pe.getEmitters().get(index);

@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,prefab:level4/gr1,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{},{x:384.0},{x:384.0,y:550.0},{x:273.99664,y:549.5502},{x:87.0,y:552.0},{x:88.0,y:511.0},{x:94.0,y:474.0},{x:96.0,y:387.0},{x:88.0,y:316.0},{x:79.0,y:298.0},{y:298.0}]}}]}},iTexture:{name:land2a}}

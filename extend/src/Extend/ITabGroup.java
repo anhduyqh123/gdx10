@@ -44,11 +44,11 @@ public class ITabGroup extends IGroup {
         Group group = tabs.GetActor();
         group.clearChildren();
         group.addActor(tabs.GetIChild(index).GetActor());
-        buttons.GetIChild(index).SetColor(Color.WHITE);
+        buttons.GetIChild(index).RunAction("enable");
         getSelected = ()->index;
     }
     private void DisableButton()
     {
-        FindIGroup("buttons").ForEach(i->i.SetColor(Color.GRAY));
+        FindIGroup("buttons").RunAction("disable");
     }
 }

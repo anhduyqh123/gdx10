@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IChain,points:[{x:7.168167,y:3.7320213},{x:54.269363,y:49.186317},{x:55.257492,y:59.067688},{x:77.984634,y:58.738304},{x:77.65526,y:0.43823242}]},friction:0.4}]}},iTexture:{name:stopper1}}

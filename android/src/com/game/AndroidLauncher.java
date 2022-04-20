@@ -1,6 +1,7 @@
 package com.game;
 
 import ISdk.AdMob;
+import ISdk.FireStore;
 import ISdk.Firebase;
 import android.os.Bundle;
 
@@ -15,8 +16,8 @@ public class AndroidLauncher extends AndroidApplication {
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		//MyGame game = new MyGame();
-		View gameView = initializeForView(new BaseGame(), config);
+		TestGame game = new TestGame();
+		View gameView = initializeForView(new MyGame(), config);
 
 		FrameLayout rootView = new FrameLayout(this);
 		rootView.addView(gameView);
@@ -29,5 +30,7 @@ public class AndroidLauncher extends AndroidApplication {
 		adMob.InitInterstitial();
 		adMob.InitVideoReward();
 		//game.adMob = adMob;
+
+		new FireStore();
 	}
 }

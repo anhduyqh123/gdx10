@@ -17,7 +17,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.game"
+        applicationId "com.gdx10"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -43,11 +43,11 @@ android {
 // so they get packed with the APK.
 task copyAndroidNatives {
     doFirst {
-        //file("libs/armeabi/").mkdirs()
+        file("libs/armeabi/").mkdirs()
         file("libs/armeabi-v7a/").mkdirs()
         file("libs/arm64-v8a/").mkdirs()
-        //file("libs/x86_64/").mkdirs()
-        //file("libs/x86/").mkdirs()
+        file("libs/x86_64/").mkdirs()
+        file("libs/x86/").mkdirs()
 
         configurations.natives.files.each { jar ->
             def outputDir = null

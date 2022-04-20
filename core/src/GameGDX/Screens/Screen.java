@@ -90,4 +90,10 @@ public class Screen extends BaseScreen {
     {
         return FindIActor(name);
     }
+
+    //action
+    public void RunAction(String name)
+    {
+        GetIGroup().RunAction(name);
+    }
 }

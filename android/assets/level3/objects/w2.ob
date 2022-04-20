@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,prefab:level3/w1,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:143.0,y:236.0},{x:418.0,y:236.0},{x:418.0,y:262.0},{x:143.0,y:262.0}]},friction:0.4}]}},iTexture:{name:wood2}}

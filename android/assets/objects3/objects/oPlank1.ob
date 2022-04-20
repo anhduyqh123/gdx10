@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,fixedRotation:true,fixtures:[{density:5.0,restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:1.0},{x:195.0},{x:195.0,y:27.0},{x:1.0,y:27.0}]},friction:0.4}]}},iTexture:{name:plank1}}

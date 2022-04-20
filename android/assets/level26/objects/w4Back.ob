@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,prefab:objects2/oWood,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{density:0.0,restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:5.0,y:11.0},{x:201.0,y:13.0},{x:188.0,y:134.0},{x:17.0,y:134.0}]},friction:0.4}]}},iTexture:{name:wood4Back}}

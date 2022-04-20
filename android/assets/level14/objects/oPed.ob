@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:3.9066162,y:462.89517},{x:110.581116,y:462.89517},{x:110.05301,y:486.1312},{x:3.3785095,y:486.1312}]},friction:0.4}]}},iTexture:{name:pedestal1}}

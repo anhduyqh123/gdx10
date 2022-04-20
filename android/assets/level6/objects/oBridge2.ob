@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,prefab:level6/oBridge1,componentMap:{body:{class:Extend.Box2d.IBody,fixtures:[{restitution:0.0,iShape:{class:Extend.Box2d.IShape$IPolygon,points:[{x:4.51062,y:343.53934},{x:366.3725,y:345.5184},{x:366.3725,y:368.66776},{x:2.6977386,y:368.69296}]},friction:0.4}]}},iTexture:{name:bridgePlane2}}

@@ -1,6 +1,7 @@
 package GameGDX;
 
 import com.badlogic.gdx.math.EarClippingTriangulator;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.List;
@@ -89,5 +90,9 @@ public class Util {
     {
         for (int i=list.size()-1;i>=0;i--)
             cb.Run(list.get(i));
+    }
+    public static <T> T Random(T[] arr)
+    {
+        return arr[MathUtils.random(0,arr.length-1)];
     }
 }

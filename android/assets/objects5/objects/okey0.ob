@@ -1,1 +1,0 @@
-{class:GameGDX.GUIData.IImage,componentMap:{body:{class:Extend.Box2d.IBody,category:key,fixtures:[{iShape:{class:Extend.Box2d.IShape$ICircle,pos:{x:24.5,y:24.5},radius:24.5},isSensor:true}]}},iTexture:{name:key0}}

@@ -14,19 +14,14 @@ import java.util.List;
 public class GShapeRenderer extends Actor {
     protected ShapeRenderer renderer = new ShapeRenderer();
     private List<Shape> shapes = new ArrayList<>();
-    private Camera camera;
 
-    public GShapeRenderer(Group parent)
-    {
-        parent.addActor(this);
-        this.camera = parent.getStage().getCamera();
+    public GShapeRenderer(){
         renderer.setAutoShapeType(true);
     }
-    public GShapeRenderer(Camera camera,Group parent)
+    public GShapeRenderer(Group parent)
     {
+        this();
         parent.addActor(this);
-        this.camera = camera;
-        renderer.setAutoShapeType(true);
     }
     public void Clear()
     {
@@ -45,6 +40,7 @@ public class GShapeRenderer extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        Camera camera = getStage().getCamera();
         renderer.setProjectionMatrix(camera.combined);
         renderer.getColor().a = parentAlpha;
         batch.end();
@@ -55,6 +51,7 @@ public class GShapeRenderer extends Actor {
     }
     public void AddShape(Shape shape)
     {
+        shape.getStagePos = this::localToStageCoordinates;
         shapes.add(shape);
     }
     public void RemoveShape(Shape shape)
@@ -82,6 +79,7 @@ public class GShapeRenderer extends Actor {
     public void NewLine(Vector2 pos1,Vector2 pos2,float width)
     {
         Shape.Line line = new Shape.Line(pos1,pos2);
+        line.type = ShapeRenderer.ShapeType.Filled;
         line.width = width;
         AddShape(line);
     }

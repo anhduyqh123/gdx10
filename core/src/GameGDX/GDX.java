@@ -17,7 +17,7 @@ import com.badlogic.gdx.utils.Timer;
  * Version 1.2 by BaDuy
  */
 
-public class GDX {
+public class GDX { ;
     private static Preferences prefs;
     public GDX()
     {
@@ -31,6 +31,10 @@ public class GDX {
     public static boolean IsPlatform(Application.ApplicationType type)
     {
         return Gdx.app.getType() == type;
+    }
+    public static boolean IsDesktop()
+    {
+        return IsPlatform(Application.ApplicationType.Desktop);
     }
     public static boolean IsAndroid()
     {
@@ -71,6 +75,7 @@ public class GDX {
     }
     public static void Vibrate(int num)
     {
+        if (num<=0) return;
         Gdx.input.vibrate(num);
     }
 

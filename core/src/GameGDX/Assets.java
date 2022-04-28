@@ -17,18 +17,15 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Assets extends Actor {
     public static Assets i;
 
-    private List<String> packLoaded = new ArrayList<>(); // loaded
+    private HashSet<String> packLoaded = new HashSet<>();// loaded package
     private Map<String, AssetNode> mapAssets = new HashMap<>(); //loaded node
     private GameData gameData;
-    protected AssetManager manager = NewAssetManager();
+    protected AssetManager manager = new AssetManager();
 
     private Runnable doneLoading;
     private GDX.Runnable<Float> cbAssetsUpdate;
@@ -36,15 +33,13 @@ public class Assets extends Actor {
     public Assets()
     {
         i = this;
+        if (GDX.IsAndroid() || GDX.IsDesktop())
+            manager.setLoader(Texture.class,new GTextureLoader(manager.getFileHandleResolver()));
     }
     public void SetData(GameData gameData)
     {
         this.gameData = gameData;
         gameData.Install();
-    }
-    protected AssetManager NewAssetManager()
-    {
-        return new AssetManager();
     }
 
     @Override
@@ -65,15 +60,11 @@ public class Assets extends Actor {
     }
 
     //LoadAsset
-    private static void LoadAssets(List<AssetNode> list)
+    private void LoadAssets(List<AssetNode> list)
     {
         if (list==null) return;
         for (AssetNode as : list)
-            i.Load(as);
-    }
-    public void Load(String url,Class type)
-    {
-        manager.load(url,type);
+            Load(as);
     }
     protected void Load(AssetNode as)
     {
@@ -114,28 +105,35 @@ public class Assets extends Actor {
             default:
         }
     }
+    public List<AssetNode> GetLoaded(AssetNode.Kind kind)
+    {
+        List<AssetNode> list = new ArrayList<>();
+        for(AssetNode n : mapAssets.values())
+            if (n.kind==kind) list.add(n);
+        return list;
+    }
 
-    public void ForceLoadPackage(String pack)
+    private void ForceLoadPackage(String pack)
     {
         packLoaded.add(pack);
         for(AssetNode n : GetAssetPackage(pack).assetNodes)
             mapAssets.put(n.name,n);
         LoadAssets(GetAssetPackage(pack).loadableNode);
     }
-    public static void ForceLoadPackages(Runnable done, String... packs){
-        for(String pack : packs) i.ForceLoadPackage(pack);
-        i.manager.finishLoading();
-        if(done!=null) done.run();
-    }
-    public void LoadPackage(String pack)
+    private void LoadPackage(String pack)
     {
         if (!gameData.Contains(pack)) return;
         if (packLoaded.contains(pack)) return;
         ForceLoadPackage(pack);
     }
+    public static void ForceLoadPackages(Runnable done, String... packs){
+        for(String pack : packs) i.ForceLoadPackage(pack);
+        GetManager().finishLoading();
+        if(done!=null) done.run();
+    }
     public static void LoadPackages(Runnable done, String... packs){
         for(String pack : packs) i.LoadPackage(pack);
-        i.manager.finishLoading();
+        GetManager().finishLoading();
         if(done!=null) done.run();
     }
     public static void LoadPackagesSync(GDX.Runnable<Float> cbProgress, Runnable onLoaded, String... packs)
@@ -147,13 +145,13 @@ public class Assets extends Actor {
 
     public static void UnloadPackage(String pack)
     {
-        if (!i.gameData.Contains(pack)) return;
+        if (!GetData().Contains(pack)) return;
         RemovePackage(pack);
         for (AssetNode n : GetAssetPackage(pack).loadableNode)
         {
             GUIData.i.Remove(n.name);
-            if (i.manager.contains(n.url))
-                i.manager.unload(n.url);
+            if (GetManager().contains(n.url))
+                GetManager().unload(n.url);
         }
     }
     public static void UnloadPackages(String... packs)
@@ -173,7 +171,7 @@ public class Assets extends Actor {
         if (pack.Contain(node.atlas))
         {
             AssetNode al = pack.Get(node.atlas);
-            return i.manager.get(al.url, TextureAtlas.class).findRegion(name);
+            return GetManager().get(al.url, TextureAtlas.class).findRegion(name);
         }
         return new TextureRegion(Get(name, Texture.class));
     }
@@ -196,7 +194,7 @@ public class Assets extends Actor {
     }
     public static <T> T Get(String name,Class<T> type){
         AssetNode as = GetNode(name);
-        return i.manager.get(as.url,type);
+        return GetManager().get(as.url,type);
     }
     public static AssetNode GetNode(String name)
     {
@@ -204,24 +202,18 @@ public class Assets extends Actor {
     }
     public static AssetPackage GetAssetPackage(String name)
     {
-        return i.gameData.Get(name);
+        return GetData().Get(name);
     }
     public static List<AssetNode> Get(AssetNode.Kind kind)
     {
         List<AssetNode> list = new ArrayList<>();
-        for(AssetPackage p : i.gameData.GetAll())
+        GetData().Foreach(p->{
             for(AssetNode n : p.loadableNode)
                 if (n.kind==kind) list.add(n);
+        });
         return list;
     }
-    public static List<AssetNode> GetLoaded(AssetNode.Kind kind)
-    {
-        List<AssetNode> list = new ArrayList<>();
-        for(AssetNode n : i.mapAssets.values())
-            if (n.kind==kind) list.add(n);
-        return list;
-    }
-    public static AssetManager GetManager()
+    private static AssetManager GetManager()
     {
         return i.manager;
     }

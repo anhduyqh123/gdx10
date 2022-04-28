@@ -54,7 +54,7 @@ public class IActorForm {
 
         ContentPanel.i.SetContent(pInfo, iActor);
         ui.InitComponents(Arrays.asList("width","height","delW","delH","origin","originX","originY",
-                        "scale","rotate","extendScreen","fillW","fillH","scaleX","scaleY")
+                        "scale","rotate","extendScreen","scaleX","scaleY")
                 ,iActor.iSize,pSize);
         //int w = iActor.GetActor().getWidth();
         try {
@@ -97,7 +97,7 @@ public class IActorForm {
 
             @Override
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                Vector2 dir = Util.GetDirect(p0,Scene.GetMousePos());
+                Vector2 dir = Util.GetDirect(p0, Scene.GetMousePos());
                 Vector2 pos = dir.add(p);
                 Util.Round(pos);
                 Scene.SetPosition(actor,pos);

@@ -34,6 +34,9 @@ public class ITable extends IGroup {
         for(IActor i : getChildren.Run())
             cb.Run((T)i);
     }
+    public <T extends IActor> T GetIChild(int index){
+        return (T)GetChildren().get(index);
+    }
 
     @Override
     public <T extends IActor> List<T> GetChildren() {
@@ -126,23 +129,23 @@ public class ITable extends IGroup {
         if (childWidth!=0) cell.width(childWidth);
         if (childHeight!=0) cell.height(childHeight);
     }
-    public List<IActor> CloneChild(int amount)
+    public <T extends IActor> List<T> CloneChild(int amount)
     {
-        List<IActor> iActors = new ArrayList<>();
+        List<T> iActors = new ArrayList<>();
         if (list.size()<=0) return iActors;
         IActor child = GetIChild(list.get(0));
         //child.Refresh();
 
         for(int i=0;i<amount;i++)
             iActors.add(Reflect.Clone(child));
-        RefreshIActor(iActors);
+        RefreshIActor((List<IActor>) iActors);
         return iActors;
     }
-    public <T> List<IActor> CloneChild(List<T> list, GDX.Runnable2<T,IActor> cb)
+    public <T,E extends IActor> List<E> CloneChild(List<T> list, GDX.Runnable2<T,E> cb)
     {
-        List<IActor> iActors = CloneChild(list.size());
+        List<E> iActors = CloneChild(list.size());
         for(int i=0;i<list.size();i++)
-            cb.Run(list.get(i),iActors.get(i));
+            cb.Run(list.get(i),(E)iActors.get(i));
         return iActors;
     }
 

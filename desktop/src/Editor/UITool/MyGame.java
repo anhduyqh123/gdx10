@@ -1,6 +1,5 @@
 package Editor.UITool;
 
-import Editor.GTextureLoader;
 import Extend.Box2d.GBox2d;
 import Extend.GShape.GShapeRenderer;
 import Extend.Spine.Assets2;
@@ -8,11 +7,9 @@ import GameGDX.*;
 import GameGDX.AssetLoading.GameData;
 import GameGDX.GUIData.IImage;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -75,8 +72,6 @@ public class MyGame extends GDXGame {
     public void DoneLoading() {
         GameData data = GetGameData(true);
         assets.SetData(data);
-        AssetManager assets = Assets.GetManager();
-        assets.setLoader(Texture.class,new GTextureLoader(assets.getFileHandleResolver()));
 
         IImage.NewImage(Color.GRAY);
         //IImage.NewImage(Color.CYAN,0,0, Align.bottomLeft,Scene.width,Scene.height,Scene.ui);

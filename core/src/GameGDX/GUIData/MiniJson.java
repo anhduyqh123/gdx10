@@ -1,5 +1,6 @@
-package GameGDX;
+package GameGDX.GUIData;
 
+import GameGDX.GDX;
 import com.badlogic.gdx.utils.JsonValue;
 
 import java.util.HashMap;

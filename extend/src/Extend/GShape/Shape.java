@@ -1,23 +1,24 @@
 package Extend.GShape;
 
+import GameGDX.GDX;
 import GameGDX.Reflect;
 import GameGDX.Util;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Shape {
+    public GDX.Func1<Vector2,Vector2> getStagePos;
     public ShapeRenderer.ShapeType type = ShapeRenderer.ShapeType.Line;
     public void Draw(ShapeRenderer renderer)
     {
         Draw(renderer,0,0);
     }
-    public void Draw(ShapeRenderer renderer, Actor actor)
+    protected Vector2 GetStagePos(Vector2 p)
     {
-
+        return getStagePos.Run(p);
     }
     public abstract void Draw(ShapeRenderer renderer,float delX,float delY);
     @Override
@@ -37,31 +38,15 @@ public abstract class Shape {
         }
 
         @Override
-        public void Draw(ShapeRenderer renderer, Actor actor) {
-            renderer.set(type);
-            Vector2 nPos = actor.localToStageCoordinates(new Vector2(pos));
-            renderer.circle(nPos.x,nPos.y,radius);
-        }
-
-        @Override
         public void Draw(ShapeRenderer renderer, float delX, float delY) {
             renderer.set(type);
-            renderer.circle(pos.x+delX,pos.y+delY,radius);
+            Vector2 p = GetStagePos(new Vector2(pos).add(delX,delY));
+            renderer.circle(p.x,p.y,radius);
         }
     }
-    public static class Polygon extends Shape
+    public static class Polygon extends Shape //no local pos
     {
         public List<Vector2> points = new ArrayList<>();
-
-        @Override
-        public void Draw(ShapeRenderer renderer, Actor actor) {
-            renderer.set(type);
-            Util.ForTriangles(points.toArray(new Vector2[0]), arr->{
-                for (int i=0;i<arr.length;i++)
-                    arr[i] = actor.localToStageCoordinates(new Vector2(arr[i]));
-                Draw(renderer,arr,0,0);
-            });
-        }
 
         @Override
         public void Draw(ShapeRenderer renderer, float delX, float delY) {
@@ -75,16 +60,8 @@ public abstract class Shape {
                     tri[1].x+delX,tri[1].y+delY,tri[2].x+delX,tri[2].y+delY);
         }
     }
-    public static class Triangle extends Polygon
+    public static class Triangle extends Polygon //no local pos
     {
-        @Override
-        public void Draw(ShapeRenderer renderer, Actor actor) {
-            renderer.set(type);
-            Vector2[] arr = points.toArray(new Vector2[0]);
-            for (int i=0;i<arr.length;i++)
-                arr[i] = actor.localToStageCoordinates(new Vector2(arr[i]));
-            Draw(renderer,arr,0,0);
-        }
         @Override
         public void Draw(ShapeRenderer renderer, float delX, float delY) {
             renderer.set(type);
@@ -102,20 +79,14 @@ public abstract class Shape {
             this.pos1 = pos1;
             this.pos2 = pos2;
         }
-        @Override
-        public void Draw(ShapeRenderer renderer, Actor actor) {
-            renderer.set(type);
-            Vector2 p1 = actor.localToStageCoordinates(new Vector2(pos1));
-            Vector2 p2 = actor.localToStageCoordinates(new Vector2(pos2));
 
-            if (width<=0) renderer.line(p1.x,p1.y,p2.x,p2.y);
-            else renderer.rectLine(p1.x,p1.y,p2.x,p2.y,width);
-        }
         @Override
         public void Draw(ShapeRenderer renderer, float delX, float delY) {
             renderer.set(type);
-            if (width<=0) renderer.line(pos1.x+delX,pos1.y+delY,pos2.x+delX,pos2.y+delY);
-            else renderer.rectLine(pos1.x+delX,pos1.y+delY,pos2.x+delX,pos2.y+delY,width);
+            Vector2 p1 = GetStagePos(new Vector2(pos1).add(delX,delY));
+            Vector2 p2 = GetStagePos(new Vector2(pos2).add(delX,delY));
+            if (width<=0) renderer.line(p1,p2);
+            else renderer.rectLine(p1,p2,width);
         }
     }
 }

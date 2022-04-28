@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Pool;
 
 import java.util.*;
 
@@ -150,17 +149,17 @@ public class IActor {
     {
         String name = GetName()==null?"":GetName();
         if(ContainsEvent("musicOn"))
-            GAudio.i.AddMusicCallback(name, vl->{
+            GAudio.i.AddMusicEvent(name, vl->{
                 if (vl!=0) RunAction("musicOn");
                 else RunAction("musicOff");
             });
         if(ContainsEvent("soundOn"))
-            GAudio.i.AddSoundCallback(name, vl->{
+            GAudio.i.AddSoundEvent(name, vl->{
                 if (vl!=0) RunAction("soundOn");
                 else RunAction("soundOff");
             });
         if(ContainsEvent("vibrateOn"))
-            GAudio.i.AddVibrateCallback(name, vl->{
+            GAudio.i.AddVibrateEvent(name, vl->{
                 if (vl!=0) RunAction("vibrateOn");
                 else RunAction("vibrateOff");
             });

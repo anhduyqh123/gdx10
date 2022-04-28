@@ -85,7 +85,6 @@ public class Util {
         }
     }
     //</editor-fold>
-
     public static <T> void Reverse(List<T> list, GDX.Runnable<T> cb)
     {
         for (int i=list.size()-1;i>=0;i--)
@@ -94,5 +93,15 @@ public class Util {
     public static <T> T Random(T[] arr)
     {
         return arr[MathUtils.random(0,arr.length-1)];
+    }
+    public static <T> T Random(List<T> l)
+    {
+        int id = MathUtils.random(0,l.size()-1);
+        return l.get(id);
+    }
+    public static void Repeat(int repeat,Runnable cb)
+    {
+        for (int i=0;i<repeat;i++)
+            cb.run();
     }
 }

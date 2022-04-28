@@ -8,26 +8,20 @@ import java.util.List;
 import java.util.Map;
 
 public class GAudio {
-    public static GDX.Runnable<Integer> doVibrate;
-
+    public static Plat plat = new Plat();
     public static GAudio i;
-    private Map<String, GDX.Runnable<Float>> cbSound,cbMusic,cbVibrate;
-    private List<String> singles;
-
+    private Map<String, GDX.Runnable<Float>> cbSound = new HashMap<>(),
+            cbMusic = new HashMap<>(),
+            cbVibrate = new HashMap<>();
+    private List<String> singles = new ArrayList<>();
     private String musicName;
-    public float soundVolume = 1,musicVolume = 1,vibrateVolume = 1;
+    public float soundVolume = GDX.GetPrefFloat("soundVolume", 1),
+            musicVolume = GDX.GetPrefFloat("musicVolume", 1),
+            vibrateVolume = GDX.GetPrefFloat("vibrateVolume", 1);
 
     public GAudio()
     {
         i = this;
-        soundVolume = GDX.GetPrefFloat("soundVolume", soundVolume);
-        musicVolume = GDX.GetPrefFloat("musicVolume", musicVolume);
-        vibrateVolume = GDX.GetPrefFloat("vibrateVolume", vibrateVolume);
-
-        cbSound = new HashMap<>();
-        cbMusic = new HashMap<>();
-        cbVibrate = new HashMap<>();
-        singles = new ArrayList<>();
     }
     private void Refresh(Map<String, GDX.Runnable<Float>> map,float volume)
     {
@@ -46,17 +40,17 @@ public class GAudio {
         Refresh(cbVibrate,vibrateVolume);
     }
 
-    public void AddSoundCallback(String st, GDX.Runnable<Float> cb)
+    public void AddSoundEvent(String st, GDX.Runnable<Float> cb)
     {
         cbSound.put(st,cb);
         cb.Run(soundVolume);
     }
-    public void AddMusicCallback(String st, GDX.Runnable<Float> cb)
+    public void AddMusicEvent(String st, GDX.Runnable<Float> cb)
     {
         cbMusic.put(st,cb);
         cb.Run(musicVolume);
     }
-    public void AddVibrateCallback(String st, GDX.Runnable<Float> cb)
+    public void AddVibrateEvent(String st, GDX.Runnable<Float> cb)
     {
         cbVibrate.put(st,cb);
         cb.Run(vibrateVolume);
@@ -67,9 +61,9 @@ public class GAudio {
     }
     public void DoVibrate(int num)
     {
-        if (doVibrate!=null) doVibrate.Run((int)(num*vibrateVolume));
+        plat.Vibrate((int)(num*i.vibrateVolume));
     }
-    public void DoSingleVibrate(float delay,int num)
+    private void DoSingleVibrate(float delay,int num)
     {
         if (singles.contains("vibrate")) return;
         singles.add("vibrate");
@@ -93,15 +87,15 @@ public class GAudio {
     {
         vibrateVolume = Switch(vibrateVolume);
         GDX.SetPrefFloat("vibrateVolume", vibrateVolume);
-        if (doVibrate!=null) doVibrate.Run((int)(100*vibrateVolume));
+        DoVibrate(100);
         RefreshVibrate();
     }
 
     public void PlaySingleSound(String name)
     {
-        PlaySingleSound(name,0.1f);
+        i.PlaySingleSound(name,0.1f);
     }
-    public void PlaySingleSound(String name,float delay)
+    private void PlaySingleSound(String name,float delay)
     {
         if (singles.contains(name)) return;
         singles.add(name);
@@ -110,7 +104,7 @@ public class GAudio {
     }
     public void PlaySound(String name)
     {
-        Assets.GetSound(name).play(soundVolume);
+        Assets.GetSound(name).play(i.soundVolume);
     }
     public void StopSound(String name)
     {
@@ -184,7 +178,7 @@ public class GAudio {
 
     public void PlayLoop(String name, float vol, float pan, GDX.Runnable<Long> cb)
     {
-        GDXSdk.i.SoundLoop(name,vol*soundVolume,pan,cb);
+        plat.SoundLoop(name,vol*soundVolume,pan,cb);
     }
     public void SetPan(String name,long id,float vol,float pan)
     {
@@ -193,5 +187,16 @@ public class GAudio {
     public void StopSound(String name,long id)
     {
         Assets.GetSound(name).stop(id);
+    }
+    public static class Plat
+    {
+        public void Vibrate(int num)
+        {
+            GDX.Vibrate(num);
+        }
+        public void SoundLoop(String name,float volume,float pan,GDX.Runnable<Long> cb)
+        {
+            cb.Run(Assets.GetSound(name).loop(volume,1,pan));
+        }
     }
 }

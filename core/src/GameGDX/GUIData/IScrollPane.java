@@ -44,11 +44,7 @@ public class IScrollPane extends IGroup {
     private void ScrollToChild()
     {
         try {
-            Actor child = FindChild(scrollToChild);
-            ScrollPane scroll = GetActor();
-            scroll.layout();
-            scroll.scrollTo(child.getX(),child.getY()
-                    ,child.getWidth(),child.getHeight(),true,true);
+            ScrollTo(FindChild(scrollToChild));
         }catch (Exception e){}
     }
     private void RefreshChild()
@@ -56,5 +52,12 @@ public class IScrollPane extends IGroup {
         if (list.size()<=0) return;
         IActor iActor = GetIChild(0);
         iActor.Refresh();
+    }
+    public void ScrollTo(Actor child)
+    {
+        ScrollPane scroll = GetActor();
+        scroll.layout();
+        scroll.scrollTo(child.getX(),child.getY()
+                ,child.getWidth(),child.getHeight(),true,true);
     }
 }

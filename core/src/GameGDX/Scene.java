@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import java.util.*;
 
 public class Scene {
-
     public static Scene i;
     public static float scaleX,scaleY,scale;
     public static int width,height,mWidth,mHeight;
@@ -120,7 +119,6 @@ public class Scene {
     {
         return (OrthographicCamera)stage.getCamera();
     }
-    //extend
     public static Vector2 GetMousePos()
     {
         Vector2 pos = new Vector2(Gdx.input.getX(),Gdx.input.getY());

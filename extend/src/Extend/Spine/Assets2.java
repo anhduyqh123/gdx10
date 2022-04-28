@@ -8,6 +8,7 @@ public class Assets2 extends Assets {
 
     public Assets2()
     {
+        super();
         manager.setLoader(SkeletonData.class,new SkeletonDataLoader(manager.getFileHandleResolver()));
     }
     @Override

@@ -22,6 +22,10 @@ public class IActionList extends IMultiAction {
         return null;
     }
 
+    public <T extends IAction> T Get(int index)
+    {
+        return (T)GetAll().get(index);
+    }
     public <T extends IAction> T Get(String name)
     {
         return (T)map.get(name);

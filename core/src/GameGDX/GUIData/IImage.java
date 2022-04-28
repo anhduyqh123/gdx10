@@ -63,11 +63,7 @@ public class IImage extends IActor {
 
     public void SetTexture(String name)
     {
-        String preName = iTexture.name;
-        iTexture.name = name;
-        SetDrawable(iTexture.GetDrawable(GetExtend()));
-        iTexture.name = preName;
-        //SetTexture(Assets.GetTexture(name));
+        SetTexture(Assets.GetTexture(name));
     }
     public void SetTexture(Texture texture)
     {

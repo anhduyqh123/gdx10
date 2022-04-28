@@ -2,12 +2,13 @@ package Editor;
 
 import GameGDX.GDX;
 import GameGDX.Reflect;
-import com.badlogic.gdx.utils.reflect.ClassReflection;
+import GameGDX.Util;
 import com.badlogic.gdx.utils.reflect.Field;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -187,12 +188,14 @@ public class JFameUI {
         JTextField textField = NewTextField(value.toString(), width,height);
         LabelComponent(name,textField,parent);
         if (onChange!=null)
-        textField.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                onChange.Run(textField.getText());
-            }
-        });
+            textField.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    try {
+                        onChange.Run(textField.getText());
+                    }catch (Exception x){}
+                }
+            });
         return textField;
     }
     public JTextField NewTextField(String name,Object value,int width,JPanel parent,GDX.Runnable<String> onChange)
@@ -409,6 +412,11 @@ public class JFameUI {
         panel.revalidate();
         panel.repaint();
     }
+    public void ClearPanel(JPanel panel)
+    {
+        panel.removeAll();
+        Repaint(panel);
+    }
     //</editor-fold>
 
     //<editor-fold desc="ColorChooser">
@@ -521,4 +529,25 @@ public class JFameUI {
         return names;
     }
     //</editor-fold>
+
+    //new
+    public void Button(JButton bt,Runnable cb)
+    {
+        for (ActionListener e : bt.getActionListeners())
+            bt.removeActionListener(e);
+        bt.addActionListener(e->cb.run());
+    }
+    public void JListClearListener(JList jList)
+    {
+        for (ListSelectionListener e : jList.getListSelectionListeners())
+            jList.removeListSelectionListener(e);
+    }
+    public int GetInt(JTextField tf)
+    {
+        return Integer.parseInt(tf.getText());
+    }
+    public float GetFloat(JTextField tf)
+    {
+        return Float.parseFloat(tf.getText());
+    }
 }

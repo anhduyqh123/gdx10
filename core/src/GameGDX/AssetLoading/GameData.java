@@ -1,6 +1,5 @@
 package GameGDX.AssetLoading;
 
-import GameGDX.Assets;
 import GameGDX.GDX;
 import GameGDX.Json;
 import com.badlogic.gdx.files.FileHandle;
@@ -20,9 +19,10 @@ public class GameData extends Json.JsonObject {
     {
         return packs.get(pack);
     }
-    public Collection<AssetPackage> GetAll()
+    public void Foreach(GDX.Runnable<AssetPackage> cb)
     {
-        return packs.values();
+        for (AssetPackage p : packs.values())
+            cb.Run(p);
     }
     public Set<String> GetKeys()
     {
@@ -31,8 +31,7 @@ public class GameData extends Json.JsonObject {
     public List<AssetNode> GetNodes(AssetNode.Kind kind)
     {
         List<AssetNode> list = new ArrayList<>();
-        for(AssetPackage p : GetAll())
-            list.addAll(p.GetNodes(kind));
+        Foreach(p->list.addAll(p.GetNodes(kind)));
         return list;
     }
     public void Install()
@@ -55,18 +54,18 @@ public class GameData extends Json.JsonObject {
     public void LoadPackage(String packName,String path)
     {
         NewPackage(packName,path);
-        ReadDirectoryToBitmapFontAssets(packName,path+"/fonts");
-        ReadDirectoryToAtlasAssets(packName,path+"/atlas"); //load atlas before texture
-        ReadDirectoryTextureToAsset(packName,path+"/textures");
-        ReadDirectoryParticleAssets(packName,path+"/particles");
-        ReadDirectorySpineAssets(packName,path+"/spines");
+        LoadBitmapFonts(packName,path+"/fonts");
+        LoadAtlas(packName,path+"/atlas"); //load atlas before texture
+        LoadTextures(packName,path+"/textures");
+        LoadParticles(packName,path+"/particles");
+        LoadSpines(packName,path+"/spines");
 
         ReadFileToAsset(packName, AssetNode.Kind.Data, GDX.GetFile(path+"/data"),"");
         ReadFileToAsset(packName, AssetNode.Kind.Sound, GDX.GetFile(path+"/sounds"),"");
         ReadFileToAsset(packName, AssetNode.Kind.Music, GDX.GetFile(path+"/musics"),"");
         ReadFileToAsset(packName, AssetNode.Kind.Object, GDX.GetFile(path+"/objects"),"ob");
     }
-    public void ReadDirectoryToAtlasAssets(String pack,String path)
+    public void LoadAtlas(String pack, String path)
     {
         FileHandle dir = GDX.GetFile(path);
         List<AssetNode> list = ReadFileToAsset(pack, AssetNode.Kind.TextureAtlas,dir,"atlas");
@@ -82,19 +81,20 @@ public class GameData extends Json.JsonObject {
         }
     }
 
-    public void ReadDirectoryToBitmapFontAssets(String pack,String path)
+    public void LoadBitmapFonts(String pack, String path)
     {
         FileHandle dir = GDX.GetFile(path);
         ReadFileToAsset(pack, AssetNode.Kind.BitmapFont,dir,"fnt");
     }
-    public void ReadDirectoryParticleAssets(String pack,String path)
+    public void LoadParticles(String pack, String path)
     {
         FileHandle dir = GDX.GetFile(path);
         ReadFileToAsset(pack, AssetNode.Kind.Particle,dir,"p");
         ReadFileToAsset(pack, AssetNode.Kind.None,dir,"atlas"); //particle_atlas.atlas
     }
-    public void ReadDirectoryTextureToAsset(String pack,String path)
+    public void LoadTextures(String pack, String path)
     {
+        if (!Contains(pack)) NewPackage(pack,path);
         AssetPackage assetPackage = packs.get(pack);
         FileHandle dir = GDX.GetFile(path);
 
@@ -105,24 +105,17 @@ public class GameData extends Json.JsonObject {
             }
             else AddNode(assetPackage.list,pack, AssetNode.Kind.Texture,f,"");
     }
-    public void ReadDirectorySpineAssets(String pack,String path)
+    public void LoadSpines(String pack, String path)
     {
         FileHandle dir = GDX.GetFile(path);
         ReadFileToAsset(pack, AssetNode.Kind.Spine,dir,"json");
     }
 
     public List<AssetNode> ReadFileToAsset(String pack, AssetNode.Kind kind, FileHandle dir, String extension){
-        if (!packs.containsKey(pack)) NewPackage(pack,dir.path());
+        if (!Contains(pack)) NewPackage(pack,dir.path());
         List<AssetNode> list = ReadFileToList(pack, kind, dir, extension);
         packs.get(pack).Add(list);
         return list;
-    }
-    public void NewPackage(String pack,String url)
-    {
-        if (packs.containsKey(pack)) return;
-        AssetPackage assetPackage = new AssetPackage();
-        assetPackage.url = url;
-        packs.put(pack,assetPackage);
     }
     private static List<AssetNode> ReadFileToList(String pack, AssetNode.Kind kind, FileHandle dir, String extension)
     {
@@ -138,5 +131,11 @@ public class GameData extends Json.JsonObject {
         if (dir.extension().equals("DS_Store")) return;
         if(!extension.equals("") && !dir.extension().equals(extension)) return;
         list.add(new AssetNode(pack,kind,dir));
+    }
+    private void NewPackage(String pack,String url)
+    {
+        AssetPackage assetPackage = new AssetPackage();
+        assetPackage.url = url;
+        packs.put(pack,assetPackage);
     }
 }

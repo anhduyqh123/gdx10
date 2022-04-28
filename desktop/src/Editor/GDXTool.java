@@ -1,6 +1,6 @@
 package Editor;
 
-import GameGDX.GDX;
+import GameGDX.GTextureLoader;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;

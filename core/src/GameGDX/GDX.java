@@ -125,6 +125,16 @@ public class GDX { ;
         prefs.putBoolean(key,value);
         prefs.flush();
     }
+    //Time
+    public static void StartTime(String name)
+    {
+        Config.i.SetValue(name,System.currentTimeMillis());
+    }
+    public static void CheckTimeOver(String name, int second, java.lang.Runnable cb)
+    {
+        long past = Config.i.GetValue(name,0L);
+        if (System.currentTimeMillis()-past > second*1000) cb.run();
+    }
     //PostRunnable
     public static void PostRunnable(java.lang.Runnable runnable)
     {
@@ -148,6 +158,10 @@ public class GDX { ;
     {
         return GetFile(path).readString();
     }
+    public static String GetStringFromName(String name)//get string from node
+    {
+        return GetString(Assets.GetNode(name).url);
+    }
     public static FileHandle GetFile(String path)
     {
         return Gdx.files.internal(path);
@@ -155,9 +169,9 @@ public class GDX { ;
     //frame buffer
     public static Texture GetFrameBuffer(Actor actor)
     {
-        Batch batch = actor.getStage().getBatch();
-        int width = (int)actor.getStage().getWidth();
-        int height = (int)actor.getStage().getHeight();
+        Batch batch = Scene.stage.getBatch();
+        int width = (int)Scene.stage.getWidth();
+        int height = (int)Scene.stage.getHeight();
         FrameBuffer fbo = new FrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
 
         fbo.begin();
@@ -187,6 +201,9 @@ public class GDX { ;
     }
     public interface Runnable2<T1,T2>{
         void Run(T1 vl1,T2 vl2);
+    }
+    public interface Runnable3<T1,T2,T3>{
+        void Run(T1 vl1,T2 vl2,T3 vl3);
     }
     public interface Func<T>
     {

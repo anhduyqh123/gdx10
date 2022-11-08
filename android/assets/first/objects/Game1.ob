@@ -1,0 +1,1 @@
+{class:GameGDX.GUIData.IGroup,prefab:Screen,list:[lb,spine],map:{lb:{class:GameGDX.GUIData.ILabel},spine:{class:Extend.Spine.ISpine,animation:Attack 1,name:BOSS_Macay,iPos:{x:{class:GameGDX.GUIData.IChild.IPos$Ratio,ratio:0.5},y:{class:GameGDX.GUIData.IChild.IPos$Ratio,ratio:0.5},align:center}}}}

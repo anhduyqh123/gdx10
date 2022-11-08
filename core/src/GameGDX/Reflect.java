@@ -175,6 +175,10 @@ public class Reflect {
     public static <T> T NewInstance (Class type) {
         if (IsBaseType(type)) return (T)NewBaseType(type);
         try {
+            if (ClassReflection.isAssignableFrom(Enum.class, type)) {
+                if (type.getEnumConstants() == null) type = type.getSuperclass();
+                return (T)type.getEnumConstants()[0];
+            }
             return (T)ClassReflection.newInstance(type);
         } catch (Exception ex) {
             try {
@@ -184,10 +188,6 @@ public class Reflect {
                 return (T)constructor.newInstance();
             } catch (SecurityException ignored) {
             } catch (ReflectionException ignored) {
-                if (ClassReflection.isAssignableFrom(Enum.class, type)) {
-                    if (type.getEnumConstants() == null) type = type.getSuperclass();
-                    return (T)type.getEnumConstants()[0];
-                }
                 if (type.isArray())
                     throw new SerializationException("Encountered JSON object when expected array of type: " + type.getName(), ex);
                 else if (ClassReflection.isMemberClass(type) && !ClassReflection.isStaticClass(type))

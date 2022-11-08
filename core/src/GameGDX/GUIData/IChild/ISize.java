@@ -11,7 +11,7 @@ public class ISize {
     //width,height 0->1 => ratio
     public float width,height,scale=1f,scaleX,scaleY,rotate;
     public float delW,delH;
-    public float originX,originY; //percent 0->1
+    public float delOriX, delOriY; //delta origin
     public IAlign origin = IAlign.bottomLeft;
     public boolean extendScreen;//fill screen
 
@@ -58,6 +58,7 @@ public class ISize {
     private float GetWidth0()
     {
         //if (fillW) return GetFillW();
+        if (width==-1) return GetStage().getWidth();
         if (width>1) return width;
         if (width>0) return GetFillW()*width;
         Vector2 defaultSize = GetDefault();
@@ -71,6 +72,7 @@ public class ISize {
     private float GetHeight0()
     {
         //if (fillH) return GetFillH();
+        if (height==-1) return GetStage().getHeight();
         if (height>1) return height;
         if (height>0) return GetFillH()*height;
         Vector2 defaultSize = GetDefault();
@@ -102,9 +104,12 @@ public class ISize {
     public void Set(Actor actor)
     {
         actor.setSize(GetWidth(),GetHeight());
-        if (originX!=0 || originY!=0)
-            actor.setOrigin(originX*actor.getWidth(),originY*actor.getHeight());
-        else actor.setOrigin(origin.value);
+        actor.setOrigin(origin.value);
+        actor.setOriginX(actor.getOriginX()+ delOriX);
+        actor.setOriginY(actor.getOriginY()+ delOriY);
+//        if (originX!=0 || originY!=0)
+//            actor.setOrigin(originX,originY*actor.getHeight());
+//        else actor.setOrigin(origin.value);
         actor.setScale(GetScaleX(), GetScaleY());
         actor.setRotation(rotate);
     }

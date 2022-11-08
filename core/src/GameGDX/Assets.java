@@ -25,7 +25,7 @@ public class Assets extends Actor {
     private HashSet<String> packLoaded = new HashSet<>();// loaded package
     private Map<String, AssetNode> mapAssets = new HashMap<>(); //loaded node
     private GameData gameData;
-    protected AssetManager manager = new AssetManager();
+    public AssetManager manager = new AssetManager();
 
     private Runnable doneLoading;
     private GDX.Runnable<Float> cbAssetsUpdate;
@@ -33,7 +33,7 @@ public class Assets extends Actor {
     public Assets()
     {
         i = this;
-        if (GDX.IsAndroid() || GDX.IsDesktop())
+        if (!GDX.IsHTML())
             manager.setLoader(Texture.class,new GTextureLoader(manager.getFileHandleResolver()));
     }
     public void SetData(GameData gameData)
@@ -117,7 +117,10 @@ public class Assets extends Actor {
     {
         packLoaded.add(pack);
         for(AssetNode n : GetAssetPackage(pack).assetNodes)
+        {
             mapAssets.put(n.name,n);
+            GUIData.i.Remove(n.name);
+        }
         LoadAssets(GetAssetPackage(pack).loadableNode);
     }
     private void LoadPackage(String pack)

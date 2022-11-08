@@ -148,6 +148,13 @@ public class ITable extends IGroup {
             cb.Run(list.get(i),(E)iActors.get(i));
         return iActors;
     }
+    public <T extends IActor> List<T> CloneChild(int amount,GDX.Runnable2<Integer,T> cb)
+    {
+        List<T> iActors = CloneChild(amount);
+        for(int i=0;i<iActors.size();i++)
+            cb.Run(i,iActors.get(i));
+        return iActors;
+    }
 
     private List<Actor> GetActors()
     {
@@ -169,5 +176,9 @@ public class ITable extends IGroup {
     {
         List<IActor> iActorList = getChildren.Run();
         iActorList.add(iActor);
+    }
+    public void ForEach(GDX.Runnable<IActor> cb)
+    {
+        ForIChild(cb);
     }
 }

@@ -7,6 +7,7 @@ import Extend.CircleProgress.ICircleProgress;
 import Extend.Frame.IFrame;
 import Extend.ITabGroup;
 import Extend.PagedScroll.IPagedScroll;
+import Extend.PagedScroll.IPaged2Scroll;
 import Extend.Spine.GSpine;
 import Extend.Spine.ISpine;
 import Extend.Frame.GFrame;
@@ -38,7 +39,7 @@ public class ContentPanel {
     {
         Class[] types = {IGroup.class, IImage.class, ILabel.class, ITable.class,IScrollPane.class,IParticle.class, IActor.class,
                 ISpine.class, IFrame.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class, ITabGroup.class,
-                IPagedScroll.class};
+                IPagedScroll.class, IPaged2Scroll.class};
         return types;
     }
     public JPanel SetContent(JPanel panel, IActor iActor)
@@ -79,7 +80,8 @@ public class ContentPanel {
                 iActor.Refresh();
             });
             if (!iActor.prefab.equals(""))
-                ui.NewLabel("prefab:"+ iActor.prefab,panel);
+                //ui.NewLabel("prefab:"+ iActor.prefab,panel);
+                ui.NewTextField("",iActor.prefab,panel,vl->iActor.prefab=vl);
 
             ui.InitComponents(fields,iActor,panel);
         }
@@ -143,7 +145,7 @@ public class ContentPanel {
             panel.removeAll();
             String[] st = {"Texture","NinePath"};
             String s0 = st[0];
-            int h = 80;
+            int h = 120;
             if (iImage.iTexture instanceof IImage.INinePath){
                 s0 = st[1];
                 h = 160;
@@ -154,7 +156,7 @@ public class ContentPanel {
                 if (vl.equals(st[1])) iImage.iTexture = new IImage.INinePath();
                 ITexture_Panel(iImage,panel);
             });
-            ui.InitComponents(Arrays.asList("name"), iImage.iTexture,panel);
+            ui.InitComponents(Arrays.asList("name","multiLanguage"), iImage.iTexture,panel);
 
             if (iImage.iTexture instanceof IImage.INinePath){
                 List<String> list = Arrays.asList("left","right","top","bottom");
@@ -183,7 +185,10 @@ public class ContentPanel {
             super(iActor,panel);
 
             ILabel iLabel = (ILabel) iActor;
-            ui.NewComboBox(GetFonts(), iLabel.GetFontName(),panel,iLabel::SetFont);
+            ui.NewComboBox(GetFonts(), iLabel.font,panel,f->{
+                iLabel.font = f;
+                iLabel.SetFont(f);
+            });
         }
 
         @Override

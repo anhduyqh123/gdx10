@@ -98,6 +98,7 @@ public class Json {
     }
     public Map ToMap(Class type,Map map,JsonValue js)
     {
+        //return ToMap(type,Reflect.NewInstance(map.getClass()),map,js);
         return ToMap(type,new HashMap(),map,js);
     }
     protected Map ToMap(Class type,Map newMap,Map map,JsonValue js)
@@ -335,11 +336,11 @@ public class Json {
             json.jsonObject_excluded.add(this);
             json.ToObject(getClass(),this,js);
         }
-        protected  <T> T ToObject(JsonValue js){
+        public <T> T ToObject(JsonValue js){
             ReadJson(js);
             return (T)this;
         }
-        protected JsonValue ToJson(){
+        public JsonValue ToJson(){
             Json json = new Json();
             json.jsonObject_excluded.add(this);
             return json.ObjectToJson(this);

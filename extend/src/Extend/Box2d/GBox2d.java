@@ -78,8 +78,10 @@ public class GBox2d extends Actor {
     @Override
     public void setDebug(boolean debug) {
         super.setDebug(debug);
-        if (getStage()!=null)
-            SetDebug((OrthographicCamera) getStage().getCamera());
+        GDX.PostRunnable(()->{
+            if (getStage()!=null)
+                SetDebug((OrthographicCamera) getStage().getCamera());
+        });
     }
 
     @Override

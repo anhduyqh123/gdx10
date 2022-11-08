@@ -1,6 +1,7 @@
 package GameGDX;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.math.MathUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,6 +102,21 @@ public class GAudio {
         singles.add(name);
         PlaySound(name);
         GDX.Delay(()->singles.remove(name),delay);
+    }
+    public void PlaySingleSound(String name,int from,int to,float delay)
+    {
+        if (singles.contains(name)) return;
+        singles.add(name);
+        PlaySound(name,from,to);
+        GDX.Delay(()->singles.remove(name),delay);
+    }
+    public void PlaySingleSound(String name,int from,int to)
+    {
+        PlaySingleSound(name, from, to,0.1f);
+    }
+    public void PlaySound(String name,int from,int to)
+    {
+        PlaySound(name+ MathUtils.random(from,to));
     }
     public void PlaySound(String name)
     {

@@ -1,4 +1,4 @@
-package Extend;
+package Extend.Util;
 
 import java.util.NavigableMap;
 import java.util.Random;

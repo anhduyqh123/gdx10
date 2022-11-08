@@ -1,6 +1,6 @@
 package Editor.UITool.Pointed;
 
-import Extend.Box2d.IShape;
+import Extend.GShape.Shape;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
 import GameGDX.Scene;
@@ -62,5 +62,11 @@ public class Display {
         group.clearChildren();
         group.addActor(actor);
         shape = new CirclePointed(oShape,group);
+    }
+    public void LineShape(Object oShape)
+    {
+        group.clearChildren();
+        group.addActor(actor);
+        shape = new LinePointed((Shape.Line) oShape,group);
     }
 }

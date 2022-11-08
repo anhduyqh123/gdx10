@@ -8,6 +8,7 @@ import GameGDX.AssetLoading.AssetPackage;
 import GameGDX.AssetLoading.GameData;
 import GameGDX.Assets;
 import GameGDX.GUIData.GUIData;
+import com.tinify.Tinify;
 
 import javax.swing.*;
 import java.util.List;
@@ -31,6 +32,7 @@ public class PackForm {
     private JButton btDecode;
     private JButton btUnMini;
     private JRadioButton rSpine;
+    private JButton btTiny;
     private JFameUI ui = new JFameUI();
 
     public PackForm(List<String> packs)
@@ -59,6 +61,10 @@ public class PackForm {
         Click(btUnMini,()->{
             UnMiniObject();
             ui.NewDialog("UnMini Success!",panel1);
+        });
+        Click(btTiny,()->{
+            Tiny();
+            ui.NewDialog("Tiny Success!",panel1);
         });
     }
     private void MiniObject()
@@ -147,5 +153,14 @@ public class PackForm {
         Object s2 = list.get(id2);
         list.set(id1,s2);
         list.set(id2,s1);
+    }
+    private void Tiny()
+    {
+        Tinify.setKey("cqKXRyMygkGcnQ988FL7gWt3J0fz8Qdy");
+        String pack = cbPack.getSelectedItem()+"";
+        AssetPackage aPack = Assets.GetAssetPackage(pack);
+        if (rAtlas.isSelected()) GDXTool.Tiny(aPack.GetAtlasUrl());
+        if (rTexture.isSelected()) GDXTool.Tiny(aPack.GetTextureUrl());
+        //if (rSpine.isSelected()) GDXTool.Encode(aPack.url+"/spines");
     }
 }

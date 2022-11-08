@@ -158,6 +158,12 @@
                   <text value="Decode"/>
                 </properties>
               </component>
+              <component id="4aa46" class="javax.swing.JButton" binding="btTiny">
+                <constraints/>
+                <properties>
+                  <text value="Tiny"/>
+                </properties>
+              </component>
             </children>
           </grid>
         </children>

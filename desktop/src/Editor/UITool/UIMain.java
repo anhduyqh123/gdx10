@@ -3,8 +3,6 @@ package Editor.UITool;
 import Editor.JFameUI;
 import Editor.UITool.Form.MainForm;
 import Editor.UITool.Form.Panel.ContentPanel;
-import GameGDX.GUIData.GUIData;
-import com.badlogic.gdx.backends.lwjgl.LwjglAWTFrame;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -33,18 +31,18 @@ public class UIMain {
             frame.add(main.pnMain);
             frame.pack();
         });
-        JFrame gameFrame = new LwjglAWTFrame(game,"game", uiConfig.screen_width, uiConfig.screen_height);
-        gameFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        gameFrame.setLocation(screenSize.width- uiConfig.screen_width,0);
-        gameFrame.setAlwaysOnTop(true);
-//        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-//		config.width = uiConfig.screen_width;
-//		config.height = uiConfig.screen_height;
+//        JFrame gameFrame = new LwjglAWTFrame(game,"game", uiConfig.screen_width, uiConfig.screen_height);
+//        gameFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//        config.x = screenSize.width- uiConfig.screen_width;
-//        config.y = 0;
-//        LwjglApplication gameFrame = new LwjglApplication(game, config);
+//        gameFrame.setLocation(screenSize.width- uiConfig.screen_width,0);
+//        gameFrame.setAlwaysOnTop(true);
+        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.width = uiConfig.screen_width;
+		config.height = uiConfig.screen_height;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        config.x = screenSize.width- uiConfig.screen_width;
+        config.y = 0;
+        LwjglApplication gameFrame = new LwjglApplication(game, config);
     }
     protected MyGame NewGame(int width, int height, Runnable done)
     {

@@ -18,7 +18,7 @@ public class IAudio extends IAction{
 
     public IAudio()
     {
-        name = "audio";
+        name = "iAudio";
     }
 
     @Override

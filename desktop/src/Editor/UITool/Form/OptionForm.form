@@ -43,10 +43,10 @@
               <preferredSize width="80" height="30"/>
             </properties>
           </component>
-          <component id="2167b" class="javax.swing.JButton" binding="btEdit">
+          <component id="2167b" class="javax.swing.JButton" binding="btGlyphs">
             <constraints/>
             <properties>
-              <text value="Edit"/>
+              <text value="Glyphs"/>
             </properties>
           </component>
           <component id="5c3d" class="javax.swing.JLabel">

@@ -8,7 +8,6 @@ import Extend.Box2d.IShape;
 import Extend.GShape.IMask;
 import Extend.GShape.Shape;
 import Extend.ILineRenderer;
-import GameGDX.Assets;
 import GameGDX.GUIData.GUIData;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
@@ -17,8 +16,6 @@ import GameGDX.GUIData.IGroup;
 import GameGDX.GUIData.IImage;
 import GameGDX.Util;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.XmlReader;
@@ -247,8 +244,8 @@ public class XmlLevel {
     {
         iGroup.AddChildAndConnect(i.name,iActor);
         ISize iSize = iActor.iSize;
-        float dx = -iActor.iSize.originX*iSize.GetWidth();
-        float dy = -iActor.iSize.originY*iSize.GetHeight();
+        float dx = -iActor.iSize.delOriX *iSize.GetWidth();
+        float dy = -iActor.iSize.delOriY *iSize.GetHeight();
         iActor.iPos.delX = dx;
         iActor.iPos.delY = dy;
     }
@@ -270,8 +267,8 @@ public class XmlLevel {
         iActor.iSize.rotate = -js.getFloat("rot");
         iActor.iSize.scaleX = js.getFloat("sx");
         iActor.iSize.scaleY = js.getFloat("sy");
-        iActor.iSize.originX = js.getFloat("dx");
-        iActor.iSize.originY = js.getFloat("dy");
+        iActor.iSize.delOriX = js.getFloat("dx");
+        iActor.iSize.delOriY = js.getFloat("dy");
     }
 
     private IActor NewIActor2(JsonValue js)
@@ -280,10 +277,10 @@ public class XmlLevel {
         IImage iImage = GUIData.i.Get("odecor").Clone();
         iImage.iTexture.name = name;
         SetIActor(iImage,js);
-        if (name.contains("woodShadow")) iImage.iSize.originY = 0;
-        if (name.contains("woodShadowD")) iImage.iSize.originX = 0.6f;
-        if (name.contains("groundLeft")) iImage.iSize.originX = 1;
-        if (name.contains("groundRight")) iImage.iSize.originX = 0;
+        if (name.contains("woodShadow")) iImage.iSize.delOriY = 0;
+        if (name.contains("woodShadowD")) iImage.iSize.delOriX = 0.6f;
+        if (name.contains("groundLeft")) iImage.iSize.delOriX = 1;
+        if (name.contains("groundRight")) iImage.iSize.delOriX = 0;
         //iActor.iSize.origin = IAlign.center;
         return iImage;
     }

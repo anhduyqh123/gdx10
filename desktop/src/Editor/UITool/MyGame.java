@@ -44,7 +44,7 @@ public class MyGame extends GDXGame {
         gBox2d.setDebug(true);
         GBox2d.SetActive(false);
 
-        renderer = new GShapeRenderer(Scene.GetUICamera(),Scene.ui2);
+        renderer = new GShapeRenderer(Scene.ui2);
 
         DebugBorder();
         //Scene.stage.addActor(gBox2d);

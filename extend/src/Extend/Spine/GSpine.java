@@ -56,13 +56,12 @@ public class GSpine extends Group {
     }
     public void SetSpinePositionBy(float delX, float delY)
     {
-        actor.setPosition(data.getWidth()/2+delX,data.getHeight()/2+delY);
+        actor.setPosition(getOriginX()+delX,getOriginY()+delY);
     }
     public void SetData(SkeletonData data)
     {
         this.data = data;
         actor = GetSpine(data);
-        actor.setPosition(data.getWidth()/2,data.getHeight()/2);
         clearChildren();
         this.addActor(actor);
     }

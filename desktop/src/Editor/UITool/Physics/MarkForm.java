@@ -30,7 +30,7 @@ public class MarkForm {
         JFrame jFrame = ui.NewJFrame("Mark Form",panel1);
         jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        String[] all = EConfig.e.Get("category").asStringArray();
+        String[] all = EConfig.e.GetCategory();
 
         ui.ComboBox(cbCategory,all, GBox2d.GetCategory((short)category),
             name->{

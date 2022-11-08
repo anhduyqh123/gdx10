@@ -59,11 +59,10 @@ public class AdMob {
     {
         InitBanner(RelativeLayout.ALIGN_PARENT_BOTTOM);
     }
-    private void InitBanner(int align)
+    private void InitBanner(int align, AdSize adSize, GDX.Runnable<RelativeLayout.LayoutParams> cb)
     {
         if (!GetBool("is_banner",true)) return;
         adView = new AdView(context);
-        AdSize adSize = getAdSize();
         adView.setAdSize(adSize);
         adView.setAdUnitId(context.getString(R.string.banner_id));
         adView.setAdListener(new AdListener(){
@@ -84,10 +83,15 @@ public class AdMob {
         RelativeLayout.LayoutParams adViewParams = new RelativeLayout.LayoutParams(AdView.LayoutParams.WRAP_CONTENT, AdView.LayoutParams.WRAP_CONTENT);
         adViewParams.addRule(align);
         adViewParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-        adViewParams.height = adSize.getHeightInPixels(context);
+        cb.Run(adViewParams);
         relativeLayout.addView(adView, adViewParams);
         adView.loadAd(new AdRequest.Builder().build());
-
+    }
+    private void InitBanner(int align)
+    {
+        InitBanner(align,AdSize.FULL_BANNER,p->{});
+//        AdSize adSize = getAdSize();
+//        InitBanner(align,adSize,p->p.height = adSize.getHeightInPixels(context));
     }
     private AdSize getAdSize() {
         // Step 2 - Determine the screen width (less decorations) to use for the ad width.

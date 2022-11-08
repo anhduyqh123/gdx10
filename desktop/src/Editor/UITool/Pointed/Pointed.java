@@ -29,7 +29,7 @@ public class Pointed extends Actor {
     {
         this.group = group;
         Scene.SetBounds(this,group.getWidth()/2,group.getHeight()/2, Align.center,group.getWidth(),group.getHeight(),group);
-        renderer = new GShapeRenderer(Scene.GetUICamera(),group);
+        renderer = new GShapeRenderer(group);
     }
     protected void Selected(Image img)
     {
@@ -62,7 +62,8 @@ public class Pointed extends Actor {
     }
     protected Vector2 GetPos(Vector2 p)
     {
-        return group.localToStageCoordinates(new Vector2(p));
+        return new Vector2(p);
+        //return group.localToStageCoordinates(new Vector2(p));
     }
     public void Resize(float s)
     {

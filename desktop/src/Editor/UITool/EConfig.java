@@ -25,4 +25,9 @@ public class EConfig extends Config {
         if (data.has(name)) return;
         data.addChild(name,value);
     }
+    public String[] GetCategory()
+    {
+        if (e.Get("category")!=null) return e.Get("category").asStringArray();
+        return new String[]{"object","player"};
+    }
 }

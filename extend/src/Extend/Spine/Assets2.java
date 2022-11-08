@@ -16,7 +16,7 @@ public class Assets2 extends Assets {
         if (manager.isLoaded(as.url)) return;
         if (as.kind== AssetNode.Kind.Spine)
         {
-            String atlas = as.url.replace("json","atlas");
+            String atlas = as.url.replace(as.extension, "atlas");
             SkeletonDataLoader.SkeletonDataLoaderParameter pep =
                     new SkeletonDataLoader.SkeletonDataLoaderParameter(atlas);
             manager.load(as.url,SkeletonData.class,pep);

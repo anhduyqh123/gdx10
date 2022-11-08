@@ -1,5 +1,15 @@
-Extend/RandomCollection.java
- Extend.RandomCollection
+Extend/Swipe/Swipe.java
+ Extend.Swipe.Swipe
+Extend/Frame/GFrame.java
+ Extend.Frame.GFrame
+Extend/Swipe/simplify/ResolverRadialChaikin.java
+ Extend.Swipe.simplify.ResolverRadialChaikin
+com/game/BaseGame.java
+ com.game.BaseGame
+Extend/Swipe/mesh/SwipeTriStrip.java
+ Extend.Swipe.mesh.SwipeTriStrip
+Extend/Shake/GShake.java
+ Extend.Shake.GShake
 Extend/TimeUnit.java
  Extend.TimeUnit
  Extend.TimeUnit$1
@@ -9,54 +19,16 @@ Extend/TimeUnit.java
  Extend.TimeUnit$5
  Extend.TimeUnit$6
  Extend.TimeUnit$7
-com/game/BaseGame.java
- com.game.BaseGame
-Extend/MaskGroup.java
- Extend.MaskGroup
-Extend/Box2d/IJoint/IAnchor.java
- Extend.Box2d.IJoint.IAnchor
-Extend/Shake/GShake.java
- Extend.Shake.GShake
-Extend/Frame/GFrame.java
- Extend.Frame.GFrame
-Extend/GShape/GShapeRenderer.java
- Extend.GShape.GShapeRenderer
+Extend/RandomCollection.java
+ Extend.RandomCollection
+Extend/Swipe/FixedList.java
+ Extend.Swipe.FixedList
 Extend/Spine/SkeletonDataLoader.java
  Extend.Spine.SkeletonDataLoader
  Extend.Spine.SkeletonDataLoader$SkeletonDataLoaderParameter
-Extend/Box2d/GBox2d.java
- Extend.Box2d.GBox2d
- Extend.Box2d.GBox2d$1
-Extend/PagedScroll/PagedScroll.java
- Extend.PagedScroll.PagedScroll
-Extend/Box2d/IFixture.java
- Extend.Box2d.IFixture
-Extend/Box2d/RayCast.java
- Extend.Box2d.RayCast
-Extend/GShape/Shape.java
- Extend.GShape.Shape
- Extend.GShape.Shape$Circle
- Extend.GShape.Shape$Line
- Extend.GShape.Shape$Polygon
- Extend.GShape.Shape$Triangle
-Extend/Box2d/IShape.java
- Extend.Box2d.IShape
- Extend.Box2d.IShape$IChain
- Extend.Box2d.IShape$ICircle
- Extend.Box2d.IShape$IEdge
- Extend.Box2d.IShape$IPolygon
-Extend/Frame/IFrameAction.java
- Extend.Frame.IFrameAction
-Extend/Box2d/IWater.java
- Extend.Box2d.IWater
- Extend.Box2d.IWater$1
- Extend.Box2d.IWater$Event
- Extend.Box2d.IWater$Pair
 Extend/Box2d/IAction/IBodyAction.java
  Extend.Box2d.IAction.IBodyAction
  Extend.Box2d.IAction.IBodyAction$1
-Extend/PagedScroll/IPagedScroll.java
- Extend.PagedScroll.IPagedScroll
 Extend/Box2d/IAction/IContact.java
  Extend.Box2d.IAction.IContact
  Extend.Box2d.IAction.IContact$1
@@ -80,10 +52,8 @@ Extend/Box2d/IJoint/IPrismatic.java
  Extend.Box2d.IJoint.IPrismatic
 Extend/Box2d/IAction/IExplosion.java
  Extend.Box2d.IAction.IExplosion
-Extend/Spine/Assets2.java
- Extend.Spine.Assets2
-Extend/Box2d/IRayCast.java
- Extend.Box2d.IRayCast
+Extend/Box2d/RayCast.java
+ Extend.Box2d.RayCast
 Extend/GShape/IShape.java
  Extend.GShape.IShape
 Extend/Spine/GSpine.java
@@ -93,27 +63,91 @@ Extend/GShape/IMask.java
  Extend.GShape.IMask
 Extend/Box2d/IJoint/IPulley.java
  Extend.Box2d.IJoint.IPulley
-Extend/Box2d/IAction/IBodyVector.java
- Extend.Box2d.IAction.IBodyVector
- Extend.Box2d.IAction.IBodyVector$1
- Extend.Box2d.IAction.IBodyVector$Type
 Extend/Shake/IShake.java
  Extend.Shake.IShake
 Extend/Box2d/IJoint/IWheel.java
  Extend.Box2d.IJoint.IWheel
+Extend/Box2d/IFixture.java
+ Extend.Box2d.IFixture
+Extend/Frame/IAnim.java
+ Extend.Frame.IAnim
+Extend/CircleProgress/ICircleProgress.java
+ Extend.CircleProgress.ICircleProgress
+Extend/Box2d/IJoint/IWeld.java
+ Extend.Box2d.IJoint.IWeld
+com/game/TestDrawer.java
+ com.game.TestDrawer
+Extend/Box2d/IAction/IVelocity.java
+ Extend.Box2d.IAction.IVelocity
+Extend/Box2d/IAction/IBodyOther.java
+ Extend.Box2d.IAction.IBodyOther
+ Extend.Box2d.IAction.IBodyOther$Type
+Extend/Frame/IFrame.java
+ Extend.Frame.IFrame
+ Extend.Frame.IFrame$1
+Extend/PagedScroll/IPaged2Scroll.java
+ Extend.PagedScroll.IPaged2Scroll
+Extend/GShape/GShapeRenderer.java
+ Extend.GShape.GShapeRenderer
+Extend/Pools.java
+ Extend.Pools
+ Extend.Pools$1
+ Extend.Pools$2
+Extend/Box2d/IAction/IBodyValue.java
+ Extend.Box2d.IAction.IBodyValue
+ Extend.Box2d.IAction.IBodyValue$1
+ Extend.Box2d.IAction.IBodyValue$Type
+Extend/Box2d/GBox2d.java
+ Extend.Box2d.GBox2d
+ Extend.Box2d.GBox2d$1
+Extend/GLocale.java
+ Extend.GLocale
+Extend/Box2d/IConveyor.java
+ Extend.Box2d.IConveyor
+Extend/ITabGroup.java
+ Extend.ITabGroup
+Extend/Box2d/IJoint/IGear.java
+ Extend.Box2d.IJoint.IGear
+Extend/Box2d/IJoint/IJoint.java
+ Extend.Box2d.IJoint.IJoint
+Extend/Frame/IFrameAction.java
+ Extend.Frame.IFrameAction
+Extend/Box2d/IWater.java
+ Extend.Box2d.IWater
+ Extend.Box2d.IWater$1
+ Extend.Box2d.IWater$Event
+ Extend.Box2d.IWater$Pair
+Extend/Box2d/IAction/IGravity.java
+ Extend.Box2d.IAction.IGravity
+Extend/PagedScroll/IPagedScroll.java
+ Extend.PagedScroll.IPagedScroll
+Extend/Spine/Assets2.java
+ Extend.Spine.Assets2
+Extend/Box2d/IRayCast.java
+ Extend.Box2d.IRayCast
+Extend/Swipe/TrailRenderer.java
+ Extend.Swipe.TrailRenderer
+Extend/Box2d/IAction/IBodyVector.java
+ Extend.Box2d.IAction.IBodyVector
+ Extend.Box2d.IAction.IBodyVector$1
+ Extend.Box2d.IAction.IBodyVector$Type
 Extend/Spine/ISpine.java
  Extend.Spine.ISpine
  Extend.Spine.ISpine$1
 com/game/Test.java
  com.game.Test
-Extend/Frame/IAnim.java
- Extend.Frame.IAnim
+Extend/IShader.java
+ Extend.IShader
+Extend/Box2d/IBody.java
+ Extend.Box2d.IBody
+ Extend.Box2d.IBody$ContactListener
+ Extend.Box2d.IBody$IBodyListener
+Extend/PagedScroll/PagedScroll.java
+ Extend.PagedScroll.PagedScroll
 com/game/MyGame.java
  com.game.MyGame
-Extend/CircleProgress/ICircleProgress.java
- Extend.CircleProgress.ICircleProgress
-Extend/Box2d/IJoint/IWeld.java
- Extend.Box2d.IJoint.IWeld
+Extend/Box2d/IJoint/IAnchor.java
+ Extend.Box2d.IJoint.IAnchor
 Extend/Box2d/IPlatform.java
  Extend.Box2d.IPlatform
  Extend.Box2d.IPlatform$Side
@@ -121,33 +155,26 @@ Extend/Box2d/IJoint/IDistance.java
  Extend.Box2d.IJoint.IDistance
 Extend/Box2d/IAction/IForce.java
  Extend.Box2d.IAction.IForce
-Extend/Box2d/IAction/IVelocity.java
- Extend.Box2d.IAction.IVelocity
-Extend/Box2d/IAction/IBodyOther.java
- Extend.Box2d.IAction.IBodyOther
- Extend.Box2d.IAction.IBodyOther$Type
-Extend/ITabGroup.java
- Extend.ITabGroup
-Extend/Frame/IFrame.java
- Extend.Frame.IFrame
- Extend.Frame.IFrame$1
-Extend/Box2d/IBody.java
- Extend.Box2d.IBody
- Extend.Box2d.IBody$ContactListener
- Extend.Box2d.IBody$IBodyListener
-Extend/Box2d/IAction/IGravity.java
- Extend.Box2d.IAction.IGravity
+Extend/Swipe/ITrail.java
+ Extend.Swipe.ITrail
 Extend/Box2d/IJoint/IRope.java
  Extend.Box2d.IJoint.IRope
-Extend/Box2d/IAction/IBodyValue.java
- Extend.Box2d.IAction.IBodyValue
- Extend.Box2d.IAction.IBodyValue$1
- Extend.Box2d.IAction.IBodyValue$Type
-Extend/Box2d/IConveyor.java
- Extend.Box2d.IConveyor
+Extend/Box2d/IShape.java
+ Extend.Box2d.IShape
+ Extend.Box2d.IShape$IChain
+ Extend.Box2d.IShape$ICircle
+ Extend.Box2d.IShape$IEdge
+ Extend.Box2d.IShape$IPolygon
+Extend/IFollow.java
+ Extend.IFollow
+Extend/GShape/Shape.java
+ Extend.GShape.Shape
+ Extend.GShape.Shape$Circle
+ Extend.GShape.Shape$Grid
+ Extend.GShape.Shape$Line
+ Extend.GShape.Shape$Path
+ Extend.GShape.Shape$Polygon
+ Extend.GShape.Shape$Rectangle
+ Extend.GShape.Shape$Triangle
 Extend/ILineRenderer.java
  Extend.ILineRenderer
-Extend/Box2d/IJoint/IGear.java
- Extend.Box2d.IJoint.IGear
-Extend/Box2d/IJoint/IJoint.java
- Extend.Box2d.IJoint.IJoint

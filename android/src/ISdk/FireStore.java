@@ -12,7 +12,15 @@ public class FireStore {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     public FireStore()
     {
+        Update();
         Read();
+    }
+    private void Update()
+    {
+        db.collection("users").document("JhvgwRH8OmPWciepZ6ZD")
+                .update(
+                        "born", 1999
+                );
     }
     private void Read()
     {

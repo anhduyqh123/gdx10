@@ -1,9 +1,12 @@
 package Editor;
 
+import GameGDX.GDX;
 import GameGDX.GTextureLoader;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
+import com.tinify.Source;
+import com.tinify.Tinify;
 
 import java.util.Arrays;
 import java.util.List;
@@ -73,5 +76,28 @@ public class GDXTool {
         settings.combineSubdirectories = true;
         settings.useIndexes = false;
         return settings;
+    }
+
+    //Tiny
+    public static void Tiny(String path)
+    {
+        FileHandle dir = new FileHandle(path);
+        for (FileHandle f : dir.list())
+        {
+            if (f.isDirectory()) Tiny(f.path());
+            else
+            if (encodeExtension.contains(f.extension())) Tiny(f);
+        }
+    }
+    private static void Tiny(FileHandle file)
+    {
+        try {
+            GDX.Log(file.path()+"***tining!");
+            Source source = Tinify.fromFile(file.path());
+            source.toFile(file.path());
+            GDX.Log(file.path()+"***done!");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

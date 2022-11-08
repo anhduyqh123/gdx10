@@ -1,7 +1,6 @@
 package Editor.LanguageTool;
 
 import Editor.JFameUI;
-import GameGDX.Language;
 import com.badlogic.gdx.files.FileHandle;
 
 import javax.swing.*;

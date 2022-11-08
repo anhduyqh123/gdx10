@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Editor.UITool.Form.GlyphsForm">
+  <grid id="27dc6" binding="panel1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="2339"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="82bf8" class="javax.swing.JTextArea" binding="ta">
+        <constraints/>
+        <properties>
+          <lineWrap value="true"/>
+          <preferredSize width="300" height="200"/>
+          <text value="Đđ !%',-.1:?ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyzƠẠạơẢảẤấẬậẮƯắẰưẶẺẽẾếÀÁềỂÂÃểỄÇÈÉÊỌÌÍỎỐốÒÓỔÔỗỘÙộÚỚỜờỞàáâãợỤụçủêỪừỬìíửỮỰóôõú"/>
+          <wrapStyleWord value="true"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

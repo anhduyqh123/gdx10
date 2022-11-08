@@ -27,4 +27,13 @@ public class IScale extends IBaseAction {
     {
         return Actions.scaleTo(x,y,GetDuration(),GetInterpolation());
     }
+    public void Set(float scale)
+    {
+        Set(scale,scale);
+    }
+    public void Set(float scaleX,float scaleY)
+    {
+        this.scaleX = scaleX;
+        this.scaleY = scaleY;
+    }
 }

@@ -3,6 +3,7 @@ package Extend.Spine;
 import GameGDX.Assets;
 import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
+import GameGDX.GUIData.IChild.IAlign;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.esotericsoftware.spine.SkeletonData;
@@ -10,6 +11,11 @@ import com.esotericsoftware.spine.SkeletonData;
 public class ISpine extends IActor {
     public String name = "",skin="",animation="";
     public float delX,delY;
+
+    public ISpine()
+    {
+        iSize.origin = IAlign.bottom;
+    }
 
     @Override
     protected Actor NewActor() {

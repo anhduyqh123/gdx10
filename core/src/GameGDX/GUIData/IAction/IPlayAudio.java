@@ -13,7 +13,7 @@ public class IPlayAudio extends IAction{
 
     public IPlayAudio()
     {
-        name = "play_audio";
+        name = "audio";
     }
 
     @Override
@@ -41,7 +41,8 @@ public class IPlayAudio extends IAction{
         {
             Play,
             Loop,
-            Stop
+            Stop,
+            PlaySingle
         }
         public enum Stage
         {
@@ -50,11 +51,21 @@ public class IPlayAudio extends IAction{
         }
         public Stage stage = Stage.UI;
         public Type type = Type.Play;
+        public String random = "";
+        private String GetName()
+        {
+            if (random.equals("")) return name;
+            return name+GetInit(random);
+        }
 
         public void Run(IActor iActor) {
             if (type==Type.Stop) GAudio.i.StopSound(name);
             else {
-                if (stage== Stage.UI) GAudio.i.PlaySound(name);
+                if (stage== Stage.UI){
+                    if (type==Type.PlaySingle) GAudio.i.PlaySingleSound(GetName());
+                    else
+                        GAudio.i.PlaySound(GetName());
+                }
                 else iActor.PlaySound(name,type== Type.Loop);
             }
         }

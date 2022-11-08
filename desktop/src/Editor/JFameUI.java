@@ -2,7 +2,6 @@ package Editor;
 
 import GameGDX.GDX;
 import GameGDX.Reflect;
-import GameGDX.Util;
 import com.badlogic.gdx.utils.reflect.Field;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 
@@ -67,6 +66,11 @@ public class JFameUI {
                 NewComboBox(name,constants,value,parent,vl->SetField(field,object,vl));
                 return;
             }
+            if (type.equals(String.class))
+            {
+                NewTextArea(name,value,80,parent,st->SetField(field,object,st));
+                return;
+            }
             if (Reflect.IsBaseType(type))
             {
                 int w = 50;
@@ -78,6 +82,32 @@ public class JFameUI {
 
         }catch (ReflectionException e){e.printStackTrace();}
     }
+    public JTextArea NewTextArea(String name,Object value,int width,JPanel parent,GDX.Runnable<String> onChange)
+    {
+        return NewTextArea(name,value.toString(), width,20,parent,onChange);
+    }
+    public JTextArea NewTextArea(String name,Object value,int width,int height,JPanel parent,GDX.Runnable<String> onChange)
+    {
+        JTextArea textField = NewTextArea(value.toString(), width,height);
+        LabelComponent(name,textField,parent);
+        if (onChange!=null)
+            textField.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    try {
+                        onChange.Run(textField.getText());
+                    }catch (Exception x){}
+                }
+            });
+        return textField;
+    }
+    private JTextArea NewTextArea(String value,int width,int height)
+    {
+        JTextArea textField = new JTextArea(value);
+        SetSize(textField,width,height);
+        return textField;
+    }
+
     public void SetField(Field field,Object object,Object value)
     {
         Class<?> type = field.getType();

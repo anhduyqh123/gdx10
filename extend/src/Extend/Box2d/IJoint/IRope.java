@@ -9,7 +9,6 @@ import com.badlogic.gdx.physics.box2d.joints.RopeJointDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class IRope extends IDistance{
-
     @Override
     public Joint Create(Actor obA, Actor obB) {
         Body bodyA = GetBody(objectA);

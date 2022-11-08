@@ -1,5 +1,6 @@
 package GameGDX;
 
+import GameGDX.GUIData.ILabel;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
@@ -126,9 +128,17 @@ public class Scene {
     }
     public static void AddActorKeepPosition(Actor actor, Group group)
     {
-        Vector2 pos1 = GetStagePosition(actor, Align.center);
-        Vector2 pos2 = group.stageToLocalCoordinates(pos1);
-        actor.setPosition(pos2.x,pos2.y,Align.center);
+//        Vector2 pos1 = GetStagePosition(actor, Align.center);
+//        Vector2 pos2 = group.stageToLocalCoordinates(pos1);
+//        actor.setPosition(pos2.x,pos2.y,Align.center);
+//        group.addActor(actor);
+
+        Vector2 center = new Vector2(actor.getOriginX(),actor.getOriginY());
+        //Vector2 pos = Scene.GetPosition(actor).add(center);
+        //Vector2 pos1 = actor.getParent().localToStageCoordinates(pos);
+        Vector2 pos1 = GetStagePosition(actor,center);
+        Vector2 pos2 = group.stageToLocalCoordinates(pos1).sub(center);
+        actor.setPosition(pos2.x,pos2.y);
         group.addActor(actor);
     }
     //Rotate
@@ -178,7 +188,7 @@ public class Scene {
     public static Vector2 GetStagePosition(Actor actor, Vector2 local)
     {
         //Vector2 pos = new Vector2(local).sub(GetPosition(actor));
-        return actor.localToStageCoordinates(local);
+        return actor.localToStageCoordinates(new Vector2(local));
     }
 
     public static Vector2 GetLocal(Actor actor, int align)
@@ -229,5 +239,19 @@ public class Scene {
         actor.setSize(width, height);
         actor.setPosition(x,y,align);
         parent.addActor(actor);
+    }
+    //fps
+    public void ShowFPS()
+    {
+        Label lb = ILabel.New("");
+        lb.setPosition(10,20);
+        ui2.addActor(lb);
+        lb.addAction(new Action() {
+            @Override
+            public boolean act(float delta) {
+                lb.setText(GDX.GetFPS()+"");
+                return false;
+            }
+        });
     }
 }

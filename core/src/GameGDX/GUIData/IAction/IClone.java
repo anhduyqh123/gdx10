@@ -54,7 +54,7 @@ public class IClone extends IParallel{
                     getPool.Run().free(iClone);
                 }
             });
-            iClone.GetActor().setZIndex(iChild.GetActor().getZIndex());
+            iClone.GetActor().setZIndex(iChild.GetActor().getZIndex()+1);
             iClone.GetActor().addAction(super.Get(iClone));
         });
     }

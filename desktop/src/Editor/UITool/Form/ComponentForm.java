@@ -2,12 +2,16 @@ package Editor.UITool.Form;
 
 import Editor.JFameUI;
 import Editor.UITool.Form.Panel.ComponentPanel;
+import Editor.UITool.Physics.Util.UtilNode;
+import Editor.UITool.Physics.UtilForm;
 import Extend.Box2d.*;
 import Extend.Box2d.IJoint.*;
 import Extend.GShape.IMask;
 import Extend.GShape.IMaskGroup;
 import Extend.GShape.IShape;
 import Extend.ILineRenderer;
+import Extend.IShader;
+import Extend.Swipe.ITrail;
 import GameGDX.GUIData.IChild.Component;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.Reflect;
@@ -37,7 +41,7 @@ public class ComponentForm {
 
         Class[] types = {IBody.class, IWater.class, IPlatform.class,IConveyor.class,
                 IDistance.class, IRope.class, IWheel.class, IRevolute.class, IPrismatic.class,IPulley.class,IGear.class,
-                IRayCast.class, ILineRenderer.class, IMask.class, IMaskGroup.class, IShape.class};
+                IRayCast.class, ILineRenderer.class, IMask.class, IMaskGroup.class, IShape.class, IShader.class, ITrail.class,UtilNode.class};
         String[] arr = ui.ClassToName(types);
         ui.ComboBox(cbType,arr,arr[0]);
 
@@ -45,7 +49,13 @@ public class ComponentForm {
         iList.getData = ()->new ArrayList<>(map.keySet());;
         iList.onAdd = ()->{
             int index = cbType.getSelectedIndex();
-            Component p = Reflect.NewInstance(types[index]);
+            Class type = types[index];
+            if (type.equals(UtilNode.class))
+            {
+                new UtilForm(iActor);
+                return "";
+            }
+            Component p = Reflect.NewInstance(type);
             String name = tfName.getText();
             map.put(name,p);
             iActor.Refresh();

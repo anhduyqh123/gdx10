@@ -1,4 +1,4 @@
-package Extend;
+package Extend.Util;
 
 public enum TimeUnit {
     NANOSECONDS {

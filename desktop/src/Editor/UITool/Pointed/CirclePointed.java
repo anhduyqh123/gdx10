@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Align;
 
 public class CirclePointed extends Pointed {
-
     private Object circle;
     public CirclePointed(Object circle, Group group) {
         super(group);

@@ -31,12 +31,23 @@ public class Config {
     }
 
     //get value
-    public <T> T GetConfig(String name,T value0)
+    public void SetValue(String name,Object value)
+    {
+        if (data.has(name)) data.get(name).set(value+"");
+        else data.addChild(name,new JsonValue(value+""));
+    }
+
+    //get value
+    public <T> T GetValue(String name,T value0)
     {
         try {
             String result = data.getString(name);
             return Reflect.GetConfig(result,value0);
         }catch (Exception e){}
         return value0;
+    }
+    public String ToString()
+    {
+        return data.toString();
     }
 }

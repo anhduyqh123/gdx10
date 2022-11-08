@@ -17,7 +17,7 @@ public abstract class IAction {
 
     protected void Init(IActor iActor){}
     //param
-    public int GetInit(String value)
+    public static int GetInit(String value)
     {
         if (value.contains(",")) //0,10 random 0->10
         {
@@ -26,7 +26,7 @@ public abstract class IAction {
         }
         return Integer.parseInt(value);
     }
-    public float GetFloat(String value)
+    public static float GetFloat(String value)
     {
         if (value.contains(",")) //0,10 random 0->10
         {

@@ -1,13 +1,10 @@
 package GameGDX;
 
 import GameGDX.AssetLoading.GameData;
-import GameGDX.GUIData.ILabel;
 import GameGDX.Screens.Screen;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class GDXGame extends ApplicationAdapter {
     protected Scene scene;
@@ -83,24 +80,15 @@ public class GDXGame extends ApplicationAdapter {
 
     protected GameData GetGameData(boolean makeNew)
     {
-        String path = "gameAssets.txt";
         try {
-            GameData data = makeNew?LoadPackages(path): Json.FromJson(GameData.class,GDX.GetString(path));
+            GameData data = makeNew?LoadPackages(GetPathData()):
+                    Json.FromJson(GameData.class,GDX.GetString(GetPathData()));
             if (data!=null) return data;
         }catch (Exception e){e.printStackTrace(); }
         return new GameData();
     }
-    protected void ShowFPS()
+    protected String GetPathData()
     {
-        Label lb = ILabel.New("");
-        lb.setPosition(10,20);
-        Scene.ui2.addActor(lb);
-        lb.addAction(new Action() {
-            @Override
-            public boolean act(float delta) {
-                lb.setText(GDX.GetFPS()+"");
-                return false;
-            }
-        });
+        return "gameAssets.txt";
     }
 }

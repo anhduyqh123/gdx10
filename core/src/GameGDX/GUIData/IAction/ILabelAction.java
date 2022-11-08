@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class ILabelAction extends IAction{
 
-    public String text = "";
+    public String text = "",font = "";
     public boolean multiLanguage;
 
     public ILabelAction()
@@ -22,6 +22,7 @@ public class ILabelAction extends IAction{
     public void Run(IActor iActor)
     {
         ILabel iLabel = (ILabel)iActor;
+        if (!font.equals("")) iLabel.SetFont(font);
         iLabel.SetText(multiLanguage?ILabel.GetTranslate(text):text);
     }
 }

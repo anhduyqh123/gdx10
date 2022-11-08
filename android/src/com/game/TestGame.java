@@ -13,9 +13,20 @@ import com.badlogic.gdx.utils.Align;
 
 public class TestGame extends GDXGame {
     public AdMob adMob;
+    public void create() {
+        Init();
+        UnZip(this::DoneLoading);
+    }
+
+    private void UnZip(Runnable done)
+    {
+        //GDX.Log(zip.length());
+        //FileZip.Unzip(zip.file(),direction.file());
+        //done.run();
+    }
     @Override
     public void DoneLoading() {
-        new Assets().SetData(GetGameData(false));
+        assets.SetData(GetGameData(false));
         Assets.LoadPackages(()->{
             //done loading
             IImage.NewImage(Color.BROWN,100,500, Align.bottomLeft,200,200,Scene.ui).addListener(new ClickListener(){

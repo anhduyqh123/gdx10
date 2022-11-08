@@ -24,8 +24,8 @@ public class IColor extends IBaseAction{
 
     @Override
     public Action Get(IActor iActor) {
-        Color color = iActor.GetActor().getColor();
-        if (used) color = GetColor();
+        Color color = used?GetColor():iActor.GetActor().getColor();
+        if (GetDuration()<=0) return Actions.run(()->iActor.SetColor(color));
         return Get(color);
     }
 }

@@ -1,6 +1,5 @@
 package GameGDX.Screens;
 
-import GameGDX.GUIData.IAction.IRunAction;
 import GameGDX.Scene;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.*;

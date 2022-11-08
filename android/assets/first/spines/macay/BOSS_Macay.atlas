@@ -1,0 +1,279 @@
+
+BOSS_Macay.png
+size: 732,192
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BanchanP
+  rotate: false
+  xy: 535, 16
+  size: 50, 48
+  orig: 50, 49
+  offset: 0, 1
+  index: -1
+BanchanT
+  rotate: false
+  xy: 604, 7
+  size: 50, 48
+  orig: 50, 49
+  offset: 0, 1
+  index: -1
+BantayP
+  rotate: false
+  xy: 245, 6
+  size: 54, 85
+  orig: 56, 87
+  offset: 1, 1
+  index: -1
+BantayT
+  rotate: false
+  xy: 299, 8
+  size: 56, 83
+  orig: 58, 85
+  offset: 1, 1
+  index: -1
+ChanP
+  rotate: false
+  xy: 355, 8
+  size: 29, 33
+  orig: 31, 35
+  offset: 1, 1
+  index: -1
+ChanT
+  rotate: false
+  xy: 654, 22
+  size: 29, 33
+  orig: 31, 35
+  offset: 1, 1
+  index: -1
+La
+  rotate: false
+  xy: 623, 72
+  size: 71, 22
+  orig: 73, 24
+  offset: 1, 1
+  index: -1
+Layer 564
+  rotate: true
+  xy: 408, 35
+  size: 118, 127
+  orig: 120, 129
+  offset: 1, 1
+  index: -1
+Layer 675
+  rotate: false
+  xy: 177, 152
+  size: 231, 40
+  orig: 233, 42
+  offset: 1, 1
+  index: -1
+Layer 926
+  rotate: false
+  xy: 467, 21
+  size: 33, 14
+  orig: 35, 16
+  offset: 1, 1
+  index: -1
+Layer 927
+  rotate: false
+  xy: 604, 56
+  size: 19, 15
+  orig: 22, 17
+  offset: 1, 1
+  index: -1
+Layer 928
+  rotate: true
+  xy: 485, 0
+  size: 20, 24
+  orig: 23, 27
+  offset: 1, 2
+  index: -1
+Layer 929
+  rotate: true
+  xy: 500, 20
+  size: 15, 30
+  orig: 18, 32
+  offset: 1, 1
+  index: -1
+Layer 930
+  rotate: false
+  xy: 467, 0
+  size: 18, 21
+  orig: 25, 24
+  offset: 5, 2
+  index: -1
+MatMo
+  rotate: true
+  xy: 592, 71
+  size: 82, 31
+  orig: 82, 31
+  offset: 0, 0
+  index: -1
+MatNham
+  rotate: false
+  xy: 629, 161
+  size: 83, 31
+  orig: 83, 31
+  offset: 0, 0
+  index: -1
+Shape 39
+  rotate: true
+  xy: 437, 0
+  size: 16, 26
+  orig: 18, 28
+  offset: 1, 1
+  index: -1
+Shape 40
+  rotate: true
+  xy: 437, 16
+  size: 19, 30
+  orig: 21, 32
+  offset: 1, 1
+  index: -1
+Shape 40 copy
+  rotate: false
+  xy: 712, 160
+  size: 20, 32
+  orig: 21, 33
+  offset: 1, 1
+  index: -1
+Shape 40 copy 2
+  rotate: false
+  xy: 708, 127
+  size: 21, 33
+  orig: 21, 33
+  offset: 0, 0
+  index: -1
+TayP
+  rotate: false
+  xy: 535, 64
+  size: 57, 89
+  orig: 59, 91
+  offset: 1, 1
+  index: -1
+TayT
+  rotate: false
+  xy: 177, 0
+  size: 68, 91
+  orig: 70, 93
+  offset: 1, 1
+  index: -1
+body2
+  rotate: false
+  xy: 623, 94
+  size: 73, 33
+  orig: 75, 35
+  offset: 1, 1
+  index: -1
+dat1
+  rotate: false
+  xy: 527, 0
+  size: 20, 16
+  orig: 22, 20
+  offset: 1, 1
+  index: -1
+dat2
+  rotate: true
+  xy: 509, 0
+  size: 20, 18
+  orig: 22, 20
+  offset: 1, 1
+  index: -1
+dat3
+  rotate: true
+  xy: 696, 88
+  size: 39, 36
+  orig: 41, 38
+  offset: 1, 1
+  index: -1
+dat4
+  rotate: false
+  xy: 694, 52
+  size: 38, 36
+  orig: 40, 38
+  offset: 1, 1
+  index: -1
+dat5
+  rotate: false
+  xy: 654, 0
+  size: 25, 22
+  orig: 27, 24
+  offset: 1, 1
+  index: -1
+dat7
+  rotate: false
+  xy: 177, 91
+  size: 206, 22
+  orig: 208, 24
+  offset: 1, 1
+  index: -1
+dat8
+  rotate: false
+  xy: 408, 153
+  size: 221, 39
+  orig: 223, 41
+  offset: 1, 1
+  index: -1
+dat9
+  rotate: false
+  xy: 177, 113
+  size: 231, 39
+  orig: 233, 41
+  offset: 1, 1
+  index: -1
+dau
+  rotate: false
+  xy: 0, 0
+  size: 177, 192
+  orig: 177, 193
+  offset: 0, 0
+  index: -1
+hamduoi
+  rotate: false
+  xy: 629, 127
+  size: 79, 34
+  orig: 81, 36
+  offset: 1, 1
+  index: -1
+longmayP
+  rotate: false
+  xy: 403, 9
+  size: 34, 26
+  orig: 36, 28
+  offset: 1, 1
+  index: -1
+longmayT
+  rotate: true
+  xy: 355, 41
+  size: 50, 28
+  orig: 52, 30
+  offset: 1, 1
+  index: -1
+mat chet copy
+  rotate: false
+  xy: 623, 55
+  size: 61, 17
+  orig: 63, 19
+  offset: 1, 1
+  index: -1
+mieng_trong
+  rotate: true
+  xy: 383, 41
+  size: 72, 25
+  orig: 77, 31
+  offset: 2, 2
+  index: -1
+mohoi
+  rotate: false
+  xy: 384, 6
+  size: 19, 35
+  orig: 19, 36
+  offset: 0, 0
+  index: -1
+trongmatP
+  rotate: true
+  xy: 585, 6
+  size: 58, 19
+  orig: 60, 21
+  offset: 1, 1
+  index: -1

@@ -5,6 +5,7 @@ import Editor.UITool.Form.Panel.ActionPanel;
 import Editor.WrapLayout;
 import Extend.Box2d.IAction.*;
 import Extend.Frame.IFrameAction;
+import Extend.IFollow;
 import Extend.Shake.IShake;
 import Extend.Spine.IAnimation;
 import GameGDX.GDX;
@@ -75,11 +76,11 @@ public class ActionForm {
         Class[] types1 = {IDelay.class, IMove.class,IScale.class,IRotate.class,IParallel.class,ISequence.class,
                 IRunAction.class,IForever.class,IRepeat.class,IAlpha.class,IColor.class,IParAction.class, IPlayAudio.class,
                 IMovePath.class,IMoveArc.class,ITextureAction.class,ILabelAction.class,ICountAction.class,IDoAction.class,
-                IOther.class,ITarget.class,IAudio.class,IEvent.class,IJsonAction.class,IClone.class,IToParent.class};
+                IOther.class,ITarget.class,IAudio.class,IEvent.class,IJsonAction.class,IClone.class,IToParent.class, IParamCount.class};
         Class[] types2 ={IBodyValue.class,IVelocity.class, IContact.class,IBodyOther.class,
                 IForce.class,IGravity.class,IExplosion.class};
         Class[] types3 ={IAnimation.class};
-        Class[] types4 ={IShake.class, IFrameAction.class};
+        Class[] types4 ={IShake.class, IFrameAction.class, IFollow.class};
 
         Class[][] types = {types1,types2,types3,types4};
 

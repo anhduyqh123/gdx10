@@ -17,6 +17,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.JsonValue;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
@@ -43,7 +44,7 @@ public class PhysicsForm {
 
     public PhysicsForm(IBody iBody,IActor iActor)
     {
-        String[] categories = EConfig.e.Get("category").asStringArray();
+        String[] categories = EConfig.e.GetCategory();
         GBox2d.SetCategory(categories);
 
         display = new Display(iActor);

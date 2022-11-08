@@ -18,8 +18,7 @@ public class IToParent extends IAction{
     }
     public Type type = Type.Add;
     public int index;
-    public String stParent = "";
-    public String stActor = "";
+    public String stParent = "parent",stActor = "";//parent->current parent
 
     public IToParent()
     {
@@ -34,11 +33,12 @@ public class IToParent extends IAction{
     public void Run(IActor iActor) {
         try {
             Actor actor = iActor.GetActor();
-            IGroup iParent = iActor.GetIParent().GetIActor(stParent);
+            IGroup iParent = iActor.GetIParent();
+            if (!stParent.equals("parent")) iParent = iParent.GetIActor(stParent);
             Group parent = iParent.GetActor();
-            Vector2 sPos = iActor.GetPos();
-            Vector2 pos = actor.getParent().localToActorCoordinates(parent,sPos);
-            actor.setPosition(pos.x,pos.y);
+            Vector2 pos = actor.getParent().localToActorCoordinates(parent,iActor.GetPos());
+            iActor.SetPos(pos);
+            actor.remove();
             switch (type)
             {
                 case Add:

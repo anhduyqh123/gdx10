@@ -39,7 +39,8 @@ public class IScrollPane extends IGroup {
         scroll.setScrollPercentY(percentY);
         scroll.updateVisualScroll();
         if (scrollToChild.equals("")) return;
-        ScrollToChild();
+        Delay(this::ScrollToChild,0.1f);
+        //ScrollToChild();
     }
     private void ScrollToChild()
     {

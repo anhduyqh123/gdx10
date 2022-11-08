@@ -1,7 +1,7 @@
 package Editor.UITool.Form;
 
 import Editor.JFameUI;
-import Editor.LanguageTool.LanguageMain;
+import Editor.LanguageTool.GlyphsForm;
 import Editor.UITool.MyGame;
 import Extend.Box2d.GBox2d;
 import Extend.GShape.GShapeRenderer;
@@ -9,10 +9,10 @@ import GameGDX.*;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.GUIData.ILabel;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector2;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class OptionForm {
@@ -20,7 +20,7 @@ public class OptionForm {
     public JPanel panel1;
     private JButton configButton;
     private JComboBox cbCode;
-    private JButton btEdit;
+    private JButton btGlyphs;
     private JComboBox cbFont;
     private JCheckBox cbPhysics;
     private JCheckBox cbDrag;
@@ -29,7 +29,7 @@ public class OptionForm {
     public GDX.Func<List<String>> getObjects;
     public Runnable onClosePack;
 
-    private GShapeRenderer shapeRenderer = new GShapeRenderer(Scene.GetUICamera(),Scene.ui);
+    private GShapeRenderer shapeRenderer = new GShapeRenderer(Scene.ui);
 
     private JFameUI ui = new JFameUI();
 
@@ -42,7 +42,7 @@ public class OptionForm {
             });
         });
         try {
-            InitLanguage();
+            InitTranslate();
             InitSetFont();
         }catch (Exception e){}
 
@@ -68,64 +68,43 @@ public class OptionForm {
             fonts.add(n.name);
         ui.ComboBox(cbFont,fonts.toArray(new String[0]), ILabel.gFont,vl->ILabel.gFont = vl);
     }
-    private void InitLanguage()
+    private void InitTranslate()
     {
-        String url = Assets.GetNode("translate").url;
-        Language language = GetLanguage(url);
-        if (language.GetCodes().size()>0)
+        Translate translate = GetTranslate();
+        if (translate.codes.size()>0)
         {
-            language.SetCode(0);
-            InitLanguage(language);
+            translate.SetCode(1);
+            InitTranslate(translate);
         }
-        btEdit.addActionListener(e->{
-            ui.NewJFrame("Language", LanguageMain.New(language, ()->GDX.WriteToFile(url,language.ToJsonData())),
-                    ()->InitLanguage(language));
-        });
+        btGlyphs.addActionListener(e-> Glyphs());
     }
-    private Language GetLanguage(String url)
+    private Translate GetTranslate()
     {
         try {
-            return Language.NewLanguage(GDX.GetString(url));
+            return new Translate(Assets.GetNode("translate").url);
         }catch (Exception e){}
-        return Language.NewLanguage();
+        return new Translate();
     }
-    private void InitLanguage(Language language)
+    private void InitTranslate(Translate translate)
     {
-        String[] codes = language.GetCodes().toArray(new String[0]);
+        String[] codes = translate.codes.toArray(new String[0]);
         if (codes.length<=0) return;
-        String code = Language.GetCode();
-        ui.ComboBox(cbCode,codes,code,vl->language.SetCode(vl));
+        String code = translate.code;
+        ui.ComboBox(cbCode,codes,code, translate::SetCode);
     }
-    private void InitGrid()
+
+    private void Glyphs()
     {
-//        Ref<Float> size = new Ref<>(50f);
-//        tfSize.setText(size.Get()+"");
-//        ui.TextField(tfSize,size.Get()+"",vl->size.Set(Float.parseFloat(vl)));
-//
-//        btShow.addActionListener(e->{
-//            if (shapeRenderer.Size()>0) HideGrid();
-//            else ShowGrid(size.Get());
-//        });
-    }
-    private void HideGrid()
-    {
-        shapeRenderer.Clear();
-    }
-    private void ShowGrid(float size)
-    {
-        float len = 100000;
-        int column = 100,row = 100;
-        for(int i=0;i<column;i++)
-        {
-            Vector2 pos1 = new Vector2(i*size,0);
-            Vector2 pos2 = new Vector2(i*size,len);
-            shapeRenderer.NewLine(pos1,pos2);
-        }
-        for(int i=0;i<row;i++)
-        {
-            Vector2 pos1 = new Vector2(0,i*size);
-            Vector2 pos2 = new Vector2(len,i*size);
-            shapeRenderer.NewLine(pos1,pos2);
-        }
+        String code = (String) cbCode.getSelectedItem();
+        HashSet<Character> hashSet = new HashSet<>();
+        Json.Foreach(Translate.i.GetData(),i->{
+            String st = i.getString(code);
+            for (char c : st.toCharArray())
+                hashSet.add(c);
+        });
+        String s0 = "";
+        for (Character c : hashSet)
+            s0+=c;
+        new GlyphsForm(s0);
     }
 }

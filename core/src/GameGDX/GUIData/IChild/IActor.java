@@ -29,7 +29,7 @@ public class IActor {
     protected GDX.Func<Map> getComponent;
 
     private Map<String,String> mapParam = new HashMap<>();
-
+    protected GDX.Func<Map> getParam;
     protected GDX.Func1<Actor,String> connect;
     private GDX.Func<Actor> getActor;
     private GDX.Func<Object> userObject;
@@ -125,11 +125,15 @@ public class IActor {
     {
         return new Vector2(iSize.GetWidth(), iSize.GetHeight());
     }
+    public void RefreshPosition()
+    {
+        SetPos(iPos.Get(),iPos.align.value);
+    }
     protected void BaseRefresh()
     {
         Actor actor = GetActor();
         iSize.Set(actor);
-        SetPos(iPos.Get(),iPos.align.value);
+        RefreshPosition();
         actor.setColor(GetColor());
         actor.setTouchable(touchable);
         actor.setVisible(visible);
@@ -213,10 +217,8 @@ public class IActor {
         });
     }
 
-    public void RefreshContent()
-    {
-
-    }
+    public void RefreshContent(){}
+    public void RefreshLanguage(){}
     public void Refresh()
     {
         InitActor();
@@ -227,6 +229,7 @@ public class IActor {
     }
     protected void AfterRefresh()
     {
+        getParam = null;
         ClearAction();
         RefreshComponent();
         RefreshEvent();
@@ -348,6 +351,7 @@ public class IActor {
     }
     public void RunAction(String actionName)
     {
+        actionName = actionName.replace("\n","");
         if (!acList.Contains(actionName)) return;
         GetActor().addAction(GetAction(actionName));
     }
@@ -374,17 +378,32 @@ public class IActor {
     {
         return mapParam;
     }
+    public boolean HasParam(String name)
+    {
+        return mapParam.containsKey(name);
+    }
+    public Map<String,String> GetParam()
+    {
+        if (getParam==null)
+        {
+            Map map = new HashMap(mapParam);
+            getParam = ()->map;
+        }
+        return getParam.Run();
+    }
     public <T> T GetParam(String name,T value0)
     {
         try {
-            String result = mapParam.get(name);
+            String result = GetParam().get(name);
             return Reflect.GetConfig(result,value0);
         }catch (Exception e){}
         return value0;
     }
-    public boolean HasParam(String name)
+    public <T> void SetParam(String name,T value)
     {
-        return mapParam.containsKey(name);
+        try {
+            GetParam().put(name,value+"");
+        }catch (Exception e){}
     }
 
     //Runnable
@@ -426,9 +445,17 @@ public class IActor {
     {
         return Scene.GetStagePosition(GetActor(),align);
     }
+    public Vector2 GetActorPos(int align,Actor actor)
+    {
+        return GetActor().getParent().localToActorCoordinates(actor,GetPos(align));
+    }
     public void SetPos(Vector2 pos,int align)
     {
         Scene.SetPosition(GetActor(),pos,align);
+    }
+    public void SetPos(Vector2 pos)
+    {
+        SetPos(pos,Align.bottomLeft);
     }
     public void SetStagePos(Vector2 pos,int align)
     {
@@ -459,6 +486,7 @@ public class IActor {
         GetActor().addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                if (event.getPointer()!=0) return;
                 onClick.run();
             }
         });

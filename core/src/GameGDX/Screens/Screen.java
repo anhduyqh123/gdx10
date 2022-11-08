@@ -18,8 +18,6 @@ public class Screen extends BaseScreen {
         iGroup.SetConnect(name -> this);
         iGroup.Refresh();
 
-        //iGroup.InitMain();
-
         SetRunAction("show","showDone");
         SetRunAction("hide","hideDone");
 

@@ -7,10 +7,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.SnapshotArray;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class IGroup extends IActor {
     //GetIChild ->Get child by name
@@ -103,10 +104,13 @@ public class IGroup extends IActor {
             }
         };
     }
+    public String GetChildName(int index)
+    {
+        return list.get(index);
+    }
 
     public <T extends IActor> T GetIChild(int index){
-        String name = list.get(index);
-        return GetIChild(name);
+        return GetIChild(GetChildName(index));
     }
     public <T extends IActor> T GetIChild(String name)
     {
@@ -171,20 +175,19 @@ public class IGroup extends IActor {
     public void RefreshContent() {
         ForEach(IActor::RefreshContent);
     }
+    public void RefreshLanguage() {
+        ForEach(IActor::RefreshLanguage);
+    }
 
-    public void Refresh()
-    {
-        InitActor();
-        BaseRefresh();
-        //RefreshEvent();
-
+    @Override
+    protected void AfterRefresh() {
+        getParam = null;
         ClearAction();
-        //ForComponent((k,p)->p.BeforeRefresh());
-
         RefreshChildren();
         RefreshComponent();
         RefreshEvent();
     }
+
     protected void RefreshChildren()
     {
         for(int i=0;i<list.size();i++)

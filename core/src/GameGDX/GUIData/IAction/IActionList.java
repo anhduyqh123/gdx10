@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class IActionList extends IMultiAction {
-    private Map<String,IAction> map = new HashMap<>();
+    public Map<String,IAction> map = new HashMap<>();
 
     @Override
     public void Init(IActor iActor) {

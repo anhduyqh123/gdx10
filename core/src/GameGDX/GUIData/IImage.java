@@ -1,10 +1,7 @@
 package GameGDX.GUIData;
 
-import GameGDX.Assets;
-import GameGDX.GDX;
+import GameGDX.*;
 import GameGDX.GUIData.IChild.IActor;
-import GameGDX.Language;
-import GameGDX.Reflect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -22,8 +19,6 @@ import com.badlogic.gdx.utils.Align;
 
 public class IImage extends IActor {
     public ITexture iTexture = new ITexture();
-    public boolean multiLanguage;
-
     @Override
     protected Actor NewActor() {
         return new Image(){
@@ -46,13 +41,19 @@ public class IImage extends IActor {
     }
 
     protected Vector2 GetDefaultSize() {
-        TextureRegion tr = iTexture.GetTexture(GetExtend());
+        TextureRegion tr = iTexture.GetTexture();
         return new Vector2(tr.getRegionWidth(),tr.getRegionHeight());
     }
 
     @Override
     public void RefreshContent() {
-        SetDrawable(iTexture.GetDrawable(GetExtend()));
+        SetDrawable(iTexture.GetDrawable());
+    }
+
+    @Override
+    public void RefreshLanguage() {
+        if (!iTexture.multiLanguage) return;
+        SetDrawable(iTexture.GetDrawable());
     }
 
     @Override
@@ -78,32 +79,32 @@ public class IImage extends IActor {
         Image img = GetActor();
         img.setDrawable(drawable);
     }
-    private String GetExtend()
-    {
-        if (multiLanguage) return Language.GetCode();
-        return "";
-    }
     protected TextureRegion GetTexture()
     {
-        return iTexture.GetTexture(GetExtend());
+        return iTexture.GetTexture();
     }
 
     //class
     public static class ITexture
     {
+        public boolean multiLanguage;
         public String name = "";
-        public Drawable GetDrawable(String extend)
+        public Drawable GetDrawable()
         {
-            return NewDrawable(GetTexture(extend));
+            return NewDrawable(GetTexture());
         }
-        public TextureRegion GetTexture(String extend)
+        public TextureRegion GetTexture()
         {
             try {
-                return Assets.GetTexture(name+extend);
+                return Assets.GetTexture(GetName());
             }catch (Exception e)
             {
                 return new TextureRegion(emptyTexture);
             }
+        }
+        protected String GetName()
+        {
+            return multiLanguage?Translate.i.Get(name):name;
         }
         @Override
         public boolean equals(Object obj) {
@@ -114,8 +115,8 @@ public class IImage extends IActor {
     {
         public int left=10,right=10,top=10,bottom=10;
         @Override
-        public Drawable GetDrawable(String extend) {
-            NinePatch ninePatch = new NinePatch(GetTexture(extend),left,right,top,bottom);
+        public Drawable GetDrawable() {
+            NinePatch ninePatch = new NinePatch(GetTexture(),left,right,top,bottom);
             return new NinePatchDrawable(ninePatch);
         }
     }
@@ -175,6 +176,10 @@ public class IImage extends IActor {
     }
     //</editor-fold>
     //<editor-fold desc="Image Texture">
+    public static Image NewImage(String name)
+    {
+        return NewImage(Assets.GetTexture(name));
+    }
     public static Image NewImage(TextureRegion texture)
     {
         return new Image(texture);

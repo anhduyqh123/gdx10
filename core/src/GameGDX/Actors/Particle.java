@@ -2,6 +2,7 @@ package GameGDX.Actors;
 
 import GameGDX.Assets;
 import GameGDX.GDX;
+import GameGDX.Scene;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -51,7 +52,8 @@ public class Particle extends Actor {
     }
     private void RefreshPosition()
     {
-        pe.setPosition(getX()+getOriginX(),getY()+getOriginY());
+        Vector2 pos = Scene.GetPosition(this);
+        pe.setPosition(pos.x+getOriginX(),pos.y+getOriginY());
     }
 
     @Override

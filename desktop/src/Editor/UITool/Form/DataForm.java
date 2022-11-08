@@ -110,7 +110,7 @@ public class DataForm {
 
             String name = tfName.getText();
             IGroup iGroup = gTree.GetSelectedObject();
-            XmlLevel x = new XmlLevel(name,iGroup);
+//            XmlLevel x = new XmlLevel(name,iGroup);
 
             iGroup.Refresh();
             gTree.Refresh();
@@ -145,7 +145,8 @@ public class DataForm {
     }
     private String GetPrefab(String pack,String name)
     {
-        if (pack.equals("default") && pack.equals(cbPack.getSelectedItem())) return name;
+        //if (pack.equals("default") && pack.equals(cbPack.getSelectedItem())) return name;
+        if (pack.equals(cbPack.getSelectedItem())) return name;
         return pack+"/"+name;
     }
     public void RefreshData()

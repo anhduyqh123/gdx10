@@ -4,7 +4,7 @@ sourceCompatibility = 1.8
 sourceSets.main.java.srcDirs = [ "src/" ]
 //sourceSets.main.resources.srcDirs = ["../android/assets"]
 
-//project.ext.mainClassName = "Editor.LanguageTool.LanguageMain"
+//project.ext.mainClassName = "Editor.ParticleViewer.MainView"
 project.ext.mainClassName = "Editor.UITool.UIMain"
 project.ext.assetsDir = new File("../android/Empty");
 

@@ -10,12 +10,18 @@ public class IEvent extends IParallel{
     {
         OnUpdate,
         OnRemove,
-        OnAfterRemove
+        OnAfterRemove,
+        OnInit//before start Action
     }
     public Event event = Event.OnRemove;
 
     public IEvent() {
         name = "event";
+    }
+
+    @Override
+    protected void Init(IActor iActor) {
+        if (event==Event.OnInit) Run(iActor);
     }
 
     @Override

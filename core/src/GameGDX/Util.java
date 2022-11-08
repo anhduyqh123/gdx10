@@ -104,4 +104,16 @@ public class Util {
         for (int i=0;i<repeat;i++)
             cb.run();
     }
+    public static void For(int from, int to, GDX.Runnable<Integer> cb)
+    {
+        for (int i=from;i<=to;i++) cb.Run(i);
+    }
+    public static <T> void For(List<T> list,GDX.Runnable<T> cb)
+    {
+        for (T i : list) cb.Run(i);
+    }
+    public static void ForIndex(List list,GDX.Runnable<Integer> cb)
+    {
+        For(0,list.size()-1,cb);
+    }
 }

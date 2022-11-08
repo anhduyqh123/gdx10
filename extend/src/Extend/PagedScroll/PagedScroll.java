@@ -15,6 +15,7 @@ public class PagedScroll extends ScrollPane {
 
     private Table content;
     private GDX.Runnable<Actor> onScroll;
+    private GDX.Runnable<Integer> onScrollIndex;
 
     public PagedScroll () {
         super(null);
@@ -25,10 +26,21 @@ public class PagedScroll extends ScrollPane {
     {
         this.onScroll = onScroll;
     }
+    public void setOnScrollIndex(GDX.Runnable<Integer> onScrollIndex)
+    {
+        this.onScrollIndex = onScrollIndex;
+    }
+    private void OnScroll(Actor actor)
+    {
+        if (onScroll!=null) onScroll.Run(actor);
+        if (onScrollIndex!=null)
+        {
+            int index = content.getChildren().indexOf(actor,false);
+            onScrollIndex.Run(index);
+        }
+    }
 
     private void setup() {
-        this.onScroll = null;
-
         content = new Table();
         super.setWidget(content);
     }
@@ -91,7 +103,7 @@ public class PagedScroll extends ScrollPane {
                 if (scrollX >= pageX - pageWidth && scrollX < pageX + pageWidth)
                 {
                     setScrollX(pageX - (width - pageWidth) / 2f);
-                    if (onScroll != null) onScroll.Run(a);
+                    OnScroll(a);
                     break;
                 }
             }
@@ -105,7 +117,7 @@ public class PagedScroll extends ScrollPane {
         final float width = getWidth();
 
         setScrollX(pageX - (width - pageWidth) / 2f);
-        if (onScroll != null) onScroll.Run(listenerActor);
+        OnScroll(listenerActor);
     }
 
     public void addEmptyPage(float offset)

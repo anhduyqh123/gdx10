@@ -62,8 +62,9 @@ public class IMaskGroup extends Component {
         ShapeRenderer renderer = getRenderer.Run();
         renderer.begin();
 
-        Shape shape = FindIChild("mask").GetComponent(IShape.class).shape;
         Actor actor = FindIChild("mask").GetActor();
+        Shape shape = FindIChild("mask").GetComponent(IShape.class).shape;
+        shape.getStagePos = actor::localToStageCoordinates;
 
         /* Clear our depth buffer info from previous frame. */
         Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
@@ -79,7 +80,7 @@ public class IMaskGroup extends Component {
         /* Render mask elements. */
         renderer.setProjectionMatrix(GetActor().getStage().getCamera().combined);
         shape.type = ShapeRenderer.ShapeType.Filled;
-        shape.Draw(renderer,actor);
+        shape.Draw(renderer);
         renderer.flush();
 
         /* Enable RGBA color writing. */
@@ -99,7 +100,7 @@ public class IMaskGroup extends Component {
         if (actor.getDebug())
         {
             shape.type = ShapeRenderer.ShapeType.Line;
-            shape.Draw(renderer,actor);
+            shape.Draw(renderer);
         }
 
         renderer.end();

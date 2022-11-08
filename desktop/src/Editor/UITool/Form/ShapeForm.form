@@ -4,7 +4,9 @@
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <preferredSize width="400" height="400"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="9fed9" class="javax.swing.JLabel">
@@ -37,6 +39,14 @@
           <text value="Freeze"/>
         </properties>
       </component>
+      <grid id="b9eb8" binding="pnInfo" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints/>
+        <properties>
+          <preferredSize width="300" height="300"/>
+        </properties>
+        <border type="line"/>
+        <children/>
+      </grid>
     </children>
   </grid>
 </form>

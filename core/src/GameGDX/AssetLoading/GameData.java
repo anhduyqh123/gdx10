@@ -44,7 +44,7 @@ public class GameData extends Json.JsonObject {
         for(FileHandle child : GDX.GetFile(path).list())
         {
             if (!child.isDirectory()) continue;
-            LoadPackage(child.nameWithoutExtension(), child.path());
+            LoadPackage(child.nameWithoutExtension(), child.path().replace("./",""));
         }
     }
     public void LoadPackages()
@@ -64,6 +64,7 @@ public class GameData extends Json.JsonObject {
         ReadFileToAsset(packName, AssetNode.Kind.Sound, GDX.GetFile(path+"/sounds"),"");
         ReadFileToAsset(packName, AssetNode.Kind.Music, GDX.GetFile(path+"/musics"),"");
         ReadFileToAsset(packName, AssetNode.Kind.Object, GDX.GetFile(path+"/objects"),"ob");
+        ReadFileToAsset(packName, AssetNode.Kind.Data, GDX.GetFile(path+"/shaders"),"");
     }
     public void LoadAtlas(String pack, String path)
     {
@@ -109,6 +110,7 @@ public class GameData extends Json.JsonObject {
     {
         FileHandle dir = GDX.GetFile(path);
         ReadFileToAsset(pack, AssetNode.Kind.Spine,dir,"json");
+        ReadFileToAsset(pack, AssetNode.Kind.Spine,dir,"skel");
     }
 
     public List<AssetNode> ReadFileToAsset(String pack, AssetNode.Kind kind, FileHandle dir, String extension){

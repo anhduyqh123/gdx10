@@ -1,4 +1,8 @@
-package GameGDX;
+package Editor.LanguageTool;
+
+import GameGDX.Assets;
+import GameGDX.GDX;
+import GameGDX.Json;
 
 import java.util.*;
 

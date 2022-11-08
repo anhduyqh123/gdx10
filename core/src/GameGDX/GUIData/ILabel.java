@@ -4,7 +4,7 @@ import GameGDX.Assets;
 import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
-import GameGDX.Language;
+import GameGDX.Translate;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ILabel extends IActor {
-
-    public String font = "";
+    public String font = gFont;
     public String text = "text";
     public IAlign alignment = IAlign.center;
     public float fontScale = 1f;
@@ -24,7 +23,7 @@ public class ILabel extends IActor {
 
     @Override
     protected Actor NewActor() {
-        return New(text,GetFontName());
+        return New(text,font);
     }
 
     public String GetText()
@@ -34,19 +33,16 @@ public class ILabel extends IActor {
     }
     private BitmapFont GetFont()
     {
-        return Assets.GetFont(GetFontName());
+        return GetFont(font);
     }
-    public String GetFontName()
+    private BitmapFont GetFont(String font)
     {
-        if (font.equals("")) return gFont;
-        return font;
+        return Assets.GetFont(font);
     }
     public void SetFont(String fontName)
     {
-        if (fontName.equals(gFont)) font="";
-        else font = fontName;
         Label lb = GetActor();
-        lb.setStyle(new Label.LabelStyle(GetFont(), Color.WHITE));
+        lb.setStyle(new Label.LabelStyle(GetFont(fontName), Color.WHITE));
     }
     public void SetText(Object text)
     {
@@ -78,8 +74,17 @@ public class ILabel extends IActor {
     public void RefreshContent() {
         Label lb = GetActor();
         lb.setText(GetText());
-        lb.setStyle(new Label.LabelStyle(GetFont(), Color.WHITE));
+        SetFont(font);
         lb.setWrap(wrap);
+        if (bestFix) BestFix(GetActor());
+    }
+
+    @Override
+    public void RefreshLanguage() {
+        if (!multiLanguage) return;
+        Label lb = GetActor();
+        lb.setText(GetText());
+        lb.setFontScale(fontScale);
         if (bestFix) BestFix(GetActor());
     }
 
@@ -111,9 +116,9 @@ public class ILabel extends IActor {
     public static String GetTranslate(String text)//{key}->en-hello,vi->xin chao;
     {
         List<String> keys = GetKeys(text);
-        if (keys.size()<=0) return Language.GetContent(text);
+        if (keys.size()<=0) return Translate.i.Get(text);
         String txt = text;
-        for(String key : keys) txt = txt.replace(key,Language.GetContent(GetValue(key)));
+        for(String key : keys) txt = txt.replace(key,Translate.i.Get(GetValue(key)));
         return txt;
     }
     private static String GetValue(String value)

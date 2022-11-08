@@ -1,6 +1,7 @@
 package GameGDX.Actions;
 
 import com.badlogic.gdx.math.*;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
 import com.badlogic.gdx.utils.Align;
@@ -11,8 +12,8 @@ import java.util.List;
 public class MovePath extends TemporalAction {
     public Path<Vector2> doPath;
     public float delAngle;
-    public boolean isRotate;
-    public int align = Align.center;
+    public boolean isRotate = true;
+    public int align = Align.bottomLeft;
 
     @Override
     protected void update(float percent) {
@@ -25,38 +26,34 @@ public class MovePath extends TemporalAction {
             actor.setRotation(out.angleDeg() +delAngle);
         }
     }
-    public static MovePath Get(Vector2[] path, float duration)
+    public MovePath SetDeltaAngle(float delAngle)
     {
-        return Get(path,duration, Interpolation.linear);
+        this.delAngle = delAngle;
+        return this;
     }
-    public static MovePath Get(Vector2[] path, float duration, Interpolation interpolation)
+    public MovePath SetIsRotate(boolean isRotate)
     {
-        return Get(false,0,path,duration, interpolation);
+        this.isRotate = isRotate;
+        return this;
     }
-    public static MovePath Get(float delAngle, Vector2[] path, float duration)
-    {
-        return Get(delAngle,path,duration, Interpolation.linear);
-    }
-    public static MovePath Get(float delAngle, Vector2[] path, float duration, Interpolation interpolation)
-    {
-        return Get(true,delAngle,path,duration, interpolation);
-    }
-    private static MovePath Get(boolean isRotate, float delAngle, Vector2[] path, float duration, Interpolation interpolation)
-    {
-        MovePath movePath = Get(false,path,duration,interpolation);
-        movePath.isRotate = isRotate;
-        movePath.delAngle = delAngle;
-        return movePath;
-    }
-    public static MovePath Get(boolean continuous, Vector2[] path, float duration, Interpolation interpolation)
+    public static MovePath Get(boolean continuous, Vector2[] path, int align, float duration, Interpolation interpolation)
     {
         MovePath movePath = Actions.action(MovePath.class);
         Vector2[] way = path;
         if (!continuous) way = GetPath(path);
-        movePath.doPath = new CatmullRomSpline(way,continuous);
+        movePath.doPath = new CatmullRomSpline<>(way,continuous);
         movePath.setDuration(duration);
         movePath.setInterpolation(interpolation);
+        movePath.align = align;
         return movePath;
+    }
+    public static MovePath Get(Vector2[] path,int align, float duration, Interpolation interpolation)
+    {
+        return Get(false,path,align,duration, interpolation);
+    }
+    public static MovePath Get(Vector2[] path, int align, float duration)
+    {
+        return Get(path,align,duration, Interpolation.linear);
     }
     private static Vector2[] GetPath(Vector2[] arr)
     {
@@ -65,5 +62,29 @@ public class MovePath extends TemporalAction {
         for(Vector2 pos : arr) list.add(pos);
         list.add(arr[arr.length-1]);
         return list.toArray(new Vector2[list.size()]);
+    }
+    //arc
+    public static Action Arc(Vector2 start, Vector2 end, float percent,int align, float duration)
+    {
+        return Arc(start,end,percent,align,duration,Interpolation.linear);
+    }
+    public static Action Arc(Vector2 start, Vector2 end, float percent, int align, float duration, Interpolation interpolation)
+    {
+        Vector2 mid = GetNormalPos(start,end,percent);
+        Vector2[] path = {start,mid,end};
+        return MovePath.Get(path,align,duration,interpolation);
+    }
+    public static Vector2 GetNormalPos(Vector2 pos1, Vector2 pos2, float percent)
+    {
+        Vector2 dir = new Vector2(pos1);
+        dir.sub(pos2);
+        float l = dir.len()/2;
+        if (percent>0) dir.set(-dir.y,dir.x);
+        else dir.set(dir.y,-dir.x);
+        Vector2 mid = new Vector2(pos1);
+        mid.add(pos2);
+        mid.scl(0.5f);
+        mid.add(dir.setLength(l*Math.abs(percent)));
+        return mid;
     }
 }

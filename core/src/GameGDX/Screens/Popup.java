@@ -11,7 +11,7 @@ public class Popup extends Screen{
     {
         super(name);
         overlay = IImage.NewImage(Color.BLACK,this);
-        overlay.getColor().a = 0.5f;
+        overlay.getColor().a = 0.8f;
         overlay.toBack();
     }
     public Image GetOverlay()

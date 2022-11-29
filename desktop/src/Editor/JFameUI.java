@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.reflect.ReflectionException;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -194,6 +195,18 @@ public class JFameUI {
     }
     //</editor-fold>
     //<editor-fold desc="TextField">
+    public void TextField(JTextComponent textField, String value, GDX.Runnable<String> onChange)
+    {
+        textField.setText(value);
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                try {
+                    onChange.Run(textField.getText());
+                }catch (Exception ex){}
+            }
+        });
+    }
     public void TextField(JTextField textField, String value, GDX.Runnable<String> onChange)
     {
         textField.setText(value);
@@ -245,6 +258,7 @@ public class JFameUI {
         return NewTextField(name, value, 80, parent,onChange);
     }
     //</editor-fold>
+
     //<editor-fold desc="Button">
     public JButton NewButton(String name,int width,int height,JPanel parent)
     {

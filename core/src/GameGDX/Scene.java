@@ -133,6 +133,7 @@ public class Scene {
 //        actor.setPosition(pos2.x,pos2.y,Align.center);
 //        group.addActor(actor);
 
+        float rotate = GetStageRotation(actor);
         Vector2 center = new Vector2(actor.getOriginX(),actor.getOriginY());
         //Vector2 pos = Scene.GetPosition(actor).add(center);
         //Vector2 pos1 = actor.getParent().localToStageCoordinates(pos);
@@ -140,16 +141,47 @@ public class Scene {
         Vector2 pos2 = group.stageToLocalCoordinates(pos1).sub(center);
         actor.setPosition(pos2.x,pos2.y);
         group.addActor(actor);
+        SetStageRotation(actor,rotate);
     }
-    //Rotate
-    public static float GetStageRotation(Actor actor)
+    public static void AddActorKeepPos(Actor actor, Group group)
     {
-        float rotation = 0.00f;
+        Vector2 pos = actor.localToStageCoordinates(new Vector2(0,0));
+        group.stageToLocalCoordinates(pos);
+        actor.setPosition(pos.x,pos.y);
+        group.addActor(actor);
+    }
+    public static void AddActorKeepTransform(Actor actor, Group group)
+    {
+        Vector2 stageScale = GetStageScale(actor);
+        float stageRotate = GetStageRotation(actor);
+
+        Vector2 pos = actor.localToStageCoordinates(new Vector2(0,0));
+        group.stageToLocalCoordinates(pos);
+        actor.setPosition(pos.x,pos.y);
+        group.addActor(actor);
+
+        Vector2 scale = StageToLocalScale(stageScale,actor);
+        actor.setScale(scale.x,scale.y);
+        actor.setRotation(StageToLocalRotation(stageRotate,actor));
+    }
+    private static List<Actor> GetConnect(Actor actor)
+    {
+        List<Actor> list = new ArrayList<>();
         while (actor!=null) {
-            rotation += actor.getRotation();
+            list.add(actor);
             actor = actor.getParent();
         }
-        return rotation;
+        return list;
+    }
+    public static float StageToLocalRotation(float rotation, Actor actor)
+    {
+        return rotation- GetStageRotation(actor);
+    }
+    public static float GetStageRotation(Actor actor)
+    {
+        Ref<Float> ref = new Ref<>(0f);
+        Util.For(GetConnect(actor),a->ref.Set(ref.Get()+a.getRotation()));
+        return ref.Get();
     }
     public static float SetStageRotation(Actor actor,float rotation)
     {
@@ -160,6 +192,18 @@ public class Scene {
         }
         actor.setRotation(rotation);
         return rotation;
+    }
+    //Scale
+    public static Vector2 StageToLocalScale(Vector2 scale, Actor actor)
+    {
+        Vector2 sScale = GetStageScale(actor);
+        return scale.scl(1f/sScale.x,1f/sScale.y);
+    }
+    public static Vector2 GetStageScale(Actor actor)
+    {
+        Ref<Vector2> ref = new Ref<>(new Vector2(actor.getScaleX(),actor.getScaleY()));
+        Util.For(GetConnect(actor),a->ref.Set(ref.Get().scl(a.getScaleX(),a.getScaleY())));
+        return ref.Get();
     }
     //Position
     public static Vector2 GetLocalOrigin(Actor actor)

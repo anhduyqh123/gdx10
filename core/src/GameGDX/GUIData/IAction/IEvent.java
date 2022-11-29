@@ -19,8 +19,8 @@ public class IEvent extends IParallel{
         name = "event";
     }
 
-    @Override
-    protected void Init(IActor iActor) {
+    public void Init(IActor iActor) {
+        super.Init(iActor);
         if (event==Event.OnInit) Run(iActor);
     }
 

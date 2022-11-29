@@ -1,10 +1,8 @@
 package GameGDX.GUIData;
 
-import GameGDX.Assets;
-import GameGDX.GDX;
+import GameGDX.*;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
-import GameGDX.Translate;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
@@ -28,7 +26,7 @@ public class ILabel extends IActor {
 
     public String GetText()
     {
-        if (multiLanguage) return GetTranslate(text);
+        if (multiLanguage) return Util.Try(()->GetTranslate(text),text);
         return text;
     }
     private BitmapFont GetFont()
@@ -148,7 +146,6 @@ public class ILabel extends IActor {
     }
 
     //other
-
     public static String gFont = "font";
     private static void BestFix(Label label)
     {

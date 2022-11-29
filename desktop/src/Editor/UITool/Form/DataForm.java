@@ -1,20 +1,20 @@
 package Editor.UITool.Form;
 
 import Editor.JFameUI;
-import Editor.UITool.UIConfig;
 import Editor.UITool.Form.Panel.ContentPanel;
 import Editor.UITool.ObjectData;
 import Editor.UITool.ObjectPack;
+import Editor.UITool.UIConfig;
 import Extend.Box2d.GBox2d;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.Assets;
 import GameGDX.GDX;
-import GameGDX.GUIData.*;
+import GameGDX.GUIData.GUIData;
 import GameGDX.GUIData.IChild.IActor;
+import GameGDX.GUIData.IGroup;
 import GameGDX.Reflect;
 import GameGDX.Scene;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.game.desktop.XmlLevel;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -310,5 +310,12 @@ public class DataForm {
     {
         String name = gTree.GetName(gTree.GetMainNode());
         data.Save(name,()->ui.NewDialog("Save success!",panel1));
+    }
+    public void Refresh()
+    {
+        String name = gTree.GetSelectedName();
+        IGroup iGroup = gTree.GetParentObject(gTree.GetSelectedObject());
+        gTree.Refresh();
+        gTree.SetSelection(iGroup.GetIChild(name));
     }
 }

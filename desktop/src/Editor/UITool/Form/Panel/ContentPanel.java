@@ -2,19 +2,19 @@ package Editor.UITool.Form.Panel;
 
 import Editor.JFameUI;
 import Editor.UITool.Form.AnimForm;
-import Editor.UITool.Form.IEmitterForm;
 import Extend.CircleProgress.ICircleProgress;
+import Extend.Frame.GFrame;
 import Extend.Frame.IFrame;
 import Extend.ITabGroup;
-import Extend.PagedScroll.IPagedScroll;
+import Extend.ITextField;
 import Extend.PagedScroll.IPaged2Scroll;
+import Extend.PagedScroll.IPagedScroll;
 import Extend.Spine.GSpine;
 import Extend.Spine.ISpine;
-import Extend.Frame.GFrame;
 import GameGDX.AssetLoading.AssetNode;
 import GameGDX.Assets;
-import GameGDX.GUIData.*;
 import GameGDX.GUIData.IChild.IActor;
+import GameGDX.GUIData.*;
 import GameGDX.Reflect;
 import com.badlogic.gdx.utils.reflect.Field;
 
@@ -38,7 +38,7 @@ public class ContentPanel {
     public Class[] GetTypes()
     {
         Class[] types = {IGroup.class, IImage.class, ILabel.class, ITable.class,IScrollPane.class,IParticle.class, IActor.class,
-                ISpine.class, IFrame.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class, ITabGroup.class,
+                ISpine.class, IFrame.class,IProgressBar.class,IScrollImage.class, ICircleProgress.class, ITabGroup.class, ITextField.class,
                 IPagedScroll.class, IPaged2Scroll.class};
         return types;
     }
@@ -205,10 +205,10 @@ public class ContentPanel {
             IParticle par = (IParticle) iActor;
             ui.NewButton("Play",panel,par::Start);
             ui.NewButton("Stop",panel,par::Stop);
-            ui.NewButton("Emitter",panel,()->{
-                ui.NewWindow("Emitter",new IEmitterForm(par.iEmitters).panel1,
-                        500,400,par::RefreshEmitter);
-            });
+//            ui.NewButton("Emitter",panel,()->{
+//                ui.NewWindow("Emitter",new IEmitterForm(par.iEmitters).panel1,
+//                        500,400,par::RefreshEmitter);
+//            });
         }
     }
     class JITable extends JIActor

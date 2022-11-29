@@ -23,7 +23,7 @@ public class AssetPackage {
 
         for(AssetNode n : list)
         {
-            if (map.containsKey(n.name)) GDX.Error("trùng tên:"+n.pack+":"+n.url+"/"+map.get(n.name).url);
+            if (map.containsKey(n.name)) GDX.Error("trùng tên:"+n.pack+":"+n.url+"*"+map.get(n.name).url);
             map.put(n.name,n);
 
             if (n.kind!= AssetNode.Kind.None) loadableNode.add(n);

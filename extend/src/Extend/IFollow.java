@@ -21,8 +21,8 @@ public class IFollow extends IAction {
         name = "follow";
     }
 
-    @Override
-    protected void Init(IActor iActor) {
+    public void Init(IActor iActor) {
+        super.Init(iActor);
         getDir = null;
     }
 

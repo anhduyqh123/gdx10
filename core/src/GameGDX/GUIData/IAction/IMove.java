@@ -27,6 +27,6 @@ public class IMove extends IBaseAction{
         Vector2 pos = iPos.Get();
         if (useX) x0 = pos.x;
         if (useY) y0 = pos.y;
-        return Actions.moveToAligned(x0+GetInit(delX),y0+GetInit(delY),align,GetDuration(),iInter.value);
+        return Actions.moveToAligned(x0+GetFloat(delX),y0+GetFloat(delY),align,GetDuration(),iInter.value);
     }
 }

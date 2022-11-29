@@ -11,11 +11,11 @@ import java.util.Map;
 public class IActionList extends IMultiAction {
     public Map<String,IAction> map = new HashMap<>();
 
-    @Override
-    public void Init(IActor iActor) {
-        super.Init(iActor);
-        ForChild(i->i.Init(iActor));
-    }
+//    @Override
+//    public void Init(IActor iActor) {
+//        super.Init(iActor);
+//        ForChild(i->i.Init(iActor));
+//    }
 
     @Override
     public Action Get(IActor iActor) {
@@ -42,6 +42,7 @@ public class IActionList extends IMultiAction {
 
     @Override
     public void Add(IAction iAction) {
+        iAction.SetIActor(GetIActor());
         map.put(iAction.name,iAction);
     }
 

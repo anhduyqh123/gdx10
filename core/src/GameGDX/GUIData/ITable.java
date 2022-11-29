@@ -4,12 +4,14 @@ import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
 import GameGDX.Reflect;
+import GameGDX.Util;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ITable extends IGroup {
@@ -19,7 +21,7 @@ public class ITable extends IGroup {
     public int column = 0,clone;
     public float spaceX,spaceY;
     public float padLeft,padRight,padTop,padBot;
-    public boolean autoFill;
+    public boolean autoFill,reverse;
 
     private GDX.Func<List<IActor>> getChildren;//current
 
@@ -96,6 +98,13 @@ public class ITable extends IGroup {
         table.pad(padTop,padLeft,padBot,padRight);
         table.align(contentAlign.value);
         table.validate();
+
+        if (reverse)
+        {
+            List<Actor> reverse = new ArrayList<>(children);
+            Collections.reverse(reverse);
+            Util.ForIndex(reverse,x->reverse.get(x).setZIndex(x));
+        }
     }
     private void AutoFill(Collection<Actor> children) //width/height
     {
@@ -143,9 +152,13 @@ public class ITable extends IGroup {
     }
     public <T,E extends IActor> List<E> CloneChild(List<T> list, GDX.Runnable2<T,E> cb)
     {
+        return CloneChild(list,(i,t,e)->cb.Run(t,e));
+    }
+    public <T,E extends IActor> List<E> CloneChild(List<T> list, GDX.Runnable3<Integer,T,E> cb)
+    {
         List<E> iActors = CloneChild(list.size());
         for(int i=0;i<list.size();i++)
-            cb.Run(list.get(i),(E)iActors.get(i));
+            cb.Run(i,list.get(i),(E)iActors.get(i));
         return iActors;
     }
     public <T extends IActor> List<T> CloneChild(int amount,GDX.Runnable2<Integer,T> cb)

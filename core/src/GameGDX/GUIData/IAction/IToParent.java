@@ -2,7 +2,7 @@ package GameGDX.GUIData.IAction;
 
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IGroup;
-import com.badlogic.gdx.math.Vector2;
+import GameGDX.Scene;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -12,6 +12,7 @@ public class IToParent extends IAction{
     public enum Type
     {
         Add,
+        AddKeepTransform,
         At,
         After,
         Before
@@ -36,21 +37,25 @@ public class IToParent extends IAction{
             IGroup iParent = iActor.GetIParent();
             if (!stParent.equals("parent")) iParent = iParent.GetIActor(stParent);
             Group parent = iParent.GetActor();
-            Vector2 pos = actor.getParent().localToActorCoordinates(parent,iActor.GetPos());
-            iActor.SetPos(pos);
-            actor.remove();
             switch (type)
             {
                 case Add:
+                    actor.remove();
                     parent.addActor(actor);
                     break;
+                case AddKeepTransform:
+                    Scene.AddActorKeepTransform(actor,parent);
+                    break;
                 case At:
+                    actor.remove();
                     parent.addActorAt(index,actor);
                     break;
                 case After:
+                    actor.remove();
                     parent.addActorAfter(iParent.FindChild(stActor),actor);
                     break;
                 case Before:
+                    actor.remove();
                     parent.addActorBefore(iParent.FindChild(stActor),actor);
                     break;
             }

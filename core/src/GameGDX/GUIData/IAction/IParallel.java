@@ -29,6 +29,7 @@ public class IParallel extends IMultiAction{
 
     public void Add(IAction iAction)
     {
+        iAction.SetIActor(GetIActor());
         list.add(iAction);
     }
     public void Remove(IAction iAction)

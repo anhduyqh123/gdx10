@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.utils.Align;
 
 public class ProgressBar extends ScrollImage {
     public GDX.Runnable<Vector2> onChange;
@@ -29,10 +28,11 @@ public class ProgressBar extends ScrollImage {
         Action ac = CountAction.Get(this::SetValue,start,end,duration);
         addAction(ac);
     }
-    private Vector2 GetPos()
+    private Vector2 GetPos()//parent position
     {
-        return new Vector2(getX(Align.left)+percent*getWidth(),getY(Align.left));
+        return localToParentCoordinates(new Vector2(percent*getWidth(),getHeight()/2));
     }
+
 
     private float ValidPercent(float percent)
     {

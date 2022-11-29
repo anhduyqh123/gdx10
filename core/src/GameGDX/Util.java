@@ -4,7 +4,9 @@ import com.badlogic.gdx.math.EarClippingTriangulator;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Util {
     //<editor-fold desc="Vector">
@@ -115,5 +117,76 @@ public class Util {
     public static void ForIndex(List list,GDX.Runnable<Integer> cb)
     {
         For(0,list.size()-1,cb);
+    }
+
+    //grid
+    public static <T> T Get(T[][] grid,Vector2 pos)
+    {
+        return grid[(int)pos.x][(int)pos.y];
+    }
+    public static <T> void Set(T[][] grid,Vector2 pos,T value)
+    {
+        grid[(int)pos.x][(int)pos.y] = value;
+    }
+    //readData
+    public static String[][] ReadCSVFromName(String name)
+    {
+        return ReadCSV(GDX.GetStringFromName(name));
+    }
+    public static String[][] ReadCSV(String data)//[row][column]
+    {
+        Map<String,String> map0 = new HashMap<>();data = FindString(data,"\"\"","\"\"",map0);
+        Map<String,String> map = new HashMap<>();
+        data = FindString(data,"\"","\"",map);
+        data = data.replace("\r","");
+        String[] rows = data.split("\n");
+        String[][] matrix = new String[rows.length][];
+        for (int i=0;i<rows.length;i++)
+        {
+            matrix[i] = rows[i].split(",");
+            for (int j=0;j<matrix[i].length;j++)
+            {
+                if (map.containsKey(matrix[i][j])) matrix[i][j] = map.get(matrix[i][j]);
+                for (String key : map0.keySet())
+                    if (matrix[i][j].contains(key)) matrix[i][j] = matrix[i][j].replace(key,map0.get(key));
+            }
+        }
+        return matrix;
+    }
+    //String
+    public static String FindString(String str,String c1,String c2)
+    {
+        return Try(()->{
+            int s = str.indexOf(c1);
+            int e = str.indexOf(c2,s+1);
+            if (s==-1 || e==-1) return null;
+            return str.substring(s,e+c2.length());
+        },null);
+    }
+    public static String FindString(String str,String c1,String c2,Map<String,String> map)
+    {
+        String s = FindString(str,c1,c2);
+        while (s!=null)
+        {
+            String key = "$"+map.size();
+            map.put(key,s);
+            str = str.replace(s,key);
+            s = FindString(str,c1,c2);
+        }
+        return str;
+    }
+    //Try
+    public static void Try(Runnable cb)
+    {
+        try {
+            cb.run();
+        }catch (Exception e){};
+    }
+    public static <T> T Try(GDX.Func<T> cb,T value0)
+    {
+        try {
+            return cb.Run();
+        }catch (Exception e){};
+        return value0;
     }
 }

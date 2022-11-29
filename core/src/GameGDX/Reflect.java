@@ -62,6 +62,7 @@ public class Reflect {
     }
     public static boolean IsValidField(Field field)
     {
+        if (field.isSynthetic()) return false;//new
         if (field.isStatic()) return false;
         if (!IsValidClass(field.getType())) return false;
         return true;

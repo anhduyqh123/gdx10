@@ -28,7 +28,7 @@ public class IActor {
     private Map<String,Component> componentMap = new HashMap<>();
     protected GDX.Func<Map> getComponent;
 
-    private Map<String,String> mapParam = new HashMap<>();
+    protected Map<String,String> mapParam = new HashMap<>();
     protected GDX.Func<Map> getParam;
     protected GDX.Func1<Actor,String> connect;
     private GDX.Func<Actor> getActor;
@@ -230,7 +230,6 @@ public class IActor {
     protected void AfterRefresh()
     {
         getParam = null;
-        ClearAction();
         RefreshComponent();
         RefreshEvent();
     }
@@ -347,17 +346,13 @@ public class IActor {
     public void StopAction()
     {
         BaseRefresh();
-        ClearAction();
+        GetActor().clearActions();
     }
     public void RunAction(String actionName)
     {
         actionName = actionName.replace("\n","");
         if (!acList.Contains(actionName)) return;
         GetActor().addAction(GetAction(actionName));
-    }
-    public void ClearAction()
-    {
-        GetActor().clearActions();
     }
     public <T extends IAction> T GetIAction(String name)
     {
@@ -371,6 +366,10 @@ public class IActor {
     public void SetColor(Color color)
     {
         GetActor().setColor(color);
+    }
+    public void Runnable(GDX.Runnable<IActor> cb)
+    {
+        cb.Run(this);
     }
 
     //param

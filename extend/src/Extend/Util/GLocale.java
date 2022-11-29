@@ -1,6 +1,7 @@
 package Extend.Util;
 
 import GameGDX.GDX;
+import GameGDX.Translate;
 
 import java.util.Arrays;
 
@@ -29,6 +30,7 @@ public class GLocale {
     {
         this.locale = locale;
         GDX.SetPrefString("locale",locale);
+        Translate.i.SetCode(GetCode());
     }
     public String Get()
     {

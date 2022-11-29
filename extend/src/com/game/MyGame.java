@@ -6,6 +6,7 @@ import GameGDX.*;
 import GameGDX.GUIData.ILabel;
 import GameGDX.Screens.Screen;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class MyGame extends GDXGame {
     private ILabel lb;
@@ -14,14 +15,11 @@ public class MyGame extends GDXGame {
         new Assets().SetData(GetGameData(true));
         Assets.LoadPackages(()->{
             Screen screen = new Screen("Game1");
-//            Screen screen = new Screen("Game1"){
-//                @Override
-//                public void act(float delta) {
-//                    if (lb!=null)
-//                        lb.SetText(GDX.GetFPS());
-//                }
-//            };
-//            lb = screen.FindILabel("lb");
+            Actor actor = screen.FindActor("img");
+            Scene.AddActorKeepPosition(actor,screen.FindActor("box1"));
+            screen.FindActor("box1").setDebug(true);
+            screen.FindActor("box").setDebug(true);
+
             screen.Show();
         },"first");//load first package
     }

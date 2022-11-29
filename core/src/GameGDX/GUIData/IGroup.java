@@ -104,6 +104,12 @@ public class IGroup extends IActor {
             }
         };
     }
+    public void ClearData()
+    {
+        map.clear();
+        list.clear();
+    }
+
     public String GetChildName(int index)
     {
         return list.get(index);
@@ -182,7 +188,6 @@ public class IGroup extends IActor {
     @Override
     protected void AfterRefresh() {
         getParam = null;
-        ClearAction();
         RefreshChildren();
         RefreshComponent();
         RefreshEvent();
@@ -273,5 +278,10 @@ public class IGroup extends IActor {
     public void SetColor(Color color) {
         super.SetColor(color);
         ForEach(i->i.SetColor(color));
+    }
+    public void Runnable(GDX.Runnable<IActor> cb)
+    {
+        super.Runnable(cb);
+        ForEach(i->i.Runnable(cb));
     }
 }

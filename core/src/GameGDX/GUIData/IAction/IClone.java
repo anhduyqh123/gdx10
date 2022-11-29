@@ -19,8 +19,8 @@ public class IClone extends IParallel{
         name = "clone";
     }
 
-    @Override
-    protected void Init(IActor iActor) {
+    public void Init(IActor iActor) {
+        super.Init(iActor);
         InitPool((IGroup) iActor);
     }
 

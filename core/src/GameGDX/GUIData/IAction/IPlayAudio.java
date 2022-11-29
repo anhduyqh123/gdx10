@@ -55,16 +55,18 @@ public class IPlayAudio extends IAction{
         private String GetName()
         {
             if (random.equals("")) return name;
-            return name+GetInit(random);
+            return name+RandomNumber(random);
         }
 
         public void Run(IActor iActor) {
+            String name1 = GetName();
+            if (name1.equals("")) return;
             if (type==Type.Stop) GAudio.i.StopSound(name);
             else {
                 if (stage== Stage.UI){
-                    if (type==Type.PlaySingle) GAudio.i.PlaySingleSound(GetName());
+                    if (type==Type.PlaySingle) GAudio.i.PlaySingleSound(name1);
                     else
-                        GAudio.i.PlaySound(GetName());
+                        GAudio.i.PlaySound(name1);
                 }
                 else iActor.PlaySound(name,type== Type.Loop);
             }

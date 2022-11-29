@@ -96,7 +96,7 @@ public class GAudio {
     {
         i.PlaySingleSound(name,0.1f);
     }
-    private void PlaySingleSound(String name,float delay)
+    public void PlaySingleSound(String name,float delay)
     {
         if (singles.contains(name)) return;
         singles.add(name);

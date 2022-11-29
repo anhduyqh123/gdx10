@@ -128,6 +128,6 @@ public class MyGame extends GDXGame {
         scene.Act(GDX.DeltaTime());
         Gdx.gl.glClearColor(bg.r,bg.g,bg.b,bg.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        scene.Render();
+        Util.Try(scene::Render);
     }
 }

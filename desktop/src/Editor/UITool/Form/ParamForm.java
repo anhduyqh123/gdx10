@@ -18,11 +18,11 @@ public class ParamForm {
     private JList list1;
     private JButton btNew;
     private JButton btDelete;
-    private JTextField tfValue;
     private JTextField tfName;
     private JButton btPaste;
     private JButton btSelect;
     private JComboBox cbSelect;
+    private JTextArea textArea1;
 
     private JFameUI ui = new JFameUI();
     private Map<String,String> map;
@@ -36,7 +36,7 @@ public class ParamForm {
             map.remove(key);
             map.put(vl,value);
         });
-        ui.TextField(tfValue,"",vl->{
+        ui.TextField(textArea1,"",vl->{
             String key = (String) list1.getSelectedValue();
             map.put(key,vl);
         });
@@ -66,7 +66,7 @@ public class ParamForm {
     private void OnSelect(String name)
     {
         tfName.setText(name);
-        tfValue.setText(map.get(name));
+        textArea1.setText(map.get(name));
     }
     private void TextField(JTextField textField, GDX.Runnable<String> onChange)
     {

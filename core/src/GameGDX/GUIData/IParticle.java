@@ -1,21 +1,22 @@
 package GameGDX.GUIData;
 
+import GameGDX.Actors.Particle;
 import GameGDX.Assets;
 import GameGDX.GUIData.IChild.IActor;
-import GameGDX.Actors.Particle;
-import GameGDX.Reflect;
+import GameGDX.Json;
+import GameGDX.Util;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.JsonValue;
 
 public class IParticle extends IActor {
 
     public boolean start = true;
     public String parName = "";
-    public List<IEmitter> iEmitters = new ArrayList<>();
 
     @Override
     protected Actor NewActor() {
@@ -69,71 +70,35 @@ public class IParticle extends IActor {
         par.Stop();
         par.Reset();
     }
-    public void RefreshEmitter()
+    private void RefreshEmitter()//edit emitter in param
     {
-        try {
-            for (IEmitter i : iEmitters) SetIEmitter(i);
-        }catch (Exception e){e.printStackTrace();}
-    }
-    private void SetIEmitter(IEmitter e)
-    {
-        Particle par = GetActor();
-        ParticleEmitter emit = par.GetEmitter(e.index);
-        if (e.IsSprite()) par.SetSprite(e.index,Assets.GetTexture(e.sprite));
-        e.SetData(emit);
-    }
-
-    public static class IEmitter
-    {
-        public int index;
-        public String sprite = "";
-        public Value size,offset;
-
-        public boolean IsSprite()
-        {
-            return !sprite.equals("");
-        }
-        public void SetData(ParticleEmitter e)
-        {
-            if (size!=null) size.SetScale(e.getXScale(),e.getYScale());
-            if (offset!=null) offset.SetRanged(e.getXOffsetValue(),e.getYOffsetValue());
-        }
-        @Override
-        public boolean equals(Object obj) {
-            return Reflect.equals(this,obj);
-        }
-    }
-    public static class Value
-    {
-        public int minX,maxX,minY,maxY;
-        private boolean IsX()
-        {
-            return minX!=0 && maxX!=0;
-        }
-        private boolean IsY()
-        {
-            return minY!=0 && maxY!=0;
-        }
-        public void SetRanged(ParticleEmitter.RangedNumericValue vlX,ParticleEmitter.RangedNumericValue vlY)
-        {
-            if (IsX()) vlX.setLow(minX,maxY);
-            if (IsY()) vlY.setLow(minY,maxY);
-        }
-        public void SetScale(ParticleEmitter.ScaledNumericValue vlX,ParticleEmitter.ScaledNumericValue vlY)
-        {
-            if (IsX()){
-                vlX.setLow(minX);
-                vlX.setHigh(maxX);
+        for (String key : mapParam.keySet())
+            if (key.contains("emit")) //emit_0
+            {
+                int index = Integer.parseInt(key.split("_")[1]);
+                new IEmitter(index,mapParam.get(key));
             }
-            if (IsY()){
-                vlY.setLow(minY);
-                vlY.setHigh(maxY);
-            }
-        }
+    }
 
-        @Override
-        public boolean equals(Object obj) {
-            return Reflect.equals(this,obj);
+    public class IEmitter
+    {
+        private JsonValue js;
+        private ParticleEmitter emit;
+
+        public IEmitter(int index,String data)
+        {
+            js = Json.DataToJson(data);
+            Particle par = GetActor();
+            emit = par.GetEmitter(index);
+            Util.Try(this::SetSprites);
+        }
+        private void SetSprites()
+        {
+            if (!js.hasChild("sprites")) return;
+            Array<Sprite> arr = new Array<>();
+            for (String name : js.get("sprites").asStringArray())
+                arr.add(new Sprite(new TextureRegion(Assets.GetTexture(name))));
+            emit.setSprites(arr);
         }
     }
 }

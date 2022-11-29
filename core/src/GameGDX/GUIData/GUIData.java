@@ -9,8 +9,8 @@ import com.badlogic.gdx.utils.JsonWriter;
 import java.util.*;
 
 public class GUIData {
+    public static GDX.Func2<String,String,String> getRemoteData = (key,vl0)->vl0;
     public static GUIData i = new GUIData();
-
     private Map<String, IActor> map = new HashMap<>();
     private MiniJson miniJson = GetMiniJson();
 
@@ -57,7 +57,8 @@ public class GUIData {
     public IActor Get(String pack, String name)
     {
         AssetNode n = Assets.GetAssetPackage(pack).Get(name);
-        String data = GDX.GetString(n.url);
+        //String data = GDX.GetString(n.url);
+        String data = getRemoteData.Run(n.url,GDX.GetString(n.url));
         JsonValue jsData = miniJson.Decode(Json.DataToJson(data));
         IActor ic = IJson.FromJson(jsData);
         return ic;

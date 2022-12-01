@@ -4,6 +4,7 @@ import GameGDX.GDX;
 import GameGDX.Translate;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Version 1.1 by BaDuy
@@ -11,13 +12,13 @@ import java.util.Arrays;
 
 public class GLocale {
     public static GLocale i;
-    private final String[] locales,replace;
+    private final List<String> locales,replace;
     private String locale;
     public GLocale(String[] locales, String[] replace, String defaultLocale)
     {
         i = this;
-        this.locales = locales;
-        this.replace = replace;
+        this.locales = Arrays.asList(locales);
+        this.replace = Arrays.asList(replace);
         ReplaceCountry(defaultLocale);
         defaultLocale = FindValidLocale(defaultLocale);
         locale = GDX.GetPrefString("locale",defaultLocale);
@@ -36,17 +37,17 @@ public class GLocale {
     {
         return locale;
     }
-    public String[] GetLocales()
+    public List<String> GetLocales()
     {
         return locales;
     }
     private void ReplaceCountry(String locale)
     {
-        if (!Arrays.asList(replace).contains(locale)) return;
-        for(int i=0;i<locales.length;i++)
-            if (TheSameLanguage(locale,locales[i]))
+        if (!replace.contains(locale)) return;
+        for(int i=0;i<locales.size();i++)
+            if (TheSameLanguage(locale,locales.get(i)))
             {
-                locales[i] = locale;
+                locales.set(i,locale);
                 return;
             }
     }
@@ -57,7 +58,7 @@ public class GLocale {
             if (lc.equals(locale)) return lc;
         for(String lc : locales)
             if (TheSameLanguage(lc,locale)) return lc;
-        return locales[0];
+        return locales.get(0);
     }
     private boolean TheSameLanguage(String locale1,String locale2)
     {

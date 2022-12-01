@@ -81,7 +81,7 @@ public class OptionForm {
     private Translate GetTranslate()
     {
         try {
-            return new Translate(Assets.GetNode("translate").url);
+            return new Translate(GDX.GetStringFromName("translate"));
         }catch (Exception e){}
         return new Translate();
     }

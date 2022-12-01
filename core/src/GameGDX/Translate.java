@@ -15,10 +15,10 @@ public class Translate {
     public List<String> codes;//get only
 
     public Translate(){}
-    public Translate(String url)
+    public Translate(String data)
     {
         i = this;
-        String[][] board = Util.ReadCSV(GDX.GetString(url));
+        String[][] board = Util.ReadCSV(data);
         codes = Arrays.asList(board[0]);
         Util.For(1,board.length-1,i->{
             String[] arr = board[i];
@@ -58,5 +58,9 @@ public class Translate {
     public JsonValue GetData()
     {
         return json;
+    }
+    public static Translate Init()
+    {
+        return new Translate(GDX.GetStringFromName("translate"));
     }
 }

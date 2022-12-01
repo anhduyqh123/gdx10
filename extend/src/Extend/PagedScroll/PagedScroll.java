@@ -16,6 +16,7 @@ public class PagedScroll extends ScrollPane {
     private Table content;
     private GDX.Runnable<Actor> onScroll;
     private GDX.Runnable<Integer> onScrollIndex;
+    private Actor current;
 
     public PagedScroll () {
         super(null);
@@ -32,12 +33,30 @@ public class PagedScroll extends ScrollPane {
     }
     private void OnScroll(Actor actor)
     {
+        this.current = actor;
         if (onScroll!=null) onScroll.Run(actor);
         if (onScrollIndex!=null)
         {
             int index = content.getChildren().indexOf(actor,false);
             onScrollIndex.Run(index);
         }
+    }
+    private void ScrollByStep(int del)//
+    {
+        if (current==null) return;
+        int index = content.getChildren().indexOf(current,false)+del;
+        int size = content.getChildren().size;
+        if (index>=size) index=0;
+        if (index<0) index = size-1;
+        scrollTo(content.getChild(index));
+    }
+    public void Next()
+    {
+        ScrollByStep(1);
+    }
+    public void Previous()
+    {
+        ScrollByStep(-1);
     }
 
     private void setup() {

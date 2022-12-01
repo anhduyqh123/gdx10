@@ -196,12 +196,12 @@ public class Scene {
     //Scale
     public static Vector2 StageToLocalScale(Vector2 scale, Actor actor)
     {
-        Vector2 sScale = GetStageScale(actor);
+        Vector2 sScale = GetStageScale(actor.getParent());
         return scale.scl(1f/sScale.x,1f/sScale.y);
     }
     public static Vector2 GetStageScale(Actor actor)
     {
-        Ref<Vector2> ref = new Ref<>(new Vector2(actor.getScaleX(),actor.getScaleY()));
+        Ref<Vector2> ref = new Ref<>(new Vector2(1,1));
         Util.For(GetConnect(actor),a->ref.Set(ref.Get().scl(a.getScaleX(),a.getScaleY())));
         return ref.Get();
     }

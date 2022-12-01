@@ -26,7 +26,7 @@ public class IShader extends Component {
     }
 
     @Override
-    protected void Draw(Batch batch, float parentAlpha, Runnable onDraw) {
+    public void Draw(Batch batch, float parentAlpha, Runnable onDraw) {
         if (getShader==null){
             onDraw.run();
             return;

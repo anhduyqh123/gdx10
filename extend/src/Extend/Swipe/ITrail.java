@@ -41,7 +41,7 @@ public class ITrail extends Component {
     }
 
     @Override
-    protected void Draw(Batch batch, float parentAlpha, Runnable onDraw) {
+    public void Draw(Batch batch, float parentAlpha, Runnable onDraw) {
         onDraw.run();
         if (renderer==null) return;
         Actor actor = GetActor();

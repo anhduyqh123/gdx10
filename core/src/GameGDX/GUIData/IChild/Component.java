@@ -32,7 +32,7 @@ public class Component {
     {
 
     }
-    protected void Draw(Batch batch, float parentAlpha, Runnable onDraw)
+    public void Draw(Batch batch, float parentAlpha, Runnable onDraw)
     {
         onDraw.run();
     }

@@ -42,7 +42,7 @@ public class IMaskGroup extends Component {
     }
 
     @Override
-    protected void Draw(Batch batch, float parentAlpha, Runnable onDraw) {
+    public void Draw(Batch batch, float parentAlpha, Runnable onDraw) {
         if (getRenderer==null)
         {
             ShapeRenderer renderer = new ShapeRenderer();

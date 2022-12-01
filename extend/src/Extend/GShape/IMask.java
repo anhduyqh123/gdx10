@@ -26,7 +26,7 @@ public class IMask extends Component { //support IActor,IImage,IGroup
     }
 
     @Override
-    protected void Draw(Batch batch, float parentAlpha, Runnable onDraw) {
+    public void Draw(Batch batch, float parentAlpha, Runnable onDraw) {
         if (getRenderer==null)
         {
             ShapeRenderer renderer = new ShapeRenderer();

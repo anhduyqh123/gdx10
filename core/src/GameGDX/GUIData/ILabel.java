@@ -1,9 +1,13 @@
 package GameGDX.GUIData;
 
-import GameGDX.*;
+import GameGDX.Assets;
+import GameGDX.GDX;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IChild.IAlign;
+import GameGDX.Translate;
+import GameGDX.Util;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -21,7 +25,12 @@ public class ILabel extends IActor {
 
     @Override
     protected Actor NewActor() {
-        return New(text,font);
+        return new Label(text,new Label.LabelStyle(Assets.GetFont(font),Color.WHITE)){
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                OnDraw(batch,parentAlpha,()->super.draw(batch, parentAlpha));
+            }
+        };
     }
 
     public String GetText()

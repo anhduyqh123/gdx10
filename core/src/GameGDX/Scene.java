@@ -155,8 +155,9 @@ public class Scene {
         Vector2 stageScale = GetStageScale(actor);
         float stageRotate = GetStageRotation(actor);
 
-        Vector2 pos = actor.localToStageCoordinates(new Vector2(0,0));
-        group.stageToLocalCoordinates(pos);
+        Vector2 ori = new Vector2(actor.getOriginX(),actor.getOriginY());
+        Vector2 pos = actor.localToStageCoordinates(new Vector2(ori));
+        group.stageToLocalCoordinates(pos).sub(ori);
         actor.setPosition(pos.x,pos.y);
         group.addActor(actor);
 
@@ -175,7 +176,7 @@ public class Scene {
     }
     public static float StageToLocalRotation(float rotation, Actor actor)
     {
-        return rotation- GetStageRotation(actor);
+        return rotation - GetStageRotation(actor.getParent());
     }
     public static float GetStageRotation(Actor actor)
     {

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -394,6 +395,8 @@ public class IActor {
     {
         try {
             String result = GetParam().get(name);
+            if (value0 instanceof Color) return (T)Color.valueOf(result);
+            if (value0 instanceof Vector) return (T)Util.GetVector(result);
             return Reflect.GetConfig(result,value0);
         }catch (Exception e){}
         return value0;

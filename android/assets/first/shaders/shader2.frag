@@ -1,14 +1,37 @@
-#ifdef GL_ES
-precision mediump float;
-#endif
-
+varying vec4 v_color; 
 varying vec2 v_texCoords;
+
 uniform sampler2D u_texture;
-uniform sampler2D u_tex0;
+
+uniform vec2  v2_imageSize;
+uniform vec4  cl_borderColor; 
+uniform float u_borderSize;
 
 void main() {
-    vec2 uv = v_texCoords;
-    vec4 color0 = texture2D(u_tex0,uv);
-    vec4 color1 = texture2D(u_texture,uv);
-    gl_FragColor = color1*vec4(1,1,1,0)+color0*vec4(0,0,0,1);
+    vec4 color = texture2D(u_texture, v_texCoords);
+    vec2 pixelToTextureCoords = 1. / v2_imageSize;
+    bool isInteriorPoint = true;
+    bool isExteriorPoint = true;
+
+	for (float dx = -u_borderSize; dx < u_borderSize; dx++)     
+	{
+	    for (float dy = -u_borderSize; dy < u_borderSize; dy++){
+	        vec2 point = v_texCoords + vec2(dx,dy) * pixelToTextureCoords;
+
+	        // range check
+	        if (point.x < 0.0 || point.x > 1.0 || point.y < 0.0 || point.y > 1.0)
+	            continue;
+
+	        float alpha = texture2D(u_texture, point).a;
+	        if ( alpha < 0.5 )
+	            isInteriorPoint = false;
+	        if ( alpha > 0.5 )
+	            isExteriorPoint = false;
+	    }
+	}
+
+    if (!isInteriorPoint && !isExteriorPoint && color.a < 0.5)
+        gl_FragColor = cl_borderColor;    
+        else
+        gl_FragColor = v_color * color;
 }

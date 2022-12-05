@@ -1,8 +1,6 @@
 package GameGDX;
 
-import com.badlogic.gdx.math.EarClippingTriangulator;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +8,14 @@ import java.util.Map;
 
 public class Util {
     //<editor-fold desc="Vector">
+    public static Vector GetVector(String value)//(1,2)
+    {
+        value = value.replace("(","").replace(")","");
+        String[] arr = value.split(",");
+        if (arr.length==2) return new Vector2(Float.parseFloat(arr[0]),Float.parseFloat(arr[1]));
+        if (arr.length==3) return new Vector3(Float.parseFloat(arr[0]),Float.parseFloat(arr[1]),Float.parseFloat(arr[2]));
+        return null;
+    }
     public static float GetAngle(Vector2 p1, Vector2 p2,Vector2 p3)
     {
         Vector2 dir1 = GetDirect(p2,p1);

@@ -27,7 +27,8 @@ public class IShader extends Component {
 //            ShaderProgram shader = new ShaderProgram(vertex,fragment);
             ShaderProgram shader = new ShaderProgram(batch.getShader().getVertexShaderSource(),fragment);
             getShader = ()->shader;
-        }catch (Exception e){}
+            //GDX.Log(shader.getLog());
+        }catch (Exception e){e.printStackTrace();}
     }
 
     @Override
@@ -38,10 +39,11 @@ public class IShader extends Component {
         }
         ShaderProgram shader = getShader.Run();
         batch.setShader(shader);
+
         shader.bind();
         UpdateValue();
-
         onDraw.run();
+
         batch.setShader(null);
     }
     private void UpdateValue()
@@ -50,6 +52,8 @@ public class IShader extends Component {
         ShaderProgram shader = getShader.Run();
         for (String n : iActor.GetParamMap().keySet())
         {
+            if (n.startsWith("i_"))
+                shader.setUniformi(n,iActor.GetParam(n,0));
             if (n.startsWith("u_"))
                 shader.setUniformf(n,iActor.GetParam(n,0f));
             if (n.startsWith("v2_"))
@@ -59,9 +63,5 @@ public class IShader extends Component {
             if (n.startsWith("cl_"))
                 shader.setUniformf(n,iActor.GetParam(n, Color.WHITE));
         }
-
-//        shader.setUniformf("u_imageSize",113,113);
-//        shader.setUniformf("u_borderColor",1,0,0,1);
-//        shader.setUniformf("u_borderSize",5);
     }
 }

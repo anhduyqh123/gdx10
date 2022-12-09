@@ -31,6 +31,11 @@ public class IImage extends IActor {
             public void draw(Batch batch, float parentAlpha) {
                 OnDraw(batch,parentAlpha,()->super.draw(batch, parentAlpha));
             }
+            @Override
+            public boolean remove() {
+                ForComponent((n,p)->p.Remove());
+                return super.remove();
+            }
         };
     }
 

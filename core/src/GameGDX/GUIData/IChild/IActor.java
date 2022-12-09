@@ -87,12 +87,19 @@ public class IActor {
             public void draw(Batch batch, float parentAlpha) {
                 OnDraw(batch,parentAlpha,()->super.draw(batch, parentAlpha));
             }
+
+            @Override
+            public boolean remove() {
+                ForComponent((n,p)->p.Remove());
+                return super.remove();
+            }
         };
     }
     protected void OnDraw(Batch batch, float parentAlpha,Runnable onDraw)
     {
-        if (GetComponent("main")==null) onDraw.run();
-        else GetComponent("main").Draw(batch,parentAlpha,onDraw);
+        Component cp = GetComponent("main");
+        if (cp==null) onDraw.run();
+        else cp.Draw(batch,parentAlpha,onDraw);
     }
     public void SetActor(Actor actor)
     {
@@ -180,6 +187,7 @@ public class IActor {
         Actor actor = GetActor();
         actor.clearListeners();
         if(!ContainsEvent("enter","clicked","exit","touchDown","touchUp","touchDragged")) return;
+
         actor.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -239,8 +247,6 @@ public class IActor {
         this.connect = connect;
         iPos.getIActor = ()->this;
         iSize.getIActor = ()->this;
-        //iPos.getTarget = connect;
-        //iSize.getTarget = connect;
     }
     public void Disconnect()
     {
@@ -296,20 +302,15 @@ public class IActor {
         Map<String,Component> map = GetComponent();
         for (String key : map.keySet())
             cb.Run(key,map.get(key));
-//        for (String key : componentMap.keySet())
-//            cb.Run(key,componentMap.get(key));
     }
     public <T extends Component> T GetComponent(String name)
     {
         return (T)GetComponent().get(name);
-        //return (T)componentMap.get(name);
     }
     public <T extends Component> T GetComponent(Class<T> type)
     {
         for (Component p : GetComponent().values())
             if (Reflect.isAssignableFrom(p.getClass(),type)) return (T)p;
-//        for (Component p : componentMap.values())
-//            if (Reflect.isAssignableFrom(p.getClass(),type)) return (T)p;
         return null;
     }
     public void AddComponentSafety(String name,Component p)
@@ -333,7 +334,7 @@ public class IActor {
     {
         acList.Remove(name);
     }
-    private void RunEvent(String name)
+    protected void RunEvent(String name)
     {
         if (!acList.Contains(name)) return;
         acList.Get(name).Run(this);
@@ -366,7 +367,7 @@ public class IActor {
 
     public void SetColor(Color color)
     {
-        GetActor().setColor(color);
+        Runnable(i->i.GetActor().setColor(color));
     }
     public void Runnable(GDX.Runnable<IActor> cb)
     {
@@ -473,13 +474,11 @@ public class IActor {
         Scene.SetStageRotation(GetActor(),angle);
     }
 
-    public Action Delay(Runnable run,float delay)
+    public void Delay(Runnable run,float delay)
     {
         Action ac1 = Actions.delay(delay);
         Action ac2 = Actions.run(run);
-        Action ac12 = Actions.sequence(ac1,ac2);
-        GetActor().addAction(ac12);
-        return ac12;
+        GetActor().addAction(Actions.sequence(ac1,ac2));
     }
 
     //event
@@ -492,6 +491,16 @@ public class IActor {
                 onClick.run();
             }
         });
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Reflect.equals(this,obj);
+    }
+
+    public static <T extends IActor> T GetIActor(Actor actor)
+    {
+        return (T)actor.getUserObject();
     }
 
     //Sound
@@ -535,17 +544,6 @@ public class IActor {
         if (value>max) return max;
         return value;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        return Reflect.equals(this,obj);
-    }
-
-    public static <T extends IActor> T GetIActor(Actor actor)
-    {
-        return (T)actor.getUserObject();
-    }
-
     public class OSound
     {
         public String name;

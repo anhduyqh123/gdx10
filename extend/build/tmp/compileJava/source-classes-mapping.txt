@@ -144,8 +144,8 @@ Extend/Spine/ISpine.java
  Extend.Spine.ISpine$1
 com/game/Test.java
  com.game.Test
-Extend/ITextField.java
- Extend.ITextField
+Extend/IShader.java
+ Extend.IShader
 Extend/GShape/Shape.java
  Extend.GShape.Shape
  Extend.GShape.Shape$Circle
@@ -178,5 +178,5 @@ Extend/Box2d/IBody.java
  Extend.Box2d.IBody$IBodyListener
 Extend/Box2d/IAction/IGravity.java
  Extend.Box2d.IAction.IGravity
-Extend/IShader.java
- Extend.IShader
+Extend/ITextField.java
+ Extend.ITextField

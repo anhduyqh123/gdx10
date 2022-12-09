@@ -1,12 +1,13 @@
 package GameGDX.GUIData;
 
 import GameGDX.GDX;
+import GameGDX.GUIData.IChild.Component;
 import GameGDX.GUIData.IChild.IActor;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.utils.Pool;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class IGroup extends IActor {
+    private static Map<String, Pool> poolMap = new HashMap<>();
     //GetIChild ->Get child by name
     //FindChild ->Find child by name
     //GetIActor ->Get neighbor actor
@@ -101,6 +103,12 @@ public class IGroup extends IActor {
                 });
                 if (isTransform()) resetTransform(batch);
                 //OnDraw(batch,parentAlpha,()->super.draw(batch, parentAlpha));
+            }
+
+            @Override
+            public boolean remove() {
+                ForComponent((n,p)->p.Remove());
+                return super.remove();
             }
         };
     }
@@ -273,15 +281,44 @@ public class IGroup extends IActor {
         super.StopAction();
         ForEach(IActor::StopAction);
     }
-
-    @Override
-    public void SetColor(Color color) {
-        super.SetColor(color);
-        ForEach(i->i.SetColor(color));
-    }
     public void Runnable(GDX.Runnable<IActor> cb)
     {
         super.Runnable(cb);
         ForEach(i->i.Runnable(cb));
+    }
+
+    //pool
+    public boolean HasBool(String childName)
+    {
+        return poolMap.containsKey(childName);
+    }
+    public void NewPool(String childName,int size)
+    {
+        IActor iChild = GetIChild(childName);
+        Pool<IActor> pool = new Pool<IActor>() {
+            @Override
+            protected IActor newObject() {
+                IActor iClone = iChild.Clone();
+                iClone.InitActor();
+                iClone.GetComponentData().put("remove",new Component(){
+                    @Override
+                    public void Remove() {
+                        poolMap.get(childName).free(iClone);
+                    }
+                });
+                return iClone;
+            }
+        };
+        pool.fill(size);
+        poolMap.put(childName,pool);
+    }
+    public  <T extends IActor> T Obtain(String childName)
+    {
+        IActor iChild = GetIChild(childName);
+        IActor iClone = (IActor) poolMap.get(childName).obtain();
+        iClone.SetConnect(this::GetChild);
+        iClone.Refresh();
+        iClone.GetActor().setZIndex(iChild.GetActor().getZIndex()+1);
+        return (T)iClone;
     }
 }

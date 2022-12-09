@@ -58,7 +58,7 @@ public class GUIData {
     {
         AssetNode n = Assets.GetAssetPackage(pack).Get(name);
         //String data = GDX.GetString(n.url);
-        String data = getRemoteData.Run(n.url,GDX.GetString(n.url));
+        String data = getRemoteData.Run(name,GDX.GetString(n.url));
         JsonValue jsData = miniJson.Decode(Json.DataToJson(data));
         IActor ic = IJson.FromJson(jsData);
         return ic;

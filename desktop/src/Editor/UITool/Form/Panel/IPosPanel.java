@@ -3,12 +3,10 @@ package Editor.UITool.Form.Panel;
 import Editor.JFameUI;
 import Editor.WrapLayout;
 import GameGDX.GUIData.IChild.IPos;
-import GameGDX.Reflect;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.Field;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import java.util.List;
 
 public class IPosPanel {
@@ -79,6 +77,7 @@ public class IPosPanel {
         IPos.Target target = (IPos.Target) ob;
         ui.NewComponent("align",ob,panel);
         if (target.name.equals("")) target.name = names[0];
-        ui.NewComboBox("name",names,target.name,panel,vl->target.name=vl);
+        ui.NewComboBox("name",names,target.name,panel,vl->target.name=vl)
+                .setEditable(true);
     }
 }

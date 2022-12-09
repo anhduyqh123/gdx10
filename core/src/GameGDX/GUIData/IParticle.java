@@ -26,6 +26,11 @@ public class IParticle extends IActor {
                 super.act(delta);
                 Update(delta);
             }
+            @Override
+            public boolean remove() {
+                ForComponent((n,p)->p.Remove());
+                return super.remove();
+            }
         };
     }
 

@@ -129,7 +129,7 @@ public abstract class BaseScreen extends Group {
     }
     public static BaseScreen GetLatest()
     {
-        if (list.size()<=0) return null;
+        if (list.size() == 0) return null;
         return list.get(list.size()-1);
     }
 
@@ -164,7 +164,7 @@ public abstract class BaseScreen extends Group {
         int index = actor.getZIndex();
         List<EventListener> listeners = GetEvents(actor);
         return ()->{
-            Scene.AddActorKeepPosition(actor,parent);
+            Scene.AddActorKeepTransform(actor,parent);
             actor.setZIndex(index);
             actor.clearListeners();
             for(EventListener e : listeners)

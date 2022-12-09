@@ -28,7 +28,7 @@ public class MainForm {
                 //iActor.acList.Init(iActor);
                 iActor.RunAction(name);
             };
-            actionForm.onStop = iActor::StopAction;
+            actionForm.onStop = iActor::Refresh;
 
             paramForm.SetData(iActor.GetParamMap());
             funcForm.SetIActor(iActor);

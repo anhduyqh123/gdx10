@@ -1,15 +1,17 @@
 package GameGDX.GUIData.IAction;
 
+import GameGDX.Assets;
 import GameGDX.GUIData.IChild.Component;
 import GameGDX.GUIData.IChild.IActor;
 import GameGDX.GUIData.IGroup;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ScreenUtils;
 
 public class IOther extends IAction{
     public enum Type{
@@ -23,7 +25,8 @@ public class IOther extends IAction{
         RemoveComponent,
         Clone, //for IGroup
         RemoveChild,
-        AddChild
+        AddChild,
+        Bind // name_index
     }
     public Type type = Type.Remove;
 
@@ -74,9 +77,20 @@ public class IOther extends IAction{
                 if (cp!=null) cp.Remove();
                 iActor.GetComponent().remove(name);
                 break;
+            case Bind:
+                Bind();
+                break;
             default:
                 Run((IGroup) iActor);
         }
+    }
+    private void Bind()
+    {
+        String[] arr = name.split("_");
+        int index = Integer.parseInt(arr[1]);
+        if (arr[0].equals("screen")) ScreenUtils.getFrameBufferTexture().getTexture().bind(index);
+        else Assets.GetTexture(arr[0]).getTexture().bind(index);
+        Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
     }
     private void Run(IGroup iGroup)
     {

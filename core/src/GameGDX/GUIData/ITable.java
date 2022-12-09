@@ -169,7 +169,7 @@ public class ITable extends IGroup {
         return iActors;
     }
 
-    private List<Actor> GetActors()
+    public List<Actor> GetActors()
     {
         List<Actor> actors = new ArrayList<>();
         ForIChild(i->actors.add(i.GetActor()));

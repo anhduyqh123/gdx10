@@ -137,7 +137,7 @@ public class IActor {
     {
         SetPos(iPos.Get(),iPos.align.value);
     }
-    protected void BaseRefresh()
+    public void BaseRefresh()
     {
         Actor actor = GetActor();
         iSize.Set(actor);

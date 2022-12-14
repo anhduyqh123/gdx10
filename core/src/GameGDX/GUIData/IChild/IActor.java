@@ -137,11 +137,15 @@ public class IActor {
     {
         SetPos(iPos.Get(),iPos.align.value);
     }
+    public void RefreshSize()
+    {
+        iSize.Set(GetActor());
+    }
     public void BaseRefresh()
     {
-        Actor actor = GetActor();
-        iSize.Set(actor);
+        RefreshSize();
         RefreshPosition();
+        Actor actor = GetActor();
         actor.setColor(GetColor());
         actor.setTouchable(touchable);
         actor.setVisible(visible);

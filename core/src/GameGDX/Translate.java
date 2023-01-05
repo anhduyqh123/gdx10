@@ -27,6 +27,7 @@ public class Translate {
     }
     private String Format(String st)
     {
+        if (st.equals("")) return st;
         char ch0 = st.charAt(0),ch1 = st.charAt(st.length()-1);
         if (st.contains(",") && ch0=='\"' && ch1=='\"') return st.substring(1,st.length()-2);
         return st;

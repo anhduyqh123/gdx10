@@ -1,0 +1,32 @@
+PARAM KEY
+
+if PARAM has key -> return param
+
+variable
+
+w			->	width of actor
+h			->	height of actor
+pw			->	width of parent
+ph			->	height of parent
+sw			->	width of scene
+sh			->	height of scene
+(1,2)		->	vector2
+(1,2,3)		->	vector3
+#ffffffff	->	color
+x			->	position of actor
+y			->	position of actor
+index		->	index of actor
+
+
+Math Formula
+
+1,10		->	random from 1 to 10
+1+2*3-4/2	->	return 5
+
+Neighbor
+
+//
+
+Examples
+
+0,w 		->	random from 0 to width

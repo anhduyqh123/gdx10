@@ -55,7 +55,8 @@ public class IOther extends IAction{
         switch (type)
         {
             case Remove:
-                iActor.Remove();
+                //iActor.Remove();
+                iActor.GetActor().remove();
                 break;
             case Visible:
                 actor.setVisible(true);

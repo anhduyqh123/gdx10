@@ -114,7 +114,13 @@ public class Util {
     }
     public static void For(int from, int to, GDX.Runnable<Integer> cb)
     {
-        for (int i=from;i<=to;i++) cb.Run(i);
+        int del = to-from;
+        if (del==0) cb.Run(from);
+        else
+        {
+            int step = del/Math.abs(del);
+            for (int i=0;i<=Math.abs(del);i++) cb.Run(step*i+from);
+        }
     }
     public static <T> void For(List<T> list,GDX.Runnable<T> cb)
     {
@@ -149,12 +155,14 @@ public class Util {
         String[][] matrix = new String[rows.length][];
         for (int i=0;i<rows.length;i++)
         {
-            matrix[i] = rows[i].split(",");
+            matrix[i] = rows[i].split(",",-1);
             for (int j=0;j<matrix[i].length;j++)
             {
                 if (map.containsKey(matrix[i][j])) matrix[i][j] = map.get(matrix[i][j]);
                 for (String key : map0.keySet())
                     if (matrix[i][j].contains(key)) matrix[i][j] = matrix[i][j].replace(key,map0.get(key));
+                if (matrix[i][j].startsWith("\"") && matrix[i][j].endsWith("\""))
+                    matrix[i][j] = matrix[i][j].replace("\"","");
             }
         }
         return matrix;

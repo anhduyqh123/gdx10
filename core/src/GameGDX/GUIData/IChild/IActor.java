@@ -385,7 +385,7 @@ public class IActor {
     }
     public boolean HasParam(String name)
     {
-        return mapParam.containsKey(name);
+        return GetParam().containsKey(name);
     }
     public Map<String,String> GetParam()
     {

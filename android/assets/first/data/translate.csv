@@ -1,44 +1,375 @@
-key,en,vi,in,pt,th,ja,ko,zh,ru
-avatar,avatar,hình đại diện,Avatar,Avatar,สัญลักษณ์,アバター,화신,头像,аватар
-addgem_content,WATCH VIDEO TO GET GEM,Xem video để lấy đá quý,Tonton video untuk mendapatkan permata,Assista ao vídeo para obter gem,ดูวิดีโอเพื่อรับอัญมณี,宝石を入手するためにビデオを見てください,보석을 얻으려면 비디오를 시청하십시오,观看视频获取宝石,"Смотрите видео, чтобы получить драгоценность"
-adgift_content,Watch video to open gift,Xem video để mở Quà tặng,Tonton video untuk membuka hadiah,Assista ao vídeo para abrir o presente,ดูวิดีโอเพื่อเปิดของขวัญ,ビデオを見てギフトを開きます,선물을 여는 비디오를 시청하십시오,观看视频打开礼物,"Смотреть видео, чтобы открыть подарок"
-around_world,AROUND OF THE WORLD,Xung quanh thế giới,Sekitar dunia,Ao redor do mundo,ทั่วโลก,世界の周り,세계 주변,世界各地,Вокруг мира
-background_style,Background Style,Phong cách nền,Gaya latar belakang,Estilo de fundo,สไตล์พื้นหลัง,背景スタイル,배경 스타일,背景样式,Фоновый стиль
-best,Best,Tốt nhất,Terbaik,Melhor,ดีที่สุด,一番,최상의,最好的,Лучший
-best_score,Best score,Điểm cao nhất,Skor terbaik,Melhor pontuação,คะแนนที่ดีที่สุด,最高のスコア,최고 점수,最好成绩,Лучший результат
-claim,CLAIM,NHẬN,MENGEKLAIM,ALEGAR,เรียกร้อง,請求,주장하다,宣称,ТРЕБОВАТЬ
-claimitem_content,YOU JUST RECEIVED THE ITEM,Bạn vừa nhận được vật phẩm,Anda baru saja menerima item tersebut,Você acabou de receber o item,คุณเพิ่งได้รับรายการ,あなたはちょうどアイテムを受け取りました,방금 항목을 받았습니다,您刚收到该物品,Вы только что получили товар
-classic,CLASSIC,CỔ ĐIỂN,KLASIK,CLÁSSICO,คลาสสิค,クラシック,권위 있는,经典的,Классик
-daily_gift,DAILY GIFT,Quà tặng hàng ngày,Hadiah Harian,Presente diário,ของขวัญประจำวัน,毎日の贈り物,매일 선물,每日礼物,Ежедневный подарок
-day,DAY,NGÀY,HARI,DIA,วัน,日,낮,天,ДЕНЬ
-easy,Easy,Dễ,Mudah,Fácil,ง่าย,簡単,쉬운,简单的,Легко
-endless,ENDLESS,VÔ TẬN,Tak ada habisnya,SEM FIM,ไม่มีที่สิ้นสุด,無限,끝이 없습니다,无尽,БЕСКОНЕЧНЫЙ
-failure,Failure,Thất bại,Kegagalan,Fracasso,ความล้มเหลว,失敗,실패,失败,Отказ
-free,Free,Miễn phí,Gratis,Livre,ฟรี,無料,무료,自由,Бесплатно
-game_mode,GAME MODE,CHẾ ĐỘ CHƠI GAME,MODUS PERMAINAN,MODO DE JOGO,โหมดเกม,ゲームモード,게임 모드,游戏模式,ИГРОВОЙ РЕЖИМ
-hard,Hard,Khó,Keras,Difícil,แข็ง,難しい,딱딱한,难的,Жесткий
-home,Home,Nhà,Rumah,Casa,บ้าน,家,집,家,Дом
-language,Language,Ngôn ngữ,Bahasa,Linguagem,ภาษา,言語,언어,语言,Язык
-level,Level,Cấp độ,Tingkat,Nível,ระดับ,レベル,수준,等级,Уровень
-lucky_spin,LUCKY SPIN,VÒNG QUAY MAY MẮN,Lucky Spin,Lucky Spin,โชคดีสปิน,ラッキースピン,행운의 스핀,幸运的旋转,Счастливое спин
-medium,Medium,Trung bình,Medium,Médio,ปานกลาง,中くらい,중간,中等的,Середина
-music,Music,Nhạc,Musik,Música,ดนตรี,音楽,음악,音乐,Музыка
-next,NEXT,TIẾP,SELANJUTNYA,NEXT,ต่อไป,次,다음,下一个,СЛЕДУЮЩИЙ
-out_amount,OUT OF AMOUNT,HẾT SỐ LƯỢNG,Kehabisan jumlah,Fora de quantidade,หมดจำนวน,金額が不足しています,금액이 없습니다,超出数量,Из суммы
-pause,PAUSE,TẠM NGỪNG,BERHENTI SEBENTAR,PAUSA,หยุด,一時停止,정지시키다,暂停,ПАУЗА
-profile,Profile,Hồ sơ,Profil,Perfil,ประวัติโดยย่อ,プロフィール,프로필,轮廓,Профиль
-puzzle,PUZZLE,GHÉP HÌNH,MEMBINGUNGKAN,QUEBRA-CABEÇA,ปริศนา,パズル,퍼즐,谜,ГОЛОВОЛОМКА
-relax,RELAX,THƯ GIÃN,SANTAI,RELAXAR,ผ่อนคลาย,リラックス,안심하다,放松,РАССЛАБЛЯТЬСЯ
-replay,Replay,Chơi lại,Memutar ulang,Replay,เล่นใหม่,リプレイ,다시 하다,重播,Воспроизведение
-replay_level,Replay level,Chơi lại cấp độ,Level replay,Nível de repetição,ระดับการเล่นใหม่,リプレイレベル,재생 레벨,重播水平,Уровень воспроизведения
-score,SCORE,ĐIỂM,SKOR,PONTUAÇÃO,คะแนน,スコア,점수,分数,СЧЕТ
-setting,Setting,Thiết lập,Pengaturan,Contexto,การตั้งค่า,設定,환경,环境,Параметр
-sound,Sound,Âm thanh,Suara,Som,เสียง,音,소리,声音,Звук
-time_remain,Time remain,Thời gian còn lại,Waktu tetap,Tempo permanece,เวลายังคงอยู่,時間は残ります,시간이 남아 있습니다,时间剩下,Время остается
-timeout,TIME OUT,HẾT GIỜ,WAKTU HABIS,TEMPO ESGOTADO,หมดเวลา,タイムアウト,시간 초과,超时,Время
-timeout_content,Continue game with % seconds?,Tiếp tục trò chơi với % giây?,Lanjutkan permainan dengan % detik?,Continuar jogo com % segundos?,เล่นเกมต่อด้วย % วินาที?,％秒でゲームを続けますか？,% 초로 게임을 계속 하시겠습니까?,继续使用％秒？,Продолжить игру с % секунды?
-total_score,Total score,Tổng điểm,Skor total,Pontuação total,คะแนนรวม,合計点,총 점수,总成绩,Общий счет
-victory,Victory,Chiến thắng,Kemenangan,Vitória,ชัยชนะ,勝利,승리,胜利,Победа
-video_not_ready,THE VIDEO IS NOT READY!,Video chưa sẵn sàng!,Video belum siap!,O vídeo não está pronto!,วิดีโอยังไม่พร้อม!,ビデオの準備ができていません！,비디오가 준비되지 않았습니다!,视频还没有准备好！,Видео не готово!
-watch,WATCH,XEM,JAM TANGAN,VER,ดู,見る,보다,手表,СМОТРЕТЬ
-your_score,Your score,Điểm số,Nilai Anda,Sua pontuação,คะแนนของคุณ,あなたのスコア,너의 점수,你的分数,Твой счет
+key,en,vi,pt,es,fr,th,id
+mode,MODE,CHẾ ĐỘ,MODO,MODO,MODE,โหมด,MODE
+roll,ROLL,CUỘN,LISTA,RODAR,ROULEAU,ม้วน,GULUNGAN
+undo,UNDO,HOÀN TÁC,DESFAZER,DESHACER,ANNULER,เลิกทำ,MEMBUKA
+game_over,GAME OVER,TRÒ CHƠI KẾT THÚC,FIM DE JOGO,JUEGO TERMINADO,JEU TERMINÉ,จบเกม,PERMAINAN TELAH BERAKHIR
+win,WIN,THẮNG,GANHAR,VICTORIA,GAGNER,ชนะ,MENANG
+lose,LOSE,THUA,PERDER,PERDER,PERDRE,แพ้,KEHILANGAN
+player,PLAYER,NGƯỜI CHƠI,JOGADOR,JUGADOR,JOUEUR,ผู้เล่น,PEMAIN
+how_to_play,HOW TO PLAY,CÁCH CHƠI,COMO JOGAR,CÓMO JUGAR,COMMENT JOUER,วิธีการเล่น,CARA BERMAIN
+backgammon_tut1,"The goal is to move all 15 of your pieces into your home board and then bear them off.
+- The black pieces can only move counterclockwise, beginning at the top right of the board.
+- The white pieces can only move clockwise, starting at the bottom right of the board.","Mục tiêu là di chuyển 15 quân cờ vào bảng nhà của bạn và sau đó loại quân đi.
+- Các quân đen chỉ có thể di chuyển ngược chiều kim đồng hồ, bắt đầu từ phía trên bên phải bàn cờ.
+- Các quân trắng chỉ có thể di chuyển theo chiều kim đồng hồ, bắt đầu từ phía dưới bên phải bàn cờ.","O objetivo é mover todas as 15 pecas para o seu tabuleiro inicial e depois levá-las.
+- As pecas pretas só podem se mover no sentido anti-horário, comecando no canto superior direito do tabuleiro.
+- As pecas brancas só podem se mover no sentido horário, comecando na parte inferior direita do tabuleiro.","El objetivo es mover las 15 piezas a tu tablero de inicio y luego sacarlas.
+- Las piezas negras solo pueden moverse en sentido contrario a las agujas del reloj, comenzando en la parte superior derecha del tablero.
+- Las piezas blancas solo pueden moverse en el sentido de las agujas del reloj, empezando por la parte inferior derecha del tablero.","Le but est de déplacer vos 15 pièces vers votre jan intérieur, puis de les retirer.
+- Les pièces noires ne peuvent se déplacer que dans le sens inverse des aiguilles d'une montre, en commençant en haut à droite du plateau.
+- Les pièces blanches ne peuvent se déplacer que dans le sens des aiguilles d'une montre, en commençant par le bas à droite du plateau.","เป้าหมายคือการย้ายชิ้นส่วนทั้งหมด 15 ชิ้นของคุณไปที่กระดานหลักของคุณแล้วแบกไว้
+- ชิ้นสีดำสามารถเคลื่อนที่ทวนเข็มนาฬิกาเท่านั้น โดยเริ่มต้นที่ด้านบนขวาของกระดาน
+- ชิ้นส่วนสีขาวสามารถเคลื่อนที่ตามเข็มนาฬิกาเท่านั้น โดยเริ่มต้นที่ด้านล่างขวาของกระดาน","Tujuannya adalah untuk memindahkan semua 15 bagian Anda ke papan rumah Anda dan kemudian melepaskannya.
+- Potongan hitam hanya bisa bergerak berlawanan arah jarum jam, dimulai dari kanan atas papan.
+- Potongan putih hanya bisa bergerak searah jarum jam, mulai dari kanan bawah papan."
+backgammon_tut2,"Here is how to move your pieces. For example, if you roll a 4 and a 6:
+- Move a piece 4 spaces and move another piece 6 spaces.
+- Move one piece 4 spaces and 6 spaces, or 6 spaces and 4 spaces.","Đây là cách di chuyển quân cờ. Ví dụ, nếu bạn tung ra số 4 và số 6:
+- Di chuyển 1 quân 4 bước và di chuyển 1 quân khác 6 bước.
+- Di chuyển 1 quân 4 bước và 6 bước, hoặc 6 bước và 4 bước.","Aqui está como mover suas pecas. Por exemplo, se você rolar um 4 e um 6:
+- Mova uma peca 4 casas e mova outra peca 6 casas.
+- Mova uma peca 4 espacos e 6 espacos, ou 6 espacos e 4 espacos.","Aquí es cómo mover sus piezas. Por ejemplo, si sacas un 4 y un 6:
+- Mueve una pieza 4 espacios y mueve otra pieza 6 espacios.
+- Mueve una pieza 4 espacios y 6 espacios, o 6 espacios y 4 espacios.","Voici comment déplacer vos pièces. Par exemple, si vous obtenez un 4 et un 6 :
+- Déplacez une pièce de 4 cases et déplacez une autre pièce de 6 cases.
+- Déplacer une pièce de 4 cases et 6 cases, ou 6 cases et 4 cases.","นี่คือวิธีการเคลื่อนย้ายชิ้นส่วนของคุณ ตัวอย่างเช่น หากคุณหมุน 4 และ 6:
+- ย้ายชิ้นส่วน 4 ช่องและย้ายอีก 6 ช่อง
+- ย้ายหนึ่งชิ้น 4 ช่องและ 6 ช่องหรือ 6 ช่องและ 4 ช่อง","Berikut adalah cara untuk memindahkan potongan Anda. Misalnya, jika Anda menggulung 4 dan 6:
+- Pindahkan bidak 4 spasi dan pindahkan bidak lain 6 spasi.
+- Pindahkan one piece 4 spasi dan 6 spasi, atau 6 spasi dan 4 spasi."
+backgammon_tut3,"- If you roll 2 dice with the same face, you get double points.
+For example, if you roll 2 twos, you have 4 twos to use.","- Nếu bạn tung 2 xúc xắc có 2 nút giống nhau, bạn được nhân đôi điểm.
+Ví dụ: nếu bạn tung 2 xúc xắc 2 nút, bạn có 4 lượt 2 nút để sử dụng.","- Se você rolar 2 dados com a mesma face, você ganha o dobro de pontos.
+Por exemplo, se você rolar 2 dois, você tem 4 dois para usar.","- Si tiras 2 dados con la misma cara, obtienes el doble de puntos.
+Por ejemplo, si saca 2 doses, tiene 4 doses para usar.","- Si vous lancez 2 dés avec la même face, vous obtenez le double de points.
+Par exemple, si vous obtenez 2 deux, vous avez 4 deux à utiliser.","- หากคุณทอยลูกเต๋า 2 ลูกที่มีหน้าเหมือนกัน คุณจะได้รับคะแนนสองเท่า
+ตัวอย่างเช่น ถ้าคุณทอย 2 ทู คุณมี 4 ทูเพื่อใช้","- Jika Anda melempar 2 dadu dengan wajah yang sama, Anda mendapatkan poin ganda.
+Misalnya, jika Anda menggulung 2 dua, Anda memiliki 4 dua untuk digunakan."
+backgammon_tut4,"- You must have all of your active pieces in your home board to bear off.
+The first player to bear off all of their pieces wins the game!","- Bạn phải có tất cả quân cờ trong bảng nhà của bạn để loại quân.
+Người đầu tiên loại tất cả các quân cờ của họ sẽ thắng trò chơi!","- Você deve ter todas as suas pecas ativas no seu tabuleiro inicial para dar partida.
+O primeiro jogador a retirar todas as suas pecas ganha o jogo!","- Debes tener todas tus piezas activas en tu tablero de inicio para sacarlas.
+¡El primer jugador en sacar todas sus piezas gana el juego!","- Vous devez avoir toutes vos pièces actives dans votre jan intérieur pour sortir.
+Le premier joueur à sortir toutes ses pièces remporte la partie !","- คุณต้องมีชิ้นส่วนที่ใช้งานทั้งหมดของคุณในกระดานหลักของคุณจึงจะทนได้
+ผู้เล่นคนแรกที่ทนทุกชิ้นส่วนของพวกเขาชนะเกม!","- Anda harus memiliki semua bidak aktif Anda di papan rumah Anda untuk bertahan.
+Pemain pertama yang mengeluarkan semua bagiannya memenangkan permainan!"
+backgammon_tut5,"A piece may be moved to:
+- An open space.
+- Your own pieces.
+- A space occupied by a single piece of the opponent, that piece will be hit and placed on the bar.
+- A space that is not already occupied by two or more opposing pieces.","Một quân cờ có thể được chuyển đến:
+- Một vị trí trống.
+- Các quân cờ của bạn.
+- Vị trí bị chiếm bởi một quân cờ của đối thủ, quân đó sẽ bị đá và đặt trên thanh.
+- Vị trí mà không bị chiếm bởi hai hoặc nhiều quân cờ đối thủ.","Uma peca pode ser movida para:
+- Um espaco aberto.
+- Suas próprias pecas.
+- Um espaco ocupado por uma única peca do adversário, essa peca será batida e colocada na barra.
+- Um espaco que ainda não esteja ocupado por duas ou mais pecas opostas.","Una pieza puede ser movida a:
+- Un espacio abierto.
+- Sus propias piezas.
+- Un espacio ocupado por una sola pieza del oponente, esa pieza será golpeada y colocada en la barra.
+- Un espacio que no esté ya ocupado por dos o más piezas enfrentadas.","Une pièce peut être déplacée vers :
+- Un espace ouvert.
+- Vos propres pièces.
+- Un espace occupé par une seule pièce de l'adversaire, cette pièce sera touchée et placée sur la barre.
+- Un espace qui n'est pas déjà occupé par deux ou plusieurs pièces opposées.","ชิ้นส่วนอาจถูกย้ายไปที่:
+- พื้นที่เปิดโล่ง
+- ชิ้นของคุณเอง
+- พื้นที่ที่ถูกครอบครองโดยชิ้นส่วนของคู่ต่อสู้ชิ้นเดียว ชิ้นส่วนนั้นจะถูกตีและวางไว้บนแถบ
+- พื้นที่ที่ไม่ได้ถูกครอบครองโดยฝ่ายตรงข้ามสองชิ้นขึ้นไป","Sepotong dapat dipindahkan ke:
+- Ruang terbuka.
+- Potongan Anda sendiri.
+- Ruang yang ditempati oleh satu bidak lawan, bidak itu akan dipukul dan diletakkan di atas mistar.
+- Ruang yang belum ditempati oleh dua atau lebih bagian yang berlawanan."
+prepare,PREPARE,CHUẨN BỊ,PREPARAR,PREPARAR,PRÉPARER,เตรียมตัว,MEMPERSIAPKAN
+auto,AUTO,TỰ ĐỘNG,AUTO,AUTO,AUTO,รถยนต์,MOBIL
+next,NEXT,TIẾP THEO,PRÓXIMO,PRÓXIMO,PROCHAIN,ต่อไป,LANJUT
+battleship_tut1,"In turn, players strategically place the ships on the board.","Lần lượt, người chơi xếp các con tàu trên bàn cờ có chiến lược.","Por sua vez, os jogadores colocam estrategicamente os navios no tabuleiro.","A su vez, los jugadores colocan estratégicamente los barcos en el tablero.","À leur tour, les joueurs placent stratégiquement les navires sur le plateau.",ในทางกลับกัน ผู้เล่นวางเรือรบบนกระดานอย่างมีกลยุทธ์,"Pada gilirannya, pemain secara strategis menempatkan kapal di papan."
+battleship_tut2,"- If you attack right at the opponent's ship, you continue your turn. If you miss, it switches to the turn of your opponent.
+The player who sinks all of the opponent's ships first is the winner!","- Nếu bạn tấn công trúng tàu đối thủ, bạn tiếp tục lượt của mình. Nếu bạn bắn trượt, tới lượt của đối thủ.
+Người chơi đánh chìm tất cả tàu của đối thủ trước là người chiến thắng!","- Se você atacar diretamente na nave do oponente, você continua seu turno. Se você errar, ele muda para a vez do seu oponente.
+O jogador que afundar todos os navios do oponente primeiro é o vencedor!","- Si atacas directamente a la nave del oponente, continúas tu turno. Si fallas, cambia al turno de tu oponente.
+¡El jugador que hunda primero todos los barcos del oponente es el ganador!","- Si vous attaquez directement le navire de l'adversaire, vous continuez votre tour. Si vous ratez, il bascule au tour de votre adversaire.
+- Le joueur qui coule en premier tous les navires de l'adversaire est le vainqueur !","- หากคุณโจมตีตรงไปยังเรือของฝ่ายตรงข้าม คุณจะทำเทิร์นต่อไป หากคุณพลาด มันจะเปลี่ยนเป็นตาของคู่ต่อสู้
+ผู้เล่นที่จมเรือรบของฝ่ายตรงข้ามทั้งหมดก่อนเป็นผู้ชนะ!","- Jika Anda menyerang tepat di kapal lawan, Anda melanjutkan giliran Anda. Jika Anda meleset, itu beralih ke giliran lawan Anda.
+- Pemain yang menenggelamkan semua kapal lawan terlebih dahulu adalah pemenangnya!"
+connect4_tut1,"- Players take turns and only 1 disc can be dropped per turn.
+- On your turn, drop 1 of your discs from the top into any of the 7 slots.","- Người chơi thay phiên nhau và mỗi lượt chỉ thả được 1 đĩa.
+- Đến lượt của bạn, thả 1 trong các đĩa từ trên xuống vào bất kỳ khe nào trong số 7 khe.","- Os jogadores se revezam e apenas 1 disco pode ser descartado por turno.
+- Na sua vez, solte 1 de seus discos do topo em qualquer um dos 7 slots.","- Los jugadores se turnan y solo se puede soltar 1 disco por turno.
+- En tu turno, deja caer 1 de tus discos desde la parte superior en cualquiera de las 7 ranuras.","- Les joueurs se relaient et un seul disque peut être déposé par tour.
+- À votre tour, déposez 1 de vos disques du haut dans l'un des 7 emplacements.","- ผู้เล่นผลัดกันและทิ้งได้เพียง 1 แผ่นต่อเทิร์น
+- ในเทิร์นของคุณ วางแผ่นดิสก์ 1 แผ่นจากด้านบนลงในช่องใดก็ได้จากทั้งหมด 7 ช่อง","- Pemain bergiliran dan hanya 1 disk yang dapat dijatuhkan per giliran.
+- Pada giliran Anda, jatuhkan 1 cakram Anda dari atas ke salah satu dari 7 slot."
+connect4_tut2,The game ends when there is a 4-in-a-row or a stalemate!,Trò chơi kết thúc khi có 4 đĩa trong một hàng hoặc một thế trận đã bế tắc!,O jogo termina quando há um 4-em-linha ou um empate!,¡El juego termina cuando hay un 4 en raya o un punto muerto!,Le jeu se termine lorsqu'il y a une suite de 4 ou une impasse !,เกมจะจบลงเมื่อมี 4 ในแถวหรือทางตัน!,Permainan berakhir ketika ada 4-in-a-row atau jalan buntu!
+teeth,TEETH,RĂNG,DENTS,DIENTES,LES DENTS,ฟัน,GIGI
+penalty,PENALTY,HÌNH PHẠT,PÊNALTI,MULTA,PEINE,การลงโทษ,PENALTI
+start,START,BẮT ĐẦU,COMECAR,COMIENZO,COMMENCER,เริ่ม,AWAL
+crocodile_tut1,"To start, you need to set up the game.","Để bắt đầu, bạn cần thiết lập trò chơi.","Para comecar, você precisa configurar o jogo.","Para comenzar, debes configurar el juego.","Pour commencer, vous devez configurer le jeu.",ในการเริ่มต้น คุณต้องตั้งค่าเกม,Untuk memulai Anda perlu mengatur permainan.
+crocodile_tut2,"On your turn, choose a tooth and tap it.","Đến lượt bạn, hãy chọn 1 chiếc răng và chạm vào nó.","Na sua vez, escolha um dente e toque nele.","Cuando sea tu turno, elige un diente y tócalo.","À votre tour, choisissez une dent et appuyez dessus.",ในตาคุณ ให้เลือกฟันและเคาะฟัน,"Pada giliran Anda, pilih gigi dan ketuk."
+crocodile_tut3,"- If Croc's jaw stays still, you're safe and the next player takes their turn.
+- If Croc's jaw snaps closed, you're chomped on and out of the game!","- Nếu hàm của Croc nằm yên, bạn đã an toàn và sẽ đến lượt người chơi tiếp theo.
+- Nếu hàm của Croc đóng lại, bạn sẽ bị bóp nghẹt và rời khỏi trò chơi!","- Se o maxilar de Croc ficar parado, você está seguro e o próximo jogador assume a sua vez.
+- Se a mandíbula de Croc se fechar, você será mastigado e fora do jogo!","- Si la mandíbula de Croc se queda quieta, estás a salvo y el siguiente jugador toma su turno.
+- ¡Si la mandíbula de Croc se cierra de golpe, estás mordido y fuera del juego!","- Si la mâchoire de Croc reste immobile, vous êtes en sécurité et le joueur suivant prend son tour.
+- Si la mâchoire de Croc se referme, vous êtes mordu et hors du jeu !","- หากกรามของ Croc ยังคงอยู่ คุณจะปลอดภัยและผู้เล่นคนต่อไปจะกลับตาลปัตร
+- หากกรามของ Croc ปิดลง แสดงว่าคุณกำลังเข้าและออกจากเกม!","- Jika rahang Croc tidak bergerak, Anda aman dan pemain berikutnya mengambil giliran.
+- Jika rahang Croc terkunci, Anda akan dikunyah dan keluar dari permainan!"
+hockey_tut1,"- Drag the striker on your field to move it.
+- Try to hit the puck with your striker.","- Kéo vợt trên sân để di chuyển nó.
+- Cố gắng đánh đĩa bằng vợt.","- Arraste o atacante em seu campo para movê-lo.
+- Tente acertar o disco com seu atacante.","- Arrastra el delantero en tu campo para moverlo.
+- Intenta golpear el disco con tu delantero.","- Faites glisser l'attaquant sur votre terrain pour le déplacer.
+- Essayez de frapper le disque avec votre percuteur.","- ลากกองหน้าไปที่สนามของคุณเพื่อย้าย
+- พยายามตีดิสก์ด้วยกองหน้าของคุณ","- Seret striker di bidang Anda untuk memindahkannya.
+- Cobalah untuk memukul disk dengan striker Anda."
+hockey_tut2,"- Aim for the opponent's goal. Shoot against the edges to trick your opponent.
+- Your scores will be recorded to compete with your friends.","- Nhắm vào khung thành đối phương. Đánh vào cạnh bàn để đánh lừa đối thủ.
+- Điểm số của bạn sẽ được ghi lại để cạnh tranh với bạn bè.","- Apontar para o gol do adversário. Atire contra as bordas para enganar seu oponente.
+- Suas pontuacões serão gravadas para competir com seus amigos.","- Apunta a la portería contraria. Dispara contra los bordes para engañar a tu oponente.
+- Tus puntuaciones se registrarán para competir con tus amigos.","- Visez le but de l'adversaire. Tirez contre les bords pour tromper votre adversaire.
+- Vos scores seront enregistrés pour rivaliser avec vos amis.","- เล็งไปที่เป้าหมายของฝ่ายตรงข้าม ยิงไปที่ขอบเพื่อหลอกคู่ต่อสู้ของคุณ
+- คะแนนของคุณจะถูกบันทึกเพื่อแข่งขันกับเพื่อนของคุณ","- Bidik gawang lawan. Menembak ke tepi untuk mengelabui lawan Anda.
+- Skor Anda akan dicatat untuk bersaing dengan teman-teman Anda."
+amount,AMOUNT,SỐ LƯỢNG,QUANTIA,MONTO,MONTANT,จำนวน,JUMLAH
+your_turn,YOUR TURN,LƯỢT CỦA BẠN,SUA VEZ,TU TURNO,À TON TOUR,ตาคุณ,GILIRANMU
+challenge,CHALLENGE,THÁCH ĐẤU,DESAFIO,DESAFÍO,DÉFI,ท้าทาย,TANTANGAN
+bid,BID,ĐẶT CƯỢC,PEÇA,LICITACIÓN,OFFRE,ประมูล,PENAWARAN
+current_bid,CURRENT BID,GIÁ TRỊ CƯỢC HIỆN TẠI,OFERTA ATUAL,OFERTA ACTUAL,ENCHÈRE ACTUELLE,การเสนอราคาปัจจุบัน,TAWARAN SAAT INI
+the_dices_were,THE DICE WERE,CÁC XÚC XẮC LÀ,OS DADOS FORAM,LOS DADOS ERAN,LES DÉS ÉTAIENT,ลูกเต๋าเป็น,DADUNYA ADALAH
+liardice_tut1,"- To start, set up the number of dice.
+- Players will shake the cups and secretly check their dice.","- Để bắt đầu, hãy thiết lập số lượng xúc xắc.
+- Người chơi sẽ lắc cốc và bí mật kiểm tra xúc xắc của mình.","- Para comecar, configure o número de dados.
+- Os jogadores vão agitar os copos e checar secretamente seus dados.","- Para empezar, configura el número de dados.
+- Los jugadores agitarán las copas y comprobarán en secreto sus dados.","- Pour commencer, configurez le nombre de dés.
+- Les joueurs secoueront les tasses et vérifieront secrètement leurs dés.","- ในการเริ่มต้น ตั้งค่าจำนวนลูกเต๋า
+- ผู้เล่นจะเขย่าถ้วยและแอบตรวจลูกเต๋าของพวกเขา","- Untuk memulai atur jumlah dadu.
+- Pemain akan mengocok cangkir dan diam-diam memeriksa dadu mereka."
+liardice_tut2,"- Players can change the value of the dice.
+For example, 1 dot, 2 dots ... 6 dots.","- Người chơi có thể thay đổi giá trị của xúc xắc.
+Ví dụ: 1 nút, 2 nút ... 6 nút.","- Os jogadores podem alterar o valor dos dados.
+Por exemplo, 1 ponto, 2 pontos... 6 pontos.","- Los jugadores pueden cambiar el valor de los dados.
+Por ejemplo, 1 punto, 2 puntos... 6 puntos.","- Les joueurs peuvent changer la valeur des dés.
+Par exemple, 1 point, 2 points ... 6 points.","- ผู้เล่นสามารถเปลี่ยนค่าของลูกเต๋าได้
+เช่น 1 จุด 2 จุด ... 6 จุด","- Pemain dapat mengubah nilai dadu.
+Misalnya, 1 titik, 2 titik ... 6 titik."
+liardice_tut3,"- Players can increase the number of dice having the same face.
+For example, 1 6 dots, 2 6 dots ... 5 6 dots.","- Người chơi có thể tăng số lượng xúc xắc có cùng mặt.
+Ví dụ: 1 6 nút, 2 6 nút ... 5 6 nút.","- Os jogadores podem aumentar o número de dados com a mesma face.
+Por exemplo, 1 6 pontos, 2 6 pontos... 5 6 pontos.","- Los jugadores pueden aumentar la cantidad de dados que tienen la misma cara.
+Por ejemplo, 1 6 puntos, 2 6 puntos... 5 6 puntos.","- Les joueurs peuvent augmenter le nombre de dés ayant la même face.
+Par exemple, 1 6 points, 2 6 points ... 5 6 points.","- ผู้เล่นสามารถเพิ่มจำนวนลูกเต๋าที่มีหน้าเหมือนกันได้
+ตัวอย่างเช่น 1 6 จุด 2 6 จุด ... 5 6 จุด","- Pemain dapat menambah jumlah dadu yang memiliki wajah yang sama.
+Misalnya, 1 6 titik, 2 6 titik... 5 6 titik."
+liardice_tut4,"- Or players can change both values.
+For example, 1 3 dots, 3 4 dots, 5 5 dots.","- Hoặc người chơi có thể thay đổi cả hai giá trị.
+Ví dụ: 1 3 nút, 3 4 nút, 5 5 nút.","- Ou os jogadores podem alterar ambos os valores.
+Por exemplo, 1 3 pontos, 3 4 pontos, 5 5 pontos.","- O los jugadores pueden cambiar ambos valores.
+Por ejemplo, 1 3 puntos, 3 4 puntos, 5 5 puntos.","- Ou les joueurs peuvent changer les deux valeurs.
+Par exemple, 1 3 points, 3 4 points, 5 5 points.","- หรือผู้เล่นสามารถเปลี่ยนทั้งสองค่าได้
+เช่น 1 3 จุด 3 4 จุด 5 5 จุด","- Atau pemain dapat mengubah kedua nilai.
+Misalnya, 1 3 titik, 3 4 titik, 5 5 titik."
+liardice_tut5,"If the current player challenges the previous bid, all the dice will be revealed.","Nếu người chơi hiện tại thách thức cuộc đặt cược trước đó, tất cả xúc xắc sẽ được mở ra.","Se o jogador atual desafiar o lance anterior, todos os dados serão revelados.","Si el jugador actual desafía la oferta anterior, se revelarán todos los dados.","Si le joueur actuel conteste l'enchère précédente, tous les dés seront révélés.",หากผู้เล่นปัจจุบันท้าทายการประมูลครั้งก่อน ลูกเต๋าทั้งหมดจะถูกเปิดเผย,"Jika pemain saat ini menantang tawaran sebelumnya, semua dadu akan terungkap."
+liardice_tut6,"If the bid is valid (the bid is equal to or less than the number of dice of the same face value), the bidder wins.","Nếu cuộc đặt cược hợp lệ (giá trị cược bằng hoặc nhỏ hơn số lượng xúc xắc có cùng mệnh giá), người đặt cược thắng.","Se o lance for válido (o lance for igual ou menor que o número de dados de mesmo valor nominal), o licitante vence.","Si la puja es válida (la puja es igual o menor que el número de dados del mismo valor nominal), el pujador gana.","Si l'enchère est valide (l'enchère est égale ou inférieure au nombre de dés de même valeur faciale), l'enchérisseur l'emporte.",หากการเสนอราคาถูกต้อง (ราคาเสนอเท่ากับหรือน้อยกว่าจำนวนลูกเต๋าที่มีมูลค่าเท่ากัน) ผู้เสนอราคาจะเป็นผู้ชนะ,"Jika penawaran valid (tawaran sama dengan atau kurang dari jumlah dadu dengan nilai nominal yang sama), penawar menang."
+liardice_tut7,"Otherwise, the challenger wins.","Nếu không, người thách thức sẽ thắng.","Caso contrário, o desafiante vence.","De lo contrario, el retador gana.","Sinon, le challenger gagne.",มิฉะนั้นผู้ท้าชิงจะชนะ,"Jika tidak, penantang menang."
+piece,TOKEN,QUÂN CỜ,PECA,PIEZA,PIÈCE,ชิ้นส่วน,BAGIAN
+ludo_tut1,"- To start, you need to set up the game.
+- If a 6 is rolled, you can move a token out of your base.
+- Anytime a 6 is rolled, you get an extra roll. If a 6 is rolled 3 times in a row, you lose your turn.","- Để bắt đầu, bạn cần thiết lập trò chơi.
+- Nếu tung ra số 6, bạn có thể di chuyển quân cờ ra khỏi nhà mình.
+- Bất cứ lúc nào tung ra số 6, bạn nhận thêm 1 lượt tung. Nếu số 6 được tung 3 lần liên tiếp, bạn sẽ mất lượt.","- Para comecar, você precisa configurar o jogo.
+- Se sair um 6, você pode tirar uma peca de sua casa.
+- Sempre que um 6 é rolado, você ganha um lancamento extra. Se um 6 for lancado 3 vezes seguidas, você perde sua vez.","- Para comenzar, debes configurar el juego.
+- Si sale un 6, puedes mover una pieza fuera de tu casa.
+- Cada vez que se lanza un 6, obtienes una tirada extra. Si sale un 6 3 veces seguidas, pierdes tu turno.","- Pour commencer, vous devez configurer le jeu.
+- Si un 6 est obtenu, vous pouvez déplacer une pièce hors de votre maison.
+- Chaque fois qu'un 6 est obtenu, vous obtenez un résultat supplémentaire. Si un 6 sort 3 fois de suite, vous perdez votre tour.","- ในการเริ่มต้น คุณต้องตั้งค่าเกม
+- หากทอยได้เลข 6 คุณสามารถย้ายชิ้นส่วนออกจากบ้านได้
+- ทุกครั้งที่ทอย 6 คุณจะได้รับม้วนพิเศษ หากทอยได้ 6 ครั้งติดต่อกัน 3 ครั้ง คุณจะเสียเทิร์น","- Untuk memulai, Anda perlu mengatur permainan.
+- Jika 6 digulung, Anda dapat memindahkan sepotong dari rumah Anda.
+- Setiap kali 6 digulung, Anda mendapatkan gulungan ekstra. Jika angka 6 dilempar 3 kali berturut-turut, Anda kehilangan giliran."
+ludo_tut2,"- If your token lands on an opponent’s token, that token is sent back to its base.
+- Then you get an extra roll.","- Nếu quân cờ của bạn đáp vào vị trí quân cờ đối thủ đang đứng, quân cờ đó sẽ bị đá và được gửi trở lại nhà của họ.
+- Sau đó, bạn nhận được 1 lượt tung.","- Se sua peça cair em um espaço colorido especial, essa peça estará segura.
+- Peças de outros jogadores poderão ficar juntas no espaço colorido.","- Si tu pieza cae sobre la pieza de un oponente, esa pieza se envía de regreso a su hogar.
+- Entonces obtienes un rollo extra.","- Si votre pièce atterrit sur une pièce adverse, cette pièce est renvoyée chez elle.
+- Ensuite, vous obtenez un rouleau supplémentaire.","- หากชิ้นส่วนของคุณตกลงบนชิ้นส่วนของฝ่ายตรงข้าม ชิ้นส่วนนั้นจะถูกส่งกลับบ้าน
+- จากนั้นคุณจะได้รับม้วนพิเศษ","- Jika bidak Anda mendarat di bidak lawan, bidak itu dikirim kembali ke rumahnya.
+- Kemudian Anda mendapatkan gulungan ekstra."
+ludo_tut3,"- If your token lands in a space occupied by 1 of your other tokens, your tokens will stand together in the same place.","- Nếu quân cờ của bạn đáp vào một vị trí mà các quân cờ khác của bạn đã đứng, chúng sẽ đứng cùng nhau.","- Se sua peca cair em um espaco ocupado por 1 de suas outras pecas, suas pecas ficarão juntas no mesmo lugar.","- Si tu pieza cae en un espacio ocupado por 1 de tus otras piezas, tus piezas permanecerán juntas en el mismo lugar.","- Si votre pièce atterrit dans un espace occupé par 1 de vos autres pièces, vos pièces resteront ensemble au même endroit.",- หากชิ้นส่วนของคุณตกลงในพื้นที่ที่มีชิ้นส่วนอื่นของคุณ 1 ชิ้น ชิ้นส่วนของคุณจะยืนรวมกันอยู่ที่เดิม,"- Jika bidak Anda mendarat di tempat yang ditempati oleh 1 bidak Anda yang lain, bidak Anda akan berdiri bersama di tempat yang sama."
+ludo_tut4,"- If your token lands on a special colored space, that token will be safe.
+- Tokens from other players will be allowed to stand together in the colored space.","- Nếu quân cờ của bạn đáp vào vị trí đặc biệt, quân cờ đó sẽ an toàn.
+- Quân cờ của những người chơi khác cũng sẽ được phép đứng chung tại vị trí đó.","- Se sua peca cair em um espaco colorido especial, essa peca estará segura.
+- Pecas de outros jogadores poderão ficar juntas no espaco colorido.","- Si tu pieza cae en un espacio de color especial, esa pieza estará a salvo.
+- Las piezas de otros jugadores podrán estar juntas en el espacio coloreado.","- Si votre pièce atterrit sur une case colorée spéciale, cette pièce sera en sécurité.
+- Les pièces des autres joueurs seront autorisées à se tenir ensemble dans l'espace coloré.","- หากชิ้นส่วนของคุณตกลงบนพื้นสีพิเศษ ชิ้นส่วนนั้นจะปลอดภัย
+- ชิ้นส่วนจากผู้เล่นคนอื่นจะได้รับอนุญาตให้ยืนรวมกันในพื้นที่สี","- Jika bidak Anda mendarat di ruang berwarna khusus, bidak itu akan aman.
+- Potongan dari pemain lain akan diizinkan untuk berdiri bersama di ruang berwarna."
+ludo_tut5,"- When your token lands on the home triangle, that token has completed its journey, and you get an extra roll.
+The first player to have all the tokens finish their journey wins!","- Khi quân cờ của bạn về tới vùng tam giác của nhà bạn, quân cờ đó đã hoàn thành hành trình của nó và bạn nhận thêm 1 lượt tung.
+Người chơi đầu tiên có tất cả quân cờ kết thúc hành trình sẽ chiến thắng!","- Quando sua peca pousar no triângulo inicial, essa peca completou sua jornada e você recebe uma jogada extra.
+O primeiro jogador a ter todas as pecas terminando sua jornada vence!","- Cuando tu pieza cae en el triángulo de origen, esa pieza ha completado su viaje y obtienes una tirada adicional.
+¡El primer jugador es tener todas las piezas terminadas su viaje gana!","- Lorsque votre pièce atterrit sur le triangle d'origine, cette pièce a terminé son voyage et vous obtenez un jet supplémentaire.
+Le premier joueur dont toutes les pièces ont terminé leur voyage gagne !","- เมื่อชิ้นส่วนของคุณตกลงบนสามเหลี่ยมบ้าน ชิ้นส่วนนั้นได้เสร็จสิ้นการเดินทาง และคุณจะได้รับม้วนพิเศษ
+ผู้เล่นคนแรกที่มีชิ้นส่วนทั้งหมดจบการเดินทางจะเป็นผู้ชนะ!","- Saat bidak Anda mendarat di segitiga rumah, bidak itu telah menyelesaikan perjalanannya, dan Anda mendapatkan gulungan ekstra.
+Pemain pertama yang memiliki semua bagian menyelesaikan perjalanan mereka menang!"
+mahjong_tut1,"The 1st player chooses and opens 1 of their tiles.
+- If the opened tile is ""Bamboo"", the 1st player will continue their turn.
+- If the opened tile is ""Dot"", the 2nd player will take their turn.","Người chơi đầu tiên chọn và mở 1 ô.
+- Nếu ô đã mở là ""Tre"", người chơi đầu tiên sẽ tiếp tục lượt của mình.
+- Nếu ô đã mở là ""Chấm"", đến lượt người chơi thứ hai.","O primeiro jogador escolhe e abre 1 de suas pecas.
+- Se a peca aberta for ""Bambu"", o primeiro jogador continuará seu turno.
+- Se a peca aberta for ""Ponto"", o segundo jogador terá a sua vez.","El primer jugador elige y abre 1 de sus fichas.
+- Si la ficha abierta es ""Bambú"", el primer jugador continuará su turno.
+- Si la ficha abierta es ""Punto"", el segundo jugador tomará su turno.","Le premier joueur choisit et ouvre 1 de ses tuiles.
+- Si la tuile ouverte est ""Bambou"", le premier joueur continue son tour.
+- Si la tuile ouverte est ""Point"", le deuxième joueur jouera son tour.","ผู้เล่นคนแรกเลือกและเปิดไพ่ 1 ใบ
+- หากกระเบื้องที่เปิดเป็น ""ไม้ไผ่"" ผู้เล่นคนแรกจะเล่นต่อ
+- หากไทล์ที่เปิดเป็น ""จุด"" ผู้เล่นคนที่สองจะผลัดกัน","Pemain pertama memilih dan membuka 1 ubin mereka.
+- Jika ubin yang dibuka adalah ""Bambu"", pemain pertama akan melanjutkan giliran mereka.
+- Jika ubin yang dibuka adalah ""Titik"", pemain kedua akan mengambil giliran."
+mahjong_tut2,"The 2nd player chooses and opens 1 of their tiles.
+- If the opened tile is ""Dot"", the 2nd player will continue their turn.
+- If the opened tile is ""Bamboo"", the 1st player will take their turn.","Người chơi thứ hai chọn và mở 1 ô.
+- Nếu ô đã mở là ""Chấm"", người chơi thứ hai sẽ tiếp tục lượt của mình.
+- Nếu ô đã mở là ""Tre"", đến lượt người chơi đầu tiên.","O segundo jogador escolhe e abre 1 de suas pecas.
+- Se a peca aberta for ""Ponto"", o segundo jogador continuará seu turno.
+- Se a peca aberta for ""Bambu"", será a vez do primeiro jogador.","El segundo jugador elige y abre 1 de sus fichas.
+- Si la ficha abierta es ""Punto"", el segundo jugador continuará su turno.
+- Si la ficha abierta es ""Bambú"", el primer jugador tomará su turno.","Le deuxième joueur choisit et ouvre 1 de ses tuiles.
+- Si la tuile ouverte est ""Point"", le deuxième joueur continuera son tour.
+- Si la tuile ouverte est ""Bambou"", le premier joueur jouera son tour.","ผู้เล่นคนที่สองเลือกและเปิดไพ่ 1 ใบ
+- หากไทล์ที่เปิดเป็น ""จุด"" ผู้เล่นคนที่สองจะเล่นต่อในเทิร์นของพวกเขา
+- หากแผ่นที่เปิดเป็น ""ไม้ไผ่"" ผู้เล่นคนแรกจะเข้าตา","Pemain kedua memilih dan membuka 1 ubin mereka.
+- Jika ubin yang dibuka adalah ""Titik"", pemain kedua akan melanjutkan giliran mereka.
+- Jika ubin yang dibuka adalah ""Bambu"", pemain pertama akan mendapat giliran."
+mahjong_tut3,The first player who opens and matches all of their suits will be the winner!,Người chơi đầu tiên mở và ghép đủ các bộ cờ của họ sẽ là người chiến thắng!,O primeiro jogador que abrir e combinar todos os seus naipes será o vencedor!,¡El primer jugador que abra y combinar todos sus palos será el ganador!,Le premier joueur qui ouvre et correspond à tous ses costumes sera le gagnant !,ผู้เล่นคนแรกที่เปิดและจับคู่ชุดของพวกเขาทั้งหมดจะเป็นผู้ชนะ!,Pemain pertama yang membuka dan mencocokkan semua suit mereka akan menjadi pemenangnya!
+memorycard_tut1,"In turn, each player chooses 2 cards and flips them up.
+- If they are the same, that player wins the pair and continues playing.
+- If they differ, they will be turned face down once more, and the next player takes their turn.
+The game is over when all pairs of cards are flipped up!","Lần lượt mỗi người chơi chọn 2 lá và lật lên.
+- Nếu giống nhau, người chơi đó thắng cặp hình đó và tiếp tục chơi.
+- Nếu khác nhau, chúng sẽ bị lật úp lại và đến lượt người chơi tiếp theo.
+Trò chơi kết thúc khi tất cả các cặp thẻ được lật lên!","Por sua vez, cada jogador escolhe 2 cartas e as vira.
+- Se forem iguais, esse jogador ganha o par e continua jogando.
+- Se eles forem diferentes, eles serão virados para baixo mais uma vez, e o próximo jogador terá sua vez.
+O jogo termina quando todos os pares de cartas são virados!","Por turnos, cada jugador elige 2 cartas y las voltea.
+- Si son iguales, ese jugador ganas a la pareja y continúa jugando.
+- Si difieren, se volverán a poner boca abajo y le toca el turno al siguiente jugador.
+¡El juego termina cuando se voltean todos los paresos de cartas!","Tour à tour, chaque joueur choisit 2 cartes et les retourne.
+- S'ils sont identiques, ce joueur gagne de la paire et continue à jouer.
+- S'ils diffèrent, ils seront à nouveau retournés face cachée et le joueur suivant jouera son tour.
+Le jeu est terminé lorsque toutes les paires de cartes sont retournées !","ในทางกลับกัน ผู้เล่นแต่ละคนเลือกไพ่ 2 ใบแล้วพลิกขึ้น
+- หากเหมือนกัน ผู้เล่นคนนั้นจะชนะคู่นั้นและเล่นต่อไป
+- หากต่างกัน พวกเขาจะถูกคว่ำหน้าอีกครั้ง และผู้เล่นคนต่อไปจะถึงตา
+เกมจะจบลงเมื่อไพ่ทุกคู่ถูกพลิกขึ้น!","Pada gilirannya, setiap pemain memilih 2 kartu dan membaliknya.
+- Jika mereka sama, pemain itu memenangkan pasangan dan terus bermain.
+- Jika mereka berbeda, mereka akan ditolak sekali lagi, dan pemain berikutnya mengambil giliran.
+Permainan berakhir ketika semua pasangan kartu dibalik!"
+pirate_tut1,"On your turn, choose a slot and insert a sword into it.","Đến lượt của bạn, hãy chọn một vị trí và cắm một thanh kiếm vào đó.","Na sua vez, escolha um slot e insira uma espada nele.","En tu turno, elige una ranura e inserta una espada en ella.","À votre tour, choisissez un emplacement et insérez-y une épée.",เมื่อถึงตาคุณ ให้เลือกช่องและใส่ดาบเข้าไป,"Pada giliran Anda, pilih slot dan masukkan pedang ke dalamnya."
+pirate_tut2,"- If nothing happens, you're safe and the next player takes their turn.
+- If the Pirate is launched out, you are eliminated!","- Nếu không có gì xảy ra, bạn đã an toàn và đến lượt người chơi tiếp theo.
+- Nếu Pirate được tung ra, bạn sẽ bị loại!","- Se nada acontecer, você está seguro e o próximo jogador assume a sua vez.
+- Se o Pirata for lancado, você será eliminado!","- Si no pasa nada, estás a salvo y el siguiente jugador toma su turno.
+- ¡Si el Pirata es lanzado, estás eliminado!","- Si rien ne se passe, vous êtes en sécurité et le joueur suivant prend son tour.
+- Si le Pirate est lancé, vous êtes éliminé !","- หากไม่มีอะไรเกิดขึ้น คุณจะปลอดภัยและผู้เล่นคนต่อไปจะถึงตาคุณ
+- หากเปิดตัว Pirate คุณจะถูกกำจัด!","- Jika tidak terjadi apa-apa, Anda aman dan pemain berikutnya mengambil giliran.
+- Jika Bajak Laut diluncurkan, Anda tersingkir!"
+plinko_tut1,"To start, you need to set up the game.","Để bắt đầu, bạn cần thiết lập trò chơi.","Para comecar, você precisa configurar o jogo.","Para comenzar, debes configurar el juego.","Pour commencer, vous devez configurer le jeu.",ในการเริ่มต้น คุณต้องตั้งค่าเกม,"Untuk memulai, Anda perlu mengatur permainan."
+plinko_tut2,"- Place the ball at the top of the board.
+- Tap to release the ball and see which slot the ball will land in.","- Đặt bóng ở đầu bảng.
+- Nhấn để thả bóng và xem bóng sẽ đáp xuống vị trí nào.","- Coloque a bola no topo do tabuleiro.
+- Toque para soltar a bola e ver em qual slot a bola cairá.","- Coloca la pelota en la parte superior del tablero.
+- Toque para soltar la bola y ver en qué ranura caerá la bola.","- Placer la balle en haut du plateau.
+- Appuyez pour libérer de la balle et voir dans quelle fente la balle atterrira.","- วางลูกบอลไว้บนกระดาน
+- แตะเพื่อปล่อยลูกบอลและดูว่าลูกบอลจะเข้าสู่ช่องไหน","- Tempatkan bola di bagian atas papan.
+- Ketuk untuk melepaskan bola dan lihat di slot mana bola akan mendarat."
+plinko_tut3,The player with the highest total score will be the winner!,Người chơi có tổng điểm cao nhất sẽ là người chiến thắng!,O jogador com a maior pontuacão total será o vencedor!,¡El jugador con la puntuación total más alta será el ganador!,Le joueur avec le score total le plus élevé sera le gagnant !,ผู้เล่นที่มีคะแนนรวมสูงสุดจะเป็นผู้ชนะ!,Pemain dengan total skor tertinggi akan menjadi pemenangnya!
+popit_tut1,Roll 2 dice and poke the holes according to the total points.,Tung 2 xúc xắc và chọc vào các lỗ theo tổng số nút.,Jogue 2 dados e faca os furos de acordo com o total de pontos.,Tira 2 dados y haz los agujeros según el total de puntos.,Lancez 2 dés et percez les trous en fonction du total des points.,ทอยลูกเต๋า 2 ลูกแล้วเจาะรูตามคะแนนรว,Gulung 2 dadu dan buat lubang sesuai dengan total poin.
+popit_tut2,Who finishes poking all the holes on their side first is the winner!,Ai chọc xong tất cả các lỗ bên mình trước là người chiến thắng!,Quem terminar de fazer todos os buracos do lado primeiro é o vencedor!,¡Quien termine primero de hacer todos los agujeros en su costado en el ganador!,Le premier qui finit de percer tous les trous de son côté est le gagnant !,ใครที่เจาะหลุมด้านข้างให้หมดก่อนเป็นผู้ชนะ!,Siapa yang selesai menyodok semua lubang di sisi mereka terlebih dahulu adalah pemenangnya!
+shutthebox_tut1,"Roll 2 dice and add the value up. After that, you lower some tiles of the same value.","Tung 2 xúc xắc và cộng các nút lại. Sau đó, bạn hạ vài ô có cùng giá trị.","Jogue 2 dados e some o valor. Depois disso, você abaixa algumas telhas do mesmo valor.","Tira 2 dados y suma el valor. Después de eso, bajas algunas fechas del mismo valor.","Lancez 2 dés et additionnez la valeur. Après cela, vous abaissez quelques tuiles de la même valeur.",ทอยลูกเต๋า 2 ลูก และเพิ่มมูลค่า หลังจากนั้น คุณลดไทล์บางอันที่มีค่าเท่ากัน,"Gulung 2 dadu dan tambahkan nilainya. Setelah itu, Anda menurunkan beberapa ubin dengan nilai yang sama."
+shutthebox_tut2,"- You can choose the exact total number.
+For example, if the total is 7, you can choose 7.","- Bạn có thể chọn tổng số chính xác.
+Ví dụ, nếu tổng là 7, bạn có thể chọn 7.","- Você pode escolher o número total exato.
+Por exemplo, se o total for 7, você pode escolher 7.","- Puedes elegir el número total exacto.
+Por ejemplo, si el total es 7, puede elegir 7.","- Vous pouvez choisir le nombre total exact.
+Par exemple, si le total est 7, vous pouvez choisir 7.","- คุณสามารถเลือกจำนวนที่แน่นอนได้
+ตัวอย่างเช่น ถ้าผลรวมเป็น 7 คุณสามารถเลือก 7","- Anda dapat memilih jumlah total yang tepat.
+Misalnya, jika totalnya adalah 7, Anda dapat memilih 7."
+shutthebox_tut3,"- Or you can choose sets of numbers.
+For example, if the total is 7, you can choose 1, 6 or 2, 5 or 1, 2, 4.","- Hoặc bạn có thể chọn các bộ số.
+Ví dụ, nếu tổng là 7, bạn có thể chọn 1, 6 hoặc 2, 5 hoặc 1, 2, 4.","- Ou você pode escolher conjuntos de números.
+Por exemplo, se o total for 7, você pode escolher 1, 6 ou 2, 5 ou 1, 2, 4.","- O puede elegir conjuntos de números.
+Por ejemplo, si el total es 7, puede elegir 1, 6 o 2, 5 o 1, 2, 4.","- Ou vous pouvez choisir des ensembles de nombres.
+Par exemple, si le total est 7, vous pouvez choisir 1, 6 ou 2, 5 ou 1, 2, 4.","- หรือจะเลือกชุดตัวเลขก็ได้
+ตัวอย่างเช่น ถ้าผลรวมคือ 7 คุณสามารถเลือก 1, 6 หรือ 2, 5 หรือ 1, 2, 4","- Atau Anda dapat memilih set angka.
+Misalnya, jika totalnya 7, Anda dapat memilih 1, 6 atau 2, 5 atau 1, 2, 4."
+shutthebox_tut4,"When no more tiles can be lowered, game over!
+You win when you lower all the tiles!","Khi không thể hạ được ô nào nữa, trò chơi kết thúc!
+Bạn thắng khi bạn hạ tất cả các ô!","Quando não for possível abaixar mais pecas, o jogo acaba!
+Você ganha quando abaixa todas as pecas!","Cuando no se puedan bajar más fichas, ¡se acabó el juego!
+¡Ganas cuando bajas todas las fechas!","Lorsque plus aucune tuile ne peut être abaissée, le jeu est terminé !
+Vous gagnez lorsque vous abaissez toutes les tuiles !","เมื่อไม่สามารถลดกระเบื้องได้อีกต่อไป เกมจะจบลง!
+คุณจะชนะเมื่อคุณลดกระเบื้องทั้งหมด!","Ketika tidak ada lagi ubin yang bisa diturunkan, permainan berakhir!
+Anda menang ketika Anda menurunkan semua ubin!"
+slingpuck_tut1,"- Each player has 5 pucks.
+- Both players swipe and shoot all of their pucks at the opposing team.","- Mỗi người chơi có 5 đĩa.
+- Cả hai người chơi đều vuốt và bắn tất cả đĩa của họ vào đội đối phương.","- Cada jogador tem 5 discos.
+- Ambos os jogadores passam e atiram todos os seus discos na equipe adversária.","- Cada jugador tiene 5 discos.
+- Ambos jugadores deslizan y disparan todos sus discos al equipo contrario.","- Chaque joueur dispose de 5 disques.
+- Les deux joueurs glissent et tirent tous leurs disques sur l'équipe adverse.","- ผู้เล่นแต่ละคนมี 5 แผ่น
+- ผู้เล่นทั้งสองปัดและยิงดิสก์ทั้งหมดไปที่ทีมตรงข้าม","- Setiap pemain memiliki 5 disk.
+- Kedua pemain menggesek dan menembak semua disk mereka ke tim lawan."
+slingpuck_tut2,The first player to get rid of all the pucks is the winner!,Người chơi đầu tiên loại bỏ tất cả đĩa là người chiến thắng!,O primeiro jogador a se livrar de todos os discos é o vencedor!,¡El primer jugador en deshacerse de todos los discos es el ganador!,Le premier joueur à se débarrasser de tous les disques est le gagnant !,ผู้เล่นคนแรกที่กำจัดดิสก์ทั้งหมดเป็นผู้ชนะ!,Pemain pertama yang membuang semua disk adalah pemenangnya!
+snakeladder_tut1,"- To start, you need to set up the game.
+- In turn, players roll the die and move their tokens forward according to the number on the die.","- Để bắt đầu, bạn cần thiết lập trò chơi.
+- Lần lượt người chơi tung xúc xắc và di chuyển quân cờ của họ về phía trước theo số nút trên xúc xắc.","- Para comecar, você precisa configurar o jogo.
+- Por sua vez, os jogadores rolam o dado e movem suas pecas para frente de acordo com o número do dado.","- Para comenzar, debes configurar el juego.
+- Por turnos, los jugadores tiran el dado y mueven sus piezas hacia adelante según el número del dado.","- Pour commencer, vous devez configurer le jeu.
+- À tour de rôle, les joueurs lancent le dé et avancent leurs pions en fonction du nombre inscrit sur le dé.","- ในการเริ่มต้น คุณต้องตั้งค่าเกม
+- ในทางกลับกัน ผู้เล่นหมุนลูกเต๋าและเคลื่อนชิ้นส่วนไปข้างหน้าตามหมายเลขบนลูกเต๋า","- Untuk memulai, Anda perlu mengatur permainan.
+- Secara bergiliran, pemain melempar dadu dan menggerakkan bidaknya ke depan sesuai dengan angka pada dadu."
+snakeladder_tut2,"- If the token lands at the bottom of a ladder, it can move up to the top of the ladder.
+- If the token lands on the head of a snake, it must slide down to the bottom of the snake.
+The first player to finish the board game is the winner!","- Nếu quân cờ đáp ở cuối bậc thang, nó sẽ di chuyển lên đầu bậc thang.
+- Nếu quân cờ đáp lên đầu một con rắn, nó phải trượt xuống đuôi của con rắn.
+Người chơi đến đích đầu tiên là người chiến thắng!","- Se a peca cair na base de uma escada, ela pode subir até o topo da escada.
+- Se a peca pousar na cabeca de uma cobra, ela deve deslizar até o fundo da cobra.
+O primeiro jogador a terminar o jogo de tabuleiro é o vencedor!","- Si la pieza cae en la parte inferior de una escalera, puede subir hasta la parte superior de la escalera.
+- Si la pieza cae sobre la cabeza de una serpiente, debe deslizarse hacia abajo hasta la parte inferior de la serpiente.
+¡El primer jugador de terminar el juego de mesa es el ganador!","- Si la pièce atterrit en bas d'une échelle, elle peut monter en haut de l'échelle.
+- Si la pièce atterrit sur la tête d'un serpent, elle doit glisser vers le bas du serpent.
+Le premier joueur à terminer le jeu de société est le gagnant !","- หากชิ้นส่วนตกลงที่ด้านล่างของบันได ก็สามารถเลื่อนขึ้นไปบนสุดของบันไดได้
+- ถ้าชิ้นนั้นตกลงบนหัวงู มันต้องเลื่อนลงมาที่ก้นงู
+ผู้เล่นคนแรกที่จบเกมกระดานเป็นผู้ชนะ!","- Jika bidak itu mendarat di dasar tangga, ia bisa naik ke puncak tangga.
+- Jika bidak mendarat di kepala ular, bidak itu harus meluncur ke bawah hingga ke dasar ular.
+Pemain pertama yang menyelesaikan permainan papan adalah pemenangnya!"
+tiktaktoe_tut1,"- Players alternately place Xs and Os on the board.
+- When there are 3 Xs or 3 Os in a row, or when all 9 squares are filled, the game is over!","- Người chơi lần lượt đặt X và O trên bàn cờ.
+- Khi có 3 X hoặc 3 O liên tiếp, hoặc khi tất cả 9 ô vuông được lấp đầy, trò chơi sẽ kết thúc!","- Os jogadores colocam alternadamente Xs e Os no tabuleiro.
+- Quando houver 3 Xs ou 3 Os seguidos, ou quando todos os 9 quadrados estiverem preenchidos, o jogo acabou!","- Los jugadores colocan alternativamente Xs y Os en el tablero.
+- Cuando hay 3 X o 3 Os seguidas, o cuando se llenan los 9 cuadrados, ¡el juego termina!","- Les joueurs placent alternativement des X et des O sur le plateau.
+- Lorsqu'il y a 3 X ou 3 O d'affilée, ou lorsque les 9 cases sont remplies, la partie est terminée !","- ผู้เล่นสลับกันวาง Xs และ Os บนกระดาน
+- เมื่อมี 3 X หรือ 3 O ติดต่อกัน หรือเมื่อเต็ม 9 ช่อง เกมจะจบลง!","- Pemain secara bergantian menempatkan X dan Os di papan.
+- Ketika ada 3 X atau 3 Os berturut-turut, atau ketika semua 9 kotak terisi, permainan berakhir!"
+new_turn,NEW TURN,LƯỢT MỚI,NOVO TURNO,NUEVO TURNO,NOUVEAU VIRAGE,เทิร์นใหม่,GILIRAN BARU
+draw,DRAW,HÒA,EMPATE,DIBUJAR,DESSINER,วาด,SERI
+bot,BOT,MÁY,ROBÔ,BOT,ROBOT,บอท,BOT
+new_game,NEW GAME,VÁN MỚI,NOVO JOGO,NUEVO JUEGO,NOUVEAU JEU,เกมใหม่,PERMAINAN BARU
+the_same_bit,THE SAME BID,GIÁ TRỊ CƯỢC CŨ,O MESMO LANCE,LA MISMA OFERTA,LA MÊME ENCHÈRE,ประมูลเดียวกัน,TAWARAN YANG SAMA
+green_turn,GREEN'S TURN,LƯỢT CỦA XANH LÁ,A VEZ DO VERDE,TURNO DE VERDE,LE TOUR DU VERT,เทิร์นของกรีน,GILIRAN HIJAU
+red_turn,RED'S TURN,LƯỢT CỦA ĐỎ,A VEZ DO VERMELHO,EL TURNO DE ROJO,LE TOUR DU ROUGE,ตาแดง,GILIRAN MERAH
+blue_turn,BLUE'S TURN,LƯỢT CỦA XANH BIẾN,A VEZ DO AZUL,EL TURNO DE AZUL,LE TOUR DES BLEUS,ตาสีฟ้า,GILIRAN BIRU
+yellow_turn,YELLOW'S TURN,LƯỢT CỦA VÀNG,A VEZ DO AMARELO,TURNO DE AMARILLO,LE TOUR DU JAUNE,เลี้ยวเหลือง,GILIRAN KUNING
+select_1_block,SELECT 1 BLOCK,CHỌN 1 KHỐI,SELECIONE 1 BLOCO,SELECCIONE 1 BLOQUE,SÉLECTIONNEZ 1 BLOC,เลือก 1 บล็อก,PILIH 1 BLOK
+turn,TURN,LƯỢT,VIRAR,GIRO,TOUR,เปลี่ยน,BELOK
+player1_turn,PLAYER 1'S TURN,LƯỢT NGƯỜI CHƠI 1,A VEZ DO JOGADOR 1,TURNO DEL JUGADOR 1,TOUR DU JOUEUR 1,เทิร์นของผู้เล่นที่ 1,GILIRAN PEMAIN 1
+player2_turn,PLAYER 2'S TURN,LƯỢT NGƯỜI CHƠI 2,A VEZ DO JOGADOR 2,TURNO DEL JUGADOR 2,TOUR DU JOUEUR 2,เทิร์นของผู้เล่น 2,GILIRAN PEMAIN 2
+there_are,THERE ARE %,CÓ %,EXISTEM %,EXISTEN %,IL Y A %,มี %,ADA %
+you,YOU,BẠN,VOCÊS,TÚ,TU,คุณ,ANDA
+language,LANGUAGE,NGÔN NGỮ,LÍNGUA,IDIOMA,LANGUE,ภาษา,BAHASA
+green_win,,,,,,,
+red_win,,ĐỎ THẮNG,,,,,
+blue_win,,,,,,,
+yellow_win,,VÀNG THẮNG,,,,,
